@@ -1,5 +1,5 @@
 {
-  "name": "TubeHosting/TubePHPAPI",
+  "name": "tubehosting/tubephp-api",
   "description": "Simple PHP API client for tube-hosting.com rest API",
   "type": "library",
   "require": {
