@@ -1,8 +1,8 @@
-# Tube-Hosting PHP API
+# Tube-Hosting API PHP client
 
 ## Explanation
 
-This PHP library is a simple api wrapper for the [tube-hosting.com api](https://api.tube-hosting.com). <br>
+This PHP library is a simple api wrapper/client for the [tube-hosting.com api](https://api.tube-hosting.com). <br>
 It is based on the provided [documentation](https://doc.api.tube-hosting.com/#/). <br>
 The wrapper is built oriented to the so-called "schemas", where the documentation specified endpoints are assigned to, in a specific order. <br> 
 In the documentation, we see that the endpoints are ordered in thirteen tags, which are each put into an object.  <br>
@@ -27,6 +27,8 @@ or run
 $ composer require tubehosting/tubephp-api
 ```
 in your shell. 
+
+This library also requires PHP version 8.0 or higher and the PHP curl extension.
 
 ## Usage
 
