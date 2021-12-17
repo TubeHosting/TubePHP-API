@@ -17,14 +17,14 @@ Here is how they are ordered:
 
 ## Installation
 
-The Tube-Hosting PHP API is available over [Packagist](https://packegist/url), and an installation in your project is recommended via [Composer](https://getcomposer.org). <br>
+The Tube-Hosting PHP API is available over Packagist, and an installation in your project is recommended via [Composer](https://getcomposer.org). <br>
 After installing [Composer in your project](https://getcomposer.org/download/), just add this line to your `composer.json` file.
 ```json
-"tubehosting/tubephp-api": "^0.9"
+"tubehosting/tubephp-api": "^0.1-beta"
 ```
 or run 
 ```shell
-$ composer require tubehosting/tubephp-api
+$ composer require tubehosting/tubephp-api:0.1-beta
 ```
 in your shell. 
 
