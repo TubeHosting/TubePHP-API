@@ -1,5 +1,5 @@
 <?php
-use TubeAPI\Objects; //import into global namespace
+use TubeAPI\Objects;
 
 require 'vendor/autoload.php'; //Load the Composer autoloader
 
@@ -7,11 +7,13 @@ $password = "Password123";
 $mail = "E-Mail@Address.tld";
 
 try {
-    $user = Objects\User::login(new Objects\AuthenticationLoginData($mail, $password)); //login using the credentials of an existing tube-hosting.de account (the login returns a new user object)
+    //login using the credentials of an existing tube-hosting.de account (the login returns a new user object)
+    $user = Objects\User::login(new Objects\AuthenticationLoginData($mail, $password)); 
     $user = $user->getUserData(); //get user data, nicely packed into the "User" object
 
-    //display information about the address before we are going to change it
+    // get all address data before it is redefined
     $address = $user->getAddress();
+
     print " - Address before the change: \n";
     print "    - City: " . $address->getCity(). "\n";
     print "    - Street: " . $address->getStreet(). "\n";
@@ -19,7 +21,8 @@ try {
     print "    - Country: " . $address->getCountry(). "\n";
     print "    - Postal code: " . $address->getPostalCode(). "\n";
 
-    Objects\User::changeAddress(new Objects\Address( //take a look in to the documentation, what has to be set https://doc.api.tube-hosting.com/ -> Schemas -> Address
+    //take a look in to the documentation, what has to be set https://doc.api.tube-hosting.com/ -> Schemas -> Address
+    Objects\User::changeAddress(new Objects\Address( 
         "",
         "City",
         "Street",
@@ -30,8 +33,10 @@ try {
     ));
 
     $user = Objects\User::meInfo();
-    //display information about the address after we changed it
+
+    // after changing the data it is possible to redefine the address
     $address = $user->getAddress();
+
     print " - Address after the change: \n";
     print "    - City: " . $address->getCity(). "\n";
     print "    - Street: " . $address->getStreet(). "\n";
@@ -42,3 +47,4 @@ try {
 } catch (\Exception $e) {
     print $e->getMessage() . "\n";
 }
+?>

@@ -1,5 +1,5 @@
 <?php
-use TubeAPI\Objects; //import into global namespace
+use TubeAPI\Objects;
 
 require 'vendor/autoload.php'; //Load the Composer autoloader
 
@@ -7,11 +7,12 @@ $password = "Password123";
 $mail = "E-Mail@Address.tld";
 
 try {
-    $user = Objects\User::login(new Objects\AuthenticationLoginData($mail, $password)); //login using the credentials of an existing tube-hosting.de account (the login returns a new user object)
+    //login using the credentials of an existing tube-hosting.de account (the login returns a new user object)
+    $user = Objects\User::login(new Objects\AuthenticationLoginData($mail, $password));
 
     $serviceGroups = Objects\ServiceGroupData::getAllServiceGroupsFromUser(false); //get all service groups of user
 
-    foreach ($serviceGroups as $serviceGroup) { //iterate through service groups and print some information
+    foreach ($serviceGroups as $serviceGroup) { //go through all service groups and print information
 
         $metaData = $serviceGroup->getMetaData();
         $groupData = $serviceGroup->getGroupData();
@@ -25,3 +26,4 @@ try {
 } catch (\Exception $e) {
     print $e->getMessage() . "\n";
 }
+?>
