@@ -1,5 +1,5 @@
 <?php
-use TubeAPI\Objects; //import into global namespace
+use TubeAPI\Objects;
 
 require 'vendor/autoload.php'; //Load the Composer autoloader
 
@@ -7,7 +7,8 @@ $password = "Password123";
 $mail = "E-Mail@Address.tld";
 
 try {
-    $user = Objects\User::login(new Objects\AuthenticationLoginData($mail, $password)); //login using the credentials of an existing tube-hosting.de account (the login returns a new user object)
+    //login using the credentials of an existing tube-hosting.de account (the login returns a new user object)
+    $user = Objects\User::login(new Objects\AuthenticationLoginData($mail, $password)); 
     $user = $user->getUserData(); //get user data, nicely packed into the "User" object
 
     //print different information about the user
@@ -38,3 +39,4 @@ try {
 } catch (\Exception $e) {
     print $e->getMessage() . "\n";
 }
+?>
