@@ -9,109 +9,109 @@ require_once __DIR__ . '/../TubeAPI.php';
 class ServiceGroupMetaData
 {
 
-    private int $id;
+    private int|null $id;
 
-    private string $status;
+    private string|null $status;
 
-    private string $deletionDate;
+    private string|null $deletionDate;
 
-    private string $deactivationDate;
+    private string|null $deactivationDate;
 
-    private string $runtime;
+    private string|null $runtime;
 
-    private string $startDate;
+    private string|null $startDate;
 
-    private SimpleUser $owner;
+    private SimpleUser|null $owner;
 
-    private string $endDate;
+    private string|null $endDate;
 
-    private int $position;
+    private int|null $position;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
          return $this->status;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDeletionDate(): string
+    public function getDeletionDate(): string|null
     {
          return $this->deletionDate;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDeactivationDate(): string
+    public function getDeactivationDate(): string|null
     {
          return $this->deactivationDate;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRuntime(): string
+    public function getRuntime(): string|null
     {
          return $this->runtime;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
          return $this->startDate;
      }
 
     /**
-     * @return SimpleUser
+     * @return SimpleUser|null
      */
-    public function getOwner(): SimpleUser
+    public function getOwner(): SimpleUser|null
     {
          return $this->owner;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEndDate(): string
+    public function getEndDate(): string|null
     {
          return $this->endDate;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPosition(): int
+    public function getPosition(): int|null
     {
          return $this->position;
      }
 
     /**
-     * @param int $id
-     * @param string $status
-     * @param string $deletionDate
-     * @param string $deactivationDate
-     * @param string $runtime
-     * @param string $startDate
-     * @param SimpleUser $owner
-     * @param string $endDate
-     * @param int $position
+     * @param int|null $id
+     * @param string|null $status
+     * @param string|null $deletionDate
+     * @param string|null $deactivationDate
+     * @param string|null $runtime
+     * @param string|null $startDate
+     * @param SimpleUser|null $owner
+     * @param string|null $endDate
+     * @param int|null $position
      */
-    public function __construct(int $id, string $status, string $deletionDate, string $deactivationDate, string $runtime, string $startDate, SimpleUser $owner, string $endDate, int $position)
+    public function __construct(int|null $id, string|null $status, string|null $deletionDate, string|null $deactivationDate, string|null $runtime, string|null $startDate, SimpleUser|null $owner, string|null $endDate, int|null $position)
     {
         $this->id = $id;
         $this->status = $status;
@@ -149,15 +149,42 @@ class ServiceGroupMetaData
      */
     public static function fromStdClass(object $object):ServiceGroupMetaData
     {
-        $id = (int) $object->id;
-        $status = (string) $object->status;
-        $deletionDate = (string) $object->deletionDate;
-        $deactivationDate = (string) $object->deactivationDate;
-        $runtime = (string) $object->runtime;
-        $startDate = (string) $object->startDate;
-        $owner = SimpleUser::fromStdClass((object)$object->owner);
-        $endDate = (string) $object->endDate;
-        $position = (int) $object->position;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->status)) {
+            $status = (string) $object->status;
+        }else $status = $object->status=null;
+
+        if (isset($object->deletionDate)) {
+            $deletionDate = (string) $object->deletionDate;
+        }else $deletionDate = $object->deletionDate=null;
+
+        if (isset($object->deactivationDate)) {
+            $deactivationDate = (string) $object->deactivationDate;
+        }else $deactivationDate = $object->deactivationDate=null;
+
+        if (isset($object->runtime)) {
+            $runtime = (string) $object->runtime;
+        }else $runtime = $object->runtime=null;
+
+        if (isset($object->startDate)) {
+            $startDate = (string) $object->startDate;
+        }else $startDate = $object->startDate=null;
+
+        if (isset($object->owner)) {
+           $owner = SimpleUser::fromStdClass((object)$object->owner);
+        }else $owner = $object->owner=null;
+
+        if (isset($object->endDate)) {
+            $endDate = (string) $object->endDate;
+        }else $endDate = $object->endDate=null;
+
+        if (isset($object->position)) {
+            $position = (int) $object->position;
+        }else $position = $object->position=null;
 
         return new ServiceGroupMetaData($id, $status, $deletionDate, $deactivationDate, $runtime, $startDate, $owner, $endDate, $position);
      }

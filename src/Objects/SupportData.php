@@ -9,43 +9,43 @@ require_once __DIR__ . '/../TubeAPI.php';
 class SupportData
 {
 
-    private string $discordName;
+    private string|null $discordName;
 
-    private string $skypeName;
+    private string|null $skypeName;
 
-    private string $phoneNumber;
+    private string|null $phoneNumber;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDiscordName(): string
+    public function getDiscordName(): string|null
     {
          return $this->discordName;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSkypeName(): string
+    public function getSkypeName(): string|null
     {
          return $this->skypeName;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPhoneNumber(): string
+    public function getPhoneNumber(): string|null
     {
          return $this->phoneNumber;
      }
 
     /**
-     * @param string $discordName
-     * @param string $skypeName
-     * @param string $phoneNumber
+     * @param string|null $discordName
+     * @param string|null $skypeName
+     * @param string|null $phoneNumber
      */
-    public function __construct(string $discordName, string $skypeName, string $phoneNumber)
+    public function __construct(string|null $discordName, string|null $skypeName, string|null $phoneNumber)
     {
         $this->discordName = $discordName;
         $this->skypeName = $skypeName;
@@ -71,9 +71,18 @@ class SupportData
      */
     public static function fromStdClass(object $object):SupportData
     {
-        $discordName = (string) $object->discordName;
-        $skypeName = (string) $object->skypeName;
-        $phoneNumber = (string) $object->phoneNumber;
+
+        if (isset($object->discordName)) {
+            $discordName = (string) $object->discordName;
+        }else $discordName = $object->discordName=null;
+
+        if (isset($object->skypeName)) {
+            $skypeName = (string) $object->skypeName;
+        }else $skypeName = $object->skypeName=null;
+
+        if (isset($object->phoneNumber)) {
+            $phoneNumber = (string) $object->phoneNumber;
+        }else $phoneNumber = $object->phoneNumber=null;
 
         return new SupportData($discordName, $skypeName, $phoneNumber);
      }

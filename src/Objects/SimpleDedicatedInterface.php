@@ -9,76 +9,76 @@ require_once __DIR__ . '/../TubeAPI.php';
 class SimpleDedicatedInterface
 {
 
-    private string $mac;
+    private string|null $mac;
 
-    private int $speed;
+    private int|null $speed;
 
-    private bool $active;
+    private bool|null $active;
 
-    private int $interfaceId;
+    private int|null $interfaceId;
 
-    private int $aggregatedId;
+    private int|null $aggregatedId;
 
-    private int $instanceId;
+    private int|null $instanceId;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMac(): string
+    public function getMac(): string|null
     {
          return $this->mac;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getSpeed(): int
+    public function getSpeed(): int|null
     {
          return $this->speed;
      }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getActive(): bool
+    public function getActive(): bool|null
     {
          return $this->active;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getInterfaceId(): int
+    public function getInterfaceId(): int|null
     {
          return $this->interfaceId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getAggregatedId(): int
+    public function getAggregatedId(): int|null
     {
          return $this->aggregatedId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getInstanceId(): int
+    public function getInstanceId(): int|null
     {
          return $this->instanceId;
      }
 
     /**
-     * @param string $mac
-     * @param int $speed
-     * @param bool $active
-     * @param int $interfaceId
-     * @param int $aggregatedId
-     * @param int $instanceId
+     * @param string|null $mac
+     * @param int|null $speed
+     * @param bool|null $active
+     * @param int|null $interfaceId
+     * @param int|null $aggregatedId
+     * @param int|null $instanceId
      */
-    public function __construct(string $mac, int $speed, bool $active, int $interfaceId, int $aggregatedId, int $instanceId)
+    public function __construct(string|null $mac, int|null $speed, bool|null $active, int|null $interfaceId, int|null $aggregatedId, int|null $instanceId)
     {
         $this->mac = $mac;
         $this->speed = $speed;
@@ -110,12 +110,30 @@ class SimpleDedicatedInterface
      */
     public static function fromStdClass(object $object):SimpleDedicatedInterface
     {
-        $mac = (string) $object->mac;
-        $speed = (int) $object->speed;
-        $active = (bool) $object->active;
-        $interfaceId = (int) $object->interfaceId;
-        $aggregatedId = (int) $object->aggregatedId;
-        $instanceId = (int) $object->instanceId;
+
+        if (isset($object->mac)) {
+            $mac = (string) $object->mac;
+        }else $mac = $object->mac=null;
+
+        if (isset($object->speed)) {
+            $speed = (int) $object->speed;
+        }else $speed = $object->speed=null;
+
+        if (isset($object->active)) {
+            $active = (bool) $object->active;
+        }else $active = $object->active=null;
+
+        if (isset($object->interfaceId)) {
+            $interfaceId = (int) $object->interfaceId;
+        }else $interfaceId = $object->interfaceId=null;
+
+        if (isset($object->aggregatedId)) {
+            $aggregatedId = (int) $object->aggregatedId;
+        }else $aggregatedId = $object->aggregatedId=null;
+
+        if (isset($object->instanceId)) {
+            $instanceId = (int) $object->instanceId;
+        }else $instanceId = $object->instanceId=null;
 
         return new SimpleDedicatedInterface($mac, $speed, $active, $interfaceId, $aggregatedId, $instanceId);
      }

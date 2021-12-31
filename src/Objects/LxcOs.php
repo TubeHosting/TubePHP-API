@@ -9,32 +9,32 @@ require_once __DIR__ . '/../TubeAPI.php';
 class LxcOs
 {
 
-    private int $osId;
+    private int|null $osId;
 
-    private string $displayName;
+    private string|null $displayName;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getOsId(): int
+    public function getOsId(): int|null
     {
          return $this->osId;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDisplayName(): string
+    public function getDisplayName(): string|null
     {
          return $this->displayName;
      }
 
     /**
-     * @param int $osId
-     * @param string $displayName
+     * @param int|null $osId
+     * @param string|null $displayName
      */
-    public function __construct(int $osId, string $displayName)
+    public function __construct(int|null $osId, string|null $displayName)
     {
         $this->osId = $osId;
         $this->displayName = $displayName;
@@ -58,8 +58,14 @@ class LxcOs
      */
     public static function fromStdClass(object $object):LxcOs
     {
-        $osId = (int) $object->osId;
-        $displayName = (string) $object->displayName;
+
+        if (isset($object->osId)) {
+            $osId = (int) $object->osId;
+        }else $osId = $object->osId=null;
+
+        if (isset($object->displayName)) {
+            $displayName = (string) $object->displayName;
+        }else $displayName = $object->displayName=null;
 
         return new LxcOs($osId, $displayName);
      }

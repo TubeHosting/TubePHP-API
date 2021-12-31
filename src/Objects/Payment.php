@@ -9,131 +9,131 @@ require_once __DIR__ . '/../TubeAPI.php';
 class Payment
 {
 
-    private int $id;
+    private int|null $id;
 
-    private string $method;
+    private string|null $method;
 
-    private int $amount;
+    private int|null $amount;
 
-    private string $status;
+    private string|null $status;
 
-    private string $description;
+    private string|null $description;
 
-    private string $timeStarted;
+    private string|null $timeStarted;
 
-    private string $timeFinished;
+    private string|null $timeFinished;
 
-    private string $providerId;
+    private string|null $providerId;
 
-    private string $type;
+    private string|null $type;
 
-    private int $userId;
+    private int|null $userId;
 
-    private int $paymentBundleId;
+    private int|null $paymentBundleId;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMethod(): string
+    public function getMethod(): string|null
     {
          return $this->method;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
          return $this->amount;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
          return $this->status;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
          return $this->description;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTimeStarted(): string
+    public function getTimeStarted(): string|null
     {
          return $this->timeStarted;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTimeFinished(): string
+    public function getTimeFinished(): string|null
     {
          return $this->timeFinished;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getProviderId(): string
+    public function getProviderId(): string|null
     {
          return $this->providerId;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getType(): string
+    public function getType(): string|null
     {
          return $this->type;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getUserId(): int
+    public function getUserId(): int|null
     {
          return $this->userId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPaymentBundleId(): int
+    public function getPaymentBundleId(): int|null
     {
          return $this->paymentBundleId;
      }
 
     /**
-     * @param int $id
-     * @param string $method
-     * @param int $amount
-     * @param string $status
-     * @param string $description
-     * @param string $timeStarted
-     * @param string $timeFinished
-     * @param string $providerId
-     * @param string $type
-     * @param int $userId
-     * @param int $paymentBundleId
+     * @param int|null $id
+     * @param string|null $method
+     * @param int|null $amount
+     * @param string|null $status
+     * @param string|null $description
+     * @param string|null $timeStarted
+     * @param string|null $timeFinished
+     * @param string|null $providerId
+     * @param string|null $type
+     * @param int|null $userId
+     * @param int|null $paymentBundleId
      */
-    public function __construct(int $id, string $method, int $amount, string $status, string $description, string $timeStarted, string $timeFinished, string $providerId, string $type, int $userId, int $paymentBundleId)
+    public function __construct(int|null $id, string|null $method, int|null $amount, string|null $status, string|null $description, string|null $timeStarted, string|null $timeFinished, string|null $providerId, string|null $type, int|null $userId, int|null $paymentBundleId)
     {
         $this->id = $id;
         $this->method = $method;
@@ -175,17 +175,50 @@ class Payment
      */
     public static function fromStdClass(object $object):Payment
     {
-        $id = (int) $object->id;
-        $method = (string) $object->method;
-        $amount = (int) $object->amount;
-        $status = (string) $object->status;
-        $description = (string) $object->description;
-        $timeStarted = (string) $object->timeStarted;
-        $timeFinished = (string) $object->timeFinished;
-        $providerId = (string) $object->providerId;
-        $type = (string) $object->type;
-        $userId = (int) $object->userId;
-        $paymentBundleId = (int) $object->paymentBundleId;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->method)) {
+            $method = (string) $object->method;
+        }else $method = $object->method=null;
+
+        if (isset($object->amount)) {
+            $amount = (int) $object->amount;
+        }else $amount = $object->amount=null;
+
+        if (isset($object->status)) {
+            $status = (string) $object->status;
+        }else $status = $object->status=null;
+
+        if (isset($object->description)) {
+            $description = (string) $object->description;
+        }else $description = $object->description=null;
+
+        if (isset($object->timeStarted)) {
+            $timeStarted = (string) $object->timeStarted;
+        }else $timeStarted = $object->timeStarted=null;
+
+        if (isset($object->timeFinished)) {
+            $timeFinished = (string) $object->timeFinished;
+        }else $timeFinished = $object->timeFinished=null;
+
+        if (isset($object->providerId)) {
+            $providerId = (string) $object->providerId;
+        }else $providerId = $object->providerId=null;
+
+        if (isset($object->type)) {
+            $type = (string) $object->type;
+        }else $type = $object->type=null;
+
+        if (isset($object->userId)) {
+            $userId = (int) $object->userId;
+        }else $userId = $object->userId=null;
+
+        if (isset($object->paymentBundleId)) {
+            $paymentBundleId = (int) $object->paymentBundleId;
+        }else $paymentBundleId = $object->paymentBundleId=null;
 
         return new Payment($id, $method, $amount, $status, $description, $timeStarted, $timeFinished, $providerId, $type, $userId, $paymentBundleId);
      }

@@ -9,54 +9,54 @@ require_once __DIR__ . '/../TubeAPI.php';
 class SearchResultPaymentBundle
 {
 
-    private int $count;
+    private int|null $count;
 
-    private int $page;
+    private int|null $page;
 
-    private int $size;
+    private int|null $size;
 
-    private array $items;
+    private array|null $items;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCount(): int
+    public function getCount(): int|null
     {
          return $this->count;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPage(): int
+    public function getPage(): int|null
     {
          return $this->page;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getSize(): int
+    public function getSize(): int|null
     {
          return $this->size;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getItems(): array
+    public function getItems(): array|null
     {
          return $this->items;
      }
 
     /**
-     * @param int $count
-     * @param int $page
-     * @param int $size
-     * @param array $items
+     * @param int|null $count
+     * @param int|null $page
+     * @param int|null $size
+     * @param array|null $items
      */
-    public function __construct(int $count, int $page, int $size, array $items)
+    public function __construct(int|null $count, int|null $page, int|null $size, array|null $items)
     {
         $this->count = $count;
         $this->page = $page;
@@ -93,10 +93,22 @@ class SearchResultPaymentBundle
      */
     public static function fromStdClass(object $object):SearchResultPaymentBundle
     {
-        $count = (int) $object->count;
-        $page = (int) $object->page;
-        $size = (int) $object->size;
-        $items = (array) $object->items;
+
+        if (isset($object->count)) {
+            $count = (int) $object->count;
+        }else $count = $object->count=null;
+
+        if (isset($object->page)) {
+            $page = (int) $object->page;
+        }else $page = $object->page=null;
+
+        if (isset($object->size)) {
+            $size = (int) $object->size;
+        }else $size = $object->size=null;
+
+        if (isset($object->items)) {
+            $items = (array) $object->items;
+        }else $items = $object->items=null;
 
         return new SearchResultPaymentBundle($count, $page, $size, $items);
      }

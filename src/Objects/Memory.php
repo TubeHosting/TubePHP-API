@@ -9,21 +9,21 @@ require_once __DIR__ . '/../TubeAPI.php';
 class Memory
 {
 
-    private int $B;
+    private int|null $B;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getB(): int
+    public function getB(): int|null
     {
          return $this->B;
      }
 
     /**
-     * @param int $B
+     * @param int|null $B
      */
-    public function __construct(int $B)
+    public function __construct(int|null $B)
     {
         $this->B = $B;
     }
@@ -45,7 +45,10 @@ class Memory
      */
     public static function fromStdClass(object $object):Memory
     {
-        $B = (int) $object->B;
+
+        if (isset($object->B)) {
+            $B = (int) $object->B;
+        }else $B = $object->B=null;
 
         return new Memory($B);
      }

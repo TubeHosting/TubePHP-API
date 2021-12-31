@@ -9,32 +9,32 @@ require_once __DIR__ . '/../TubeAPI.php';
 class DiskLinkRequest
 {
 
-    private int $diskBay;
+    private int|null $diskBay;
 
-    private int $diskId;
+    private int|null $diskId;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDiskBay(): int
+    public function getDiskBay(): int|null
     {
          return $this->diskBay;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDiskId(): int
+    public function getDiskId(): int|null
     {
          return $this->diskId;
      }
 
     /**
-     * @param int $diskBay
-     * @param int $diskId
+     * @param int|null $diskBay
+     * @param int|null $diskId
      */
-    public function __construct(int $diskBay, int $diskId)
+    public function __construct(int|null $diskBay, int|null $diskId)
     {
         $this->diskBay = $diskBay;
         $this->diskId = $diskId;
@@ -58,8 +58,14 @@ class DiskLinkRequest
      */
     public static function fromStdClass(object $object):DiskLinkRequest
     {
-        $diskBay = (int) $object->diskBay;
-        $diskId = (int) $object->diskId;
+
+        if (isset($object->diskBay)) {
+            $diskBay = (int) $object->diskBay;
+        }else $diskBay = $object->diskBay=null;
+
+        if (isset($object->diskId)) {
+            $diskId = (int) $object->diskId;
+        }else $diskId = $object->diskId=null;
 
         return new DiskLinkRequest($diskBay, $diskId);
      }

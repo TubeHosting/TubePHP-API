@@ -9,43 +9,43 @@ require_once __DIR__ . '/../TubeAPI.php';
 class DedicatedInstanceDiskLink
 {
 
-    private int $id;
+    private int|null $id;
 
-    private Disk $disk;
+    private Disk|null $disk;
 
-    private int $diskBay;
+    private int|null $diskBay;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return Disk
+     * @return Disk|null
      */
-    public function getDisk(): Disk
+    public function getDisk(): Disk|null
     {
          return $this->disk;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDiskBay(): int
+    public function getDiskBay(): int|null
     {
          return $this->diskBay;
      }
 
     /**
-     * @param int $id
-     * @param Disk $disk
-     * @param int $diskBay
+     * @param int|null $id
+     * @param Disk|null $disk
+     * @param int|null $diskBay
      */
-    public function __construct(int $id, Disk $disk, int $diskBay)
+    public function __construct(int|null $id, Disk|null $disk, int|null $diskBay)
     {
         $this->id = $id;
         $this->disk = $disk;
@@ -71,9 +71,18 @@ class DedicatedInstanceDiskLink
      */
     public static function fromStdClass(object $object):DedicatedInstanceDiskLink
     {
-        $id = (int) $object->id;
-        $disk = Disk::fromStdClass((object)$object->disk);
-        $diskBay = (int) $object->diskBay;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->disk)) {
+           $disk = Disk::fromStdClass((object)$object->disk);
+        }else $disk = $object->disk=null;
+
+        if (isset($object->diskBay)) {
+            $diskBay = (int) $object->diskBay;
+        }else $diskBay = $object->diskBay=null;
 
         return new DedicatedInstanceDiskLink($id, $disk, $diskBay);
      }

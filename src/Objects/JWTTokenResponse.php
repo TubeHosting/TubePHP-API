@@ -9,32 +9,32 @@ require_once __DIR__ . '/../TubeAPI.php';
 class JWTTokenResponse
 {
 
-    private string $token;
+    private string|null $token;
 
-    private User $userData;
+    private User|null $userData;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getToken(): string
+    public function getToken(): string|null
     {
          return $this->token;
      }
 
     /**
-     * @return User
+     * @return User|null
      */
-    public function getUserData(): User
+    public function getUserData(): User|null
     {
          return $this->userData;
      }
 
     /**
-     * @param string $token
-     * @param User $userData
+     * @param string|null $token
+     * @param User|null $userData
      */
-    public function __construct(string $token, User $userData)
+    public function __construct(string|null $token, User|null $userData)
     {
         $this->token = $token;
         $this->userData = $userData;
@@ -58,8 +58,14 @@ class JWTTokenResponse
      */
     public static function fromStdClass(object $object):JWTTokenResponse
     {
-        $token = (string) $object->token;
-        $userData = User::fromStdClass((object)$object->userData);
+
+        if (isset($object->token)) {
+            $token = (string) $object->token;
+        }else $token = $object->token=null;
+
+        if (isset($object->userData)) {
+           $userData = User::fromStdClass((object)$object->userData);
+        }else $userData = $object->userData=null;
 
         return new JWTTokenResponse($token, $userData);
      }

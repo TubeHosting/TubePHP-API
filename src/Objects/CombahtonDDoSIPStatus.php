@@ -9,43 +9,43 @@ require_once __DIR__ . '/../TubeAPI.php';
 class CombahtonDDoSIPStatus
 {
 
-    private string $layer4;
+    private string|null $layer4;
 
-    private string $layer7;
+    private string|null $layer7;
 
-    private string $last_change;
+    private string|null $last_change;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLayer4(): string
+    public function getLayer4(): string|null
     {
          return $this->layer4;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLayer7(): string
+    public function getLayer7(): string|null
     {
          return $this->layer7;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLast_change(): string
+    public function getLast_change(): string|null
     {
          return $this->last_change;
      }
 
     /**
-     * @param string $layer4
-     * @param string $layer7
-     * @param string $last_change
+     * @param string|null $layer4
+     * @param string|null $layer7
+     * @param string|null $last_change
      */
-    public function __construct(string $layer4, string $layer7, string $last_change)
+    public function __construct(string|null $layer4, string|null $layer7, string|null $last_change)
     {
         $this->layer4 = $layer4;
         $this->layer7 = $layer7;
@@ -71,9 +71,18 @@ class CombahtonDDoSIPStatus
      */
     public static function fromStdClass(object $object):CombahtonDDoSIPStatus
     {
-        $layer4 = (string) $object->layer4;
-        $layer7 = (string) $object->layer7;
-        $last_change = (string) $object->last_change;
+
+        if (isset($object->layer4)) {
+            $layer4 = (string) $object->layer4;
+        }else $layer4 = $object->layer4=null;
+
+        if (isset($object->layer7)) {
+            $layer7 = (string) $object->layer7;
+        }else $layer7 = $object->layer7=null;
+
+        if (isset($object->last_change)) {
+            $last_change = (string) $object->last_change;
+        }else $last_change = $object->last_change=null;
 
         return new CombahtonDDoSIPStatus($layer4, $layer7, $last_change);
      }

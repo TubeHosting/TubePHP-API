@@ -9,153 +9,153 @@ require_once __DIR__ . '/../TubeAPI.php';
 class VpsStatus
 {
 
-    private string $status;
+    private string|null $status;
 
-    private string $name;
+    private string|null $name;
 
-    private int $uptime;
+    private int|null $uptime;
 
-    private float $cpu;
+    private float|null $cpu;
 
-    private float $diskread;
+    private float|null $diskread;
 
-    private float $diskwrite;
+    private float|null $diskwrite;
 
-    private int $cpus;
+    private int|null $cpus;
 
-    private float $disk;
+    private float|null $disk;
 
-    private int $maxdisk;
+    private int|null $maxdisk;
 
-    private int $maxmem;
+    private int|null $maxmem;
 
-    private float $mem;
+    private float|null $mem;
 
-    private float $netin;
+    private float|null $netin;
 
-    private float $netout;
+    private float|null $netout;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
          return $this->status;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): string|null
     {
          return $this->name;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getUptime(): int
+    public function getUptime(): int|null
     {
          return $this->uptime;
      }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getCpu(): float
+    public function getCpu(): float|null
     {
          return $this->cpu;
      }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getDiskread(): float
+    public function getDiskread(): float|null
     {
          return $this->diskread;
      }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getDiskwrite(): float
+    public function getDiskwrite(): float|null
     {
          return $this->diskwrite;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCpus(): int
+    public function getCpus(): int|null
     {
          return $this->cpus;
      }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getDisk(): float
+    public function getDisk(): float|null
     {
          return $this->disk;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMaxdisk(): int
+    public function getMaxdisk(): int|null
     {
          return $this->maxdisk;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMaxmem(): int
+    public function getMaxmem(): int|null
     {
          return $this->maxmem;
      }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getMem(): float
+    public function getMem(): float|null
     {
          return $this->mem;
      }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getNetin(): float
+    public function getNetin(): float|null
     {
          return $this->netin;
      }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getNetout(): float
+    public function getNetout(): float|null
     {
          return $this->netout;
      }
 
     /**
-     * @param string $status
-     * @param string $name
-     * @param int $uptime
-     * @param float $cpu
-     * @param float $diskread
-     * @param float $diskwrite
-     * @param int $cpus
-     * @param float $disk
-     * @param int $maxdisk
-     * @param int $maxmem
-     * @param float $mem
-     * @param float $netin
-     * @param float $netout
+     * @param string|null $status
+     * @param string|null $name
+     * @param int|null $uptime
+     * @param float|null $cpu
+     * @param float|null $diskread
+     * @param float|null $diskwrite
+     * @param int|null $cpus
+     * @param float|null $disk
+     * @param int|null $maxdisk
+     * @param int|null $maxmem
+     * @param float|null $mem
+     * @param float|null $netin
+     * @param float|null $netout
      */
-    public function __construct(string $status, string $name, int $uptime, float $cpu, float $diskread, float $diskwrite, int $cpus, float $disk, int $maxdisk, int $maxmem, float $mem, float $netin, float $netout)
+    public function __construct(string|null $status, string|null $name, int|null $uptime, float|null $cpu, float|null $diskread, float|null $diskwrite, int|null $cpus, float|null $disk, int|null $maxdisk, int|null $maxmem, float|null $mem, float|null $netin, float|null $netout)
     {
         $this->status = $status;
         $this->name = $name;
@@ -201,19 +201,58 @@ class VpsStatus
      */
     public static function fromStdClass(object $object):VpsStatus
     {
-        $status = (string) $object->status;
-        $name = (string) $object->name;
-        $uptime = (int) $object->uptime;
-        $cpu = (float) $object->cpu;
-        $diskread = (float) $object->diskread;
-        $diskwrite = (float) $object->diskwrite;
-        $cpus = (int) $object->cpus;
-        $disk = (float) $object->disk;
-        $maxdisk = (int) $object->maxdisk;
-        $maxmem = (int) $object->maxmem;
-        $mem = (float) $object->mem;
-        $netin = (float) $object->netin;
-        $netout = (float) $object->netout;
+
+        if (isset($object->status)) {
+            $status = (string) $object->status;
+        }else $status = $object->status=null;
+
+        if (isset($object->name)) {
+            $name = (string) $object->name;
+        }else $name = $object->name=null;
+
+        if (isset($object->uptime)) {
+            $uptime = (int) $object->uptime;
+        }else $uptime = $object->uptime=null;
+
+        if (isset($object->cpu)) {
+            $cpu = (float) $object->cpu;
+        }else $cpu = $object->cpu=null;
+
+        if (isset($object->diskread)) {
+            $diskread = (float) $object->diskread;
+        }else $diskread = $object->diskread=null;
+
+        if (isset($object->diskwrite)) {
+            $diskwrite = (float) $object->diskwrite;
+        }else $diskwrite = $object->diskwrite=null;
+
+        if (isset($object->cpus)) {
+            $cpus = (int) $object->cpus;
+        }else $cpus = $object->cpus=null;
+
+        if (isset($object->disk)) {
+            $disk = (float) $object->disk;
+        }else $disk = $object->disk=null;
+
+        if (isset($object->maxdisk)) {
+            $maxdisk = (int) $object->maxdisk;
+        }else $maxdisk = $object->maxdisk=null;
+
+        if (isset($object->maxmem)) {
+            $maxmem = (int) $object->maxmem;
+        }else $maxmem = $object->maxmem=null;
+
+        if (isset($object->mem)) {
+            $mem = (float) $object->mem;
+        }else $mem = $object->mem=null;
+
+        if (isset($object->netin)) {
+            $netin = (float) $object->netin;
+        }else $netin = $object->netin=null;
+
+        if (isset($object->netout)) {
+            $netout = (float) $object->netout;
+        }else $netout = $object->netout=null;
 
         return new VpsStatus($status, $name, $uptime, $cpu, $diskread, $diskwrite, $cpus, $disk, $maxdisk, $maxmem, $mem, $netin, $netout);
      }

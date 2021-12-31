@@ -9,54 +9,54 @@ require_once __DIR__ . '/../TubeAPI.php';
 class SimpleUser
 {
 
-    private int $id;
+    private int|null $id;
 
-    private string $mail;
+    private string|null $mail;
 
-    private string $firstname;
+    private string|null $firstname;
 
-    private string $lastname;
+    private string|null $lastname;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMail(): string
+    public function getMail(): string|null
     {
          return $this->mail;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFirstname(): string
+    public function getFirstname(): string|null
     {
          return $this->firstname;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastname(): string
+    public function getLastname(): string|null
     {
          return $this->lastname;
      }
 
     /**
-     * @param int $id
-     * @param string $mail
-     * @param string $firstname
-     * @param string $lastname
+     * @param int|null $id
+     * @param string|null $mail
+     * @param string|null $firstname
+     * @param string|null $lastname
      */
-    public function __construct(int $id, string $mail, string $firstname, string $lastname)
+    public function __construct(int|null $id, string|null $mail, string|null $firstname, string|null $lastname)
     {
         $this->id = $id;
         $this->mail = $mail;
@@ -84,10 +84,22 @@ class SimpleUser
      */
     public static function fromStdClass(object $object):SimpleUser
     {
-        $id = (int) $object->id;
-        $mail = (string) $object->mail;
-        $firstname = (string) $object->firstname;
-        $lastname = (string) $object->lastname;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->mail)) {
+            $mail = (string) $object->mail;
+        }else $mail = $object->mail=null;
+
+        if (isset($object->firstname)) {
+            $firstname = (string) $object->firstname;
+        }else $firstname = $object->firstname=null;
+
+        if (isset($object->lastname)) {
+            $lastname = (string) $object->lastname;
+        }else $lastname = $object->lastname=null;
 
         return new SimpleUser($id, $mail, $firstname, $lastname);
      }

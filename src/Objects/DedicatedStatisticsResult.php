@@ -9,32 +9,32 @@ require_once __DIR__ . '/../TubeAPI.php';
 class DedicatedStatisticsResult
 {
 
-    private object $bundled;
+    private object|null $bundled;
 
-    private object $interfaces;
+    private object|null $interfaces;
 
 
     /**
-     * @return object
+     * @return object|null
      */
-    public function getBundled(): object
+    public function getBundled(): object|null
     {
          return $this->bundled;
      }
 
     /**
-     * @return object
+     * @return object|null
      */
-    public function getInterfaces(): object
+    public function getInterfaces(): object|null
     {
          return $this->interfaces;
      }
 
     /**
-     * @param object $bundled
-     * @param object $interfaces
+     * @param object|null $bundled
+     * @param object|null $interfaces
      */
-    public function __construct(object $bundled, object $interfaces)
+    public function __construct(object|null $bundled, object|null $interfaces)
     {
         $this->bundled = $bundled;
         $this->interfaces = $interfaces;
@@ -58,8 +58,14 @@ class DedicatedStatisticsResult
      */
     public static function fromStdClass(object $object):DedicatedStatisticsResult
     {
-        $bundled = object::fromStdClass((object)$object->bundled);
-        $interfaces = object::fromStdClass((object)$object->interfaces);
+
+        if (isset($object->bundled)) {
+           $bundled = object::fromStdClass((object)$object->bundled);
+        }else $bundled = $object->bundled=null;
+
+        if (isset($object->interfaces)) {
+           $interfaces = object::fromStdClass((object)$object->interfaces);
+        }else $interfaces = $object->interfaces=null;
 
         return new DedicatedStatisticsResult($bundled, $interfaces);
      }

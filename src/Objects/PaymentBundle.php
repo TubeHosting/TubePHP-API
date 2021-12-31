@@ -9,87 +9,87 @@ require_once __DIR__ . '/../TubeAPI.php';
 class PaymentBundle
 {
 
-    private int $id;
+    private int|null $id;
 
-    private BalanceChange $balanceChange;
+    private BalanceChange|null $balanceChange;
 
-    private Payment $payment;
+    private Payment|null $payment;
 
-    private Invoice $invoice;
+    private Invoice|null $invoice;
 
-    private string $time;
+    private string|null $time;
 
-    private int $amount;
+    private int|null $amount;
 
-    private int $userId;
+    private int|null $userId;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return BalanceChange
+     * @return BalanceChange|null
      */
-    public function getBalanceChange(): BalanceChange
+    public function getBalanceChange(): BalanceChange|null
     {
          return $this->balanceChange;
      }
 
     /**
-     * @return Payment
+     * @return Payment|null
      */
-    public function getPayment(): Payment
+    public function getPayment(): Payment|null
     {
          return $this->payment;
      }
 
     /**
-     * @return Invoice
+     * @return Invoice|null
      */
-    public function getInvoice(): Invoice
+    public function getInvoice(): Invoice|null
     {
          return $this->invoice;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTime(): string
+    public function getTime(): string|null
     {
          return $this->time;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
          return $this->amount;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getUserId(): int
+    public function getUserId(): int|null
     {
          return $this->userId;
      }
 
     /**
-     * @param int $id
-     * @param BalanceChange $balanceChange
-     * @param Payment $payment
-     * @param Invoice $invoice
-     * @param string $time
-     * @param int $amount
-     * @param int $userId
+     * @param int|null $id
+     * @param BalanceChange|null $balanceChange
+     * @param Payment|null $payment
+     * @param Invoice|null $invoice
+     * @param string|null $time
+     * @param int|null $amount
+     * @param int|null $userId
      */
-    public function __construct(int $id, BalanceChange $balanceChange, Payment $payment, Invoice $invoice, string $time, int $amount, int $userId)
+    public function __construct(int|null $id, BalanceChange|null $balanceChange, Payment|null $payment, Invoice|null $invoice, string|null $time, int|null $amount, int|null $userId)
     {
         $this->id = $id;
         $this->balanceChange = $balanceChange;
@@ -123,13 +123,34 @@ class PaymentBundle
      */
     public static function fromStdClass(object $object):PaymentBundle
     {
-        $id = (int) $object->id;
-        $balanceChange = BalanceChange::fromStdClass((object)$object->balanceChange);
-        $payment = Payment::fromStdClass((object)$object->payment);
-        $invoice = Invoice::fromStdClass((object)$object->invoice);
-        $time = (string) $object->time;
-        $amount = (int) $object->amount;
-        $userId = (int) $object->userId;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->balanceChange)) {
+           $balanceChange = BalanceChange::fromStdClass((object)$object->balanceChange);
+        }else $balanceChange = $object->balanceChange=null;
+
+        if (isset($object->payment)) {
+           $payment = Payment::fromStdClass((object)$object->payment);
+        }else $payment = $object->payment=null;
+
+        if (isset($object->invoice)) {
+           $invoice = Invoice::fromStdClass((object)$object->invoice);
+        }else $invoice = $object->invoice=null;
+
+        if (isset($object->time)) {
+            $time = (string) $object->time;
+        }else $time = $object->time=null;
+
+        if (isset($object->amount)) {
+            $amount = (int) $object->amount;
+        }else $amount = $object->amount=null;
+
+        if (isset($object->userId)) {
+            $userId = (int) $object->userId;
+        }else $userId = $object->userId=null;
 
         return new PaymentBundle($id, $balanceChange, $payment, $invoice, $time, $amount, $userId);
      }

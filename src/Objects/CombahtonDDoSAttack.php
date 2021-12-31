@@ -9,98 +9,98 @@ require_once __DIR__ . '/../TubeAPI.php';
 class CombahtonDDoSAttack
 {
 
-    private string $time;
+    private string|null $time;
 
-    private string $ip;
+    private string|null $ip;
 
-    private string $id;
+    private string|null $id;
 
-    private int $packets;
+    private int|null $packets;
 
-    private string $type;
+    private string|null $type;
 
-    private int $traffic;
+    private int|null $traffic;
 
-    private string $avg_pktsize;
+    private string|null $avg_pktsize;
 
-    private string $analyzer;
+    private string|null $analyzer;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTime(): string
+    public function getTime(): string|null
     {
          return $this->time;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getIp(): string
+    public function getIp(): string|null
     {
          return $this->ip;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getId(): string
+    public function getId(): string|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPackets(): int
+    public function getPackets(): int|null
     {
          return $this->packets;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getType(): string
+    public function getType(): string|null
     {
          return $this->type;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getTraffic(): int
+    public function getTraffic(): int|null
     {
          return $this->traffic;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAvg_pktsize(): string
+    public function getAvg_pktsize(): string|null
     {
          return $this->avg_pktsize;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAnalyzer(): string
+    public function getAnalyzer(): string|null
     {
          return $this->analyzer;
      }
 
     /**
-     * @param string $time
-     * @param string $ip
-     * @param string $id
-     * @param int $packets
-     * @param string $type
-     * @param int $traffic
-     * @param string $avg_pktsize
-     * @param string $analyzer
+     * @param string|null $time
+     * @param string|null $ip
+     * @param string|null $id
+     * @param int|null $packets
+     * @param string|null $type
+     * @param int|null $traffic
+     * @param string|null $avg_pktsize
+     * @param string|null $analyzer
      */
-    public function __construct(string $time, string $ip, string $id, int $packets, string $type, int $traffic, string $avg_pktsize, string $analyzer)
+    public function __construct(string|null $time, string|null $ip, string|null $id, int|null $packets, string|null $type, int|null $traffic, string|null $avg_pktsize, string|null $analyzer)
     {
         $this->time = $time;
         $this->ip = $ip;
@@ -136,14 +136,38 @@ class CombahtonDDoSAttack
      */
     public static function fromStdClass(object $object):CombahtonDDoSAttack
     {
-        $time = (string) $object->time;
-        $ip = (string) $object->ip;
-        $id = (string) $object->id;
-        $packets = (int) $object->packets;
-        $type = (string) $object->type;
-        $traffic = (int) $object->traffic;
-        $avg_pktsize = (string) $object->avg_pktsize;
-        $analyzer = (string) $object->analyzer;
+
+        if (isset($object->time)) {
+            $time = (string) $object->time;
+        }else $time = $object->time=null;
+
+        if (isset($object->ip)) {
+            $ip = (string) $object->ip;
+        }else $ip = $object->ip=null;
+
+        if (isset($object->id)) {
+            $id = (string) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->packets)) {
+            $packets = (int) $object->packets;
+        }else $packets = $object->packets=null;
+
+        if (isset($object->type)) {
+            $type = (string) $object->type;
+        }else $type = $object->type=null;
+
+        if (isset($object->traffic)) {
+            $traffic = (int) $object->traffic;
+        }else $traffic = $object->traffic=null;
+
+        if (isset($object->avg_pktsize)) {
+            $avg_pktsize = (string) $object->avg_pktsize;
+        }else $avg_pktsize = $object->avg_pktsize=null;
+
+        if (isset($object->analyzer)) {
+            $analyzer = (string) $object->analyzer;
+        }else $analyzer = $object->analyzer=null;
 
         return new CombahtonDDoSAttack($time, $ip, $id, $packets, $type, $traffic, $avg_pktsize, $analyzer);
      }

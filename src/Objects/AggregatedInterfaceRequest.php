@@ -9,43 +9,43 @@ require_once __DIR__ . '/../TubeAPI.php';
 class AggregatedInterfaceRequest
 {
 
-    private int $interfaceId;
+    private int|null $interfaceId;
 
-    private ZabbixInterface $zabbixInterface;
+    private ZabbixInterface|null $zabbixInterface;
 
-    private array $interfaces;
+    private array|null $interfaces;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getInterfaceId(): int
+    public function getInterfaceId(): int|null
     {
          return $this->interfaceId;
      }
 
     /**
-     * @return ZabbixInterface
+     * @return ZabbixInterface|null
      */
-    public function getZabbixInterface(): ZabbixInterface
+    public function getZabbixInterface(): ZabbixInterface|null
     {
          return $this->zabbixInterface;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getInterfaces(): array
+    public function getInterfaces(): array|null
     {
          return $this->interfaces;
      }
 
     /**
-     * @param int $interfaceId
-     * @param ZabbixInterface $zabbixInterface
-     * @param array $interfaces
+     * @param int|null $interfaceId
+     * @param ZabbixInterface|null $zabbixInterface
+     * @param array|null $interfaces
      */
-    public function __construct(int $interfaceId, ZabbixInterface $zabbixInterface, array $interfaces)
+    public function __construct(int|null $interfaceId, ZabbixInterface|null $zabbixInterface, array|null $interfaces)
     {
         $this->interfaceId = $interfaceId;
         $this->zabbixInterface = $zabbixInterface;
@@ -71,9 +71,18 @@ class AggregatedInterfaceRequest
      */
     public static function fromStdClass(object $object):AggregatedInterfaceRequest
     {
-        $interfaceId = (int) $object->interfaceId;
-        $zabbixInterface = ZabbixInterface::fromStdClass((object)$object->zabbixInterface);
-        $interfaces = (array) $object->interfaces;
+
+        if (isset($object->interfaceId)) {
+            $interfaceId = (int) $object->interfaceId;
+        }else $interfaceId = $object->interfaceId=null;
+
+        if (isset($object->zabbixInterface)) {
+           $zabbixInterface = ZabbixInterface::fromStdClass((object)$object->zabbixInterface);
+        }else $zabbixInterface = $object->zabbixInterface=null;
+
+        if (isset($object->interfaces)) {
+            $interfaces = (array) $object->interfaces;
+        }else $interfaces = $object->interfaces=null;
 
         return new AggregatedInterfaceRequest($interfaceId, $zabbixInterface, $interfaces);
      }

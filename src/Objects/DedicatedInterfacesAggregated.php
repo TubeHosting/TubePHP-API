@@ -9,54 +9,54 @@ require_once __DIR__ . '/../TubeAPI.php';
 class DedicatedInterfacesAggregated
 {
 
-    private array $interfaces;
+    private array|null $interfaces;
 
-    private int $interfaceId;
+    private int|null $interfaceId;
 
-    private int $aggregatedId;
+    private int|null $aggregatedId;
 
-    private int $instanceId;
+    private int|null $instanceId;
 
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getInterfaces(): array
+    public function getInterfaces(): array|null
     {
          return $this->interfaces;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getInterfaceId(): int
+    public function getInterfaceId(): int|null
     {
          return $this->interfaceId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getAggregatedId(): int
+    public function getAggregatedId(): int|null
     {
          return $this->aggregatedId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getInstanceId(): int
+    public function getInstanceId(): int|null
     {
          return $this->instanceId;
      }
 
     /**
-     * @param array $interfaces
-     * @param int $interfaceId
-     * @param int $aggregatedId
-     * @param int $instanceId
+     * @param array|null $interfaces
+     * @param int|null $interfaceId
+     * @param int|null $aggregatedId
+     * @param int|null $instanceId
      */
-    public function __construct(array $interfaces, int $interfaceId, int $aggregatedId, int $instanceId)
+    public function __construct(array|null $interfaces, int|null $interfaceId, int|null $aggregatedId, int|null $instanceId)
     {
         $this->interfaces = $interfaces;
         $this->interfaceId = $interfaceId;
@@ -84,10 +84,22 @@ class DedicatedInterfacesAggregated
      */
     public static function fromStdClass(object $object):DedicatedInterfacesAggregated
     {
-        $interfaces = (array) $object->interfaces;
-        $interfaceId = (int) $object->interfaceId;
-        $aggregatedId = (int) $object->aggregatedId;
-        $instanceId = (int) $object->instanceId;
+
+        if (isset($object->interfaces)) {
+            $interfaces = (array) $object->interfaces;
+        }else $interfaces = $object->interfaces=null;
+
+        if (isset($object->interfaceId)) {
+            $interfaceId = (int) $object->interfaceId;
+        }else $interfaceId = $object->interfaceId=null;
+
+        if (isset($object->aggregatedId)) {
+            $aggregatedId = (int) $object->aggregatedId;
+        }else $aggregatedId = $object->aggregatedId=null;
+
+        if (isset($object->instanceId)) {
+            $instanceId = (int) $object->instanceId;
+        }else $instanceId = $object->instanceId=null;
 
         return new DedicatedInterfacesAggregated($interfaces, $interfaceId, $aggregatedId, $instanceId);
      }

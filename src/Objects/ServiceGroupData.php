@@ -9,164 +9,164 @@ require_once __DIR__ . '/../TubeAPI.php';
 class ServiceGroupData
 {
 
-    private int $price;
+    private int|null $price;
 
-    private string $endDate;
+    private string|null $endDate;
 
-    private int $position;
+    private int|null $position;
 
-    private int $id;
+    private int|null $id;
 
-    private int $serviceGroupId;
+    private int|null $serviceGroupId;
 
-    private string $startDate;
+    private string|null $startDate;
 
-    private TemplateGroup $templateGroup;
+    private TemplateGroup|null $templateGroup;
 
-    private int $templateGroupId;
+    private int|null $templateGroupId;
 
-    private int $runtimeInterval;
+    private int|null $runtimeInterval;
 
-    private array $services;
+    private array|null $services;
 
-    private string $name;
+    private string|null $name;
 
-    private bool $active;
+    private bool|null $active;
 
-    private int $priceObject;
+    private int|null $priceObject;
 
-    private int $realPrice;
+    private int|null $realPrice;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPrice(): int
+    public function getPrice(): int|null
     {
          return $this->price;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEndDate(): string
+    public function getEndDate(): string|null
     {
          return $this->endDate;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPosition(): int
+    public function getPosition(): int|null
     {
          return $this->position;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getServiceGroupId(): int
+    public function getServiceGroupId(): int|null
     {
          return $this->serviceGroupId;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
          return $this->startDate;
      }
 
     /**
-     * @return TemplateGroup
+     * @return TemplateGroup|null
      */
-    public function getTemplateGroup(): TemplateGroup
+    public function getTemplateGroup(): TemplateGroup|null
     {
          return $this->templateGroup;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getTemplateGroupId(): int
+    public function getTemplateGroupId(): int|null
     {
          return $this->templateGroupId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getRuntimeInterval(): int
+    public function getRuntimeInterval(): int|null
     {
          return $this->runtimeInterval;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getServices(): array
+    public function getServices(): array|null
     {
          return $this->services;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): string|null
     {
          return $this->name;
      }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getActive(): bool
+    public function getActive(): bool|null
     {
          return $this->active;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPriceObject(): int
+    public function getPriceObject(): int|null
     {
          return $this->priceObject;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getRealPrice(): int
+    public function getRealPrice(): int|null
     {
          return $this->realPrice;
      }
 
     /**
-     * @param int $price
-     * @param string $endDate
-     * @param int $position
-     * @param int $id
-     * @param int $serviceGroupId
-     * @param string $startDate
-     * @param TemplateGroup $templateGroup
-     * @param int $templateGroupId
-     * @param int $runtimeInterval
-     * @param array $services
-     * @param string $name
-     * @param bool $active
-     * @param int $priceObject
-     * @param int $realPrice
+     * @param int|null $price
+     * @param string|null $endDate
+     * @param int|null $position
+     * @param int|null $id
+     * @param int|null $serviceGroupId
+     * @param string|null $startDate
+     * @param TemplateGroup|null $templateGroup
+     * @param int|null $templateGroupId
+     * @param int|null $runtimeInterval
+     * @param array|null $services
+     * @param string|null $name
+     * @param bool|null $active
+     * @param int|null $priceObject
+     * @param int|null $realPrice
      */
-    public function __construct(int $price, string $endDate, int $position, int $id, int $serviceGroupId, string $startDate, TemplateGroup $templateGroup, int $templateGroupId, int $runtimeInterval, array $services, string $name, bool $active, int $priceObject, int $realPrice)
+    public function __construct(int|null $price, string|null $endDate, int|null $position, int|null $id, int|null $serviceGroupId, string|null $startDate, TemplateGroup|null $templateGroup, int|null $templateGroupId, int|null $runtimeInterval, array|null $services, string|null $name, bool|null $active, int|null $priceObject, int|null $realPrice)
     {
         $this->price = $price;
         $this->endDate = $endDate;
@@ -233,20 +233,62 @@ class ServiceGroupData
      */
     public static function fromStdClass(object $object):ServiceGroupData
     {
-        $price = (int) $object->price;
-        $endDate = (string) $object->endDate;
-        $position = (int) $object->position;
-        $id = (int) $object->id;
-        $serviceGroupId = (int) $object->serviceGroupId;
-        $startDate = (string) $object->startDate;
-        $templateGroup = TemplateGroup::fromStdClass((object)$object->templateGroup);
-        $templateGroupId = (int) $object->templateGroupId;
-        $runtimeInterval = (int) $object->runtimeInterval;
-        $services = (array) $object->services;
-        $name = (string) $object->name;
-        $active = (bool) $object->active;
-        $priceObject = (int) $object->priceObject;
-        $realPrice = (int) $object->realPrice;
+
+        if (isset($object->price)) {
+            $price = (int) $object->price;
+        }else $price = $object->price=null;
+
+        if (isset($object->endDate)) {
+            $endDate = (string) $object->endDate;
+        }else $endDate = $object->endDate=null;
+
+        if (isset($object->position)) {
+            $position = (int) $object->position;
+        }else $position = $object->position=null;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->serviceGroupId)) {
+            $serviceGroupId = (int) $object->serviceGroupId;
+        }else $serviceGroupId = $object->serviceGroupId=null;
+
+        if (isset($object->startDate)) {
+            $startDate = (string) $object->startDate;
+        }else $startDate = $object->startDate=null;
+
+        if (isset($object->templateGroup)) {
+           $templateGroup = TemplateGroup::fromStdClass((object)$object->templateGroup);
+        }else $templateGroup = $object->templateGroup=null;
+
+        if (isset($object->templateGroupId)) {
+            $templateGroupId = (int) $object->templateGroupId;
+        }else $templateGroupId = $object->templateGroupId=null;
+
+        if (isset($object->runtimeInterval)) {
+            $runtimeInterval = (int) $object->runtimeInterval;
+        }else $runtimeInterval = $object->runtimeInterval=null;
+
+        if (isset($object->services)) {
+            $services = (array) $object->services;
+        }else $services = $object->services=null;
+
+        if (isset($object->name)) {
+            $name = (string) $object->name;
+        }else $name = $object->name=null;
+
+        if (isset($object->active)) {
+            $active = (bool) $object->active;
+        }else $active = $object->active=null;
+
+        if (isset($object->priceObject)) {
+            $priceObject = (int) $object->priceObject;
+        }else $priceObject = $object->priceObject=null;
+
+        if (isset($object->realPrice)) {
+            $realPrice = (int) $object->realPrice;
+        }else $realPrice = $object->realPrice=null;
 
         return new ServiceGroupData($price, $endDate, $position, $id, $serviceGroupId, $startDate, $templateGroup, $templateGroupId, $runtimeInterval, $services, $name, $active, $priceObject, $realPrice);
      }

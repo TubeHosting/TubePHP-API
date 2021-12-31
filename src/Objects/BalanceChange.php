@@ -9,120 +9,120 @@ require_once __DIR__ . '/../TubeAPI.php';
 class BalanceChange
 {
 
-    private int $id;
+    private int|null $id;
 
-    private int $amount;
+    private int|null $amount;
 
-    private int $startBalance;
+    private int|null $startBalance;
 
-    private string $time;
+    private string|null $time;
 
-    private string $type;
+    private string|null $type;
 
-    private string $description;
+    private string|null $description;
 
-    private int $userId;
+    private int|null $userId;
 
-    private int $paymentBundleId;
+    private int|null $paymentBundleId;
 
-    private bool $successful;
+    private bool|null $successful;
 
-    private SimpleUser $other;
+    private SimpleUser|null $other;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
          return $this->amount;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getStartBalance(): int
+    public function getStartBalance(): int|null
     {
          return $this->startBalance;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTime(): string
+    public function getTime(): string|null
     {
          return $this->time;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getType(): string
+    public function getType(): string|null
     {
          return $this->type;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
          return $this->description;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getUserId(): int
+    public function getUserId(): int|null
     {
          return $this->userId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPaymentBundleId(): int
+    public function getPaymentBundleId(): int|null
     {
          return $this->paymentBundleId;
      }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getSuccessful(): bool
+    public function getSuccessful(): bool|null
     {
          return $this->successful;
      }
 
     /**
-     * @return SimpleUser
+     * @return SimpleUser|null
      */
-    public function getOther(): SimpleUser
+    public function getOther(): SimpleUser|null
     {
          return $this->other;
      }
 
     /**
-     * @param int $id
-     * @param int $amount
-     * @param int $startBalance
-     * @param string $time
-     * @param string $type
-     * @param string $description
-     * @param int $userId
-     * @param int $paymentBundleId
-     * @param bool $successful
-     * @param SimpleUser $other
+     * @param int|null $id
+     * @param int|null $amount
+     * @param int|null $startBalance
+     * @param string|null $time
+     * @param string|null $type
+     * @param string|null $description
+     * @param int|null $userId
+     * @param int|null $paymentBundleId
+     * @param bool|null $successful
+     * @param SimpleUser|null $other
      */
-    public function __construct(int $id, int $amount, int $startBalance, string $time, string $type, string $description, int $userId, int $paymentBundleId, bool $successful, SimpleUser $other)
+    public function __construct(int|null $id, int|null $amount, int|null $startBalance, string|null $time, string|null $type, string|null $description, int|null $userId, int|null $paymentBundleId, bool|null $successful, SimpleUser|null $other)
     {
         $this->id = $id;
         $this->amount = $amount;
@@ -162,16 +162,46 @@ class BalanceChange
      */
     public static function fromStdClass(object $object):BalanceChange
     {
-        $id = (int) $object->id;
-        $amount = (int) $object->amount;
-        $startBalance = (int) $object->startBalance;
-        $time = (string) $object->time;
-        $type = (string) $object->type;
-        $description = (string) $object->description;
-        $userId = (int) $object->userId;
-        $paymentBundleId = (int) $object->paymentBundleId;
-        $successful = (bool) $object->successful;
-        $other = SimpleUser::fromStdClass((object)$object->other);
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->amount)) {
+            $amount = (int) $object->amount;
+        }else $amount = $object->amount=null;
+
+        if (isset($object->startBalance)) {
+            $startBalance = (int) $object->startBalance;
+        }else $startBalance = $object->startBalance=null;
+
+        if (isset($object->time)) {
+            $time = (string) $object->time;
+        }else $time = $object->time=null;
+
+        if (isset($object->type)) {
+            $type = (string) $object->type;
+        }else $type = $object->type=null;
+
+        if (isset($object->description)) {
+            $description = (string) $object->description;
+        }else $description = $object->description=null;
+
+        if (isset($object->userId)) {
+            $userId = (int) $object->userId;
+        }else $userId = $object->userId=null;
+
+        if (isset($object->paymentBundleId)) {
+            $paymentBundleId = (int) $object->paymentBundleId;
+        }else $paymentBundleId = $object->paymentBundleId=null;
+
+        if (isset($object->successful)) {
+            $successful = (bool) $object->successful;
+        }else $successful = $object->successful=null;
+
+        if (isset($object->other)) {
+           $other = SimpleUser::fromStdClass((object)$object->other);
+        }else $other = $object->other=null;
 
         return new BalanceChange($id, $amount, $startBalance, $time, $type, $description, $userId, $paymentBundleId, $successful, $other);
      }

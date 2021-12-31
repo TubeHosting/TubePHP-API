@@ -9,76 +9,76 @@ require_once __DIR__ . '/../TubeAPI.php';
 class ServerPosition
 {
 
-    private int $id;
+    private int|null $id;
 
-    private string $hall;
+    private string|null $hall;
 
-    private string $room;
+    private string|null $room;
 
-    private int $rack;
+    private int|null $rack;
 
-    private int $position;
+    private int|null $position;
 
-    private int $height;
+    private int|null $height;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getHall(): string
+    public function getHall(): string|null
     {
          return $this->hall;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRoom(): string
+    public function getRoom(): string|null
     {
          return $this->room;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getRack(): int
+    public function getRack(): int|null
     {
          return $this->rack;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPosition(): int
+    public function getPosition(): int|null
     {
          return $this->position;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getHeight(): int
+    public function getHeight(): int|null
     {
          return $this->height;
      }
 
     /**
-     * @param int $id
-     * @param string $hall
-     * @param string $room
-     * @param int $rack
-     * @param int $position
-     * @param int $height
+     * @param int|null $id
+     * @param string|null $hall
+     * @param string|null $room
+     * @param int|null $rack
+     * @param int|null $position
+     * @param int|null $height
      */
-    public function __construct(int $id, string $hall, string $room, int $rack, int $position, int $height)
+    public function __construct(int|null $id, string|null $hall, string|null $room, int|null $rack, int|null $position, int|null $height)
     {
         $this->id = $id;
         $this->hall = $hall;
@@ -110,12 +110,30 @@ class ServerPosition
      */
     public static function fromStdClass(object $object):ServerPosition
     {
-        $id = (int) $object->id;
-        $hall = (string) $object->hall;
-        $room = (string) $object->room;
-        $rack = (int) $object->rack;
-        $position = (int) $object->position;
-        $height = (int) $object->height;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->hall)) {
+            $hall = (string) $object->hall;
+        }else $hall = $object->hall=null;
+
+        if (isset($object->room)) {
+            $room = (string) $object->room;
+        }else $room = $object->room=null;
+
+        if (isset($object->rack)) {
+            $rack = (int) $object->rack;
+        }else $rack = $object->rack=null;
+
+        if (isset($object->position)) {
+            $position = (int) $object->position;
+        }else $position = $object->position=null;
+
+        if (isset($object->height)) {
+            $height = (int) $object->height;
+        }else $height = $object->height=null;
 
         return new ServerPosition($id, $hall, $room, $rack, $position, $height);
      }

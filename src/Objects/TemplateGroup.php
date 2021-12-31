@@ -9,109 +9,109 @@ require_once __DIR__ . '/../TubeAPI.php';
 class TemplateGroup
 {
 
-    private string $comment;
+    private string|null $comment;
 
-    private bool $available;
+    private bool|null $available;
 
-    private int $id;
+    private int|null $id;
 
-    private string $name;
+    private string|null $name;
 
-    private int $runtime;
+    private int|null $runtime;
 
-    private string $startDate;
+    private string|null $startDate;
 
-    private array $templates;
+    private array|null $templates;
 
-    private int $price;
+    private int|null $price;
 
-    private int $dataId;
+    private int|null $dataId;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getComment(): string
+    public function getComment(): string|null
     {
          return $this->comment;
      }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getAvailable(): bool
+    public function getAvailable(): bool|null
     {
          return $this->available;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): string|null
     {
          return $this->name;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getRuntime(): int
+    public function getRuntime(): int|null
     {
          return $this->runtime;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
          return $this->startDate;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getTemplates(): array
+    public function getTemplates(): array|null
     {
          return $this->templates;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPrice(): int
+    public function getPrice(): int|null
     {
          return $this->price;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDataId(): int
+    public function getDataId(): int|null
     {
          return $this->dataId;
      }
 
     /**
-     * @param string $comment
-     * @param bool $available
-     * @param int $id
-     * @param string $name
-     * @param int $runtime
-     * @param string $startDate
-     * @param array $templates
-     * @param int $price
-     * @param int $dataId
+     * @param string|null $comment
+     * @param bool|null $available
+     * @param int|null $id
+     * @param string|null $name
+     * @param int|null $runtime
+     * @param string|null $startDate
+     * @param array|null $templates
+     * @param int|null $price
+     * @param int|null $dataId
      */
-    public function __construct(string $comment, bool $available, int $id, string $name, int $runtime, string $startDate, array $templates, int $price, int $dataId)
+    public function __construct(string|null $comment, bool|null $available, int|null $id, string|null $name, int|null $runtime, string|null $startDate, array|null $templates, int|null $price, int|null $dataId)
     {
         $this->comment = $comment;
         $this->available = $available;
@@ -168,15 +168,42 @@ class TemplateGroup
      */
     public static function fromStdClass(object $object):TemplateGroup
     {
-        $comment = (string) $object->comment;
-        $available = (bool) $object->available;
-        $id = (int) $object->id;
-        $name = (string) $object->name;
-        $runtime = (int) $object->runtime;
-        $startDate = (string) $object->startDate;
-        $templates = (array) $object->templates;
-        $price = (int) $object->price;
-        $dataId = (int) $object->dataId;
+
+        if (isset($object->comment)) {
+            $comment = (string) $object->comment;
+        }else $comment = $object->comment=null;
+
+        if (isset($object->available)) {
+            $available = (bool) $object->available;
+        }else $available = $object->available=null;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->name)) {
+            $name = (string) $object->name;
+        }else $name = $object->name=null;
+
+        if (isset($object->runtime)) {
+            $runtime = (int) $object->runtime;
+        }else $runtime = $object->runtime=null;
+
+        if (isset($object->startDate)) {
+            $startDate = (string) $object->startDate;
+        }else $startDate = $object->startDate=null;
+
+        if (isset($object->templates)) {
+            $templates = (array) $object->templates;
+        }else $templates = $object->templates=null;
+
+        if (isset($object->price)) {
+            $price = (int) $object->price;
+        }else $price = $object->price=null;
+
+        if (isset($object->dataId)) {
+            $dataId = (int) $object->dataId;
+        }else $dataId = $object->dataId=null;
 
         return new TemplateGroup($comment, $available, $id, $name, $runtime, $startDate, $templates, $price, $dataId);
      }

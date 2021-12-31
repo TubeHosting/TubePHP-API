@@ -9,54 +9,54 @@ require_once __DIR__ . '/../TubeAPI.php';
 class BalanceSendingRequest
 {
 
-    private string $toMail;
+    private string|null $toMail;
 
-    private int $amount;
+    private int|null $amount;
 
-    private string $description;
+    private string|null $description;
 
-    private int $amountObject;
+    private int|null $amountObject;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getToMail(): string
+    public function getToMail(): string|null
     {
          return $this->toMail;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
          return $this->amount;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
          return $this->description;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getAmountObject(): int
+    public function getAmountObject(): int|null
     {
          return $this->amountObject;
      }
 
     /**
-     * @param string $toMail
-     * @param int $amount
-     * @param string $description
-     * @param int $amountObject
+     * @param string|null $toMail
+     * @param int|null $amount
+     * @param string|null $description
+     * @param int|null $amountObject
      */
-    public function __construct(string $toMail, int $amount, string $description, int $amountObject)
+    public function __construct(string|null $toMail, int|null $amount, string|null $description, int|null $amountObject)
     {
         $this->toMail = $toMail;
         $this->amount = $amount;
@@ -84,10 +84,22 @@ class BalanceSendingRequest
      */
     public static function fromStdClass(object $object):BalanceSendingRequest
     {
-        $toMail = (string) $object->toMail;
-        $amount = (int) $object->amount;
-        $description = (string) $object->description;
-        $amountObject = (int) $object->amountObject;
+
+        if (isset($object->toMail)) {
+            $toMail = (string) $object->toMail;
+        }else $toMail = $object->toMail=null;
+
+        if (isset($object->amount)) {
+            $amount = (int) $object->amount;
+        }else $amount = $object->amount=null;
+
+        if (isset($object->description)) {
+            $description = (string) $object->description;
+        }else $description = $object->description=null;
+
+        if (isset($object->amountObject)) {
+            $amountObject = (int) $object->amountObject;
+        }else $amountObject = $object->amountObject=null;
 
         return new BalanceSendingRequest($toMail, $amount, $description, $amountObject);
      }

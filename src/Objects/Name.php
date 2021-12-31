@@ -9,32 +9,32 @@ require_once __DIR__ . '/../TubeAPI.php';
 class Name
 {
 
-    private string $firstname;
+    private string|null $firstname;
 
-    private string $lastname;
+    private string|null $lastname;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFirstname(): string
+    public function getFirstname(): string|null
     {
          return $this->firstname;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastname(): string
+    public function getLastname(): string|null
     {
          return $this->lastname;
      }
 
     /**
-     * @param string $firstname
-     * @param string $lastname
+     * @param string|null $firstname
+     * @param string|null $lastname
      */
-    public function __construct(string $firstname, string $lastname)
+    public function __construct(string|null $firstname, string|null $lastname)
     {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -58,8 +58,14 @@ class Name
      */
     public static function fromStdClass(object $object):Name
     {
-        $firstname = (string) $object->firstname;
-        $lastname = (string) $object->lastname;
+
+        if (isset($object->firstname)) {
+            $firstname = (string) $object->firstname;
+        }else $firstname = $object->firstname=null;
+
+        if (isset($object->lastname)) {
+            $lastname = (string) $object->lastname;
+        }else $lastname = $object->lastname=null;
 
         return new Name($firstname, $lastname);
      }

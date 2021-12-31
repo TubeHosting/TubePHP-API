@@ -9,120 +9,120 @@ require_once __DIR__ . '/../TubeAPI.php';
 class InvoiceItem
 {
 
-    private bool $order;
+    private bool|null $order;
 
-    private string $newServiceGroupRuntime;
+    private string|null $newServiceGroupRuntime;
 
-    private string $title;
+    private string|null $title;
 
-    private int $position;
+    private int|null $position;
 
-    private int $unitPrice;
+    private int|null $unitPrice;
 
-    private int $quantity;
+    private int|null $quantity;
 
-    private string $description;
+    private string|null $description;
 
-    private string $priceType;
+    private string|null $priceType;
 
-    private int $invoiceId;
+    private int|null $invoiceId;
 
-    private int $serviceGroupId;
+    private int|null $serviceGroupId;
 
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getOrder(): bool
+    public function getOrder(): bool|null
     {
          return $this->order;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getNewServiceGroupRuntime(): string
+    public function getNewServiceGroupRuntime(): string|null
     {
          return $this->newServiceGroupRuntime;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTitle(): string
+    public function getTitle(): string|null
     {
          return $this->title;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPosition(): int
+    public function getPosition(): int|null
     {
          return $this->position;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getUnitPrice(): int
+    public function getUnitPrice(): int|null
     {
          return $this->unitPrice;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getQuantity(): int
+    public function getQuantity(): int|null
     {
          return $this->quantity;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
          return $this->description;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPriceType(): string
+    public function getPriceType(): string|null
     {
          return $this->priceType;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getInvoiceId(): int
+    public function getInvoiceId(): int|null
     {
          return $this->invoiceId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getServiceGroupId(): int
+    public function getServiceGroupId(): int|null
     {
          return $this->serviceGroupId;
      }
 
     /**
-     * @param bool $order
-     * @param string $newServiceGroupRuntime
-     * @param string $title
-     * @param int $position
-     * @param int $unitPrice
-     * @param int $quantity
-     * @param string $description
-     * @param string $priceType
-     * @param int $invoiceId
-     * @param int $serviceGroupId
+     * @param bool|null $order
+     * @param string|null $newServiceGroupRuntime
+     * @param string|null $title
+     * @param int|null $position
+     * @param int|null $unitPrice
+     * @param int|null $quantity
+     * @param string|null $description
+     * @param string|null $priceType
+     * @param int|null $invoiceId
+     * @param int|null $serviceGroupId
      */
-    public function __construct(bool $order, string $newServiceGroupRuntime, string $title, int $position, int $unitPrice, int $quantity, string $description, string $priceType, int $invoiceId, int $serviceGroupId)
+    public function __construct(bool|null $order, string|null $newServiceGroupRuntime, string|null $title, int|null $position, int|null $unitPrice, int|null $quantity, string|null $description, string|null $priceType, int|null $invoiceId, int|null $serviceGroupId)
     {
         $this->order = $order;
         $this->newServiceGroupRuntime = $newServiceGroupRuntime;
@@ -162,16 +162,46 @@ class InvoiceItem
      */
     public static function fromStdClass(object $object):InvoiceItem
     {
-        $order = (bool) $object->order;
-        $newServiceGroupRuntime = (string) $object->newServiceGroupRuntime;
-        $title = (string) $object->title;
-        $position = (int) $object->position;
-        $unitPrice = (int) $object->unitPrice;
-        $quantity = (int) $object->quantity;
-        $description = (string) $object->description;
-        $priceType = (string) $object->priceType;
-        $invoiceId = (int) $object->invoiceId;
-        $serviceGroupId = (int) $object->serviceGroupId;
+
+        if (isset($object->order)) {
+            $order = (bool) $object->order;
+        }else $order = $object->order=null;
+
+        if (isset($object->newServiceGroupRuntime)) {
+            $newServiceGroupRuntime = (string) $object->newServiceGroupRuntime;
+        }else $newServiceGroupRuntime = $object->newServiceGroupRuntime=null;
+
+        if (isset($object->title)) {
+            $title = (string) $object->title;
+        }else $title = $object->title=null;
+
+        if (isset($object->position)) {
+            $position = (int) $object->position;
+        }else $position = $object->position=null;
+
+        if (isset($object->unitPrice)) {
+            $unitPrice = (int) $object->unitPrice;
+        }else $unitPrice = $object->unitPrice=null;
+
+        if (isset($object->quantity)) {
+            $quantity = (int) $object->quantity;
+        }else $quantity = $object->quantity=null;
+
+        if (isset($object->description)) {
+            $description = (string) $object->description;
+        }else $description = $object->description=null;
+
+        if (isset($object->priceType)) {
+            $priceType = (string) $object->priceType;
+        }else $priceType = $object->priceType=null;
+
+        if (isset($object->invoiceId)) {
+            $invoiceId = (int) $object->invoiceId;
+        }else $invoiceId = $object->invoiceId=null;
+
+        if (isset($object->serviceGroupId)) {
+            $serviceGroupId = (int) $object->serviceGroupId;
+        }else $serviceGroupId = $object->serviceGroupId=null;
 
         return new InvoiceItem($order, $newServiceGroupRuntime, $title, $position, $unitPrice, $quantity, $description, $priceType, $invoiceId, $serviceGroupId);
      }

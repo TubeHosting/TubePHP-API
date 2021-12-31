@@ -11,109 +11,109 @@ require_once __DIR__ . '/Template.php';
 class VPSTemplate extends Template
 {
 
-    private string $startDate;
+    private string|null $startDate;
 
-    private int $id;
+    private int|null $id;
 
-    private int $price;
+    private int|null $price;
 
-    private string $serviceType;
+    private string|null $serviceType;
 
-    private int $dataId;
+    private int|null $dataId;
 
-    private int $coreCount;
+    private int|null $coreCount;
 
-    private int $memory;
+    private int|null $memory;
 
-    private int $diskSpace;
+    private int|null $diskSpace;
 
-    private string $vpsType;
+    private string|null $vpsType;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
          return $this->startDate;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPrice(): int
+    public function getPrice(): int|null
     {
          return $this->price;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getServiceType(): string
+    public function getServiceType(): string|null
     {
          return $this->serviceType;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDataId(): int
+    public function getDataId(): int|null
     {
          return $this->dataId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCoreCount(): int
+    public function getCoreCount(): int|null
     {
          return $this->coreCount;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMemory(): int
+    public function getMemory(): int|null
     {
          return $this->memory;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDiskSpace(): int
+    public function getDiskSpace(): int|null
     {
          return $this->diskSpace;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getVpsType(): string
+    public function getVpsType(): string|null
     {
          return $this->vpsType;
      }
 
     /**
-     * @param string $startDate
-     * @param int $id
-     * @param int $price
-     * @param string $serviceType
-     * @param int $dataId
-     * @param int $coreCount
-     * @param int $memory
-     * @param int $diskSpace
-     * @param string $vpsType
+     * @param string|null $startDate
+     * @param int|null $id
+     * @param int|null $price
+     * @param string|null $serviceType
+     * @param int|null $dataId
+     * @param int|null $coreCount
+     * @param int|null $memory
+     * @param int|null $diskSpace
+     * @param string|null $vpsType
      */
-    public function __construct(string $startDate, int $id, int $price, string $serviceType, int $dataId, int $coreCount, int $memory, int $diskSpace, string $vpsType)
+    public function __construct(string|null $startDate, int|null $id, int|null $price, string|null $serviceType, int|null $dataId, int|null $coreCount, int|null $memory, int|null $diskSpace, string|null $vpsType)
     {
         $this->startDate = $startDate;
         $this->id = $id;
@@ -151,15 +151,42 @@ class VPSTemplate extends Template
      */
     public static function fromStdClass(object $object):VPSTemplate
     {
-        $startDate = (string) $object->startDate;
-        $id = (int) $object->id;
-        $price = (int) $object->price;
-        $serviceType = (string) $object->serviceType;
-        $dataId = (int) $object->dataId;
-        $coreCount = (int) $object->coreCount;
-        $memory = (int) $object->memory;
-        $diskSpace = (int) $object->diskSpace;
-        $vpsType = (string) $object->vpsType;
+
+        if (isset($object->startDate)) {
+            $startDate = (string) $object->startDate;
+        }else $startDate = $object->startDate=null;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->price)) {
+            $price = (int) $object->price;
+        }else $price = $object->price=null;
+
+        if (isset($object->serviceType)) {
+            $serviceType = (string) $object->serviceType;
+        }else $serviceType = $object->serviceType=null;
+
+        if (isset($object->dataId)) {
+            $dataId = (int) $object->dataId;
+        }else $dataId = $object->dataId=null;
+
+        if (isset($object->coreCount)) {
+            $coreCount = (int) $object->coreCount;
+        }else $coreCount = $object->coreCount=null;
+
+        if (isset($object->memory)) {
+            $memory = (int) $object->memory;
+        }else $memory = $object->memory=null;
+
+        if (isset($object->diskSpace)) {
+            $diskSpace = (int) $object->diskSpace;
+        }else $diskSpace = $object->diskSpace=null;
+
+        if (isset($object->vpsType)) {
+            $vpsType = (string) $object->vpsType;
+        }else $vpsType = $object->vpsType=null;
 
         return new VPSTemplate($startDate, $id, $price, $serviceType, $dataId, $coreCount, $memory, $diskSpace, $vpsType);
      }

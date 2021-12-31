@@ -9,21 +9,21 @@ require_once __DIR__ . '/../TubeAPI.php';
 class IpRDNSBody
 {
 
-    private string $rdns;
+    private string|null $rdns;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRdns(): string
+    public function getRdns(): string|null
     {
          return $this->rdns;
      }
 
     /**
-     * @param string $rdns
+     * @param string|null $rdns
      */
-    public function __construct(string $rdns)
+    public function __construct(string|null $rdns)
     {
         $this->rdns = $rdns;
     }
@@ -45,7 +45,10 @@ class IpRDNSBody
      */
     public static function fromStdClass(object $object):IpRDNSBody
     {
-        $rdns = (string) $object->rdns;
+
+        if (isset($object->rdns)) {
+            $rdns = (string) $object->rdns;
+        }else $rdns = $object->rdns=null;
 
         return new IpRDNSBody($rdns);
      }

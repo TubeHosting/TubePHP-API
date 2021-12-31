@@ -9,164 +9,164 @@ require_once __DIR__ . '/../TubeAPI.php';
 class DedicatedInstance
 {
 
-    private User $creator;
+    private User|null $creator;
 
-    private int $id;
+    private int|null $id;
 
-    private int $configurationId;
+    private int|null $configurationId;
 
-    private DedicatedConfiguration $configuration;
+    private DedicatedConfiguration|null $configuration;
 
-    private string $caseType;
+    private string|null $caseType;
 
-    private string $startDate;
+    private string|null $startDate;
 
-    private string $endDate;
+    private string|null $endDate;
 
-    private int $labelId;
+    private int|null $labelId;
 
-    private bool $available;
+    private bool|null $available;
 
-    private array $interfaces;
+    private array|null $interfaces;
 
-    private array $aggregatedInterfaces;
+    private array|null $aggregatedInterfaces;
 
-    private array $disks;
+    private array|null $disks;
 
-    private ServerPosition $position;
+    private ServerPosition|null $position;
 
-    private array $allInterfaces;
+    private array|null $allInterfaces;
 
 
     /**
-     * @return User
+     * @return User|null
      */
-    public function getCreator(): User
+    public function getCreator(): User|null
     {
          return $this->creator;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getConfigurationId(): int
+    public function getConfigurationId(): int|null
     {
          return $this->configurationId;
      }
 
     /**
-     * @return DedicatedConfiguration
+     * @return DedicatedConfiguration|null
      */
-    public function getConfiguration(): DedicatedConfiguration
+    public function getConfiguration(): DedicatedConfiguration|null
     {
          return $this->configuration;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCaseType(): string
+    public function getCaseType(): string|null
     {
          return $this->caseType;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
          return $this->startDate;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEndDate(): string
+    public function getEndDate(): string|null
     {
          return $this->endDate;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getLabelId(): int
+    public function getLabelId(): int|null
     {
          return $this->labelId;
      }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getAvailable(): bool
+    public function getAvailable(): bool|null
     {
          return $this->available;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getInterfaces(): array
+    public function getInterfaces(): array|null
     {
          return $this->interfaces;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getAggregatedInterfaces(): array
+    public function getAggregatedInterfaces(): array|null
     {
          return $this->aggregatedInterfaces;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getDisks(): array
+    public function getDisks(): array|null
     {
          return $this->disks;
      }
 
     /**
-     * @return ServerPosition
+     * @return ServerPosition|null
      */
-    public function getPosition(): ServerPosition
+    public function getPosition(): ServerPosition|null
     {
          return $this->position;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getAllInterfaces(): array
+    public function getAllInterfaces(): array|null
     {
          return $this->allInterfaces;
      }
 
     /**
-     * @param User $creator
-     * @param int $id
-     * @param int $configurationId
-     * @param DedicatedConfiguration $configuration
-     * @param string $caseType
-     * @param string $startDate
-     * @param string $endDate
-     * @param int $labelId
-     * @param bool $available
-     * @param array $interfaces
-     * @param array $aggregatedInterfaces
-     * @param array $disks
-     * @param ServerPosition $position
-     * @param array $allInterfaces
+     * @param User|null $creator
+     * @param int|null $id
+     * @param int|null $configurationId
+     * @param DedicatedConfiguration|null $configuration
+     * @param string|null $caseType
+     * @param string|null $startDate
+     * @param string|null $endDate
+     * @param int|null $labelId
+     * @param bool|null $available
+     * @param array|null $interfaces
+     * @param array|null $aggregatedInterfaces
+     * @param array|null $disks
+     * @param ServerPosition|null $position
+     * @param array|null $allInterfaces
      */
-    public function __construct(User $creator, int $id, int $configurationId, DedicatedConfiguration $configuration, string $caseType, string $startDate, string $endDate, int $labelId, bool $available, array $interfaces, array $aggregatedInterfaces, array $disks, ServerPosition $position, array $allInterfaces)
+    public function __construct(User|null $creator, int|null $id, int|null $configurationId, DedicatedConfiguration|null $configuration, string|null $caseType, string|null $startDate, string|null $endDate, int|null $labelId, bool|null $available, array|null $interfaces, array|null $aggregatedInterfaces, array|null $disks, ServerPosition|null $position, array|null $allInterfaces)
     {
         $this->creator = $creator;
         $this->id = $id;
@@ -250,20 +250,62 @@ class DedicatedInstance
      */
     public static function fromStdClass(object $object):DedicatedInstance
     {
-        $creator = User::fromStdClass((object)$object->creator);
-        $id = (int) $object->id;
-        $configurationId = (int) $object->configurationId;
-        $configuration = DedicatedConfiguration::fromStdClass((object)$object->configuration);
-        $caseType = (string) $object->caseType;
-        $startDate = (string) $object->startDate;
-        $endDate = (string) $object->endDate;
-        $labelId = (int) $object->labelId;
-        $available = (bool) $object->available;
-        $interfaces = (array) $object->interfaces;
-        $aggregatedInterfaces = (array) $object->aggregatedInterfaces;
-        $disks = (array) $object->disks;
-        $position = ServerPosition::fromStdClass((object)$object->position);
-        $allInterfaces = (array) $object->allInterfaces;
+
+        if (isset($object->creator)) {
+           $creator = User::fromStdClass((object)$object->creator);
+        }else $creator = $object->creator=null;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->configurationId)) {
+            $configurationId = (int) $object->configurationId;
+        }else $configurationId = $object->configurationId=null;
+
+        if (isset($object->configuration)) {
+           $configuration = DedicatedConfiguration::fromStdClass((object)$object->configuration);
+        }else $configuration = $object->configuration=null;
+
+        if (isset($object->caseType)) {
+            $caseType = (string) $object->caseType;
+        }else $caseType = $object->caseType=null;
+
+        if (isset($object->startDate)) {
+            $startDate = (string) $object->startDate;
+        }else $startDate = $object->startDate=null;
+
+        if (isset($object->endDate)) {
+            $endDate = (string) $object->endDate;
+        }else $endDate = $object->endDate=null;
+
+        if (isset($object->labelId)) {
+            $labelId = (int) $object->labelId;
+        }else $labelId = $object->labelId=null;
+
+        if (isset($object->available)) {
+            $available = (bool) $object->available;
+        }else $available = $object->available=null;
+
+        if (isset($object->interfaces)) {
+            $interfaces = (array) $object->interfaces;
+        }else $interfaces = $object->interfaces=null;
+
+        if (isset($object->aggregatedInterfaces)) {
+            $aggregatedInterfaces = (array) $object->aggregatedInterfaces;
+        }else $aggregatedInterfaces = $object->aggregatedInterfaces=null;
+
+        if (isset($object->disks)) {
+            $disks = (array) $object->disks;
+        }else $disks = $object->disks=null;
+
+        if (isset($object->position)) {
+           $position = ServerPosition::fromStdClass((object)$object->position);
+        }else $position = $object->position=null;
+
+        if (isset($object->allInterfaces)) {
+            $allInterfaces = (array) $object->allInterfaces;
+        }else $allInterfaces = $object->allInterfaces=null;
 
         return new DedicatedInstance($creator, $id, $configurationId, $configuration, $caseType, $startDate, $endDate, $labelId, $available, $interfaces, $aggregatedInterfaces, $disks, $position, $allInterfaces);
      }

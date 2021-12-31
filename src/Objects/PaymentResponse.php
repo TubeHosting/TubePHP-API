@@ -9,32 +9,32 @@ require_once __DIR__ . '/../TubeAPI.php';
 class PaymentResponse
 {
 
-    private string $link;
+    private string|null $link;
 
-    private string $paymentMethodId;
+    private string|null $paymentMethodId;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLink(): string
+    public function getLink(): string|null
     {
          return $this->link;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPaymentMethodId(): string
+    public function getPaymentMethodId(): string|null
     {
          return $this->paymentMethodId;
      }
 
     /**
-     * @param string $link
-     * @param string $paymentMethodId
+     * @param string|null $link
+     * @param string|null $paymentMethodId
      */
-    public function __construct(string $link, string $paymentMethodId)
+    public function __construct(string|null $link, string|null $paymentMethodId)
     {
         $this->link = $link;
         $this->paymentMethodId = $paymentMethodId;
@@ -58,8 +58,14 @@ class PaymentResponse
      */
     public static function fromStdClass(object $object):PaymentResponse
     {
-        $link = (string) $object->link;
-        $paymentMethodId = (string) $object->paymentMethodId;
+
+        if (isset($object->link)) {
+            $link = (string) $object->link;
+        }else $link = $object->link=null;
+
+        if (isset($object->paymentMethodId)) {
+            $paymentMethodId = (string) $object->paymentMethodId;
+        }else $paymentMethodId = $object->paymentMethodId=null;
 
         return new PaymentResponse($link, $paymentMethodId);
      }

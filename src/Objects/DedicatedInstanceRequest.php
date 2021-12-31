@@ -9,197 +9,197 @@ require_once __DIR__ . '/../TubeAPI.php';
 class DedicatedInstanceRequest
 {
 
-    private int $userId;
+    private int|null $userId;
 
-    private int $price;
+    private int|null $price;
 
-    private int $runtimeInterval;
+    private int|null $runtimeInterval;
 
-    private int $memory;
+    private int|null $memory;
 
-    private ServerPosition $position;
+    private ServerPosition|null $position;
 
-    private string $startDate;
+    private string|null $startDate;
 
-    private int $labelId;
+    private int|null $labelId;
 
-    private bool $available;
+    private bool|null $available;
 
-    private string $memoryType;
+    private string|null $memoryType;
 
-    private int $cpuId;
+    private int|null $cpuId;
 
-    private int $cpuCount;
+    private int|null $cpuCount;
 
-    private int $gpuId;
+    private int|null $gpuId;
 
-    private int $gpuCount;
+    private int|null $gpuCount;
 
-    private array $disks;
+    private array|null $disks;
 
-    private array $interfaces;
+    private array|null $interfaces;
 
-    private array $aggregatedInterfaces;
+    private array|null $aggregatedInterfaces;
 
-    private string $caseType;
+    private string|null $caseType;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getUserId(): int
+    public function getUserId(): int|null
     {
          return $this->userId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPrice(): int
+    public function getPrice(): int|null
     {
          return $this->price;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getRuntimeInterval(): int
+    public function getRuntimeInterval(): int|null
     {
          return $this->runtimeInterval;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMemory(): int
+    public function getMemory(): int|null
     {
          return $this->memory;
      }
 
     /**
-     * @return ServerPosition
+     * @return ServerPosition|null
      */
-    public function getPosition(): ServerPosition
+    public function getPosition(): ServerPosition|null
     {
          return $this->position;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
          return $this->startDate;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getLabelId(): int
+    public function getLabelId(): int|null
     {
          return $this->labelId;
      }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getAvailable(): bool
+    public function getAvailable(): bool|null
     {
          return $this->available;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMemoryType(): string
+    public function getMemoryType(): string|null
     {
          return $this->memoryType;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCpuId(): int
+    public function getCpuId(): int|null
     {
          return $this->cpuId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCpuCount(): int
+    public function getCpuCount(): int|null
     {
          return $this->cpuCount;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getGpuId(): int
+    public function getGpuId(): int|null
     {
          return $this->gpuId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getGpuCount(): int
+    public function getGpuCount(): int|null
     {
          return $this->gpuCount;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getDisks(): array
+    public function getDisks(): array|null
     {
          return $this->disks;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getInterfaces(): array
+    public function getInterfaces(): array|null
     {
          return $this->interfaces;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getAggregatedInterfaces(): array
+    public function getAggregatedInterfaces(): array|null
     {
          return $this->aggregatedInterfaces;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCaseType(): string
+    public function getCaseType(): string|null
     {
          return $this->caseType;
      }
 
     /**
-     * @param int $userId
-     * @param int $price
-     * @param int $runtimeInterval
-     * @param int $memory
-     * @param ServerPosition $position
-     * @param string $startDate
-     * @param int $labelId
-     * @param bool $available
-     * @param string $memoryType
-     * @param int $cpuId
-     * @param int $cpuCount
-     * @param int $gpuId
-     * @param int $gpuCount
-     * @param array $disks
-     * @param array $interfaces
-     * @param array $aggregatedInterfaces
-     * @param string $caseType
+     * @param int|null $userId
+     * @param int|null $price
+     * @param int|null $runtimeInterval
+     * @param int|null $memory
+     * @param ServerPosition|null $position
+     * @param string|null $startDate
+     * @param int|null $labelId
+     * @param bool|null $available
+     * @param string|null $memoryType
+     * @param int|null $cpuId
+     * @param int|null $cpuCount
+     * @param int|null $gpuId
+     * @param int|null $gpuCount
+     * @param array|null $disks
+     * @param array|null $interfaces
+     * @param array|null $aggregatedInterfaces
+     * @param string|null $caseType
      */
-    public function __construct(int $userId, int $price, int $runtimeInterval, int $memory, ServerPosition $position, string $startDate, int $labelId, bool $available, string $memoryType, int $cpuId, int $cpuCount, int $gpuId, int $gpuCount, array $disks, array $interfaces, array $aggregatedInterfaces, string $caseType)
+    public function __construct(int|null $userId, int|null $price, int|null $runtimeInterval, int|null $memory, ServerPosition|null $position, string|null $startDate, int|null $labelId, bool|null $available, string|null $memoryType, int|null $cpuId, int|null $cpuCount, int|null $gpuId, int|null $gpuCount, array|null $disks, array|null $interfaces, array|null $aggregatedInterfaces, string|null $caseType)
     {
         $this->userId = $userId;
         $this->price = $price;
@@ -280,23 +280,74 @@ class DedicatedInstanceRequest
      */
     public static function fromStdClass(object $object):DedicatedInstanceRequest
     {
-        $userId = (int) $object->userId;
-        $price = (int) $object->price;
-        $runtimeInterval = (int) $object->runtimeInterval;
-        $memory = (int) $object->memory;
-        $position = ServerPosition::fromStdClass((object)$object->position);
-        $startDate = (string) $object->startDate;
-        $labelId = (int) $object->labelId;
-        $available = (bool) $object->available;
-        $memoryType = (string) $object->memoryType;
-        $cpuId = (int) $object->cpuId;
-        $cpuCount = (int) $object->cpuCount;
-        $gpuId = (int) $object->gpuId;
-        $gpuCount = (int) $object->gpuCount;
-        $disks = (array) $object->disks;
-        $interfaces = (array) $object->interfaces;
-        $aggregatedInterfaces = (array) $object->aggregatedInterfaces;
-        $caseType = (string) $object->caseType;
+
+        if (isset($object->userId)) {
+            $userId = (int) $object->userId;
+        }else $userId = $object->userId=null;
+
+        if (isset($object->price)) {
+            $price = (int) $object->price;
+        }else $price = $object->price=null;
+
+        if (isset($object->runtimeInterval)) {
+            $runtimeInterval = (int) $object->runtimeInterval;
+        }else $runtimeInterval = $object->runtimeInterval=null;
+
+        if (isset($object->memory)) {
+            $memory = (int) $object->memory;
+        }else $memory = $object->memory=null;
+
+        if (isset($object->position)) {
+           $position = ServerPosition::fromStdClass((object)$object->position);
+        }else $position = $object->position=null;
+
+        if (isset($object->startDate)) {
+            $startDate = (string) $object->startDate;
+        }else $startDate = $object->startDate=null;
+
+        if (isset($object->labelId)) {
+            $labelId = (int) $object->labelId;
+        }else $labelId = $object->labelId=null;
+
+        if (isset($object->available)) {
+            $available = (bool) $object->available;
+        }else $available = $object->available=null;
+
+        if (isset($object->memoryType)) {
+            $memoryType = (string) $object->memoryType;
+        }else $memoryType = $object->memoryType=null;
+
+        if (isset($object->cpuId)) {
+            $cpuId = (int) $object->cpuId;
+        }else $cpuId = $object->cpuId=null;
+
+        if (isset($object->cpuCount)) {
+            $cpuCount = (int) $object->cpuCount;
+        }else $cpuCount = $object->cpuCount=null;
+
+        if (isset($object->gpuId)) {
+            $gpuId = (int) $object->gpuId;
+        }else $gpuId = $object->gpuId=null;
+
+        if (isset($object->gpuCount)) {
+            $gpuCount = (int) $object->gpuCount;
+        }else $gpuCount = $object->gpuCount=null;
+
+        if (isset($object->disks)) {
+            $disks = (array) $object->disks;
+        }else $disks = $object->disks=null;
+
+        if (isset($object->interfaces)) {
+            $interfaces = (array) $object->interfaces;
+        }else $interfaces = $object->interfaces=null;
+
+        if (isset($object->aggregatedInterfaces)) {
+            $aggregatedInterfaces = (array) $object->aggregatedInterfaces;
+        }else $aggregatedInterfaces = $object->aggregatedInterfaces=null;
+
+        if (isset($object->caseType)) {
+            $caseType = (string) $object->caseType;
+        }else $caseType = $object->caseType=null;
 
         return new DedicatedInstanceRequest($userId, $price, $runtimeInterval, $memory, $position, $startDate, $labelId, $available, $memoryType, $cpuId, $cpuCount, $gpuId, $gpuCount, $disks, $interfaces, $aggregatedInterfaces, $caseType);
      }

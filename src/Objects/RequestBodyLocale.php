@@ -9,21 +9,21 @@ require_once __DIR__ . '/../TubeAPI.php';
 class RequestBodyLocale
 {
 
-    private string $locale;
+    private string|null $locale;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLocale(): string
+    public function getLocale(): string|null
     {
          return $this->locale;
      }
 
     /**
-     * @param string $locale
+     * @param string|null $locale
      */
-    public function __construct(string $locale)
+    public function __construct(string|null $locale)
     {
         $this->locale = $locale;
     }
@@ -45,7 +45,10 @@ class RequestBodyLocale
      */
     public static function fromStdClass(object $object):RequestBodyLocale
     {
-        $locale = (string) $object->locale;
+
+        if (isset($object->locale)) {
+            $locale = (string) $object->locale;
+        }else $locale = $object->locale=null;
 
         return new RequestBodyLocale($locale);
      }

@@ -9,76 +9,76 @@ require_once __DIR__ . '/../TubeAPI.php';
 class AuthenticationRegisterData
 {
 
-    private string $firstname;
+    private string|null $firstname;
 
-    private string $lastname;
+    private string|null $lastname;
 
-    private string $mail;
+    private string|null $mail;
 
-    private string $password;
+    private string|null $password;
 
-    private string $locale;
+    private string|null $locale;
 
-    private object $localeAsObject;
+    private object|null $localeAsObject;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFirstname(): string
+    public function getFirstname(): string|null
     {
          return $this->firstname;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastname(): string
+    public function getLastname(): string|null
     {
          return $this->lastname;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMail(): string
+    public function getMail(): string|null
     {
          return $this->mail;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPassword(): string
+    public function getPassword(): string|null
     {
          return $this->password;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLocale(): string
+    public function getLocale(): string|null
     {
          return $this->locale;
      }
 
     /**
-     * @return object
+     * @return object|null
      */
-    public function getLocaleAsObject(): object
+    public function getLocaleAsObject(): object|null
     {
          return $this->localeAsObject;
      }
 
     /**
-     * @param string $firstname
-     * @param string $lastname
-     * @param string $mail
-     * @param string $password
-     * @param string $locale
-     * @param object $localeAsObject
+     * @param string|null $firstname
+     * @param string|null $lastname
+     * @param string|null $mail
+     * @param string|null $password
+     * @param string|null $locale
+     * @param object|null $localeAsObject
      */
-    public function __construct(string $firstname, string $lastname, string $mail, string $password, string $locale, object $localeAsObject)
+    public function __construct(string|null $firstname, string|null $lastname, string|null $mail, string|null $password, string|null $locale, object|null $localeAsObject)
     {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -110,12 +110,30 @@ class AuthenticationRegisterData
      */
     public static function fromStdClass(object $object):AuthenticationRegisterData
     {
-        $firstname = (string) $object->firstname;
-        $lastname = (string) $object->lastname;
-        $mail = (string) $object->mail;
-        $password = (string) $object->password;
-        $locale = (string) $object->locale;
-        $localeAsObject = object::fromStdClass((object)$object->localeAsObject);
+
+        if (isset($object->firstname)) {
+            $firstname = (string) $object->firstname;
+        }else $firstname = $object->firstname=null;
+
+        if (isset($object->lastname)) {
+            $lastname = (string) $object->lastname;
+        }else $lastname = $object->lastname=null;
+
+        if (isset($object->mail)) {
+            $mail = (string) $object->mail;
+        }else $mail = $object->mail=null;
+
+        if (isset($object->password)) {
+            $password = (string) $object->password;
+        }else $password = $object->password=null;
+
+        if (isset($object->locale)) {
+            $locale = (string) $object->locale;
+        }else $locale = $object->locale=null;
+
+        if (isset($object->localeAsObject)) {
+           $localeAsObject = object::fromStdClass((object)$object->localeAsObject);
+        }else $localeAsObject = $object->localeAsObject=null;
 
         return new AuthenticationRegisterData($firstname, $lastname, $mail, $password, $locale, $localeAsObject);
      }

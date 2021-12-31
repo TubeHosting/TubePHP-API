@@ -9,43 +9,43 @@ require_once __DIR__ . '/../TubeAPI.php';
 class ZabbixInterface
 {
 
-    private int $hostId;
+    private int|null $hostId;
 
-    private int $netInItemId;
+    private int|null $netInItemId;
 
-    private int $netOutItemId;
+    private int|null $netOutItemId;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getHostId(): int
+    public function getHostId(): int|null
     {
          return $this->hostId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getNetInItemId(): int
+    public function getNetInItemId(): int|null
     {
          return $this->netInItemId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getNetOutItemId(): int
+    public function getNetOutItemId(): int|null
     {
          return $this->netOutItemId;
      }
 
     /**
-     * @param int $hostId
-     * @param int $netInItemId
-     * @param int $netOutItemId
+     * @param int|null $hostId
+     * @param int|null $netInItemId
+     * @param int|null $netOutItemId
      */
-    public function __construct(int $hostId, int $netInItemId, int $netOutItemId)
+    public function __construct(int|null $hostId, int|null $netInItemId, int|null $netOutItemId)
     {
         $this->hostId = $hostId;
         $this->netInItemId = $netInItemId;
@@ -71,9 +71,18 @@ class ZabbixInterface
      */
     public static function fromStdClass(object $object):ZabbixInterface
     {
-        $hostId = (int) $object->hostId;
-        $netInItemId = (int) $object->netInItemId;
-        $netOutItemId = (int) $object->netOutItemId;
+
+        if (isset($object->hostId)) {
+            $hostId = (int) $object->hostId;
+        }else $hostId = $object->hostId=null;
+
+        if (isset($object->netInItemId)) {
+            $netInItemId = (int) $object->netInItemId;
+        }else $netInItemId = $object->netInItemId=null;
+
+        if (isset($object->netOutItemId)) {
+            $netOutItemId = (int) $object->netOutItemId;
+        }else $netOutItemId = $object->netOutItemId=null;
 
         return new ZabbixInterface($hostId, $netInItemId, $netOutItemId);
      }

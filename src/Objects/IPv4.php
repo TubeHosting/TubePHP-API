@@ -9,87 +9,87 @@ require_once __DIR__ . '/../TubeAPI.php';
 class IPv4
 {
 
-    private int $id;
+    private int|null $id;
 
-    private string $macBind;
+    private string|null $macBind;
 
-    private string $gateway;
+    private string|null $gateway;
 
-    private int $cidr;
+    private int|null $cidr;
 
-    private bool $available;
+    private bool|null $available;
 
-    private string $ipv4;
+    private string|null $ipv4;
 
-    private string $rdns;
+    private string|null $rdns;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMacBind(): string
+    public function getMacBind(): string|null
     {
          return $this->macBind;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getGateway(): string
+    public function getGateway(): string|null
     {
          return $this->gateway;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCidr(): int
+    public function getCidr(): int|null
     {
          return $this->cidr;
      }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getAvailable(): bool
+    public function getAvailable(): bool|null
     {
          return $this->available;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getIpv4(): string
+    public function getIpv4(): string|null
     {
          return $this->ipv4;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRdns(): string
+    public function getRdns(): string|null
     {
          return $this->rdns;
      }
 
     /**
-     * @param int $id
-     * @param string $macBind
-     * @param string $gateway
-     * @param int $cidr
-     * @param bool $available
-     * @param string $ipv4
-     * @param string $rdns
+     * @param int|null $id
+     * @param string|null $macBind
+     * @param string|null $gateway
+     * @param int|null $cidr
+     * @param bool|null $available
+     * @param string|null $ipv4
+     * @param string|null $rdns
      */
-    public function __construct(int $id, string $macBind, string $gateway, int $cidr, bool $available, string $ipv4, string $rdns)
+    public function __construct(int|null $id, string|null $macBind, string|null $gateway, int|null $cidr, bool|null $available, string|null $ipv4, string|null $rdns)
     {
         $this->id = $id;
         $this->macBind = $macBind;
@@ -123,13 +123,34 @@ class IPv4
      */
     public static function fromStdClass(object $object):IPv4
     {
-        $id = (int) $object->id;
-        $macBind = (string) $object->macBind;
-        $gateway = (string) $object->gateway;
-        $cidr = (int) $object->cidr;
-        $available = (bool) $object->available;
-        $ipv4 = (string) $object->ipv4;
-        $rdns = (string) $object->rdns;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->macBind)) {
+            $macBind = (string) $object->macBind;
+        }else $macBind = $object->macBind=null;
+
+        if (isset($object->gateway)) {
+            $gateway = (string) $object->gateway;
+        }else $gateway = $object->gateway=null;
+
+        if (isset($object->cidr)) {
+            $cidr = (int) $object->cidr;
+        }else $cidr = $object->cidr=null;
+
+        if (isset($object->available)) {
+            $available = (bool) $object->available;
+        }else $available = $object->available=null;
+
+        if (isset($object->ipv4)) {
+            $ipv4 = (string) $object->ipv4;
+        }else $ipv4 = $object->ipv4=null;
+
+        if (isset($object->rdns)) {
+            $rdns = (string) $object->rdns;
+        }else $rdns = $object->rdns=null;
 
         return new IPv4($id, $macBind, $gateway, $cidr, $available, $ipv4, $rdns);
      }

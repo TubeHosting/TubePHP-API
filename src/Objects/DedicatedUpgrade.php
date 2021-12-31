@@ -9,120 +9,120 @@ require_once __DIR__ . '/../TubeAPI.php';
 class DedicatedUpgrade
 {
 
-    private int $id;
+    private int|null $id;
 
-    private int $gpuCount;
+    private int|null $gpuCount;
 
-    private int $memory;
+    private int|null $memory;
 
-    private string $memoryType;
+    private string|null $memoryType;
 
-    private int $cpuCount;
+    private int|null $cpuCount;
 
-    private CPU $cpu;
+    private CPU|null $cpu;
 
-    private GPU $gpu;
+    private GPU|null $gpu;
 
-    private array $addedDisks;
+    private array|null $addedDisks;
 
-    private array $removedDisks;
+    private array|null $removedDisks;
 
-    private int $price;
+    private int|null $price;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getGpuCount(): int
+    public function getGpuCount(): int|null
     {
          return $this->gpuCount;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMemory(): int
+    public function getMemory(): int|null
     {
          return $this->memory;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMemoryType(): string
+    public function getMemoryType(): string|null
     {
          return $this->memoryType;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCpuCount(): int
+    public function getCpuCount(): int|null
     {
          return $this->cpuCount;
      }
 
     /**
-     * @return CPU
+     * @return CPU|null
      */
-    public function getCpu(): CPU
+    public function getCpu(): CPU|null
     {
          return $this->cpu;
      }
 
     /**
-     * @return GPU
+     * @return GPU|null
      */
-    public function getGpu(): GPU
+    public function getGpu(): GPU|null
     {
          return $this->gpu;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getAddedDisks(): array
+    public function getAddedDisks(): array|null
     {
          return $this->addedDisks;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getRemovedDisks(): array
+    public function getRemovedDisks(): array|null
     {
          return $this->removedDisks;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPrice(): int
+    public function getPrice(): int|null
     {
          return $this->price;
      }
 
     /**
-     * @param int $id
-     * @param int $gpuCount
-     * @param int $memory
-     * @param string $memoryType
-     * @param int $cpuCount
-     * @param CPU $cpu
-     * @param GPU $gpu
-     * @param array $addedDisks
-     * @param array $removedDisks
-     * @param int $price
+     * @param int|null $id
+     * @param int|null $gpuCount
+     * @param int|null $memory
+     * @param string|null $memoryType
+     * @param int|null $cpuCount
+     * @param CPU|null $cpu
+     * @param GPU|null $gpu
+     * @param array|null $addedDisks
+     * @param array|null $removedDisks
+     * @param int|null $price
      */
-    public function __construct(int $id, int $gpuCount, int $memory, string $memoryType, int $cpuCount, CPU $cpu, GPU $gpu, array $addedDisks, array $removedDisks, int $price)
+    public function __construct(int|null $id, int|null $gpuCount, int|null $memory, string|null $memoryType, int|null $cpuCount, CPU|null $cpu, GPU|null $gpu, array|null $addedDisks, array|null $removedDisks, int|null $price)
     {
         $this->id = $id;
         $this->gpuCount = $gpuCount;
@@ -180,16 +180,46 @@ class DedicatedUpgrade
      */
     public static function fromStdClass(object $object):DedicatedUpgrade
     {
-        $id = (int) $object->id;
-        $gpuCount = (int) $object->gpuCount;
-        $memory = (int) $object->memory;
-        $memoryType = (string) $object->memoryType;
-        $cpuCount = (int) $object->cpuCount;
-        $cpu = CPU::fromStdClass((object)$object->cpu);
-        $gpu = GPU::fromStdClass((object)$object->gpu);
-        $addedDisks = (array) $object->addedDisks;
-        $removedDisks = (array) $object->removedDisks;
-        $price = (int) $object->price;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->gpuCount)) {
+            $gpuCount = (int) $object->gpuCount;
+        }else $gpuCount = $object->gpuCount=null;
+
+        if (isset($object->memory)) {
+            $memory = (int) $object->memory;
+        }else $memory = $object->memory=null;
+
+        if (isset($object->memoryType)) {
+            $memoryType = (string) $object->memoryType;
+        }else $memoryType = $object->memoryType=null;
+
+        if (isset($object->cpuCount)) {
+            $cpuCount = (int) $object->cpuCount;
+        }else $cpuCount = $object->cpuCount=null;
+
+        if (isset($object->cpu)) {
+           $cpu = CPU::fromStdClass((object)$object->cpu);
+        }else $cpu = $object->cpu=null;
+
+        if (isset($object->gpu)) {
+           $gpu = GPU::fromStdClass((object)$object->gpu);
+        }else $gpu = $object->gpu=null;
+
+        if (isset($object->addedDisks)) {
+            $addedDisks = (array) $object->addedDisks;
+        }else $addedDisks = $object->addedDisks=null;
+
+        if (isset($object->removedDisks)) {
+            $removedDisks = (array) $object->removedDisks;
+        }else $removedDisks = $object->removedDisks=null;
+
+        if (isset($object->price)) {
+            $price = (int) $object->price;
+        }else $price = $object->price=null;
 
         return new DedicatedUpgrade($id, $gpuCount, $memory, $memoryType, $cpuCount, $cpu, $gpu, $addedDisks, $removedDisks, $price);
      }

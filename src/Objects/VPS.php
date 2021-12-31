@@ -11,274 +11,274 @@ require_once __DIR__ . '/Service.php';
 class VPS extends Service
 {
 
-    private int $dataId;
+    private int|null $dataId;
 
-    private int $id;
+    private int|null $id;
 
-    private string $startDate;
+    private string|null $startDate;
 
-    private string $endDate;
+    private string|null $endDate;
 
-    private int $price;
+    private int|null $price;
 
-    private string $priceType;
+    private string|null $priceType;
 
-    private string $deactivatedOn;
+    private string|null $deactivatedOn;
 
-    private string $description;
+    private string|null $description;
 
-    private string $runtime;
+    private string|null $runtime;
 
-    private string $name;
+    private string|null $name;
 
-    private string $type;
+    private string|null $type;
 
-    private int $priceObject;
+    private int|null $priceObject;
 
-    private int $serviceGroupId;
+    private int|null $serviceGroupId;
 
-    private int $templateId;
+    private int|null $templateId;
 
-    private int $vpsId;
+    private int|null $vpsId;
 
-    private string $vpsType;
+    private string|null $vpsType;
 
-    private int $coreCount;
+    private int|null $coreCount;
 
-    private int $memory;
+    private int|null $memory;
 
-    private int $diskSpace;
+    private int|null $diskSpace;
 
-    private string $diskType;
+    private string|null $diskType;
 
-    private int $nodeId;
+    private int|null $nodeId;
 
-    private string $lastInstalledSystem;
+    private string|null $lastInstalledSystem;
 
-    private LinkIPv4BundleIPv4 $primaryIPv4;
+    private LinkIPv4BundleIPv4|null $primaryIPv4;
 
-    private string $osDisplayName;
+    private string|null $osDisplayName;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDataId(): int
+    public function getDataId(): int|null
     {
          return $this->dataId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
          return $this->startDate;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEndDate(): string
+    public function getEndDate(): string|null
     {
          return $this->endDate;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPrice(): int
+    public function getPrice(): int|null
     {
          return $this->price;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPriceType(): string
+    public function getPriceType(): string|null
     {
          return $this->priceType;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDeactivatedOn(): string
+    public function getDeactivatedOn(): string|null
     {
          return $this->deactivatedOn;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
          return $this->description;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRuntime(): string
+    public function getRuntime(): string|null
     {
          return $this->runtime;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): string|null
     {
          return $this->name;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getType(): string
+    public function getType(): string|null
     {
          return $this->type;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPriceObject(): int
+    public function getPriceObject(): int|null
     {
          return $this->priceObject;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getServiceGroupId(): int
+    public function getServiceGroupId(): int|null
     {
          return $this->serviceGroupId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getTemplateId(): int
+    public function getTemplateId(): int|null
     {
          return $this->templateId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getVpsId(): int
+    public function getVpsId(): int|null
     {
          return $this->vpsId;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getVpsType(): string
+    public function getVpsType(): string|null
     {
          return $this->vpsType;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCoreCount(): int
+    public function getCoreCount(): int|null
     {
          return $this->coreCount;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMemory(): int
+    public function getMemory(): int|null
     {
          return $this->memory;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDiskSpace(): int
+    public function getDiskSpace(): int|null
     {
          return $this->diskSpace;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDiskType(): string
+    public function getDiskType(): string|null
     {
          return $this->diskType;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getNodeId(): int
+    public function getNodeId(): int|null
     {
          return $this->nodeId;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastInstalledSystem(): string
+    public function getLastInstalledSystem(): string|null
     {
          return $this->lastInstalledSystem;
      }
 
     /**
-     * @return LinkIPv4BundleIPv4
+     * @return LinkIPv4BundleIPv4|null
      */
-    public function getPrimaryIPv4(): LinkIPv4BundleIPv4
+    public function getPrimaryIPv4(): LinkIPv4BundleIPv4|null
     {
          return $this->primaryIPv4;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getOsDisplayName(): string
+    public function getOsDisplayName(): string|null
     {
          return $this->osDisplayName;
      }
 
     /**
-     * @param int $dataId
-     * @param int $id
-     * @param string $startDate
-     * @param string $endDate
-     * @param int $price
-     * @param string $priceType
-     * @param string $deactivatedOn
-     * @param string $description
-     * @param string $runtime
-     * @param string $name
-     * @param string $type
-     * @param int $priceObject
-     * @param int $serviceGroupId
-     * @param int $templateId
-     * @param int $vpsId
-     * @param string $vpsType
-     * @param int $coreCount
-     * @param int $memory
-     * @param int $diskSpace
-     * @param string $diskType
-     * @param int $nodeId
-     * @param string $lastInstalledSystem
-     * @param LinkIPv4BundleIPv4 $primaryIPv4
-     * @param string $osDisplayName
+     * @param int|null $dataId
+     * @param int|null $id
+     * @param string|null $startDate
+     * @param string|null $endDate
+     * @param int|null $price
+     * @param string|null $priceType
+     * @param string|null $deactivatedOn
+     * @param string|null $description
+     * @param string|null $runtime
+     * @param string|null $name
+     * @param string|null $type
+     * @param int|null $priceObject
+     * @param int|null $serviceGroupId
+     * @param int|null $templateId
+     * @param int|null $vpsId
+     * @param string|null $vpsType
+     * @param int|null $coreCount
+     * @param int|null $memory
+     * @param int|null $diskSpace
+     * @param string|null $diskType
+     * @param int|null $nodeId
+     * @param string|null $lastInstalledSystem
+     * @param LinkIPv4BundleIPv4|null $primaryIPv4
+     * @param string|null $osDisplayName
      */
-    public function __construct(int $dataId, int $id, string $startDate, string $endDate, int $price, string $priceType, string $deactivatedOn, string $description, string $runtime, string $name, string $type, int $priceObject, int $serviceGroupId, int $templateId, int $vpsId, string $vpsType, int $coreCount, int $memory, int $diskSpace, string $diskType, int $nodeId, string $lastInstalledSystem, LinkIPv4BundleIPv4 $primaryIPv4, string $osDisplayName)
+    public function __construct(int|null $dataId, int|null $id, string|null $startDate, string|null $endDate, int|null $price, string|null $priceType, string|null $deactivatedOn, string|null $description, string|null $runtime, string|null $name, string|null $type, int|null $priceObject, int|null $serviceGroupId, int|null $templateId, int|null $vpsId, string|null $vpsType, int|null $coreCount, int|null $memory, int|null $diskSpace, string|null $diskType, int|null $nodeId, string|null $lastInstalledSystem, LinkIPv4BundleIPv4|null $primaryIPv4, string|null $osDisplayName)
     {
         $this->dataId = $dataId;
         $this->id = $id;
@@ -346,30 +346,102 @@ class VPS extends Service
      */
     public static function fromStdClass(object $object):VPS
     {
-        $dataId = (int) $object->dataId;
-        $id = (int) $object->id;
-        $startDate = (string) $object->startDate;
-        $endDate = (string) $object->endDate;
-        $price = (int) $object->price;
-        $priceType = (string) $object->priceType;
-        $deactivatedOn = (string) $object->deactivatedOn;
-        $description = (string) $object->description;
-        $runtime = (string) $object->runtime;
-        $name = (string) $object->name;
-        $type = (string) $object->type;
-        $priceObject = (int) $object->priceObject;
-        $serviceGroupId = (int) $object->serviceGroupId;
-        $templateId = (int) $object->templateId;
-        $vpsId = (int) $object->vpsId;
-        $vpsType = (string) $object->vpsType;
-        $coreCount = (int) $object->coreCount;
-        $memory = (int) $object->memory;
-        $diskSpace = (int) $object->diskSpace;
-        $diskType = (string) $object->diskType;
-        $nodeId = (int) $object->nodeId;
-        $lastInstalledSystem = (string) $object->lastInstalledSystem;
-        $primaryIPv4 = LinkIPv4BundleIPv4::fromStdClass((object)$object->primaryIPv4);
-        $osDisplayName = (string) $object->osDisplayName;
+
+        if (isset($object->dataId)) {
+            $dataId = (int) $object->dataId;
+        }else $dataId = $object->dataId=null;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->startDate)) {
+            $startDate = (string) $object->startDate;
+        }else $startDate = $object->startDate=null;
+
+        if (isset($object->endDate)) {
+            $endDate = (string) $object->endDate;
+        }else $endDate = $object->endDate=null;
+
+        if (isset($object->price)) {
+            $price = (int) $object->price;
+        }else $price = $object->price=null;
+
+        if (isset($object->priceType)) {
+            $priceType = (string) $object->priceType;
+        }else $priceType = $object->priceType=null;
+
+        if (isset($object->deactivatedOn)) {
+            $deactivatedOn = (string) $object->deactivatedOn;
+        }else $deactivatedOn = $object->deactivatedOn=null;
+
+        if (isset($object->description)) {
+            $description = (string) $object->description;
+        }else $description = $object->description=null;
+
+        if (isset($object->runtime)) {
+            $runtime = (string) $object->runtime;
+        }else $runtime = $object->runtime=null;
+
+        if (isset($object->name)) {
+            $name = (string) $object->name;
+        }else $name = $object->name=null;
+
+        if (isset($object->type)) {
+            $type = (string) $object->type;
+        }else $type = $object->type=null;
+
+        if (isset($object->priceObject)) {
+            $priceObject = (int) $object->priceObject;
+        }else $priceObject = $object->priceObject=null;
+
+        if (isset($object->serviceGroupId)) {
+            $serviceGroupId = (int) $object->serviceGroupId;
+        }else $serviceGroupId = $object->serviceGroupId=null;
+
+        if (isset($object->templateId)) {
+            $templateId = (int) $object->templateId;
+        }else $templateId = $object->templateId=null;
+
+        if (isset($object->vpsId)) {
+            $vpsId = (int) $object->vpsId;
+        }else $vpsId = $object->vpsId=null;
+
+        if (isset($object->vpsType)) {
+            $vpsType = (string) $object->vpsType;
+        }else $vpsType = $object->vpsType=null;
+
+        if (isset($object->coreCount)) {
+            $coreCount = (int) $object->coreCount;
+        }else $coreCount = $object->coreCount=null;
+
+        if (isset($object->memory)) {
+            $memory = (int) $object->memory;
+        }else $memory = $object->memory=null;
+
+        if (isset($object->diskSpace)) {
+            $diskSpace = (int) $object->diskSpace;
+        }else $diskSpace = $object->diskSpace=null;
+
+        if (isset($object->diskType)) {
+            $diskType = (string) $object->diskType;
+        }else $diskType = $object->diskType=null;
+
+        if (isset($object->nodeId)) {
+            $nodeId = (int) $object->nodeId;
+        }else $nodeId = $object->nodeId=null;
+
+        if (isset($object->lastInstalledSystem)) {
+            $lastInstalledSystem = (string) $object->lastInstalledSystem;
+        }else $lastInstalledSystem = $object->lastInstalledSystem=null;
+
+        if (isset($object->primaryIPv4)) {
+           $primaryIPv4 = LinkIPv4BundleIPv4::fromStdClass((object)$object->primaryIPv4);
+        }else $primaryIPv4 = $object->primaryIPv4=null;
+
+        if (isset($object->osDisplayName)) {
+            $osDisplayName = (string) $object->osDisplayName;
+        }else $osDisplayName = $object->osDisplayName=null;
 
         return new VPS($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $serviceGroupId, $templateId, $vpsId, $vpsType, $coreCount, $memory, $diskSpace, $diskType, $nodeId, $lastInstalledSystem, $primaryIPv4, $osDisplayName);
      }

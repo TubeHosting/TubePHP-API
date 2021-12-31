@@ -9,87 +9,87 @@ require_once __DIR__ . '/../TubeAPI.php';
 class CPU
 {
 
-    private int $id;
+    private int|null $id;
 
-    private int $coreCount;
+    private int|null $coreCount;
 
-    private int $threadsPerCore;
+    private int|null $threadsPerCore;
 
-    private int $baseClock;
+    private int|null $baseClock;
 
-    private int $turboClock;
+    private int|null $turboClock;
 
-    private string $model;
+    private string|null $model;
 
-    private string $brand;
+    private string|null $brand;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCoreCount(): int
+    public function getCoreCount(): int|null
     {
          return $this->coreCount;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getThreadsPerCore(): int
+    public function getThreadsPerCore(): int|null
     {
          return $this->threadsPerCore;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getBaseClock(): int
+    public function getBaseClock(): int|null
     {
          return $this->baseClock;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getTurboClock(): int
+    public function getTurboClock(): int|null
     {
          return $this->turboClock;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getModel(): string
+    public function getModel(): string|null
     {
          return $this->model;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getBrand(): string
+    public function getBrand(): string|null
     {
          return $this->brand;
      }
 
     /**
-     * @param int $id
-     * @param int $coreCount
-     * @param int $threadsPerCore
-     * @param int $baseClock
-     * @param int $turboClock
-     * @param string $model
-     * @param string $brand
+     * @param int|null $id
+     * @param int|null $coreCount
+     * @param int|null $threadsPerCore
+     * @param int|null $baseClock
+     * @param int|null $turboClock
+     * @param string|null $model
+     * @param string|null $brand
      */
-    public function __construct(int $id, int $coreCount, int $threadsPerCore, int $baseClock, int $turboClock, string $model, string $brand)
+    public function __construct(int|null $id, int|null $coreCount, int|null $threadsPerCore, int|null $baseClock, int|null $turboClock, string|null $model, string|null $brand)
     {
         $this->id = $id;
         $this->coreCount = $coreCount;
@@ -123,13 +123,34 @@ class CPU
      */
     public static function fromStdClass(object $object):CPU
     {
-        $id = (int) $object->id;
-        $coreCount = (int) $object->coreCount;
-        $threadsPerCore = (int) $object->threadsPerCore;
-        $baseClock = (int) $object->baseClock;
-        $turboClock = (int) $object->turboClock;
-        $model = (string) $object->model;
-        $brand = (string) $object->brand;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->coreCount)) {
+            $coreCount = (int) $object->coreCount;
+        }else $coreCount = $object->coreCount=null;
+
+        if (isset($object->threadsPerCore)) {
+            $threadsPerCore = (int) $object->threadsPerCore;
+        }else $threadsPerCore = $object->threadsPerCore=null;
+
+        if (isset($object->baseClock)) {
+            $baseClock = (int) $object->baseClock;
+        }else $baseClock = $object->baseClock=null;
+
+        if (isset($object->turboClock)) {
+            $turboClock = (int) $object->turboClock;
+        }else $turboClock = $object->turboClock=null;
+
+        if (isset($object->model)) {
+            $model = (string) $object->model;
+        }else $model = $object->model=null;
+
+        if (isset($object->brand)) {
+            $brand = (string) $object->brand;
+        }else $brand = $object->brand=null;
 
         return new CPU($id, $coreCount, $threadsPerCore, $baseClock, $turboClock, $model, $brand);
      }

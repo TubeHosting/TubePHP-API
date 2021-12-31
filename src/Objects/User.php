@@ -9,153 +9,153 @@ require_once __DIR__ . '/../TubeAPI.php';
 class User
 {
 
-    private int $id;
+    private int|null $id;
 
-    private int $balance;
+    private int|null $balance;
 
-    private string $mail;
+    private string|null $mail;
 
-    private string $locale;
+    private string|null $locale;
 
-    private string $role;
+    private string|null $role;
 
-    private bool $enabled;
+    private bool|null $enabled;
 
-    private string $lastip;
+    private string|null $lastip;
 
-    private string $regDate;
+    private string|null $regDate;
 
-    private bool $verified;
+    private bool|null $verified;
 
-    private Address $address;
+    private Address|null $address;
 
-    private SupportData $supportData;
+    private SupportData|null $supportData;
 
-    private string $firstname;
+    private string|null $firstname;
 
-    private string $lastname;
+    private string|null $lastname;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getBalance(): int
+    public function getBalance(): int|null
     {
          return $this->balance;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMail(): string
+    public function getMail(): string|null
     {
          return $this->mail;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLocale(): string
+    public function getLocale(): string|null
     {
          return $this->locale;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRole(): string
+    public function getRole(): string|null
     {
          return $this->role;
      }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getEnabled(): bool
+    public function getEnabled(): bool|null
     {
          return $this->enabled;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastip(): string
+    public function getLastip(): string|null
     {
          return $this->lastip;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRegDate(): string
+    public function getRegDate(): string|null
     {
          return $this->regDate;
      }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getVerified(): bool
+    public function getVerified(): bool|null
     {
          return $this->verified;
      }
 
     /**
-     * @return Address
+     * @return Address|null
      */
-    public function getAddress(): Address
+    public function getAddress(): Address|null
     {
          return $this->address;
      }
 
     /**
-     * @return SupportData
+     * @return SupportData|null
      */
-    public function getSupportData(): SupportData
+    public function getSupportData(): SupportData|null
     {
          return $this->supportData;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFirstname(): string
+    public function getFirstname(): string|null
     {
          return $this->firstname;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLastname(): string
+    public function getLastname(): string|null
     {
          return $this->lastname;
      }
 
     /**
-     * @param int $id
-     * @param int $balance
-     * @param string $mail
-     * @param string $locale
-     * @param string $role
-     * @param bool $enabled
-     * @param string $lastip
-     * @param string $regDate
-     * @param bool $verified
-     * @param Address $address
-     * @param SupportData $supportData
-     * @param string $firstname
-     * @param string $lastname
+     * @param int|null $id
+     * @param int|null $balance
+     * @param string|null $mail
+     * @param string|null $locale
+     * @param string|null $role
+     * @param bool|null $enabled
+     * @param string|null $lastip
+     * @param string|null $regDate
+     * @param bool|null $verified
+     * @param Address|null $address
+     * @param SupportData|null $supportData
+     * @param string|null $firstname
+     * @param string|null $lastname
      */
-    public function __construct(int $id, int $balance, string $mail, string $locale, string $role, bool $enabled, string $lastip, string $regDate, bool $verified, Address $address, SupportData $supportData, string $firstname, string $lastname)
+    public function __construct(int|null $id, int|null $balance, string|null $mail, string|null $locale, string|null $role, bool|null $enabled, string|null $lastip, string|null $regDate, bool|null $verified, Address|null $address, SupportData|null $supportData, string|null $firstname, string|null $lastname)
     {
         $this->id = $id;
         $this->balance = $balance;
@@ -201,19 +201,58 @@ class User
      */
     public static function fromStdClass(object $object):User
     {
-        $id = (int) $object->id;
-        $balance = (int) $object->balance;
-        $mail = (string) $object->mail;
-        $locale = (string) $object->locale;
-        $role = (string) $object->role;
-        $enabled = (bool) $object->enabled;
-        $lastip = (string) $object->lastip;
-        $regDate = (string) $object->regDate;
-        $verified = (bool) $object->verified;
-        $address = Address::fromStdClass((object)$object->address);
-        $supportData = SupportData::fromStdClass((object)$object->supportData);
-        $firstname = (string) $object->firstname;
-        $lastname = (string) $object->lastname;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->balance)) {
+            $balance = (int) $object->balance;
+        }else $balance = $object->balance=null;
+
+        if (isset($object->mail)) {
+            $mail = (string) $object->mail;
+        }else $mail = $object->mail=null;
+
+        if (isset($object->locale)) {
+            $locale = (string) $object->locale;
+        }else $locale = $object->locale=null;
+
+        if (isset($object->role)) {
+            $role = (string) $object->role;
+        }else $role = $object->role=null;
+
+        if (isset($object->enabled)) {
+            $enabled = (bool) $object->enabled;
+        }else $enabled = $object->enabled=null;
+
+        if (isset($object->lastip)) {
+            $lastip = (string) $object->lastip;
+        }else $lastip = $object->lastip=null;
+
+        if (isset($object->regDate)) {
+            $regDate = (string) $object->regDate;
+        }else $regDate = $object->regDate=null;
+
+        if (isset($object->verified)) {
+            $verified = (bool) $object->verified;
+        }else $verified = $object->verified=null;
+
+        if (isset($object->address)) {
+           $address = Address::fromStdClass((object)$object->address);
+        }else $address = $object->address=null;
+
+        if (isset($object->supportData)) {
+           $supportData = SupportData::fromStdClass((object)$object->supportData);
+        }else $supportData = $object->supportData=null;
+
+        if (isset($object->firstname)) {
+            $firstname = (string) $object->firstname;
+        }else $firstname = $object->firstname=null;
+
+        if (isset($object->lastname)) {
+            $lastname = (string) $object->lastname;
+        }else $lastname = $object->lastname=null;
 
         return new User($id, $balance, $mail, $locale, $role, $enabled, $lastip, $regDate, $verified, $address, $supportData, $firstname, $lastname);
      }

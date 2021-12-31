@@ -9,87 +9,87 @@ require_once __DIR__ . '/../TubeAPI.php';
 class GPU
 {
 
-    private int $id;
+    private int|null $id;
 
-    private int $baseClock;
+    private int|null $baseClock;
 
-    private int $turboClock;
+    private int|null $turboClock;
 
-    private string $brand;
+    private string|null $brand;
 
-    private string $model;
+    private string|null $model;
 
-    private int $memory;
+    private int|null $memory;
 
-    private Memory $memoryObject;
+    private Memory|null $memoryObject;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getBaseClock(): int
+    public function getBaseClock(): int|null
     {
          return $this->baseClock;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getTurboClock(): int
+    public function getTurboClock(): int|null
     {
          return $this->turboClock;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getBrand(): string
+    public function getBrand(): string|null
     {
          return $this->brand;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getModel(): string
+    public function getModel(): string|null
     {
          return $this->model;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMemory(): int
+    public function getMemory(): int|null
     {
          return $this->memory;
      }
 
     /**
-     * @return Memory
+     * @return Memory|null
      */
-    public function getMemoryObject(): Memory
+    public function getMemoryObject(): Memory|null
     {
          return $this->memoryObject;
      }
 
     /**
-     * @param int $id
-     * @param int $baseClock
-     * @param int $turboClock
-     * @param string $brand
-     * @param string $model
-     * @param int $memory
-     * @param Memory $memoryObject
+     * @param int|null $id
+     * @param int|null $baseClock
+     * @param int|null $turboClock
+     * @param string|null $brand
+     * @param string|null $model
+     * @param int|null $memory
+     * @param Memory|null $memoryObject
      */
-    public function __construct(int $id, int $baseClock, int $turboClock, string $brand, string $model, int $memory, Memory $memoryObject)
+    public function __construct(int|null $id, int|null $baseClock, int|null $turboClock, string|null $brand, string|null $model, int|null $memory, Memory|null $memoryObject)
     {
         $this->id = $id;
         $this->baseClock = $baseClock;
@@ -123,13 +123,34 @@ class GPU
      */
     public static function fromStdClass(object $object):GPU
     {
-        $id = (int) $object->id;
-        $baseClock = (int) $object->baseClock;
-        $turboClock = (int) $object->turboClock;
-        $brand = (string) $object->brand;
-        $model = (string) $object->model;
-        $memory = (int) $object->memory;
-        $memoryObject = Memory::fromStdClass((object)$object->memoryObject);
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->baseClock)) {
+            $baseClock = (int) $object->baseClock;
+        }else $baseClock = $object->baseClock=null;
+
+        if (isset($object->turboClock)) {
+            $turboClock = (int) $object->turboClock;
+        }else $turboClock = $object->turboClock=null;
+
+        if (isset($object->brand)) {
+            $brand = (string) $object->brand;
+        }else $brand = $object->brand=null;
+
+        if (isset($object->model)) {
+            $model = (string) $object->model;
+        }else $model = $object->model=null;
+
+        if (isset($object->memory)) {
+            $memory = (int) $object->memory;
+        }else $memory = $object->memory=null;
+
+        if (isset($object->memoryObject)) {
+           $memoryObject = Memory::fromStdClass((object)$object->memoryObject);
+        }else $memoryObject = $object->memoryObject=null;
 
         return new GPU($id, $baseClock, $turboClock, $brand, $model, $memory, $memoryObject);
      }

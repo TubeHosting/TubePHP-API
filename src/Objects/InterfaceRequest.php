@@ -9,43 +9,43 @@ require_once __DIR__ . '/../TubeAPI.php';
 class InterfaceRequest
 {
 
-    private int $interfaceId;
+    private int|null $interfaceId;
 
-    private string $mac;
+    private string|null $mac;
 
-    private ZabbixInterface $zabbixInterface;
+    private ZabbixInterface|null $zabbixInterface;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getInterfaceId(): int
+    public function getInterfaceId(): int|null
     {
          return $this->interfaceId;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMac(): string
+    public function getMac(): string|null
     {
          return $this->mac;
      }
 
     /**
-     * @return ZabbixInterface
+     * @return ZabbixInterface|null
      */
-    public function getZabbixInterface(): ZabbixInterface
+    public function getZabbixInterface(): ZabbixInterface|null
     {
          return $this->zabbixInterface;
      }
 
     /**
-     * @param int $interfaceId
-     * @param string $mac
-     * @param ZabbixInterface $zabbixInterface
+     * @param int|null $interfaceId
+     * @param string|null $mac
+     * @param ZabbixInterface|null $zabbixInterface
      */
-    public function __construct(int $interfaceId, string $mac, ZabbixInterface $zabbixInterface)
+    public function __construct(int|null $interfaceId, string|null $mac, ZabbixInterface|null $zabbixInterface)
     {
         $this->interfaceId = $interfaceId;
         $this->mac = $mac;
@@ -71,9 +71,18 @@ class InterfaceRequest
      */
     public static function fromStdClass(object $object):InterfaceRequest
     {
-        $interfaceId = (int) $object->interfaceId;
-        $mac = (string) $object->mac;
-        $zabbixInterface = ZabbixInterface::fromStdClass((object)$object->zabbixInterface);
+
+        if (isset($object->interfaceId)) {
+            $interfaceId = (int) $object->interfaceId;
+        }else $interfaceId = $object->interfaceId=null;
+
+        if (isset($object->mac)) {
+            $mac = (string) $object->mac;
+        }else $mac = $object->mac=null;
+
+        if (isset($object->zabbixInterface)) {
+           $zabbixInterface = ZabbixInterface::fromStdClass((object)$object->zabbixInterface);
+        }else $zabbixInterface = $object->zabbixInterface=null;
 
         return new InterfaceRequest($interfaceId, $mac, $zabbixInterface);
      }

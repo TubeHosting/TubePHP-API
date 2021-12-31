@@ -9,120 +9,120 @@ require_once __DIR__ . '/../TubeAPI.php';
 class Invoice
 {
 
-    private Address $address;
+    private Address|null $address;
 
-    private Name $name;
+    private Name|null $name;
 
-    private int $id;
+    private int|null $id;
 
-    private int $userId;
+    private int|null $userId;
 
-    private string $oldInvoiceId;
+    private string|null $oldInvoiceId;
 
-    private array $items;
+    private array|null $items;
 
-    private string $time;
+    private string|null $time;
 
-    private bool $finished;
+    private bool|null $finished;
 
-    private int $paymentBundleId;
+    private int|null $paymentBundleId;
 
-    private string $taxPercentFormatted;
+    private string|null $taxPercentFormatted;
 
 
     /**
-     * @return Address
+     * @return Address|null
      */
-    public function getAddress(): Address
+    public function getAddress(): Address|null
     {
          return $this->address;
      }
 
     /**
-     * @return Name
+     * @return Name|null
      */
-    public function getName(): Name
+    public function getName(): Name|null
     {
          return $this->name;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getUserId(): int
+    public function getUserId(): int|null
     {
          return $this->userId;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getOldInvoiceId(): string
+    public function getOldInvoiceId(): string|null
     {
          return $this->oldInvoiceId;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getItems(): array
+    public function getItems(): array|null
     {
          return $this->items;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTime(): string
+    public function getTime(): string|null
     {
          return $this->time;
      }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getFinished(): bool
+    public function getFinished(): bool|null
     {
          return $this->finished;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPaymentBundleId(): int
+    public function getPaymentBundleId(): int|null
     {
          return $this->paymentBundleId;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTaxPercentFormatted(): string
+    public function getTaxPercentFormatted(): string|null
     {
          return $this->taxPercentFormatted;
      }
 
     /**
-     * @param Address $address
-     * @param Name $name
-     * @param int $id
-     * @param int $userId
-     * @param string $oldInvoiceId
-     * @param array $items
-     * @param string $time
-     * @param bool $finished
-     * @param int $paymentBundleId
-     * @param string $taxPercentFormatted
+     * @param Address|null $address
+     * @param Name|null $name
+     * @param int|null $id
+     * @param int|null $userId
+     * @param string|null $oldInvoiceId
+     * @param array|null $items
+     * @param string|null $time
+     * @param bool|null $finished
+     * @param int|null $paymentBundleId
+     * @param string|null $taxPercentFormatted
      */
-    public function __construct(Address $address, Name $name, int $id, int $userId, string $oldInvoiceId, array $items, string $time, bool $finished, int $paymentBundleId, string $taxPercentFormatted)
+    public function __construct(Address|null $address, Name|null $name, int|null $id, int|null $userId, string|null $oldInvoiceId, array|null $items, string|null $time, bool|null $finished, int|null $paymentBundleId, string|null $taxPercentFormatted)
     {
         $this->address = $address;
         $this->name = $name;
@@ -171,16 +171,46 @@ class Invoice
      */
     public static function fromStdClass(object $object):Invoice
     {
-        $address = Address::fromStdClass((object)$object->address);
-        $name = Name::fromStdClass((object)$object->name);
-        $id = (int) $object->id;
-        $userId = (int) $object->userId;
-        $oldInvoiceId = (string) $object->oldInvoiceId;
-        $items = (array) $object->items;
-        $time = (string) $object->time;
-        $finished = (bool) $object->finished;
-        $paymentBundleId = (int) $object->paymentBundleId;
-        $taxPercentFormatted = (string) $object->taxPercentFormatted;
+
+        if (isset($object->address)) {
+           $address = Address::fromStdClass((object)$object->address);
+        }else $address = $object->address=null;
+
+        if (isset($object->name)) {
+           $name = Name::fromStdClass((object)$object->name);
+        }else $name = $object->name=null;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->userId)) {
+            $userId = (int) $object->userId;
+        }else $userId = $object->userId=null;
+
+        if (isset($object->oldInvoiceId)) {
+            $oldInvoiceId = (string) $object->oldInvoiceId;
+        }else $oldInvoiceId = $object->oldInvoiceId=null;
+
+        if (isset($object->items)) {
+            $items = (array) $object->items;
+        }else $items = $object->items=null;
+
+        if (isset($object->time)) {
+            $time = (string) $object->time;
+        }else $time = $object->time=null;
+
+        if (isset($object->finished)) {
+            $finished = (bool) $object->finished;
+        }else $finished = $object->finished=null;
+
+        if (isset($object->paymentBundleId)) {
+            $paymentBundleId = (int) $object->paymentBundleId;
+        }else $paymentBundleId = $object->paymentBundleId=null;
+
+        if (isset($object->taxPercentFormatted)) {
+            $taxPercentFormatted = (string) $object->taxPercentFormatted;
+        }else $taxPercentFormatted = $object->taxPercentFormatted=null;
 
         return new Invoice($address, $name, $id, $userId, $oldInvoiceId, $items, $time, $finished, $paymentBundleId, $taxPercentFormatted);
      }

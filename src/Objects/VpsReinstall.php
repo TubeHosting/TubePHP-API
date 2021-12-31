@@ -9,43 +9,43 @@ require_once __DIR__ . '/../TubeAPI.php';
 class VpsReinstall
 {
 
-    private int $osId;
+    private int|null $osId;
 
-    private string $password;
+    private string|null $password;
 
-    private string $hostname;
+    private string|null $hostname;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getOsId(): int
+    public function getOsId(): int|null
     {
          return $this->osId;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPassword(): string
+    public function getPassword(): string|null
     {
          return $this->password;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getHostname(): string
+    public function getHostname(): string|null
     {
          return $this->hostname;
      }
 
     /**
-     * @param int $osId
-     * @param string $password
-     * @param string $hostname
+     * @param int|null $osId
+     * @param string|null $password
+     * @param string|null $hostname
      */
-    public function __construct(int $osId, string $password, string $hostname)
+    public function __construct(int|null $osId, string|null $password, string|null $hostname)
     {
         $this->osId = $osId;
         $this->password = $password;
@@ -71,9 +71,18 @@ class VpsReinstall
      */
     public static function fromStdClass(object $object):VpsReinstall
     {
-        $osId = (int) $object->osId;
-        $password = (string) $object->password;
-        $hostname = (string) $object->hostname;
+
+        if (isset($object->osId)) {
+            $osId = (int) $object->osId;
+        }else $osId = $object->osId=null;
+
+        if (isset($object->password)) {
+            $password = (string) $object->password;
+        }else $password = $object->password=null;
+
+        if (isset($object->hostname)) {
+            $hostname = (string) $object->hostname;
+        }else $hostname = $object->hostname=null;
 
         return new VpsReinstall($osId, $password, $hostname);
      }

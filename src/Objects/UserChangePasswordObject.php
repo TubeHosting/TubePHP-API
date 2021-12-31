@@ -9,32 +9,32 @@ require_once __DIR__ . '/../TubeAPI.php';
 class UserChangePasswordObject
 {
 
-    private string $password;
+    private string|null $password;
 
-    private string $oldPassword;
+    private string|null $oldPassword;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPassword(): string
+    public function getPassword(): string|null
     {
          return $this->password;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getOldPassword(): string
+    public function getOldPassword(): string|null
     {
          return $this->oldPassword;
      }
 
     /**
-     * @param string $password
-     * @param string $oldPassword
+     * @param string|null $password
+     * @param string|null $oldPassword
      */
-    public function __construct(string $password, string $oldPassword)
+    public function __construct(string|null $password, string|null $oldPassword)
     {
         $this->password = $password;
         $this->oldPassword = $oldPassword;
@@ -58,8 +58,14 @@ class UserChangePasswordObject
      */
     public static function fromStdClass(object $object):UserChangePasswordObject
     {
-        $password = (string) $object->password;
-        $oldPassword = (string) $object->oldPassword;
+
+        if (isset($object->password)) {
+            $password = (string) $object->password;
+        }else $password = $object->password=null;
+
+        if (isset($object->oldPassword)) {
+            $oldPassword = (string) $object->oldPassword;
+        }else $oldPassword = $object->oldPassword=null;
 
         return new UserChangePasswordObject($password, $oldPassword);
      }

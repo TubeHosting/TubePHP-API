@@ -9,43 +9,43 @@ require_once __DIR__ . '/../TubeAPI.php';
 class BandwidthResponse
 {
 
-    private string $time;
+    private string|null $time;
 
-    private int $out;
+    private int|null $out;
 
-    private int $in;
+    private int|null $in;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTime(): string
+    public function getTime(): string|null
     {
          return $this->time;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getOut(): int
+    public function getOut(): int|null
     {
          return $this->out;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getIn(): int
+    public function getIn(): int|null
     {
          return $this->in;
      }
 
     /**
-     * @param string $time
-     * @param int $out
-     * @param int $in
+     * @param string|null $time
+     * @param int|null $out
+     * @param int|null $in
      */
-    public function __construct(string $time, int $out, int $in)
+    public function __construct(string|null $time, int|null $out, int|null $in)
     {
         $this->time = $time;
         $this->out = $out;
@@ -71,9 +71,18 @@ class BandwidthResponse
      */
     public static function fromStdClass(object $object):BandwidthResponse
     {
-        $time = (string) $object->time;
-        $out = (int) $object->out;
-        $in = (int) $object->in;
+
+        if (isset($object->time)) {
+            $time = (string) $object->time;
+        }else $time = $object->time=null;
+
+        if (isset($object->out)) {
+            $out = (int) $object->out;
+        }else $out = $object->out=null;
+
+        if (isset($object->in)) {
+            $in = (int) $object->in;
+        }else $in = $object->in=null;
 
         return new BandwidthResponse($time, $out, $in);
      }

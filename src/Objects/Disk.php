@@ -9,65 +9,65 @@ require_once __DIR__ . '/../TubeAPI.php';
 class Disk
 {
 
-    private int $id;
+    private int|null $id;
 
-    private int $space;
+    private int|null $space;
 
-    private string $type;
+    private string|null $type;
 
-    private string $brand;
+    private string|null $brand;
 
-    private string $name;
+    private string|null $name;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getSpace(): int
+    public function getSpace(): int|null
     {
          return $this->space;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getType(): string
+    public function getType(): string|null
     {
          return $this->type;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getBrand(): string
+    public function getBrand(): string|null
     {
          return $this->brand;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): string|null
     {
          return $this->name;
      }
 
     /**
-     * @param int $id
-     * @param int $space
-     * @param string $type
-     * @param string $brand
-     * @param string $name
+     * @param int|null $id
+     * @param int|null $space
+     * @param string|null $type
+     * @param string|null $brand
+     * @param string|null $name
      */
-    public function __construct(int $id, int $space, string $type, string $brand, string $name)
+    public function __construct(int|null $id, int|null $space, string|null $type, string|null $brand, string|null $name)
     {
         $this->id = $id;
         $this->space = $space;
@@ -97,11 +97,26 @@ class Disk
      */
     public static function fromStdClass(object $object):Disk
     {
-        $id = (int) $object->id;
-        $space = (int) $object->space;
-        $type = (string) $object->type;
-        $brand = (string) $object->brand;
-        $name = (string) $object->name;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->space)) {
+            $space = (int) $object->space;
+        }else $space = $object->space=null;
+
+        if (isset($object->type)) {
+            $type = (string) $object->type;
+        }else $type = $object->type=null;
+
+        if (isset($object->brand)) {
+            $brand = (string) $object->brand;
+        }else $brand = $object->brand=null;
+
+        if (isset($object->name)) {
+            $name = (string) $object->name;
+        }else $name = $object->name=null;
 
         return new Disk($id, $space, $type, $brand, $name);
      }

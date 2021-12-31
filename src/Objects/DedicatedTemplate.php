@@ -11,76 +11,76 @@ require_once __DIR__ . '/Template.php';
 class DedicatedTemplate extends Template
 {
 
-    private string $startDate;
+    private string|null $startDate;
 
-    private int $id;
+    private int|null $id;
 
-    private int $price;
+    private int|null $price;
 
-    private string $serviceType;
+    private string|null $serviceType;
 
-    private int $dataId;
+    private int|null $dataId;
 
-    private DedicatedConfiguration $configuration;
+    private DedicatedConfiguration|null $configuration;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
          return $this->startDate;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPrice(): int
+    public function getPrice(): int|null
     {
          return $this->price;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getServiceType(): string
+    public function getServiceType(): string|null
     {
          return $this->serviceType;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDataId(): int
+    public function getDataId(): int|null
     {
          return $this->dataId;
      }
 
     /**
-     * @return DedicatedConfiguration
+     * @return DedicatedConfiguration|null
      */
-    public function getConfiguration(): DedicatedConfiguration
+    public function getConfiguration(): DedicatedConfiguration|null
     {
          return $this->configuration;
      }
 
     /**
-     * @param string $startDate
-     * @param int $id
-     * @param int $price
-     * @param string $serviceType
-     * @param int $dataId
-     * @param DedicatedConfiguration $configuration
+     * @param string|null $startDate
+     * @param int|null $id
+     * @param int|null $price
+     * @param string|null $serviceType
+     * @param int|null $dataId
+     * @param DedicatedConfiguration|null $configuration
      */
-    public function __construct(string $startDate, int $id, int $price, string $serviceType, int $dataId, DedicatedConfiguration $configuration)
+    public function __construct(string|null $startDate, int|null $id, int|null $price, string|null $serviceType, int|null $dataId, DedicatedConfiguration|null $configuration)
     {
         $this->startDate = $startDate;
         $this->id = $id;
@@ -112,12 +112,30 @@ class DedicatedTemplate extends Template
      */
     public static function fromStdClass(object $object):DedicatedTemplate
     {
-        $startDate = (string) $object->startDate;
-        $id = (int) $object->id;
-        $price = (int) $object->price;
-        $serviceType = (string) $object->serviceType;
-        $dataId = (int) $object->dataId;
-        $configuration = DedicatedConfiguration::fromStdClass((object)$object->configuration);
+
+        if (isset($object->startDate)) {
+            $startDate = (string) $object->startDate;
+        }else $startDate = $object->startDate=null;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->price)) {
+            $price = (int) $object->price;
+        }else $price = $object->price=null;
+
+        if (isset($object->serviceType)) {
+            $serviceType = (string) $object->serviceType;
+        }else $serviceType = $object->serviceType=null;
+
+        if (isset($object->dataId)) {
+            $dataId = (int) $object->dataId;
+        }else $dataId = $object->dataId=null;
+
+        if (isset($object->configuration)) {
+           $configuration = DedicatedConfiguration::fromStdClass((object)$object->configuration);
+        }else $configuration = $object->configuration=null;
 
         return new DedicatedTemplate($startDate, $id, $price, $serviceType, $dataId, $configuration);
      }

@@ -9,65 +9,65 @@ require_once __DIR__ . '/../TubeAPI.php';
 class SingleServiceGroupData
 {
 
-    private int $id;
+    private int|null $id;
 
-    private ServiceGroupMetaData $metaData;
+    private ServiceGroupMetaData|null $metaData;
 
-    private ServiceGroupData $groupData;
+    private ServiceGroupData|null $groupData;
 
-    private string $startDate;
+    private string|null $startDate;
 
-    private string $endDate;
+    private string|null $endDate;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return ServiceGroupMetaData
+     * @return ServiceGroupMetaData|null
      */
-    public function getMetaData(): ServiceGroupMetaData
+    public function getMetaData(): ServiceGroupMetaData|null
     {
          return $this->metaData;
      }
 
     /**
-     * @return ServiceGroupData
+     * @return ServiceGroupData|null
      */
-    public function getGroupData(): ServiceGroupData
+    public function getGroupData(): ServiceGroupData|null
     {
          return $this->groupData;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
          return $this->startDate;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEndDate(): string
+    public function getEndDate(): string|null
     {
          return $this->endDate;
      }
 
     /**
-     * @param int $id
-     * @param ServiceGroupMetaData $metaData
-     * @param ServiceGroupData $groupData
-     * @param string $startDate
-     * @param string $endDate
+     * @param int|null $id
+     * @param ServiceGroupMetaData|null $metaData
+     * @param ServiceGroupData|null $groupData
+     * @param string|null $startDate
+     * @param string|null $endDate
      */
-    public function __construct(int $id, ServiceGroupMetaData $metaData, ServiceGroupData $groupData, string $startDate, string $endDate)
+    public function __construct(int|null $id, ServiceGroupMetaData|null $metaData, ServiceGroupData|null $groupData, string|null $startDate, string|null $endDate)
     {
         $this->id = $id;
         $this->metaData = $metaData;
@@ -97,11 +97,26 @@ class SingleServiceGroupData
      */
     public static function fromStdClass(object $object):SingleServiceGroupData
     {
-        $id = (int) $object->id;
-        $metaData = ServiceGroupMetaData::fromStdClass((object)$object->metaData);
-        $groupData = ServiceGroupData::fromStdClass((object)$object->groupData);
-        $startDate = (string) $object->startDate;
-        $endDate = (string) $object->endDate;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->metaData)) {
+           $metaData = ServiceGroupMetaData::fromStdClass((object)$object->metaData);
+        }else $metaData = $object->metaData=null;
+
+        if (isset($object->groupData)) {
+           $groupData = ServiceGroupData::fromStdClass((object)$object->groupData);
+        }else $groupData = $object->groupData=null;
+
+        if (isset($object->startDate)) {
+            $startDate = (string) $object->startDate;
+        }else $startDate = $object->startDate=null;
+
+        if (isset($object->endDate)) {
+            $endDate = (string) $object->endDate;
+        }else $endDate = $object->endDate=null;
 
         return new SingleServiceGroupData($id, $metaData, $groupData, $startDate, $endDate);
      }

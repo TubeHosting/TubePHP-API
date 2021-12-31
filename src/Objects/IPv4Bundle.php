@@ -11,175 +11,175 @@ require_once __DIR__ . '/Service.php';
 class IPv4Bundle extends Service
 {
 
-    private int $dataId;
+    private int|null $dataId;
 
-    private int $id;
+    private int|null $id;
 
-    private string $startDate;
+    private string|null $startDate;
 
-    private string $endDate;
+    private string|null $endDate;
 
-    private int $price;
+    private int|null $price;
 
-    private string $priceType;
+    private string|null $priceType;
 
-    private string $deactivatedOn;
+    private string|null $deactivatedOn;
 
-    private string $description;
+    private string|null $description;
 
-    private string $runtime;
+    private string|null $runtime;
 
-    private string $name;
+    private string|null $name;
 
-    private string $type;
+    private string|null $type;
 
-    private int $priceObject;
+    private int|null $priceObject;
 
-    private int $serviceGroupId;
+    private int|null $serviceGroupId;
 
-    private int $templateId;
+    private int|null $templateId;
 
-    private array $ips;
+    private array|null $ips;
 
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDataId(): int
+    public function getDataId(): int|null
     {
          return $this->dataId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
          return $this->startDate;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEndDate(): string
+    public function getEndDate(): string|null
     {
          return $this->endDate;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPrice(): int
+    public function getPrice(): int|null
     {
          return $this->price;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPriceType(): string
+    public function getPriceType(): string|null
     {
          return $this->priceType;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDeactivatedOn(): string
+    public function getDeactivatedOn(): string|null
     {
          return $this->deactivatedOn;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
          return $this->description;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRuntime(): string
+    public function getRuntime(): string|null
     {
          return $this->runtime;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): string|null
     {
          return $this->name;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getType(): string
+    public function getType(): string|null
     {
          return $this->type;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPriceObject(): int
+    public function getPriceObject(): int|null
     {
          return $this->priceObject;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getServiceGroupId(): int
+    public function getServiceGroupId(): int|null
     {
          return $this->serviceGroupId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getTemplateId(): int
+    public function getTemplateId(): int|null
     {
          return $this->templateId;
      }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getIps(): array
+    public function getIps(): array|null
     {
          return $this->ips;
      }
 
     /**
-     * @param int $dataId
-     * @param int $id
-     * @param string $startDate
-     * @param string $endDate
-     * @param int $price
-     * @param string $priceType
-     * @param string $deactivatedOn
-     * @param string $description
-     * @param string $runtime
-     * @param string $name
-     * @param string $type
-     * @param int $priceObject
-     * @param int $serviceGroupId
-     * @param int $templateId
-     * @param array $ips
+     * @param int|null $dataId
+     * @param int|null $id
+     * @param string|null $startDate
+     * @param string|null $endDate
+     * @param int|null $price
+     * @param string|null $priceType
+     * @param string|null $deactivatedOn
+     * @param string|null $description
+     * @param string|null $runtime
+     * @param string|null $name
+     * @param string|null $type
+     * @param int|null $priceObject
+     * @param int|null $serviceGroupId
+     * @param int|null $templateId
+     * @param array|null $ips
      */
-    public function __construct(int $dataId, int $id, string $startDate, string $endDate, int $price, string $priceType, string $deactivatedOn, string $description, string $runtime, string $name, string $type, int $priceObject, int $serviceGroupId, int $templateId, array $ips)
+    public function __construct(int|null $dataId, int|null $id, string|null $startDate, string|null $endDate, int|null $price, string|null $priceType, string|null $deactivatedOn, string|null $description, string|null $runtime, string|null $name, string|null $type, int|null $priceObject, int|null $serviceGroupId, int|null $templateId, array|null $ips)
     {
         $this->dataId = $dataId;
         $this->id = $id;
@@ -238,21 +238,66 @@ class IPv4Bundle extends Service
      */
     public static function fromStdClass(object $object):IPv4Bundle
     {
-        $dataId = (int) $object->dataId;
-        $id = (int) $object->id;
-        $startDate = (string) $object->startDate;
-        $endDate = (string) $object->endDate;
-        $price = (int) $object->price;
-        $priceType = (string) $object->priceType;
-        $deactivatedOn = (string) $object->deactivatedOn;
-        $description = (string) $object->description;
-        $runtime = (string) $object->runtime;
-        $name = (string) $object->name;
-        $type = (string) $object->type;
-        $priceObject = (int) $object->priceObject;
-        $serviceGroupId = (int) $object->serviceGroupId;
-        $templateId = (int) $object->templateId;
-        $ips = (array) $object->ips;
+
+        if (isset($object->dataId)) {
+            $dataId = (int) $object->dataId;
+        }else $dataId = $object->dataId=null;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->startDate)) {
+            $startDate = (string) $object->startDate;
+        }else $startDate = $object->startDate=null;
+
+        if (isset($object->endDate)) {
+            $endDate = (string) $object->endDate;
+        }else $endDate = $object->endDate=null;
+
+        if (isset($object->price)) {
+            $price = (int) $object->price;
+        }else $price = $object->price=null;
+
+        if (isset($object->priceType)) {
+            $priceType = (string) $object->priceType;
+        }else $priceType = $object->priceType=null;
+
+        if (isset($object->deactivatedOn)) {
+            $deactivatedOn = (string) $object->deactivatedOn;
+        }else $deactivatedOn = $object->deactivatedOn=null;
+
+        if (isset($object->description)) {
+            $description = (string) $object->description;
+        }else $description = $object->description=null;
+
+        if (isset($object->runtime)) {
+            $runtime = (string) $object->runtime;
+        }else $runtime = $object->runtime=null;
+
+        if (isset($object->name)) {
+            $name = (string) $object->name;
+        }else $name = $object->name=null;
+
+        if (isset($object->type)) {
+            $type = (string) $object->type;
+        }else $type = $object->type=null;
+
+        if (isset($object->priceObject)) {
+            $priceObject = (int) $object->priceObject;
+        }else $priceObject = $object->priceObject=null;
+
+        if (isset($object->serviceGroupId)) {
+            $serviceGroupId = (int) $object->serviceGroupId;
+        }else $serviceGroupId = $object->serviceGroupId=null;
+
+        if (isset($object->templateId)) {
+            $templateId = (int) $object->templateId;
+        }else $templateId = $object->templateId=null;
+
+        if (isset($object->ips)) {
+            $ips = (array) $object->ips;
+        }else $ips = $object->ips=null;
 
         return new IPv4Bundle($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $serviceGroupId, $templateId, $ips);
      }

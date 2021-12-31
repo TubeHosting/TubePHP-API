@@ -11,87 +11,87 @@ require_once __DIR__ . '/Template.php';
 class Ipv4BundleTemplate extends Template
 {
 
-    private string $startDate;
+    private string|null $startDate;
 
-    private int $id;
+    private int|null $id;
 
-    private int $price;
+    private int|null $price;
 
-    private string $serviceType;
+    private string|null $serviceType;
 
-    private int $dataId;
+    private int|null $dataId;
 
-    private int $count;
+    private int|null $count;
 
-    private bool $primary;
+    private bool|null $primary;
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
          return $this->startDate;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): int|null
     {
          return $this->id;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPrice(): int
+    public function getPrice(): int|null
     {
          return $this->price;
      }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getServiceType(): string
+    public function getServiceType(): string|null
     {
          return $this->serviceType;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getDataId(): int
+    public function getDataId(): int|null
     {
          return $this->dataId;
      }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCount(): int
+    public function getCount(): int|null
     {
          return $this->count;
      }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getPrimary(): bool
+    public function getPrimary(): bool|null
     {
          return $this->primary;
      }
 
     /**
-     * @param string $startDate
-     * @param int $id
-     * @param int $price
-     * @param string $serviceType
-     * @param int $dataId
-     * @param int $count
-     * @param bool $primary
+     * @param string|null $startDate
+     * @param int|null $id
+     * @param int|null $price
+     * @param string|null $serviceType
+     * @param int|null $dataId
+     * @param int|null $count
+     * @param bool|null $primary
      */
-    public function __construct(string $startDate, int $id, int $price, string $serviceType, int $dataId, int $count, bool $primary)
+    public function __construct(string|null $startDate, int|null $id, int|null $price, string|null $serviceType, int|null $dataId, int|null $count, bool|null $primary)
     {
         $this->startDate = $startDate;
         $this->id = $id;
@@ -125,13 +125,34 @@ class Ipv4BundleTemplate extends Template
      */
     public static function fromStdClass(object $object):Ipv4BundleTemplate
     {
-        $startDate = (string) $object->startDate;
-        $id = (int) $object->id;
-        $price = (int) $object->price;
-        $serviceType = (string) $object->serviceType;
-        $dataId = (int) $object->dataId;
-        $count = (int) $object->count;
-        $primary = (bool) $object->primary;
+
+        if (isset($object->startDate)) {
+            $startDate = (string) $object->startDate;
+        }else $startDate = $object->startDate=null;
+
+        if (isset($object->id)) {
+            $id = (int) $object->id;
+        }else $id = $object->id=null;
+
+        if (isset($object->price)) {
+            $price = (int) $object->price;
+        }else $price = $object->price=null;
+
+        if (isset($object->serviceType)) {
+            $serviceType = (string) $object->serviceType;
+        }else $serviceType = $object->serviceType=null;
+
+        if (isset($object->dataId)) {
+            $dataId = (int) $object->dataId;
+        }else $dataId = $object->dataId=null;
+
+        if (isset($object->count)) {
+            $count = (int) $object->count;
+        }else $count = $object->count=null;
+
+        if (isset($object->primary)) {
+            $primary = (bool) $object->primary;
+        }else $primary = $object->primary=null;
 
         return new Ipv4BundleTemplate($startDate, $id, $price, $serviceType, $dataId, $count, $primary);
      }
