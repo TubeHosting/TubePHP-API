@@ -18,7 +18,8 @@
   "autoload": {
     "psr-4": {
       "TubeAPI\\": "src/",
-      "TubeAPI\\Objects\\": "src/Objects/"
+      "TubeAPI\\Objects\\": "src/Objects/",
+      "TubeAPI\\Exceptions\\": "src/Exceptions/"
     }
   }
 }

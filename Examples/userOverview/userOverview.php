@@ -1,5 +1,6 @@
 <?php
 use TubeAPI\Objects;
+use TubeAPI\Exceptions;
 
 require 'vendor/autoload.php'; //Load the Composer autoloader
 
@@ -7,9 +8,9 @@ $password = "Password123";
 $mail = "E-Mail@Address.tld";
 
 try {
-    //login using the credentials of an existing tube-hosting.de account (the login returns a new user object)
+    //login using the credentials of an existing tube-hosting.de account (the login returns a new JWTTokenResponse)
     $user = Objects\User::login(new Objects\AuthenticationLoginData($mail, $password)); 
-    $user = $user->getUserData(); //get user data, nicely packed into the "User" object
+    $user = $user->getUserData(); //get user data out of the JWTTokenResponse, nicely packed into the "User" object
 
     //print different information about the user
     print "\n\nUser Overview: " . $user->getLastname() . ", " . $user->getFirstname()."\n";

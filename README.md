@@ -15,16 +15,18 @@ Here is how they are ordered:
 | Tags:   | [service-controller](https://doc.api.tube-hosting.com/#/service-controller) | [service-group-controller](https://doc.api.tube-hosting.com/#/service-group-controller) | [ip-controller](https://doc.api.tube-hosting.com/#/ip-controller) | [ip-bundle-controller](https://doc.api.tube-hosting.com/#/ip-bundle-controller) | [admin-dedicated-repository](https://doc.api.tube-hosting.com/#/admin-dedicated-repository) | [vps-controller](https://doc.api.tube-hosting.com/#/vps-controller) | [authentication-controller](https://doc.api.tube-hosting.com/#/authentication-controller)  | [payment-controller](https://doc.api.tube-hosting.com/#/payment-controller) | [template-controlle](https://doc.api.tube-hosting.com/#/template-controller) | [dedicated-controller](https://doc.api.tube-hosting.com/#/dedicated-controller)  |
 | Tags:   |                                                                             |                                                                                         |                                                                   |                                                                                 |                                                                                             |                                                                     | [me-controller](https://doc.api.tube-hosting.com/#/me-controller)                          | [order-controller](https://doc.api.tube-hosting.com/#/order-controller)     |                                                                              |                                                                                  |
 
+Also take a look in the [Documentation.md](Documentation.md) 
+
 ## Installation
 
 The Tube-Hosting PHP API is available over [Packagist](https://packagist.org/packages/tubehosting/tubephp-api), and an installation in your project is recommended via [Composer](https://getcomposer.org). <br>
 After installing [Composer in your project](https://getcomposer.org/download/), just add this line to your `composer.json` file.
 ```json
-"tubehosting/tubephp-api": "^0.2-beta"
+"tubehosting/tubephp-api": "^0.3-beta"
 ```
 or run 
 ```shell
-$ composer require tubehosting/tubephp-api:0.2-beta
+$ composer require tubehosting/tubephp-api:0.3-beta
 ```
 in your shell. 
 
@@ -38,6 +40,7 @@ Here we got a pretty simple example where we log in into a Tube-Hosting Account,
 ```phpt
 <?php
 use TubeAPI\Objects; 
+use TubeAPI\Exceptions;
 
 require 'vendor/autoload.php'; //Load the Composer autoloader
 
@@ -45,13 +48,13 @@ $password = "Password123";
 $mail = "E-Mail@Address.tld"; 
 
 try {
-    //login using the credentials of an existing tube-hosting.de account (the login returns a new user object)
+    //login using the credentials of an existing tube-hosting.de account (the login returns a new JWTTokenResponse)
     $user = Objects\User::login(new Objects\AuthenticationLoginData($mail, $password)); 
     
     $vps = Objects\VPS::getServerById(488); //get a VPS by the id, returns new VPS object
     $vpsStatus = Objects\VPS::getServerStatusById(488); //get status information of VPS, returns new VpsStatus Object
 
-    //print different information about the VPS
+    //print different information about the VPS, provided in the VPS and VpsStatus Object 
     print "Overview ".$vps->getVpsType()." - ".$vps->getName() . "\n"; 
     print "Node: " . $vps->getNodeId() . "\n"; 
     print "IP: " . $vps->getPrimaryIPv4()->getIpv4()->getIpv4() ."\n"; 
@@ -63,8 +66,11 @@ try {
     print "Bought on: " . $vps->getStartDate() . "\n";
     print "Paid until: " . $vps->getRuntime() . "\n";
 
-}catch (\Exception $e) {
+}catch (Exceptions\RequestException $e) {
     print $e->getMessage() . "\n";
+    //you can also get more detailed information (like http status code, response, curl_getInfo, etc.)
+    //for example with the http status code: 
+    print "Status code: " . $e->getHttpStatusCode() . "\n";
 }
 ```
 

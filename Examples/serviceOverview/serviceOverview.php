@@ -1,5 +1,6 @@
 <?php
 use TubeAPI\Objects;
+use TubeAPI\Exceptions;
 
 require 'vendor/autoload.php'; //Load the Composer autoloader
 
@@ -7,7 +8,7 @@ $password = "Password123";
 $mail = "E-Mail@Address.tld";
 
 try {
-    //login using the credentials of an existing tube-hosting.de account (the login returns a new user object)
+    //login using the credentials of an existing tube-hosting.de account (the login returns a new JWTTokenResponse)
     $user = Objects\User::login(new Objects\AuthenticationLoginData($mail, $password));
 
     $serviceGroups = Objects\ServiceGroupData::getAllServiceGroupsFromUser(false); //get all service groups of user
