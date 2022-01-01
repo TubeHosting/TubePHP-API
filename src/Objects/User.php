@@ -3,8 +3,10 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
 class User
 {
@@ -262,7 +264,7 @@ class User
      * @param string $token
      * @param string $string
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function resetPassword(string $token,string $string):string 
     {
@@ -274,7 +276,7 @@ class User
     /**
      * @param AuthenticationRegisterData $authenticationRegisterData
      * @return  JWTTokenResponse
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function register(AuthenticationRegisterData $authenticationRegisterData): JWTTokenResponse 
     {
@@ -286,7 +288,7 @@ class User
     /**
      * @param SupportData $supportData
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function changeSupportData(SupportData $supportData):string 
     {
@@ -298,7 +300,7 @@ class User
     /**
      * @param UserChangePasswordObject $userChangePasswordObject
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function changePassword(UserChangePasswordObject $userChangePasswordObject):string 
     {
@@ -310,7 +312,7 @@ class User
     /**
      * @param User $user
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function changeNames(User $user):string 
     {
@@ -322,7 +324,7 @@ class User
     /**
      * @param User $user
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function changeMail(User $user):string 
     {
@@ -334,7 +336,7 @@ class User
     /**
      * @param RequestBodyLocale $requestBodyLocale
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function changeLocale(RequestBodyLocale $requestBodyLocale):string 
     {
@@ -346,7 +348,7 @@ class User
     /**
      * @param Address $address
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function changeAddress(Address $address):string 
     {
@@ -358,7 +360,7 @@ class User
     /**
      * @param AuthenticationLoginData $authenticationLoginData
      * @return  JWTTokenResponse
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function login(AuthenticationLoginData $authenticationLoginData): JWTTokenResponse 
     {
@@ -371,7 +373,7 @@ class User
     /**
      * @param string $email
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function requestVerification(string $email):string 
     {
@@ -383,7 +385,7 @@ class User
     /**
      * @param string $email
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function requestPasswordReset(string $email):string 
     {
@@ -394,7 +396,7 @@ class User
 
     /**
      * @return  User
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function meInfo(): User 
     {

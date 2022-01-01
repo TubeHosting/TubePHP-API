@@ -3,8 +3,10 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
 class Template
 {
@@ -124,7 +126,7 @@ class Template
 
     /**
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getTemplateGroups():array 
     {

@@ -3,8 +3,10 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
 class Service
 {
@@ -279,7 +281,7 @@ class Service
      * @param int $serviceId
      * @param DescriptionBody $descriptionBody
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function changeDescription(int $serviceId,DescriptionBody $descriptionBody):string 
     {
@@ -291,7 +293,7 @@ class Service
     /**
      * @param int $serviceId
      * @return object
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getServiceByID(int $serviceId):object 
     {

@@ -3,8 +3,10 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
 class IPv4
 {
@@ -160,7 +162,7 @@ class IPv4
      * @param string $ipV4
      * @param IpRDNSBody $ipRDNSBody
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function changeRDNS(string $ipV4,IpRDNSBody $ipRDNSBody):string 
     {
@@ -173,7 +175,7 @@ class IPv4
      * @param string $ipV4
      * @param DescriptionBody $descriptionBody
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function changeIPv4Description(string $ipV4,DescriptionBody $descriptionBody):string 
     {
@@ -185,7 +187,7 @@ class IPv4
     /**
      * @param string $ipV4
      * @return  CombahtonDDoSIPStatus
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getDDoSModeStatus(string $ipV4): CombahtonDDoSIPStatus 
     {
@@ -196,7 +198,7 @@ class IPv4
      * @param string $ipV4
      * @param IPDDoSStatus $iPDDoSStatus
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function changeDDoSModeStatus(string $ipV4,IPDDoSStatus $iPDDoSStatus):string 
     {
@@ -208,7 +210,7 @@ class IPv4
     /**
      * @param string $ipV4
      * @return  LinkIPv4BundleIPv4
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getIPLinkBundle(string $ipV4): LinkIPv4BundleIPv4 
     {
@@ -220,7 +222,7 @@ class IPv4
     /**
      * @param string $ipV4
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getDDoSIncidentsOnIPv4(string $ipV4):array 
     {

@@ -3,8 +3,10 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
 class InterfaceRequest
 {

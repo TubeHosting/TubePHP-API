@@ -3,8 +3,10 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
 class DedicatedInstanceRequest
 {
@@ -356,7 +358,7 @@ class DedicatedInstanceRequest
     /**
      * @param DedicatedInstanceRequest $dedicatedInstanceRequest
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function createInstance(DedicatedInstanceRequest $dedicatedInstanceRequest):string 
     {

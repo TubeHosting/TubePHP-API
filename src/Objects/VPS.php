@@ -3,12 +3,14 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
-require_once __DIR__ . '/Service.php';
 
-class VPS extends Service
+
+class VPS
 {
 
     private int|null $dataId;
@@ -450,7 +452,7 @@ class VPS extends Service
     /**
      * @param int $serviceId
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function stopServerById(int $serviceId):string 
     {
@@ -462,7 +464,7 @@ class VPS extends Service
     /**
      * @param int $serviceId
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function startServerById(int $serviceId):string 
     {
@@ -474,7 +476,7 @@ class VPS extends Service
     /**
      * @param int $serviceId
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function shutdownServerById(int $serviceId):string 
     {
@@ -486,7 +488,7 @@ class VPS extends Service
     /**
      * @param int $serviceId
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function restartServerById(int $serviceId):string 
     {
@@ -499,7 +501,7 @@ class VPS extends Service
      * @param int $serviceId
      * @param VpsReinstall $vpsReinstall
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function reinstallServerById(int $serviceId,VpsReinstall $vpsReinstall):string 
     {
@@ -511,7 +513,7 @@ class VPS extends Service
     /**
      * @param int $serviceId
      * @return  VPS
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getServerById(int $serviceId): VPS 
     {
@@ -523,7 +525,7 @@ class VPS extends Service
     /**
      * @param int $serviceId
      * @return  VpsStatus
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getServerStatusById(int $serviceId): VpsStatus 
     {
@@ -536,7 +538,7 @@ class VPS extends Service
      * @param int $serviceId
      * @param string $timeFrame
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getServerStatisticsById(int $serviceId, string $timeFrame = ""):array 
     {
@@ -555,7 +557,7 @@ class VPS extends Service
 
     /**
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getAvailableLxcOs():array 
     {
@@ -574,7 +576,7 @@ class VPS extends Service
 
     /**
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getAvailableKvmOs():array 
     {

@@ -3,12 +3,14 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
-require_once __DIR__ . '/Service.php';
 
-class Dedicated extends Service
+
+class Dedicated
 {
 
     private int|null $dataId;
@@ -370,7 +372,7 @@ class Dedicated extends Service
      * @param int $interval
      * @param int $count
      * @return  DedicatedStatisticsResult
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getServiceByID_1(int $id, string $start = "", string $end = "", int $interval = 0, int $count = 0): DedicatedStatisticsResult 
     {

@@ -3,8 +3,10 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
 class Payment
 {
@@ -227,7 +229,7 @@ class Payment
     /**
      * @param BalanceSendingRequest $balanceSendingRequest
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function sendBalance(BalanceSendingRequest $balanceSendingRequest):string 
     {
@@ -239,7 +241,7 @@ class Payment
     /**
      * @param BalanceChargeRequestBody $balanceChargeRequestBody
      * @return  PaymentResponse
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function chargeBalance(BalanceChargeRequestBody $balanceChargeRequestBody): PaymentResponse 
     {
@@ -251,7 +253,7 @@ class Payment
     /**
      * @param int $templateGroupId
      * @return  SingleServiceGroupData
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function orderByTemplateGroup(int $templateGroupId): SingleServiceGroupData 
     {
@@ -264,7 +266,7 @@ class Payment
      * @param int $page
      * @param int $size
      * @return  SearchResultPaymentBundle
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getPaymentBundles(int $page = 0, int $size = 0): SearchResultPaymentBundle 
     {
@@ -275,7 +277,7 @@ class Payment
 
     /**
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getInvoices():array 
     {
@@ -295,7 +297,7 @@ class Payment
     /**
      * @param int $invoiceId
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getInvoicePDF(int $invoiceId):array 
     {
@@ -307,7 +309,7 @@ class Payment
     /**
      * @param int $invoiceId
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getInvoiceMail(int $invoiceId):string 
     {
@@ -318,7 +320,7 @@ class Payment
 
     /**
      * @return  SearchResultBalanceChange
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getBalanceChanges(): SearchResultBalanceChange 
     {

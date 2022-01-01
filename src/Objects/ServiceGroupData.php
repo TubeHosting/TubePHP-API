@@ -3,8 +3,10 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
 class ServiceGroupData
 {
@@ -297,7 +299,7 @@ class ServiceGroupData
     /**
      * @param int $serviceGroupId
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function acceptSecondaryOwner(int $serviceGroupId):string 
     {
@@ -309,7 +311,7 @@ class ServiceGroupData
     /**
      * @param int $serviceGroupId
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function extendServiceGroup(int $serviceGroupId):string 
     {
@@ -321,7 +323,7 @@ class ServiceGroupData
     /**
      * @param int $serviceGroupId
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getSecondaryOwners(int $serviceGroupId):array 
     {
@@ -340,7 +342,7 @@ class ServiceGroupData
      * @param int $serviceGroupId
      * @param array $array
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function addSecondaryOwners(int $serviceGroupId,array $array):array 
     {
@@ -353,7 +355,7 @@ class ServiceGroupData
      * @param int $serviceGroupId
      * @param int $serviceId
      * @return object
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getServiceByServiceGroupByID(int $serviceGroupId, int $serviceId):object 
     {
@@ -369,7 +371,7 @@ class ServiceGroupData
     /**
      * @param int $serviceGroupId
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getDDoSIncidentsOfServiceGroup(int $serviceGroupId):array 
     {
@@ -389,7 +391,7 @@ class ServiceGroupData
     /**
      * @param int $serviceGroupId
      * @return  SingleServiceGroupData
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getServiceGroupByID(int $serviceGroupId): SingleServiceGroupData 
     {
@@ -400,7 +402,7 @@ class ServiceGroupData
 
     /**
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getInvites():array 
     {
@@ -420,7 +422,7 @@ class ServiceGroupData
     /**
      * @param bool $primaryOnly
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getAllServiceGroupsFromUser(bool $primaryOnly = null):array 
     {
@@ -441,7 +443,7 @@ class ServiceGroupData
      * @param int $serviceGroupId
      * @param int $userId
      * @return string
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function deleteSecondaryOwners(int $serviceGroupId, int $userId):string 
     {

@@ -3,12 +3,14 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
-require_once __DIR__ . '/Service.php';
 
-class IPv4Bundle extends Service
+
+class IPv4Bundle
 {
 
     private int|null $dataId;
@@ -306,7 +308,7 @@ class IPv4Bundle extends Service
     /**
      * @param int $serviceId
      * @return array
-     * @throws \Exception
+     * @throws Exceptions\RequestException
      */
     public static function getDDoSIncidentsOnBundle(int $serviceId):array 
     {

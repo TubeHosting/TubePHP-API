@@ -3,12 +3,14 @@
 namespace TubeAPI\Objects;
 
 use TubeAPI\TubeAPI;
+use TubeAPI\Exceptions\RequestException;
 
 require_once __DIR__ . '/../TubeAPI.php';
+require_once __DIR__ . '/../Exceptions/RequestException.php';
 
-require_once __DIR__ . '/Template.php';
 
-class Ipv4BundleTemplate extends Template
+
+class Ipv4BundleTemplate
 {
 
     private string|null $startDate;
