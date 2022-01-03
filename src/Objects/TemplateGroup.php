@@ -11,93 +11,93 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class TemplateGroup
 {
 
-    private string|null $comment;
+    private $comment;
 
-    private bool|null $available;
+    private $available;
 
-    private int|null $id;
+    private $id;
 
-    private string|null $name;
+    private $name;
 
-    private int|null $runtime;
+    private $runtime;
 
-    private string|null $startDate;
+    private $startDate;
 
-    private array|null $templates;
+    private $templates;
 
-    private int|null $price;
+    private $price;
 
-    private int|null $dataId;
+    private $dataId;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getComment(): string|null
+    public function getComment(): ?string
     {
          return $this->comment;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getAvailable(): bool|null
+    public function getAvailable(): ?bool
     {
          return $this->available;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
          return $this->name;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getRuntime(): int|null
+    public function getRuntime(): ?int
     {
          return $this->runtime;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getTemplates(): array|null
+    public function getTemplates(): ?array
     {
          return $this->templates;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPrice(): int|null
+    public function getPrice(): ?int
     {
          return $this->price;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDataId(): int|null
+    public function getDataId(): ?int
     {
          return $this->dataId;
      }
@@ -113,7 +113,7 @@ class TemplateGroup
      * @param int|null $price
      * @param int|null $dataId
      */
-    public function __construct(string|null $comment, bool|null $available, int|null $id, string|null $name, int|null $runtime, string|null $startDate, array|null $templates, int|null $price, int|null $dataId)
+    public function __construct(?string $comment, ?bool $available, ?int $id, ?string $name, ?int $runtime, ?string $startDate, ?array $templates, ?int $price, ?int $dataId)
     {
         $this->comment = $comment;
         $this->available = $available;
@@ -148,7 +148,7 @@ class TemplateGroup
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

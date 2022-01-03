@@ -11,43 +11,43 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class SimpleUser
 {
 
-    private int|null $id;
+    private $id;
 
-    private string|null $mail;
+    private $mail;
 
-    private string|null $firstname;
+    private $firstname;
 
-    private string|null $lastname;
+    private $lastname;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getMail(): string|null
+    public function getMail(): ?string
     {
          return $this->mail;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getFirstname(): string|null
+    public function getFirstname(): ?string
     {
          return $this->firstname;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLastname(): string|null
+    public function getLastname(): ?string
     {
          return $this->lastname;
      }
@@ -58,7 +58,7 @@ class SimpleUser
      * @param string|null $firstname
      * @param string|null $lastname
      */
-    public function __construct(int|null $id, string|null $mail, string|null $firstname, string|null $lastname)
+    public function __construct(?int $id, ?string $mail, ?string $firstname, ?string $lastname)
     {
         $this->id = $id;
         $this->mail = $mail;
@@ -69,7 +69,7 @@ class SimpleUser
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

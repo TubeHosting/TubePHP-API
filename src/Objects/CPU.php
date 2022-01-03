@@ -11,73 +11,73 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class CPU
 {
 
-    private int|null $id;
+    private $id;
 
-    private int|null $coreCount;
+    private $coreCount;
 
-    private int|null $threadsPerCore;
+    private $threadsPerCore;
 
-    private int|null $baseClock;
+    private $baseClock;
 
-    private int|null $turboClock;
+    private $turboClock;
 
-    private string|null $model;
+    private $model;
 
-    private string|null $brand;
+    private $brand;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getCoreCount(): int|null
+    public function getCoreCount(): ?int
     {
          return $this->coreCount;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getThreadsPerCore(): int|null
+    public function getThreadsPerCore(): ?int
     {
          return $this->threadsPerCore;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getBaseClock(): int|null
+    public function getBaseClock(): ?int
     {
          return $this->baseClock;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getTurboClock(): int|null
+    public function getTurboClock(): ?int
     {
          return $this->turboClock;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getModel(): string|null
+    public function getModel(): ?string
     {
          return $this->model;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getBrand(): string|null
+    public function getBrand(): ?string
     {
          return $this->brand;
      }
@@ -91,7 +91,7 @@ class CPU
      * @param string|null $model
      * @param string|null $brand
      */
-    public function __construct(int|null $id, int|null $coreCount, int|null $threadsPerCore, int|null $baseClock, int|null $turboClock, string|null $model, string|null $brand)
+    public function __construct(?int $id, ?int $coreCount, ?int $threadsPerCore, ?int $baseClock, ?int $turboClock, ?string $model, ?string $brand)
     {
         $this->id = $id;
         $this->coreCount = $coreCount;
@@ -105,7 +105,7 @@ class CPU
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

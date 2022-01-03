@@ -11,93 +11,93 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class ServiceGroupMetaData
 {
 
-    private int|null $id;
+    private $id;
 
-    private string|null $status;
+    private $status;
 
-    private string|null $deletionDate;
+    private $deletionDate;
 
-    private string|null $deactivationDate;
+    private $deactivationDate;
 
-    private string|null $runtime;
+    private $runtime;
 
-    private string|null $startDate;
+    private $startDate;
 
-    private SimpleUser|null $owner;
+    private $owner;
 
-    private string|null $endDate;
+    private $endDate;
 
-    private int|null $position;
+    private $position;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStatus(): string|null
+    public function getStatus(): ?string
     {
          return $this->status;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDeletionDate(): string|null
+    public function getDeletionDate(): ?string
     {
          return $this->deletionDate;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDeactivationDate(): string|null
+    public function getDeactivationDate(): ?string
     {
          return $this->deactivationDate;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getRuntime(): string|null
+    public function getRuntime(): ?string
     {
          return $this->runtime;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return SimpleUser|null
+     * @return ?SimpleUser
      */
-    public function getOwner(): SimpleUser|null
+    public function getOwner(): ?SimpleUser
     {
          return $this->owner;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getEndDate(): string|null
+    public function getEndDate(): ?string
     {
          return $this->endDate;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPosition(): int|null
+    public function getPosition(): ?int
     {
          return $this->position;
      }
@@ -113,7 +113,7 @@ class ServiceGroupMetaData
      * @param string|null $endDate
      * @param int|null $position
      */
-    public function __construct(int|null $id, string|null $status, string|null $deletionDate, string|null $deactivationDate, string|null $runtime, string|null $startDate, SimpleUser|null $owner, string|null $endDate, int|null $position)
+    public function __construct(?int $id, ?string $status, ?string $deletionDate, ?string $deactivationDate, ?string $runtime, ?string $startDate, ?SimpleUser $owner, ?string $endDate, ?int $position)
     {
         $this->id = $id;
         $this->status = $status;
@@ -129,7 +129,7 @@ class ServiceGroupMetaData
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

@@ -11,23 +11,23 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DiskLinkRequest
 {
 
-    private int|null $diskBay;
+    private $diskBay;
 
-    private int|null $diskId;
+    private $diskId;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDiskBay(): int|null
+    public function getDiskBay(): ?int
     {
          return $this->diskBay;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDiskId(): int|null
+    public function getDiskId(): ?int
     {
          return $this->diskId;
      }
@@ -36,7 +36,7 @@ class DiskLinkRequest
      * @param int|null $diskBay
      * @param int|null $diskId
      */
-    public function __construct(int|null $diskBay, int|null $diskId)
+    public function __construct(?int $diskBay, ?int $diskId)
     {
         $this->diskBay = $diskBay;
         $this->diskId = $diskId;
@@ -45,7 +45,7 @@ class DiskLinkRequest
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

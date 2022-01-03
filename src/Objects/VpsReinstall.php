@@ -11,33 +11,33 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class VpsReinstall
 {
 
-    private int|null $osId;
+    private $osId;
 
-    private string|null $password;
+    private $password;
 
-    private string|null $hostname;
+    private $hostname;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getOsId(): int|null
+    public function getOsId(): ?int
     {
          return $this->osId;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getPassword(): string|null
+    public function getPassword(): ?string
     {
          return $this->password;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getHostname(): string|null
+    public function getHostname(): ?string
     {
          return $this->hostname;
      }
@@ -47,7 +47,7 @@ class VpsReinstall
      * @param string|null $password
      * @param string|null $hostname
      */
-    public function __construct(int|null $osId, string|null $password, string|null $hostname)
+    public function __construct(?int $osId, ?string $password, ?string $hostname)
     {
         $this->osId = $osId;
         $this->password = $password;
@@ -57,7 +57,7 @@ class VpsReinstall
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

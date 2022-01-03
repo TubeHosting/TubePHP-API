@@ -11,103 +11,103 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DedicatedUpgrade
 {
 
-    private int|null $id;
+    private $id;
 
-    private int|null $gpuCount;
+    private $gpuCount;
 
-    private int|null $memory;
+    private $memory;
 
-    private string|null $memoryType;
+    private $memoryType;
 
-    private int|null $cpuCount;
+    private $cpuCount;
 
-    private CPU|null $cpu;
+    private $cpu;
 
-    private GPU|null $gpu;
+    private $gpu;
 
-    private array|null $addedDisks;
+    private $addedDisks;
 
-    private array|null $removedDisks;
+    private $removedDisks;
 
-    private int|null $price;
+    private $price;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getGpuCount(): int|null
+    public function getGpuCount(): ?int
     {
          return $this->gpuCount;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getMemory(): int|null
+    public function getMemory(): ?int
     {
          return $this->memory;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getMemoryType(): string|null
+    public function getMemoryType(): ?string
     {
          return $this->memoryType;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getCpuCount(): int|null
+    public function getCpuCount(): ?int
     {
          return $this->cpuCount;
      }
 
     /**
-     * @return CPU|null
+     * @return ?CPU
      */
-    public function getCpu(): CPU|null
+    public function getCpu(): ?CPU
     {
          return $this->cpu;
      }
 
     /**
-     * @return GPU|null
+     * @return ?GPU
      */
-    public function getGpu(): GPU|null
+    public function getGpu(): ?GPU
     {
          return $this->gpu;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getAddedDisks(): array|null
+    public function getAddedDisks(): ?array
     {
          return $this->addedDisks;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getRemovedDisks(): array|null
+    public function getRemovedDisks(): ?array
     {
          return $this->removedDisks;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPrice(): int|null
+    public function getPrice(): ?int
     {
          return $this->price;
      }
@@ -124,7 +124,7 @@ class DedicatedUpgrade
      * @param array|null $removedDisks
      * @param int|null $price
      */
-    public function __construct(int|null $id, int|null $gpuCount, int|null $memory, string|null $memoryType, int|null $cpuCount, CPU|null $cpu, GPU|null $gpu, array|null $addedDisks, array|null $removedDisks, int|null $price)
+    public function __construct(?int $id, ?int $gpuCount, ?int $memory, ?string $memoryType, ?int $cpuCount, ?CPU $cpu, ?GPU $gpu, ?array $addedDisks, ?array $removedDisks, ?int $price)
     {
         $this->id = $id;
         $this->gpuCount = $gpuCount;
@@ -159,7 +159,7 @@ class DedicatedUpgrade
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

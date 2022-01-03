@@ -11,83 +11,83 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class CombahtonDDoSAttack
 {
 
-    private string|null $time;
+    private $time;
 
-    private string|null $ip;
+    private $ip;
 
-    private string|null $id;
+    private $id;
 
-    private int|null $packets;
+    private $packets;
 
-    private string|null $type;
+    private $type;
 
-    private int|null $traffic;
+    private $traffic;
 
-    private string|null $avg_pktsize;
+    private $avg_pktsize;
 
-    private string|null $analyzer;
+    private $analyzer;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getTime(): string|null
+    public function getTime(): ?string
     {
          return $this->time;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getIp(): string|null
+    public function getIp(): ?string
     {
          return $this->ip;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getId(): string|null
+    public function getId(): ?string
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPackets(): int|null
+    public function getPackets(): ?int
     {
          return $this->packets;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getType(): string|null
+    public function getType(): ?string
     {
          return $this->type;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getTraffic(): int|null
+    public function getTraffic(): ?int
     {
          return $this->traffic;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getAvg_pktsize(): string|null
+    public function getAvg_pktsize(): ?string
     {
          return $this->avg_pktsize;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getAnalyzer(): string|null
+    public function getAnalyzer(): ?string
     {
          return $this->analyzer;
      }
@@ -102,7 +102,7 @@ class CombahtonDDoSAttack
      * @param string|null $avg_pktsize
      * @param string|null $analyzer
      */
-    public function __construct(string|null $time, string|null $ip, string|null $id, int|null $packets, string|null $type, int|null $traffic, string|null $avg_pktsize, string|null $analyzer)
+    public function __construct(?string $time, ?string $ip, ?string $id, ?int $packets, ?string $type, ?int $traffic, ?string $avg_pktsize, ?string $analyzer)
     {
         $this->time = $time;
         $this->ip = $ip;
@@ -117,7 +117,7 @@ class CombahtonDDoSAttack
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

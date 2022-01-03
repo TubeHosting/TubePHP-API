@@ -11,9 +11,9 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class BalanceChargeRequestBody
 {
 
-    private int $amount;
+    private $amount;
 
-    private string $method;
+    private $method;
 
 
     /**
@@ -45,7 +45,7 @@ class BalanceChargeRequestBody
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

@@ -11,33 +11,33 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class SupportData
 {
 
-    private string|null $discordName;
+    private $discordName;
 
-    private string|null $skypeName;
+    private $skypeName;
 
-    private string|null $phoneNumber;
+    private $phoneNumber;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDiscordName(): string|null
+    public function getDiscordName(): ?string
     {
          return $this->discordName;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getSkypeName(): string|null
+    public function getSkypeName(): ?string
     {
          return $this->skypeName;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getPhoneNumber(): string|null
+    public function getPhoneNumber(): ?string
     {
          return $this->phoneNumber;
      }
@@ -47,7 +47,7 @@ class SupportData
      * @param string|null $skypeName
      * @param string|null $phoneNumber
      */
-    public function __construct(string|null $discordName, string|null $skypeName, string|null $phoneNumber)
+    public function __construct(?string $discordName, ?string $skypeName, ?string $phoneNumber)
     {
         $this->discordName = $discordName;
         $this->skypeName = $skypeName;
@@ -57,7 +57,7 @@ class SupportData
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

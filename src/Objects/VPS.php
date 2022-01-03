@@ -13,243 +13,243 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class VPS
 {
 
-    private int|null $dataId;
+    private $dataId;
 
-    private int|null $id;
+    private $id;
 
-    private string|null $startDate;
+    private $startDate;
 
-    private string|null $endDate;
+    private $endDate;
 
-    private int|null $price;
+    private $price;
 
-    private string|null $priceType;
+    private $priceType;
 
-    private string|null $deactivatedOn;
+    private $deactivatedOn;
 
-    private string|null $description;
+    private $description;
 
-    private string|null $runtime;
+    private $runtime;
 
-    private string|null $name;
+    private $name;
 
-    private string|null $type;
+    private $type;
 
-    private int|null $priceObject;
+    private $priceObject;
 
-    private int|null $serviceGroupId;
+    private $serviceGroupId;
 
-    private int|null $templateId;
+    private $templateId;
 
-    private int|null $vpsId;
+    private $vpsId;
 
-    private string|null $vpsType;
+    private $vpsType;
 
-    private int|null $coreCount;
+    private $coreCount;
 
-    private int|null $memory;
+    private $memory;
 
-    private int|null $diskSpace;
+    private $diskSpace;
 
-    private string|null $diskType;
+    private $diskType;
 
-    private int|null $nodeId;
+    private $nodeId;
 
-    private string|null $lastInstalledSystem;
+    private $lastInstalledSystem;
 
-    private LinkIPv4BundleIPv4|null $primaryIPv4;
+    private $primaryIPv4;
 
-    private string|null $osDisplayName;
+    private $osDisplayName;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDataId(): int|null
+    public function getDataId(): ?int
     {
          return $this->dataId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getEndDate(): string|null
+    public function getEndDate(): ?string
     {
          return $this->endDate;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPrice(): int|null
+    public function getPrice(): ?int
     {
          return $this->price;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getPriceType(): string|null
+    public function getPriceType(): ?string
     {
          return $this->priceType;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDeactivatedOn(): string|null
+    public function getDeactivatedOn(): ?string
     {
          return $this->deactivatedOn;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
          return $this->description;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getRuntime(): string|null
+    public function getRuntime(): ?string
     {
          return $this->runtime;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
          return $this->name;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getType(): string|null
+    public function getType(): ?string
     {
          return $this->type;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPriceObject(): int|null
+    public function getPriceObject(): ?int
     {
          return $this->priceObject;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getServiceGroupId(): int|null
+    public function getServiceGroupId(): ?int
     {
          return $this->serviceGroupId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getTemplateId(): int|null
+    public function getTemplateId(): ?int
     {
          return $this->templateId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getVpsId(): int|null
+    public function getVpsId(): ?int
     {
          return $this->vpsId;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getVpsType(): string|null
+    public function getVpsType(): ?string
     {
          return $this->vpsType;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getCoreCount(): int|null
+    public function getCoreCount(): ?int
     {
          return $this->coreCount;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getMemory(): int|null
+    public function getMemory(): ?int
     {
          return $this->memory;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDiskSpace(): int|null
+    public function getDiskSpace(): ?int
     {
          return $this->diskSpace;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDiskType(): string|null
+    public function getDiskType(): ?string
     {
          return $this->diskType;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getNodeId(): int|null
+    public function getNodeId(): ?int
     {
          return $this->nodeId;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLastInstalledSystem(): string|null
+    public function getLastInstalledSystem(): ?string
     {
          return $this->lastInstalledSystem;
      }
 
     /**
-     * @return LinkIPv4BundleIPv4|null
+     * @return ?LinkIPv4BundleIPv4
      */
-    public function getPrimaryIPv4(): LinkIPv4BundleIPv4|null
+    public function getPrimaryIPv4(): ?LinkIPv4BundleIPv4
     {
          return $this->primaryIPv4;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getOsDisplayName(): string|null
+    public function getOsDisplayName(): ?string
     {
          return $this->osDisplayName;
      }
@@ -280,7 +280,7 @@ class VPS
      * @param LinkIPv4BundleIPv4|null $primaryIPv4
      * @param string|null $osDisplayName
      */
-    public function __construct(int|null $dataId, int|null $id, string|null $startDate, string|null $endDate, int|null $price, string|null $priceType, string|null $deactivatedOn, string|null $description, string|null $runtime, string|null $name, string|null $type, int|null $priceObject, int|null $serviceGroupId, int|null $templateId, int|null $vpsId, string|null $vpsType, int|null $coreCount, int|null $memory, int|null $diskSpace, string|null $diskType, int|null $nodeId, string|null $lastInstalledSystem, LinkIPv4BundleIPv4|null $primaryIPv4, string|null $osDisplayName)
+    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $priceObject, ?int $serviceGroupId, ?int $templateId, ?int $vpsId, ?string $vpsType, ?int $coreCount, ?int $memory, ?int $diskSpace, ?string $diskType, ?int $nodeId, ?string $lastInstalledSystem, ?LinkIPv4BundleIPv4 $primaryIPv4, ?string $osDisplayName)
     {
         $this->dataId = $dataId;
         $this->id = $id;
@@ -311,7 +311,7 @@ class VPS
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [
@@ -452,7 +452,7 @@ class VPS
     /**
      * @param int $serviceId
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function stopServerById(int $serviceId):string 
     {
@@ -464,19 +464,18 @@ class VPS
     /**
      * @param int $serviceId
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function startServerById(int $serviceId):string 
     {
-        $result = TubeAPI::request('POST', '/vps/'.$serviceId.'/start', null, TubeAPI::$token);
-        return $result;
+        return TubeAPI::request('POST', '/vps/'.$serviceId.'/start', null, TubeAPI::$token);
     }
 
 
     /**
      * @param int $serviceId
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function shutdownServerById(int $serviceId):string 
     {
@@ -488,7 +487,7 @@ class VPS
     /**
      * @param int $serviceId
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function restartServerById(int $serviceId):string 
     {
@@ -501,7 +500,7 @@ class VPS
      * @param int $serviceId
      * @param VpsReinstall $vpsReinstall
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function reinstallServerById(int $serviceId,VpsReinstall $vpsReinstall):string 
     {
@@ -513,7 +512,7 @@ class VPS
     /**
      * @param int $serviceId
      * @return  VPS
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getServerById(int $serviceId): VPS 
     {
@@ -525,7 +524,7 @@ class VPS
     /**
      * @param int $serviceId
      * @return  VpsStatus
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getServerStatusById(int $serviceId): VpsStatus 
     {
@@ -538,7 +537,7 @@ class VPS
      * @param int $serviceId
      * @param string $timeFrame
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getServerStatisticsById(int $serviceId, string $timeFrame = ""):array 
     {
@@ -557,7 +556,7 @@ class VPS
 
     /**
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getAvailableLxcOs():array 
     {
@@ -576,7 +575,8 @@ class VPS
 
     /**
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
+     * @link https://tube-hosting.com/123
      */
     public static function getAvailableKvmOs():array 
     {

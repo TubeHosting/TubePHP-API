@@ -11,53 +11,53 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class Template
 {
 
-    private string|null $startDate;
+    private $startDate;
 
-    private int|null $id;
+    private $id;
 
-    private int|null $price;
+    private $price;
 
-    private string|null $serviceType;
+    private $serviceType;
 
-    private int|null $dataId;
+    private $dataId;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPrice(): int|null
+    public function getPrice(): ?int
     {
          return $this->price;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getServiceType(): string|null
+    public function getServiceType(): ?string
     {
          return $this->serviceType;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDataId(): int|null
+    public function getDataId(): ?int
     {
          return $this->dataId;
      }
@@ -69,7 +69,7 @@ class Template
      * @param string|null $serviceType
      * @param int|null $dataId
      */
-    public function __construct(string|null $startDate, int|null $id, int|null $price, string|null $serviceType, int|null $dataId)
+    public function __construct(?string $startDate, ?int $id, ?int $price, ?string $serviceType, ?int $dataId)
     {
         $this->startDate = $startDate;
         $this->id = $id;
@@ -81,7 +81,7 @@ class Template
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [
@@ -126,7 +126,7 @@ class Template
 
     /**
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getTemplateGroups():array 
     {

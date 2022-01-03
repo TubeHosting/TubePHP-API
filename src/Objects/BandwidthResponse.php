@@ -11,33 +11,33 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class BandwidthResponse
 {
 
-    private string|null $time;
+    private $time;
 
-    private int|null $out;
+    private $out;
 
-    private int|null $in;
+    private $in;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getTime(): string|null
+    public function getTime(): ?string
     {
          return $this->time;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getOut(): int|null
+    public function getOut(): ?int
     {
          return $this->out;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getIn(): int|null
+    public function getIn(): ?int
     {
          return $this->in;
      }
@@ -47,7 +47,7 @@ class BandwidthResponse
      * @param int|null $out
      * @param int|null $in
      */
-    public function __construct(string|null $time, int|null $out, int|null $in)
+    public function __construct(?string $time, ?int $out, ?int $in)
     {
         $this->time = $time;
         $this->out = $out;
@@ -57,7 +57,7 @@ class BandwidthResponse
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

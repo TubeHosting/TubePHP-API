@@ -11,13 +11,13 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class Memory
 {
 
-    private int|null $B;
+    private $B;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getB(): int|null
+    public function getB(): ?int
     {
          return $this->B;
      }
@@ -25,7 +25,7 @@ class Memory
     /**
      * @param int|null $B
      */
-    public function __construct(int|null $B)
+    public function __construct(?int $B)
     {
         $this->B = $B;
     }
@@ -33,7 +33,7 @@ class Memory
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

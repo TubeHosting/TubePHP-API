@@ -11,53 +11,53 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class SingleServiceGroupData
 {
 
-    private int|null $id;
+    private $id;
 
-    private ServiceGroupMetaData|null $metaData;
+    private $metaData;
 
-    private ServiceGroupData|null $groupData;
+    private $groupData;
 
-    private string|null $startDate;
+    private $startDate;
 
-    private string|null $endDate;
+    private $endDate;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return ServiceGroupMetaData|null
+     * @return ?ServiceGroupMetaData
      */
-    public function getMetaData(): ServiceGroupMetaData|null
+    public function getMetaData(): ?ServiceGroupMetaData
     {
          return $this->metaData;
      }
 
     /**
-     * @return ServiceGroupData|null
+     * @return ?ServiceGroupData
      */
-    public function getGroupData(): ServiceGroupData|null
+    public function getGroupData(): ?ServiceGroupData
     {
          return $this->groupData;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getEndDate(): string|null
+    public function getEndDate(): ?string
     {
          return $this->endDate;
      }
@@ -69,7 +69,7 @@ class SingleServiceGroupData
      * @param string|null $startDate
      * @param string|null $endDate
      */
-    public function __construct(int|null $id, ServiceGroupMetaData|null $metaData, ServiceGroupData|null $groupData, string|null $startDate, string|null $endDate)
+    public function __construct(?int $id, ?ServiceGroupMetaData $metaData, ?ServiceGroupData $groupData, ?string $startDate, ?string $endDate)
     {
         $this->id = $id;
         $this->metaData = $metaData;
@@ -81,7 +81,7 @@ class SingleServiceGroupData
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

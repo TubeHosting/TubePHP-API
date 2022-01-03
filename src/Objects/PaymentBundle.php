@@ -11,73 +11,73 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class PaymentBundle
 {
 
-    private int|null $id;
+    private $id;
 
-    private BalanceChange|null $balanceChange;
+    private $balanceChange;
 
-    private Payment|null $payment;
+    private $payment;
 
-    private Invoice|null $invoice;
+    private $invoice;
 
-    private string|null $time;
+    private $time;
 
-    private int|null $amount;
+    private $amount;
 
-    private int|null $userId;
+    private $userId;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return BalanceChange|null
+     * @return ?BalanceChange
      */
-    public function getBalanceChange(): BalanceChange|null
+    public function getBalanceChange(): ?BalanceChange
     {
          return $this->balanceChange;
      }
 
     /**
-     * @return Payment|null
+     * @return ?Payment
      */
-    public function getPayment(): Payment|null
+    public function getPayment(): ?Payment
     {
          return $this->payment;
      }
 
     /**
-     * @return Invoice|null
+     * @return ?Invoice
      */
-    public function getInvoice(): Invoice|null
+    public function getInvoice(): ?Invoice
     {
          return $this->invoice;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getTime(): string|null
+    public function getTime(): ?string
     {
          return $this->time;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getAmount(): int|null
+    public function getAmount(): ?int
     {
          return $this->amount;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getUserId(): int|null
+    public function getUserId(): ?int
     {
          return $this->userId;
      }
@@ -91,7 +91,7 @@ class PaymentBundle
      * @param int|null $amount
      * @param int|null $userId
      */
-    public function __construct(int|null $id, BalanceChange|null $balanceChange, Payment|null $payment, Invoice|null $invoice, string|null $time, int|null $amount, int|null $userId)
+    public function __construct(?int $id, ?BalanceChange $balanceChange, ?Payment $payment, ?Invoice $invoice, ?string $time, ?int $amount, ?int $userId)
     {
         $this->id = $id;
         $this->balanceChange = $balanceChange;
@@ -105,7 +105,7 @@ class PaymentBundle
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

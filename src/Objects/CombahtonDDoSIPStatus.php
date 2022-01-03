@@ -11,33 +11,33 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class CombahtonDDoSIPStatus
 {
 
-    private string|null $layer4;
+    private $layer4;
 
-    private string|null $layer7;
+    private $layer7;
 
-    private string|null $last_change;
+    private $last_change;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLayer4(): string|null
+    public function getLayer4(): ?string
     {
          return $this->layer4;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLayer7(): string|null
+    public function getLayer7(): ?string
     {
          return $this->layer7;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLast_change(): string|null
+    public function getLast_change(): ?string
     {
          return $this->last_change;
      }
@@ -47,7 +47,7 @@ class CombahtonDDoSIPStatus
      * @param string|null $layer7
      * @param string|null $last_change
      */
-    public function __construct(string|null $layer4, string|null $layer7, string|null $last_change)
+    public function __construct(?string $layer4, ?string $layer7, ?string $last_change)
     {
         $this->layer4 = $layer4;
         $this->layer7 = $layer7;
@@ -57,7 +57,7 @@ class CombahtonDDoSIPStatus
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

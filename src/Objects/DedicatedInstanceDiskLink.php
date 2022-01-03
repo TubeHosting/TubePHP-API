@@ -11,33 +11,33 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DedicatedInstanceDiskLink
 {
 
-    private int|null $id;
+    private $id;
 
-    private Disk|null $disk;
+    private $disk;
 
-    private int|null $diskBay;
+    private $diskBay;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return Disk|null
+     * @return ?Disk
      */
-    public function getDisk(): Disk|null
+    public function getDisk(): ?Disk
     {
          return $this->disk;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDiskBay(): int|null
+    public function getDiskBay(): ?int
     {
          return $this->diskBay;
      }
@@ -47,7 +47,7 @@ class DedicatedInstanceDiskLink
      * @param Disk|null $disk
      * @param int|null $diskBay
      */
-    public function __construct(int|null $id, Disk|null $disk, int|null $diskBay)
+    public function __construct(?int $id, ?Disk $disk, ?int $diskBay)
     {
         $this->id = $id;
         $this->disk = $disk;
@@ -57,7 +57,7 @@ class DedicatedInstanceDiskLink
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

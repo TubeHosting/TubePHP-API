@@ -11,43 +11,43 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DedicatedInterfacesAggregated
 {
 
-    private array|null $interfaces;
+    private $interfaces;
 
-    private int|null $interfaceId;
+    private $interfaceId;
 
-    private int|null $aggregatedId;
+    private $aggregatedId;
 
-    private int|null $instanceId;
+    private $instanceId;
 
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getInterfaces(): array|null
+    public function getInterfaces(): ?array
     {
          return $this->interfaces;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getInterfaceId(): int|null
+    public function getInterfaceId(): ?int
     {
          return $this->interfaceId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getAggregatedId(): int|null
+    public function getAggregatedId(): ?int
     {
          return $this->aggregatedId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getInstanceId(): int|null
+    public function getInstanceId(): ?int
     {
          return $this->instanceId;
      }
@@ -58,7 +58,7 @@ class DedicatedInterfacesAggregated
      * @param int|null $aggregatedId
      * @param int|null $instanceId
      */
-    public function __construct(array|null $interfaces, int|null $interfaceId, int|null $aggregatedId, int|null $instanceId)
+    public function __construct(?array $interfaces, ?int $interfaceId, ?int $aggregatedId, ?int $instanceId)
     {
         $this->interfaces = $interfaces;
         $this->interfaceId = $interfaceId;
@@ -69,7 +69,7 @@ class DedicatedInterfacesAggregated
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

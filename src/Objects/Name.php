@@ -11,23 +11,23 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class Name
 {
 
-    private string|null $firstname;
+    private $firstname;
 
-    private string|null $lastname;
+    private $lastname;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getFirstname(): string|null
+    public function getFirstname(): ?string
     {
          return $this->firstname;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLastname(): string|null
+    public function getLastname(): ?string
     {
          return $this->lastname;
      }
@@ -36,7 +36,7 @@ class Name
      * @param string|null $firstname
      * @param string|null $lastname
      */
-    public function __construct(string|null $firstname, string|null $lastname)
+    public function __construct(?string $firstname, ?string $lastname)
     {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -45,7 +45,7 @@ class Name
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

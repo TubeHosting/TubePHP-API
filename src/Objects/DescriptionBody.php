@@ -11,7 +11,7 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DescriptionBody
 {
 
-    private string $description;
+    private $description;
 
 
     /**
@@ -33,7 +33,7 @@ class DescriptionBody
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

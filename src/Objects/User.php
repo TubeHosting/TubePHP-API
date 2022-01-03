@@ -11,133 +11,133 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class User
 {
 
-    private int|null $id;
+    private $id;
 
-    private int|null $balance;
+    private $balance;
 
-    private string|null $mail;
+    private $mail;
 
-    private string|null $locale;
+    private $locale;
 
-    private string|null $role;
+    private $role;
 
-    private bool|null $enabled;
+    private $enabled;
 
-    private string|null $lastip;
+    private $lastip;
 
-    private string|null $regDate;
+    private $regDate;
 
-    private bool|null $verified;
+    private $verified;
 
-    private Address|null $address;
+    private $address;
 
-    private SupportData|null $supportData;
+    private $supportData;
 
-    private string|null $firstname;
+    private $firstname;
 
-    private string|null $lastname;
+    private $lastname;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getBalance(): int|null
+    public function getBalance(): ?int
     {
          return $this->balance;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getMail(): string|null
+    public function getMail(): ?string
     {
          return $this->mail;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLocale(): string|null
+    public function getLocale(): ?string
     {
          return $this->locale;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getRole(): string|null
+    public function getRole(): ?string
     {
          return $this->role;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getEnabled(): bool|null
+    public function getEnabled(): ?bool
     {
          return $this->enabled;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLastip(): string|null
+    public function getLastip(): ?string
     {
          return $this->lastip;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getRegDate(): string|null
+    public function getRegDate(): ?string
     {
          return $this->regDate;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getVerified(): bool|null
+    public function getVerified(): ?bool
     {
          return $this->verified;
      }
 
     /**
-     * @return Address|null
+     * @return ?Address
      */
-    public function getAddress(): Address|null
+    public function getAddress(): ?Address
     {
          return $this->address;
      }
 
     /**
-     * @return SupportData|null
+     * @return ?SupportData
      */
-    public function getSupportData(): SupportData|null
+    public function getSupportData(): ?SupportData
     {
          return $this->supportData;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getFirstname(): string|null
+    public function getFirstname(): ?string
     {
          return $this->firstname;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLastname(): string|null
+    public function getLastname(): ?string
     {
          return $this->lastname;
      }
@@ -157,7 +157,7 @@ class User
      * @param string|null $firstname
      * @param string|null $lastname
      */
-    public function __construct(int|null $id, int|null $balance, string|null $mail, string|null $locale, string|null $role, bool|null $enabled, string|null $lastip, string|null $regDate, bool|null $verified, Address|null $address, SupportData|null $supportData, string|null $firstname, string|null $lastname)
+    public function __construct(?int $id, ?int $balance, ?string $mail, ?string $locale, ?string $role, ?bool $enabled, ?string $lastip, ?string $regDate, ?bool $verified, ?Address $address, ?SupportData $supportData, ?string $firstname, ?string $lastname)
     {
         $this->id = $id;
         $this->balance = $balance;
@@ -177,7 +177,7 @@ class User
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [
@@ -264,7 +264,7 @@ class User
      * @param string $token
      * @param string $string
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function resetPassword(string $token,string $string):string 
     {
@@ -276,7 +276,7 @@ class User
     /**
      * @param AuthenticationRegisterData $authenticationRegisterData
      * @return  JWTTokenResponse
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function register(AuthenticationRegisterData $authenticationRegisterData): JWTTokenResponse 
     {
@@ -288,7 +288,7 @@ class User
     /**
      * @param SupportData $supportData
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function changeSupportData(SupportData $supportData):string 
     {
@@ -300,7 +300,7 @@ class User
     /**
      * @param UserChangePasswordObject $userChangePasswordObject
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function changePassword(UserChangePasswordObject $userChangePasswordObject):string 
     {
@@ -312,7 +312,7 @@ class User
     /**
      * @param User $user
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function changeNames(User $user):string 
     {
@@ -324,7 +324,7 @@ class User
     /**
      * @param User $user
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function changeMail(User $user):string 
     {
@@ -336,7 +336,7 @@ class User
     /**
      * @param RequestBodyLocale $requestBodyLocale
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function changeLocale(RequestBodyLocale $requestBodyLocale):string 
     {
@@ -348,7 +348,7 @@ class User
     /**
      * @param Address $address
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function changeAddress(Address $address):string 
     {
@@ -360,7 +360,7 @@ class User
     /**
      * @param AuthenticationLoginData $authenticationLoginData
      * @return  JWTTokenResponse
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function login(AuthenticationLoginData $authenticationLoginData): JWTTokenResponse 
     {
@@ -373,7 +373,7 @@ class User
     /**
      * @param string $email
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function requestVerification(string $email):string 
     {
@@ -385,7 +385,7 @@ class User
     /**
      * @param string $email
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function requestPasswordReset(string $email):string 
     {
@@ -396,7 +396,7 @@ class User
 
     /**
      * @return  User
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function meInfo(): User 
     {

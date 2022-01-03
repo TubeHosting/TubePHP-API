@@ -11,63 +11,63 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class AuthenticationRegisterData
 {
 
-    private string|null $firstname;
+    private $firstname;
 
-    private string|null $lastname;
+    private $lastname;
 
-    private string|null $mail;
+    private $mail;
 
-    private string|null $password;
+    private $password;
 
-    private string|null $locale;
+    private $locale;
 
-    private object|null $localeAsObject;
+    private $localeAsObject;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getFirstname(): string|null
+    public function getFirstname(): ?string
     {
          return $this->firstname;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLastname(): string|null
+    public function getLastname(): ?string
     {
          return $this->lastname;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getMail(): string|null
+    public function getMail(): ?string
     {
          return $this->mail;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getPassword(): string|null
+    public function getPassword(): ?string
     {
          return $this->password;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLocale(): string|null
+    public function getLocale(): ?string
     {
          return $this->locale;
      }
 
     /**
-     * @return object|null
+     * @return ?object
      */
-    public function getLocaleAsObject(): object|null
+    public function getLocaleAsObject(): ?object
     {
          return $this->localeAsObject;
      }
@@ -80,7 +80,7 @@ class AuthenticationRegisterData
      * @param string|null $locale
      * @param object|null $localeAsObject
      */
-    public function __construct(string|null $firstname, string|null $lastname, string|null $mail, string|null $password, string|null $locale, object|null $localeAsObject)
+    public function __construct(?string $firstname, ?string $lastname, ?string $mail, ?string $password, ?string $locale, ?object $localeAsObject)
     {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -93,7 +93,7 @@ class AuthenticationRegisterData
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

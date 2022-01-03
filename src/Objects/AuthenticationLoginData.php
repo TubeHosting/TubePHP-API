@@ -11,23 +11,23 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class AuthenticationLoginData
 {
 
-    private string|null $mail;
+    private $mail;
 
-    private string|null $password;
+    private $password;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getMail(): string|null
+    public function getMail(): ?string
     {
          return $this->mail;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getPassword(): string|null
+    public function getPassword(): ?string
     {
          return $this->password;
      }
@@ -36,7 +36,7 @@ class AuthenticationLoginData
      * @param string|null $mail
      * @param string|null $password
      */
-    public function __construct(string|null $mail, string|null $password)
+    public function __construct(?string $mail, ?string $password)
     {
         $this->mail = $mail;
         $this->password = $password;
@@ -45,7 +45,7 @@ class AuthenticationLoginData
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

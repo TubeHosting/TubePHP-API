@@ -11,23 +11,23 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DedicatedStatisticsResult
 {
 
-    private object|null $bundled;
+    private $bundled;
 
-    private object|null $interfaces;
+    private $interfaces;
 
 
     /**
-     * @return object|null
+     * @return ?object
      */
-    public function getBundled(): object|null
+    public function getBundled(): ?object
     {
          return $this->bundled;
      }
 
     /**
-     * @return object|null
+     * @return ?object
      */
-    public function getInterfaces(): object|null
+    public function getInterfaces(): ?object
     {
          return $this->interfaces;
      }
@@ -36,7 +36,7 @@ class DedicatedStatisticsResult
      * @param object|null $bundled
      * @param object|null $interfaces
      */
-    public function __construct(object|null $bundled, object|null $interfaces)
+    public function __construct(?object $bundled, ?object $interfaces)
     {
         $this->bundled = $bundled;
         $this->interfaces = $interfaces;
@@ -45,7 +45,7 @@ class DedicatedStatisticsResult
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

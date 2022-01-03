@@ -11,53 +11,53 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class Disk
 {
 
-    private int|null $id;
+    private $id;
 
-    private int|null $space;
+    private $space;
 
-    private string|null $type;
+    private $type;
 
-    private string|null $brand;
+    private $brand;
 
-    private string|null $name;
+    private $name;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getSpace(): int|null
+    public function getSpace(): ?int
     {
          return $this->space;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getType(): string|null
+    public function getType(): ?string
     {
          return $this->type;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getBrand(): string|null
+    public function getBrand(): ?string
     {
          return $this->brand;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
          return $this->name;
      }
@@ -69,7 +69,7 @@ class Disk
      * @param string|null $brand
      * @param string|null $name
      */
-    public function __construct(int|null $id, int|null $space, string|null $type, string|null $brand, string|null $name)
+    public function __construct(?int $id, ?int $space, ?string $type, ?string $brand, ?string $name)
     {
         $this->id = $id;
         $this->space = $space;
@@ -81,7 +81,7 @@ class Disk
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

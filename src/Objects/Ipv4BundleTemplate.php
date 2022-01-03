@@ -13,73 +13,73 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class Ipv4BundleTemplate
 {
 
-    private string|null $startDate;
+    private $startDate;
 
-    private int|null $id;
+    private $id;
 
-    private int|null $price;
+    private $price;
 
-    private string|null $serviceType;
+    private $serviceType;
 
-    private int|null $dataId;
+    private $dataId;
 
-    private int|null $count;
+    private $count;
 
-    private bool|null $primary;
+    private $primary;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPrice(): int|null
+    public function getPrice(): ?int
     {
          return $this->price;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getServiceType(): string|null
+    public function getServiceType(): ?string
     {
          return $this->serviceType;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDataId(): int|null
+    public function getDataId(): ?int
     {
          return $this->dataId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getCount(): int|null
+    public function getCount(): ?int
     {
          return $this->count;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getPrimary(): bool|null
+    public function getPrimary(): ?bool
     {
          return $this->primary;
      }
@@ -93,7 +93,7 @@ class Ipv4BundleTemplate
      * @param int|null $count
      * @param bool|null $primary
      */
-    public function __construct(string|null $startDate, int|null $id, int|null $price, string|null $serviceType, int|null $dataId, int|null $count, bool|null $primary)
+    public function __construct(?string $startDate, ?int $id, ?int $price, ?string $serviceType, ?int $dataId, ?int $count, ?bool $primary)
     {
         $this->startDate = $startDate;
         $this->id = $id;
@@ -107,7 +107,7 @@ class Ipv4BundleTemplate
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

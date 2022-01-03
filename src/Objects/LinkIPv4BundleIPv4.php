@@ -11,43 +11,43 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class LinkIPv4BundleIPv4
 {
 
-    private int|null $serviceId;
+    private $serviceId;
 
-    private string|null $type;
+    private $type;
 
-    private string|null $description;
+    private $description;
 
-    private IPv4|null $ipv4;
+    private $ipv4;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getServiceId(): int|null
+    public function getServiceId(): ?int
     {
          return $this->serviceId;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getType(): string|null
+    public function getType(): ?string
     {
          return $this->type;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
          return $this->description;
      }
 
     /**
-     * @return IPv4|null
+     * @return ?IPv4
      */
-    public function getIpv4(): IPv4|null
+    public function getIpv4(): ?IPv4
     {
          return $this->ipv4;
      }
@@ -58,7 +58,7 @@ class LinkIPv4BundleIPv4
      * @param string|null $description
      * @param IPv4|null $ipv4
      */
-    public function __construct(int|null $serviceId, string|null $type, string|null $description, IPv4|null $ipv4)
+    public function __construct(?int $serviceId, ?string $type, ?string $description, ?IPv4 $ipv4)
     {
         $this->serviceId = $serviceId;
         $this->type = $type;
@@ -69,7 +69,7 @@ class LinkIPv4BundleIPv4
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

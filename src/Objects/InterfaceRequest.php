@@ -11,33 +11,33 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class InterfaceRequest
 {
 
-    private int|null $interfaceId;
+    private $interfaceId;
 
-    private string|null $mac;
+    private $mac;
 
-    private ZabbixInterface|null $zabbixInterface;
+    private $zabbixInterface;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getInterfaceId(): int|null
+    public function getInterfaceId(): ?int
     {
          return $this->interfaceId;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getMac(): string|null
+    public function getMac(): ?string
     {
          return $this->mac;
      }
 
     /**
-     * @return ZabbixInterface|null
+     * @return ?ZabbixInterface
      */
-    public function getZabbixInterface(): ZabbixInterface|null
+    public function getZabbixInterface(): ?ZabbixInterface
     {
          return $this->zabbixInterface;
      }
@@ -47,7 +47,7 @@ class InterfaceRequest
      * @param string|null $mac
      * @param ZabbixInterface|null $zabbixInterface
      */
-    public function __construct(int|null $interfaceId, string|null $mac, ZabbixInterface|null $zabbixInterface)
+    public function __construct(?int $interfaceId, ?string $mac, ?ZabbixInterface $zabbixInterface)
     {
         $this->interfaceId = $interfaceId;
         $this->mac = $mac;
@@ -57,7 +57,7 @@ class InterfaceRequest
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

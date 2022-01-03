@@ -11,13 +11,13 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class RequestBodyLocale
 {
 
-    private string|null $locale;
+    private $locale;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLocale(): string|null
+    public function getLocale(): ?string
     {
          return $this->locale;
      }
@@ -25,7 +25,7 @@ class RequestBodyLocale
     /**
      * @param string|null $locale
      */
-    public function __construct(string|null $locale)
+    public function __construct(?string $locale)
     {
         $this->locale = $locale;
     }
@@ -33,7 +33,7 @@ class RequestBodyLocale
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

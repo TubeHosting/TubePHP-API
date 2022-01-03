@@ -11,23 +11,23 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class PaymentResponse
 {
 
-    private string|null $link;
+    private $link;
 
-    private string|null $paymentMethodId;
+    private $paymentMethodId;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getLink(): string|null
+    public function getLink(): ?string
     {
          return $this->link;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getPaymentMethodId(): string|null
+    public function getPaymentMethodId(): ?string
     {
          return $this->paymentMethodId;
      }
@@ -36,7 +36,7 @@ class PaymentResponse
      * @param string|null $link
      * @param string|null $paymentMethodId
      */
-    public function __construct(string|null $link, string|null $paymentMethodId)
+    public function __construct(?string $link, ?string $paymentMethodId)
     {
         $this->link = $link;
         $this->paymentMethodId = $paymentMethodId;
@@ -45,7 +45,7 @@ class PaymentResponse
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

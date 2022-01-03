@@ -11,63 +11,63 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class SimpleDedicatedInterface
 {
 
-    private string|null $mac;
+    private $mac;
 
-    private int|null $speed;
+    private $speed;
 
-    private bool|null $active;
+    private $active;
 
-    private int|null $interfaceId;
+    private $interfaceId;
 
-    private int|null $aggregatedId;
+    private $aggregatedId;
 
-    private int|null $instanceId;
+    private $instanceId;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getMac(): string|null
+    public function getMac(): ?string
     {
          return $this->mac;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getSpeed(): int|null
+    public function getSpeed(): ?int
     {
          return $this->speed;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getActive(): bool|null
+    public function getActive(): ?bool
     {
          return $this->active;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getInterfaceId(): int|null
+    public function getInterfaceId(): ?int
     {
          return $this->interfaceId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getAggregatedId(): int|null
+    public function getAggregatedId(): ?int
     {
          return $this->aggregatedId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getInstanceId(): int|null
+    public function getInstanceId(): ?int
     {
          return $this->instanceId;
      }
@@ -80,7 +80,7 @@ class SimpleDedicatedInterface
      * @param int|null $aggregatedId
      * @param int|null $instanceId
      */
-    public function __construct(string|null $mac, int|null $speed, bool|null $active, int|null $interfaceId, int|null $aggregatedId, int|null $instanceId)
+    public function __construct(?string $mac, ?int $speed, ?bool $active, ?int $interfaceId, ?int $aggregatedId, ?int $instanceId)
     {
         $this->mac = $mac;
         $this->speed = $speed;
@@ -93,7 +93,7 @@ class SimpleDedicatedInterface
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

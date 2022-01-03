@@ -11,103 +11,103 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DedicatedConfiguration
 {
 
-    private int|null $id;
+    private $id;
 
-    private int|null $memory;
+    private $memory;
 
-    private int|null $hddDiskSpace;
+    private $hddDiskSpace;
 
-    private int|null $ssdDiskSpace;
+    private $ssdDiskSpace;
 
-    private CPU|null $cpu;
+    private $cpu;
 
-    private GPU|null $gpu;
+    private $gpu;
 
-    private int|null $cpuCount;
+    private $cpuCount;
 
-    private int|null $gpuCount;
+    private $gpuCount;
 
-    private bool|null $available;
+    private $available;
 
-    private string|null $memoryType;
+    private $memoryType;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getMemory(): int|null
+    public function getMemory(): ?int
     {
          return $this->memory;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getHddDiskSpace(): int|null
+    public function getHddDiskSpace(): ?int
     {
          return $this->hddDiskSpace;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getSsdDiskSpace(): int|null
+    public function getSsdDiskSpace(): ?int
     {
          return $this->ssdDiskSpace;
      }
 
     /**
-     * @return CPU|null
+     * @return ?CPU
      */
-    public function getCpu(): CPU|null
+    public function getCpu(): ?CPU
     {
          return $this->cpu;
      }
 
     /**
-     * @return GPU|null
+     * @return ?GPU
      */
-    public function getGpu(): GPU|null
+    public function getGpu(): ?GPU
     {
          return $this->gpu;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getCpuCount(): int|null
+    public function getCpuCount(): ?int
     {
          return $this->cpuCount;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getGpuCount(): int|null
+    public function getGpuCount(): ?int
     {
          return $this->gpuCount;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getAvailable(): bool|null
+    public function getAvailable(): ?bool
     {
          return $this->available;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getMemoryType(): string|null
+    public function getMemoryType(): ?string
     {
          return $this->memoryType;
      }
@@ -124,7 +124,7 @@ class DedicatedConfiguration
      * @param bool|null $available
      * @param string|null $memoryType
      */
-    public function __construct(int|null $id, int|null $memory, int|null $hddDiskSpace, int|null $ssdDiskSpace, CPU|null $cpu, GPU|null $gpu, int|null $cpuCount, int|null $gpuCount, bool|null $available, string|null $memoryType)
+    public function __construct(?int $id, ?int $memory, ?int $hddDiskSpace, ?int $ssdDiskSpace, ?CPU $cpu, ?GPU $gpu, ?int $cpuCount, ?int $gpuCount, ?bool $available, ?string $memoryType)
     {
         $this->id = $id;
         $this->memory = $memory;
@@ -141,7 +141,7 @@ class DedicatedConfiguration
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

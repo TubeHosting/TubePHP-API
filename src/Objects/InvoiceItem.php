@@ -11,103 +11,103 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class InvoiceItem
 {
 
-    private bool|null $order;
+    private $order;
 
-    private string|null $newServiceGroupRuntime;
+    private $newServiceGroupRuntime;
 
-    private string|null $title;
+    private $title;
 
-    private int|null $position;
+    private $position;
 
-    private int|null $unitPrice;
+    private $unitPrice;
 
-    private int|null $quantity;
+    private $quantity;
 
-    private string|null $description;
+    private $description;
 
-    private string|null $priceType;
+    private $priceType;
 
-    private int|null $invoiceId;
+    private $invoiceId;
 
-    private int|null $serviceGroupId;
+    private $serviceGroupId;
 
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getOrder(): bool|null
+    public function getOrder(): ?bool
     {
          return $this->order;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getNewServiceGroupRuntime(): string|null
+    public function getNewServiceGroupRuntime(): ?string
     {
          return $this->newServiceGroupRuntime;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getTitle(): string|null
+    public function getTitle(): ?string
     {
          return $this->title;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPosition(): int|null
+    public function getPosition(): ?int
     {
          return $this->position;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getUnitPrice(): int|null
+    public function getUnitPrice(): ?int
     {
          return $this->unitPrice;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getQuantity(): int|null
+    public function getQuantity(): ?int
     {
          return $this->quantity;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
          return $this->description;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getPriceType(): string|null
+    public function getPriceType(): ?string
     {
          return $this->priceType;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getInvoiceId(): int|null
+    public function getInvoiceId(): ?int
     {
          return $this->invoiceId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getServiceGroupId(): int|null
+    public function getServiceGroupId(): ?int
     {
          return $this->serviceGroupId;
      }
@@ -124,7 +124,7 @@ class InvoiceItem
      * @param int|null $invoiceId
      * @param int|null $serviceGroupId
      */
-    public function __construct(bool|null $order, string|null $newServiceGroupRuntime, string|null $title, int|null $position, int|null $unitPrice, int|null $quantity, string|null $description, string|null $priceType, int|null $invoiceId, int|null $serviceGroupId)
+    public function __construct(?bool $order, ?string $newServiceGroupRuntime, ?string $title, ?int $position, ?int $unitPrice, ?int $quantity, ?string $description, ?string $priceType, ?int $invoiceId, ?int $serviceGroupId)
     {
         $this->order = $order;
         $this->newServiceGroupRuntime = $newServiceGroupRuntime;
@@ -141,7 +141,7 @@ class InvoiceItem
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

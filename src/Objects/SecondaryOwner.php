@@ -11,43 +11,43 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class SecondaryOwner
 {
 
-    private int|null $userId;
+    private $userId;
 
-    private int|null $serviceGroupId;
+    private $serviceGroupId;
 
-    private bool|null $accepted;
+    private $accepted;
 
-    private SimpleUser|null $user;
+    private $user;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getUserId(): int|null
+    public function getUserId(): ?int
     {
          return $this->userId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getServiceGroupId(): int|null
+    public function getServiceGroupId(): ?int
     {
          return $this->serviceGroupId;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getAccepted(): bool|null
+    public function getAccepted(): ?bool
     {
          return $this->accepted;
      }
 
     /**
-     * @return SimpleUser|null
+     * @return ?SimpleUser
      */
-    public function getUser(): SimpleUser|null
+    public function getUser(): ?SimpleUser
     {
          return $this->user;
      }
@@ -58,7 +58,7 @@ class SecondaryOwner
      * @param bool|null $accepted
      * @param SimpleUser|null $user
      */
-    public function __construct(int|null $userId, int|null $serviceGroupId, bool|null $accepted, SimpleUser|null $user)
+    public function __construct(?int $userId, ?int $serviceGroupId, ?bool $accepted, ?SimpleUser $user)
     {
         $this->userId = $userId;
         $this->serviceGroupId = $serviceGroupId;
@@ -69,7 +69,7 @@ class SecondaryOwner
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

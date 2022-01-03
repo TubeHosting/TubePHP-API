@@ -11,43 +11,43 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class BalanceSendingRequest
 {
 
-    private string|null $toMail;
+    private $toMail;
 
-    private int|null $amount;
+    private $amount;
 
-    private string|null $description;
+    private $description;
 
-    private int|null $amountObject;
+    private $amountObject;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getToMail(): string|null
+    public function getToMail(): ?string
     {
          return $this->toMail;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getAmount(): int|null
+    public function getAmount(): ?int
     {
          return $this->amount;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
          return $this->description;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getAmountObject(): int|null
+    public function getAmountObject(): ?int
     {
          return $this->amountObject;
      }
@@ -58,7 +58,7 @@ class BalanceSendingRequest
      * @param string|null $description
      * @param int|null $amountObject
      */
-    public function __construct(string|null $toMail, int|null $amount, string|null $description, int|null $amountObject)
+    public function __construct(?string $toMail, ?int $amount, ?string $description, ?int $amountObject)
     {
         $this->toMail = $toMail;
         $this->amount = $amount;
@@ -69,7 +69,7 @@ class BalanceSendingRequest
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

@@ -13,63 +13,63 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DedicatedTemplate
 {
 
-    private string|null $startDate;
+    private $startDate;
 
-    private int|null $id;
+    private $id;
 
-    private int|null $price;
+    private $price;
 
-    private string|null $serviceType;
+    private $serviceType;
 
-    private int|null $dataId;
+    private $dataId;
 
-    private DedicatedConfiguration|null $configuration;
+    private $configuration;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPrice(): int|null
+    public function getPrice(): ?int
     {
          return $this->price;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getServiceType(): string|null
+    public function getServiceType(): ?string
     {
          return $this->serviceType;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDataId(): int|null
+    public function getDataId(): ?int
     {
          return $this->dataId;
      }
 
     /**
-     * @return DedicatedConfiguration|null
+     * @return ?DedicatedConfiguration
      */
-    public function getConfiguration(): DedicatedConfiguration|null
+    public function getConfiguration(): ?DedicatedConfiguration
     {
          return $this->configuration;
      }
@@ -82,7 +82,7 @@ class DedicatedTemplate
      * @param int|null $dataId
      * @param DedicatedConfiguration|null $configuration
      */
-    public function __construct(string|null $startDate, int|null $id, int|null $price, string|null $serviceType, int|null $dataId, DedicatedConfiguration|null $configuration)
+    public function __construct(?string $startDate, ?int $id, ?int $price, ?string $serviceType, ?int $dataId, ?DedicatedConfiguration $configuration)
     {
         $this->startDate = $startDate;
         $this->id = $id;
@@ -95,7 +95,7 @@ class DedicatedTemplate
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

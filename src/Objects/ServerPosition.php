@@ -11,63 +11,63 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class ServerPosition
 {
 
-    private int|null $id;
+    private $id;
 
-    private string|null $hall;
+    private $hall;
 
-    private string|null $room;
+    private $room;
 
-    private int|null $rack;
+    private $rack;
 
-    private int|null $position;
+    private $position;
 
-    private int|null $height;
+    private $height;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getHall(): string|null
+    public function getHall(): ?string
     {
          return $this->hall;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getRoom(): string|null
+    public function getRoom(): ?string
     {
          return $this->room;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getRack(): int|null
+    public function getRack(): ?int
     {
          return $this->rack;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPosition(): int|null
+    public function getPosition(): ?int
     {
          return $this->position;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getHeight(): int|null
+    public function getHeight(): ?int
     {
          return $this->height;
      }
@@ -80,7 +80,7 @@ class ServerPosition
      * @param int|null $position
      * @param int|null $height
      */
-    public function __construct(int|null $id, string|null $hall, string|null $room, int|null $rack, int|null $position, int|null $height)
+    public function __construct(?int $id, ?string $hall, ?string $room, ?int $rack, ?int $position, ?int $height)
     {
         $this->id = $id;
         $this->hall = $hall;
@@ -93,7 +93,7 @@ class ServerPosition
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

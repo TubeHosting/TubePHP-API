@@ -11,113 +11,113 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class Payment
 {
 
-    private int|null $id;
+    private $id;
 
-    private string|null $method;
+    private $method;
 
-    private int|null $amount;
+    private $amount;
 
-    private string|null $status;
+    private $status;
 
-    private string|null $description;
+    private $description;
 
-    private string|null $timeStarted;
+    private $timeStarted;
 
-    private string|null $timeFinished;
+    private $timeFinished;
 
-    private string|null $providerId;
+    private $providerId;
 
-    private string|null $type;
+    private $type;
 
-    private int|null $userId;
+    private $userId;
 
-    private int|null $paymentBundleId;
+    private $paymentBundleId;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getMethod(): string|null
+    public function getMethod(): ?string
     {
          return $this->method;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getAmount(): int|null
+    public function getAmount(): ?int
     {
          return $this->amount;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStatus(): string|null
+    public function getStatus(): ?string
     {
          return $this->status;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
          return $this->description;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getTimeStarted(): string|null
+    public function getTimeStarted(): ?string
     {
          return $this->timeStarted;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getTimeFinished(): string|null
+    public function getTimeFinished(): ?string
     {
          return $this->timeFinished;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getProviderId(): string|null
+    public function getProviderId(): ?string
     {
          return $this->providerId;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getType(): string|null
+    public function getType(): ?string
     {
          return $this->type;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getUserId(): int|null
+    public function getUserId(): ?int
     {
          return $this->userId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPaymentBundleId(): int|null
+    public function getPaymentBundleId(): ?int
     {
          return $this->paymentBundleId;
      }
@@ -135,7 +135,7 @@ class Payment
      * @param int|null $userId
      * @param int|null $paymentBundleId
      */
-    public function __construct(int|null $id, string|null $method, int|null $amount, string|null $status, string|null $description, string|null $timeStarted, string|null $timeFinished, string|null $providerId, string|null $type, int|null $userId, int|null $paymentBundleId)
+    public function __construct(?int $id, ?string $method, ?int $amount, ?string $status, ?string $description, ?string $timeStarted, ?string $timeFinished, ?string $providerId, ?string $type, ?int $userId, ?int $paymentBundleId)
     {
         $this->id = $id;
         $this->method = $method;
@@ -153,7 +153,7 @@ class Payment
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [
@@ -229,7 +229,7 @@ class Payment
     /**
      * @param BalanceSendingRequest $balanceSendingRequest
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function sendBalance(BalanceSendingRequest $balanceSendingRequest):string 
     {
@@ -241,7 +241,7 @@ class Payment
     /**
      * @param BalanceChargeRequestBody $balanceChargeRequestBody
      * @return  PaymentResponse
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function chargeBalance(BalanceChargeRequestBody $balanceChargeRequestBody): PaymentResponse 
     {
@@ -253,7 +253,7 @@ class Payment
     /**
      * @param int $templateGroupId
      * @return  SingleServiceGroupData
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function orderByTemplateGroup(int $templateGroupId): SingleServiceGroupData 
     {
@@ -266,7 +266,7 @@ class Payment
      * @param int $page
      * @param int $size
      * @return  SearchResultPaymentBundle
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getPaymentBundles(int $page = 0, int $size = 0): SearchResultPaymentBundle 
     {
@@ -277,7 +277,7 @@ class Payment
 
     /**
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getInvoices():array 
     {
@@ -297,7 +297,7 @@ class Payment
     /**
      * @param int $invoiceId
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getInvoicePDF(int $invoiceId):array 
     {
@@ -309,7 +309,7 @@ class Payment
     /**
      * @param int $invoiceId
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getInvoiceMail(int $invoiceId):string 
     {
@@ -320,7 +320,7 @@ class Payment
 
     /**
      * @return  SearchResultBalanceChange
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getBalanceChanges(): SearchResultBalanceChange 
     {

@@ -11,103 +11,103 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class Invoice
 {
 
-    private Address|null $address;
+    private $address;
 
-    private Name|null $name;
+    private $name;
 
-    private int|null $id;
+    private $id;
 
-    private int|null $userId;
+    private $userId;
 
-    private string|null $oldInvoiceId;
+    private $oldInvoiceId;
 
-    private array|null $items;
+    private $items;
 
-    private string|null $time;
+    private $time;
 
-    private bool|null $finished;
+    private $finished;
 
-    private int|null $paymentBundleId;
+    private $paymentBundleId;
 
-    private string|null $taxPercentFormatted;
+    private $taxPercentFormatted;
 
 
     /**
-     * @return Address|null
+     * @return ?Address
      */
-    public function getAddress(): Address|null
+    public function getAddress(): ?Address
     {
          return $this->address;
      }
 
     /**
-     * @return Name|null
+     * @return ?Name
      */
-    public function getName(): Name|null
+    public function getName(): ?Name
     {
          return $this->name;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getUserId(): int|null
+    public function getUserId(): ?int
     {
          return $this->userId;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getOldInvoiceId(): string|null
+    public function getOldInvoiceId(): ?string
     {
          return $this->oldInvoiceId;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getItems(): array|null
+    public function getItems(): ?array
     {
          return $this->items;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getTime(): string|null
+    public function getTime(): ?string
     {
          return $this->time;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getFinished(): bool|null
+    public function getFinished(): ?bool
     {
          return $this->finished;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPaymentBundleId(): int|null
+    public function getPaymentBundleId(): ?int
     {
          return $this->paymentBundleId;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getTaxPercentFormatted(): string|null
+    public function getTaxPercentFormatted(): ?string
     {
          return $this->taxPercentFormatted;
      }
@@ -124,7 +124,7 @@ class Invoice
      * @param int|null $paymentBundleId
      * @param string|null $taxPercentFormatted
      */
-    public function __construct(Address|null $address, Name|null $name, int|null $id, int|null $userId, string|null $oldInvoiceId, array|null $items, string|null $time, bool|null $finished, int|null $paymentBundleId, string|null $taxPercentFormatted)
+    public function __construct(?Address $address, ?Name $name, ?int $id, ?int $userId, ?string $oldInvoiceId, ?array $items, ?string $time, ?bool $finished, ?int $paymentBundleId, ?string $taxPercentFormatted)
     {
         $this->address = $address;
         $this->name = $name;
@@ -150,7 +150,7 @@ class Invoice
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

@@ -11,73 +11,73 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class GPU
 {
 
-    private int|null $id;
+    private $id;
 
-    private int|null $baseClock;
+    private $baseClock;
 
-    private int|null $turboClock;
+    private $turboClock;
 
-    private string|null $brand;
+    private $brand;
 
-    private string|null $model;
+    private $model;
 
-    private int|null $memory;
+    private $memory;
 
-    private Memory|null $memoryObject;
+    private $memoryObject;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getBaseClock(): int|null
+    public function getBaseClock(): ?int
     {
          return $this->baseClock;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getTurboClock(): int|null
+    public function getTurboClock(): ?int
     {
          return $this->turboClock;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getBrand(): string|null
+    public function getBrand(): ?string
     {
          return $this->brand;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getModel(): string|null
+    public function getModel(): ?string
     {
          return $this->model;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getMemory(): int|null
+    public function getMemory(): ?int
     {
          return $this->memory;
      }
 
     /**
-     * @return Memory|null
+     * @return ?Memory
      */
-    public function getMemoryObject(): Memory|null
+    public function getMemoryObject(): ?Memory
     {
          return $this->memoryObject;
      }
@@ -91,7 +91,7 @@ class GPU
      * @param int|null $memory
      * @param Memory|null $memoryObject
      */
-    public function __construct(int|null $id, int|null $baseClock, int|null $turboClock, string|null $brand, string|null $model, int|null $memory, Memory|null $memoryObject)
+    public function __construct(?int $id, ?int $baseClock, ?int $turboClock, ?string $brand, ?string $model, ?int $memory, ?Memory $memoryObject)
     {
         $this->id = $id;
         $this->baseClock = $baseClock;
@@ -105,7 +105,7 @@ class GPU
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

@@ -11,143 +11,143 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class Service
 {
 
-    private int|null $dataId;
+    private $dataId;
 
-    private int|null $id;
+    private $id;
 
-    private string|null $startDate;
+    private $startDate;
 
-    private string|null $endDate;
+    private $endDate;
 
-    private int|null $price;
+    private $price;
 
-    private string|null $priceType;
+    private $priceType;
 
-    private string|null $deactivatedOn;
+    private $deactivatedOn;
 
-    private string|null $description;
+    private $description;
 
-    private string|null $runtime;
+    private $runtime;
 
-    private string|null $name;
+    private $name;
 
-    private string|null $type;
+    private $type;
 
-    private int|null $priceObject;
+    private $priceObject;
 
-    private int|null $serviceGroupId;
+    private $serviceGroupId;
 
-    private int|null $templateId;
+    private $templateId;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDataId(): int|null
+    public function getDataId(): ?int
     {
          return $this->dataId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getEndDate(): string|null
+    public function getEndDate(): ?string
     {
          return $this->endDate;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPrice(): int|null
+    public function getPrice(): ?int
     {
          return $this->price;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getPriceType(): string|null
+    public function getPriceType(): ?string
     {
          return $this->priceType;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDeactivatedOn(): string|null
+    public function getDeactivatedOn(): ?string
     {
          return $this->deactivatedOn;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
          return $this->description;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getRuntime(): string|null
+    public function getRuntime(): ?string
     {
          return $this->runtime;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
          return $this->name;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getType(): string|null
+    public function getType(): ?string
     {
          return $this->type;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPriceObject(): int|null
+    public function getPriceObject(): ?int
     {
          return $this->priceObject;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getServiceGroupId(): int|null
+    public function getServiceGroupId(): ?int
     {
          return $this->serviceGroupId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getTemplateId(): int|null
+    public function getTemplateId(): ?int
     {
          return $this->templateId;
      }
@@ -168,7 +168,7 @@ class Service
      * @param int|null $serviceGroupId
      * @param int|null $templateId
      */
-    public function __construct(int|null $dataId, int|null $id, string|null $startDate, string|null $endDate, int|null $price, string|null $priceType, string|null $deactivatedOn, string|null $description, string|null $runtime, string|null $name, string|null $type, int|null $priceObject, int|null $serviceGroupId, int|null $templateId)
+    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $priceObject, ?int $serviceGroupId, ?int $templateId)
     {
         $this->dataId = $dataId;
         $this->id = $id;
@@ -189,7 +189,7 @@ class Service
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [
@@ -281,7 +281,7 @@ class Service
      * @param int $serviceId
      * @param DescriptionBody $descriptionBody
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function changeDescription(int $serviceId,DescriptionBody $descriptionBody):string 
     {
@@ -293,7 +293,7 @@ class Service
     /**
      * @param int $serviceId
      * @return object
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getServiceByID(int $serviceId):object 
     {

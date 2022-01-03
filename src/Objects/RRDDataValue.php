@@ -11,113 +11,113 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class RRDDataValue
 {
 
-    private float|null $cpu;
+    private $cpu;
 
-    private float|null $disk;
+    private $disk;
 
-    private float|null $diskread;
+    private $diskread;
 
-    private float|null $diskwrite;
+    private $diskwrite;
 
-    private int|null $maxcpu;
+    private $maxcpu;
 
-    private int|null $maxdisk;
+    private $maxdisk;
 
-    private int|null $maxmem;
+    private $maxmem;
 
-    private float|null $mem;
+    private $mem;
 
-    private float|null $netin;
+    private $netin;
 
-    private float|null $netout;
+    private $netout;
 
-    private int|null $time;
+    private $time;
 
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getCpu(): float|null
+    public function getCpu(): ?float
     {
          return $this->cpu;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getDisk(): float|null
+    public function getDisk(): ?float
     {
          return $this->disk;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getDiskread(): float|null
+    public function getDiskread(): ?float
     {
          return $this->diskread;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getDiskwrite(): float|null
+    public function getDiskwrite(): ?float
     {
          return $this->diskwrite;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getMaxcpu(): int|null
+    public function getMaxcpu(): ?int
     {
          return $this->maxcpu;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getMaxdisk(): int|null
+    public function getMaxdisk(): ?int
     {
          return $this->maxdisk;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getMaxmem(): int|null
+    public function getMaxmem(): ?int
     {
          return $this->maxmem;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getMem(): float|null
+    public function getMem(): ?float
     {
          return $this->mem;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getNetin(): float|null
+    public function getNetin(): ?float
     {
          return $this->netin;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getNetout(): float|null
+    public function getNetout(): ?float
     {
          return $this->netout;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getTime(): int|null
+    public function getTime(): ?int
     {
          return $this->time;
      }
@@ -135,7 +135,7 @@ class RRDDataValue
      * @param float|null $netout
      * @param int|null $time
      */
-    public function __construct(float|null $cpu, float|null $disk, float|null $diskread, float|null $diskwrite, int|null $maxcpu, int|null $maxdisk, int|null $maxmem, float|null $mem, float|null $netin, float|null $netout, int|null $time)
+    public function __construct(?float $cpu, ?float $disk, ?float $diskread, ?float $diskwrite, ?int $maxcpu, ?int $maxdisk, ?int $maxmem, ?float $mem, ?float $netin, ?float $netout, ?int $time)
     {
         $this->cpu = $cpu;
         $this->disk = $disk;
@@ -153,7 +153,7 @@ class RRDDataValue
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

@@ -11,33 +11,33 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class ServiceGroupInvite
 {
 
-    private int|null $serviceGroupId;
+    private $serviceGroupId;
 
-    private string|null $serviceGroupName;
+    private $serviceGroupName;
 
-    private SimpleUser|null $owner;
+    private $owner;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getServiceGroupId(): int|null
+    public function getServiceGroupId(): ?int
     {
          return $this->serviceGroupId;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getServiceGroupName(): string|null
+    public function getServiceGroupName(): ?string
     {
          return $this->serviceGroupName;
      }
 
     /**
-     * @return SimpleUser|null
+     * @return ?SimpleUser
      */
-    public function getOwner(): SimpleUser|null
+    public function getOwner(): ?SimpleUser
     {
          return $this->owner;
      }
@@ -47,7 +47,7 @@ class ServiceGroupInvite
      * @param string|null $serviceGroupName
      * @param SimpleUser|null $owner
      */
-    public function __construct(int|null $serviceGroupId, string|null $serviceGroupName, SimpleUser|null $owner)
+    public function __construct(?int $serviceGroupId, ?string $serviceGroupName, ?SimpleUser $owner)
     {
         $this->serviceGroupId = $serviceGroupId;
         $this->serviceGroupName = $serviceGroupName;
@@ -57,7 +57,7 @@ class ServiceGroupInvite
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

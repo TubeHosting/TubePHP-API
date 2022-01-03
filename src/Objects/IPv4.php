@@ -11,73 +11,73 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class IPv4
 {
 
-    private int|null $id;
+    private $id;
 
-    private string|null $macBind;
+    private $macBind;
 
-    private string|null $gateway;
+    private $gateway;
 
-    private int|null $cidr;
+    private $cidr;
 
-    private bool|null $available;
+    private $available;
 
-    private string|null $ipv4;
+    private $ipv4;
 
-    private string|null $rdns;
+    private $rdns;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getMacBind(): string|null
+    public function getMacBind(): ?string
     {
          return $this->macBind;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getGateway(): string|null
+    public function getGateway(): ?string
     {
          return $this->gateway;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getCidr(): int|null
+    public function getCidr(): ?int
     {
          return $this->cidr;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getAvailable(): bool|null
+    public function getAvailable(): ?bool
     {
          return $this->available;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getIpv4(): string|null
+    public function getIpv4(): ?string
     {
          return $this->ipv4;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getRdns(): string|null
+    public function getRdns(): ?string
     {
          return $this->rdns;
      }
@@ -91,7 +91,7 @@ class IPv4
      * @param string|null $ipv4
      * @param string|null $rdns
      */
-    public function __construct(int|null $id, string|null $macBind, string|null $gateway, int|null $cidr, bool|null $available, string|null $ipv4, string|null $rdns)
+    public function __construct(?int $id, ?string $macBind, ?string $gateway, ?int $cidr, ?bool $available, ?string $ipv4, ?string $rdns)
     {
         $this->id = $id;
         $this->macBind = $macBind;
@@ -105,7 +105,7 @@ class IPv4
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [
@@ -162,7 +162,7 @@ class IPv4
      * @param string $ipV4
      * @param IpRDNSBody $ipRDNSBody
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function changeRDNS(string $ipV4,IpRDNSBody $ipRDNSBody):string 
     {
@@ -175,7 +175,7 @@ class IPv4
      * @param string $ipV4
      * @param DescriptionBody $descriptionBody
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function changeIPv4Description(string $ipV4,DescriptionBody $descriptionBody):string 
     {
@@ -187,7 +187,7 @@ class IPv4
     /**
      * @param string $ipV4
      * @return  CombahtonDDoSIPStatus
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getDDoSModeStatus(string $ipV4): CombahtonDDoSIPStatus 
     {
@@ -198,7 +198,7 @@ class IPv4
      * @param string $ipV4
      * @param IPDDoSStatus $iPDDoSStatus
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function changeDDoSModeStatus(string $ipV4,IPDDoSStatus $iPDDoSStatus):string 
     {
@@ -210,7 +210,7 @@ class IPv4
     /**
      * @param string $ipV4
      * @return  LinkIPv4BundleIPv4
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getIPLinkBundle(string $ipV4): LinkIPv4BundleIPv4 
     {
@@ -222,7 +222,7 @@ class IPv4
     /**
      * @param string $ipV4
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getDDoSIncidentsOnIPv4(string $ipV4):array 
     {

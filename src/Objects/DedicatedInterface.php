@@ -11,33 +11,33 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DedicatedInterface
 {
 
-    private DedicatedInstance|null $instance;
+    private $instance;
 
-    private ZabbixInterface|null $zabbixInterface;
+    private $zabbixInterface;
 
-    private int|null $interfaceId;
+    private $interfaceId;
 
 
     /**
-     * @return DedicatedInstance|null
+     * @return ?DedicatedInstance
      */
-    public function getInstance(): DedicatedInstance|null
+    public function getInstance(): ?DedicatedInstance
     {
          return $this->instance;
      }
 
     /**
-     * @return ZabbixInterface|null
+     * @return ?ZabbixInterface
      */
-    public function getZabbixInterface(): ZabbixInterface|null
+    public function getZabbixInterface(): ?ZabbixInterface
     {
          return $this->zabbixInterface;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getInterfaceId(): int|null
+    public function getInterfaceId(): ?int
     {
          return $this->interfaceId;
      }
@@ -47,7 +47,7 @@ class DedicatedInterface
      * @param ZabbixInterface|null $zabbixInterface
      * @param int|null $interfaceId
      */
-    public function __construct(DedicatedInstance|null $instance, ZabbixInterface|null $zabbixInterface, int|null $interfaceId)
+    public function __construct(?DedicatedInstance $instance, ?ZabbixInterface $zabbixInterface, ?int $interfaceId)
     {
         $this->instance = $instance;
         $this->zabbixInterface = $zabbixInterface;
@@ -57,7 +57,7 @@ class DedicatedInterface
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

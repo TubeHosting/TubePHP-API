@@ -11,173 +11,173 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DedicatedInstanceRequest
 {
 
-    private int|null $userId;
+    private $userId;
 
-    private int|null $price;
+    private $price;
 
-    private int|null $runtimeInterval;
+    private $runtimeInterval;
 
-    private int|null $memory;
+    private $memory;
 
-    private ServerPosition|null $position;
+    private $position;
 
-    private string|null $startDate;
+    private $startDate;
 
-    private int|null $labelId;
+    private $labelId;
 
-    private bool|null $available;
+    private $available;
 
-    private string|null $memoryType;
+    private $memoryType;
 
-    private int|null $cpuId;
+    private $cpuId;
 
-    private int|null $cpuCount;
+    private $cpuCount;
 
-    private int|null $gpuId;
+    private $gpuId;
 
-    private int|null $gpuCount;
+    private $gpuCount;
 
-    private array|null $disks;
+    private $disks;
 
-    private array|null $interfaces;
+    private $interfaces;
 
-    private array|null $aggregatedInterfaces;
+    private $aggregatedInterfaces;
 
-    private string|null $caseType;
+    private $caseType;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getUserId(): int|null
+    public function getUserId(): ?int
     {
          return $this->userId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPrice(): int|null
+    public function getPrice(): ?int
     {
          return $this->price;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getRuntimeInterval(): int|null
+    public function getRuntimeInterval(): ?int
     {
          return $this->runtimeInterval;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getMemory(): int|null
+    public function getMemory(): ?int
     {
          return $this->memory;
      }
 
     /**
-     * @return ServerPosition|null
+     * @return ?ServerPosition
      */
-    public function getPosition(): ServerPosition|null
+    public function getPosition(): ?ServerPosition
     {
          return $this->position;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getLabelId(): int|null
+    public function getLabelId(): ?int
     {
          return $this->labelId;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getAvailable(): bool|null
+    public function getAvailable(): ?bool
     {
          return $this->available;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getMemoryType(): string|null
+    public function getMemoryType(): ?string
     {
          return $this->memoryType;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getCpuId(): int|null
+    public function getCpuId(): ?int
     {
          return $this->cpuId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getCpuCount(): int|null
+    public function getCpuCount(): ?int
     {
          return $this->cpuCount;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getGpuId(): int|null
+    public function getGpuId(): ?int
     {
          return $this->gpuId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getGpuCount(): int|null
+    public function getGpuCount(): ?int
     {
          return $this->gpuCount;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getDisks(): array|null
+    public function getDisks(): ?array
     {
          return $this->disks;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getInterfaces(): array|null
+    public function getInterfaces(): ?array
     {
          return $this->interfaces;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getAggregatedInterfaces(): array|null
+    public function getAggregatedInterfaces(): ?array
     {
          return $this->aggregatedInterfaces;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getCaseType(): string|null
+    public function getCaseType(): ?string
     {
          return $this->caseType;
      }
@@ -201,7 +201,7 @@ class DedicatedInstanceRequest
      * @param array|null $aggregatedInterfaces
      * @param string|null $caseType
      */
-    public function __construct(int|null $userId, int|null $price, int|null $runtimeInterval, int|null $memory, ServerPosition|null $position, string|null $startDate, int|null $labelId, bool|null $available, string|null $memoryType, int|null $cpuId, int|null $cpuCount, int|null $gpuId, int|null $gpuCount, array|null $disks, array|null $interfaces, array|null $aggregatedInterfaces, string|null $caseType)
+    public function __construct(?int $userId, ?int $price, ?int $runtimeInterval, ?int $memory, ?ServerPosition $position, ?string $startDate, ?int $labelId, ?bool $available, ?string $memoryType, ?int $cpuId, ?int $cpuCount, ?int $gpuId, ?int $gpuCount, ?array $disks, ?array $interfaces, ?array $aggregatedInterfaces, ?string $caseType)
     {
         $this->userId = $userId;
         $this->price = $price;
@@ -252,7 +252,7 @@ class DedicatedInstanceRequest
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [
@@ -358,7 +358,7 @@ class DedicatedInstanceRequest
     /**
      * @param DedicatedInstanceRequest $dedicatedInstanceRequest
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function createInstance(DedicatedInstanceRequest $dedicatedInstanceRequest):string 
     {

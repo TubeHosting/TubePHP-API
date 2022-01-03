@@ -13,153 +13,153 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class IPv4Bundle
 {
 
-    private int|null $dataId;
+    private $dataId;
 
-    private int|null $id;
+    private $id;
 
-    private string|null $startDate;
+    private $startDate;
 
-    private string|null $endDate;
+    private $endDate;
 
-    private int|null $price;
+    private $price;
 
-    private string|null $priceType;
+    private $priceType;
 
-    private string|null $deactivatedOn;
+    private $deactivatedOn;
 
-    private string|null $description;
+    private $description;
 
-    private string|null $runtime;
+    private $runtime;
 
-    private string|null $name;
+    private $name;
 
-    private string|null $type;
+    private $type;
 
-    private int|null $priceObject;
+    private $priceObject;
 
-    private int|null $serviceGroupId;
+    private $serviceGroupId;
 
-    private int|null $templateId;
+    private $templateId;
 
-    private array|null $ips;
+    private $ips;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDataId(): int|null
+    public function getDataId(): ?int
     {
          return $this->dataId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getEndDate(): string|null
+    public function getEndDate(): ?string
     {
          return $this->endDate;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPrice(): int|null
+    public function getPrice(): ?int
     {
          return $this->price;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getPriceType(): string|null
+    public function getPriceType(): ?string
     {
          return $this->priceType;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDeactivatedOn(): string|null
+    public function getDeactivatedOn(): ?string
     {
          return $this->deactivatedOn;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
          return $this->description;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getRuntime(): string|null
+    public function getRuntime(): ?string
     {
          return $this->runtime;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
          return $this->name;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getType(): string|null
+    public function getType(): ?string
     {
          return $this->type;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPriceObject(): int|null
+    public function getPriceObject(): ?int
     {
          return $this->priceObject;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getServiceGroupId(): int|null
+    public function getServiceGroupId(): ?int
     {
          return $this->serviceGroupId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getTemplateId(): int|null
+    public function getTemplateId(): ?int
     {
          return $this->templateId;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getIps(): array|null
+    public function getIps(): ?array
     {
          return $this->ips;
      }
@@ -181,7 +181,7 @@ class IPv4Bundle
      * @param int|null $templateId
      * @param array|null $ips
      */
-    public function __construct(int|null $dataId, int|null $id, string|null $startDate, string|null $endDate, int|null $price, string|null $priceType, string|null $deactivatedOn, string|null $description, string|null $runtime, string|null $name, string|null $type, int|null $priceObject, int|null $serviceGroupId, int|null $templateId, array|null $ips)
+    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $priceObject, ?int $serviceGroupId, ?int $templateId, ?array $ips)
     {
         $this->dataId = $dataId;
         $this->id = $id;
@@ -212,7 +212,7 @@ class IPv4Bundle
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [
@@ -308,7 +308,7 @@ class IPv4Bundle
     /**
      * @param int $serviceId
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getDDoSIncidentsOnBundle(int $serviceId):array 
     {

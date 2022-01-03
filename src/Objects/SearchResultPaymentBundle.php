@@ -11,43 +11,43 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class SearchResultPaymentBundle
 {
 
-    private int|null $count;
+    private $count;
 
-    private int|null $page;
+    private $page;
 
-    private int|null $size;
+    private $size;
 
-    private array|null $items;
+    private $items;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getCount(): int|null
+    public function getCount(): ?int
     {
          return $this->count;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPage(): int|null
+    public function getPage(): ?int
     {
          return $this->page;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getSize(): int|null
+    public function getSize(): ?int
     {
          return $this->size;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getItems(): array|null
+    public function getItems(): ?array
     {
          return $this->items;
      }
@@ -58,7 +58,7 @@ class SearchResultPaymentBundle
      * @param int|null $size
      * @param array|null $items
      */
-    public function __construct(int|null $count, int|null $page, int|null $size, array|null $items)
+    public function __construct(?int $count, ?int $page, ?int $size, ?array $items)
     {
         $this->count = $count;
         $this->page = $page;
@@ -78,7 +78,7 @@ class SearchResultPaymentBundle
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

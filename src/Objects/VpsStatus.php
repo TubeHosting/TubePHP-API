@@ -11,133 +11,133 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class VpsStatus
 {
 
-    private string|null $status;
+    private $status;
 
-    private string|null $name;
+    private $name;
 
-    private int|null $uptime;
+    private $uptime;
 
-    private float|null $cpu;
+    private $cpu;
 
-    private float|null $diskread;
+    private $diskread;
 
-    private float|null $diskwrite;
+    private $diskwrite;
 
-    private int|null $cpus;
+    private $cpus;
 
-    private float|null $disk;
+    private $disk;
 
-    private int|null $maxdisk;
+    private $maxdisk;
 
-    private int|null $maxmem;
+    private $maxmem;
 
-    private float|null $mem;
+    private $mem;
 
-    private float|null $netin;
+    private $netin;
 
-    private float|null $netout;
+    private $netout;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStatus(): string|null
+    public function getStatus(): ?string
     {
          return $this->status;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
          return $this->name;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getUptime(): int|null
+    public function getUptime(): ?int
     {
          return $this->uptime;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getCpu(): float|null
+    public function getCpu(): ?float
     {
          return $this->cpu;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getDiskread(): float|null
+    public function getDiskread(): ?float
     {
          return $this->diskread;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getDiskwrite(): float|null
+    public function getDiskwrite(): ?float
     {
          return $this->diskwrite;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getCpus(): int|null
+    public function getCpus(): ?int
     {
          return $this->cpus;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getDisk(): float|null
+    public function getDisk(): ?float
     {
          return $this->disk;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getMaxdisk(): int|null
+    public function getMaxdisk(): ?int
     {
          return $this->maxdisk;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getMaxmem(): int|null
+    public function getMaxmem(): ?int
     {
          return $this->maxmem;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getMem(): float|null
+    public function getMem(): ?float
     {
          return $this->mem;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getNetin(): float|null
+    public function getNetin(): ?float
     {
          return $this->netin;
      }
 
     /**
-     * @return float|null
+     * @return ?float
      */
-    public function getNetout(): float|null
+    public function getNetout(): ?float
     {
          return $this->netout;
      }
@@ -157,7 +157,7 @@ class VpsStatus
      * @param float|null $netin
      * @param float|null $netout
      */
-    public function __construct(string|null $status, string|null $name, int|null $uptime, float|null $cpu, float|null $diskread, float|null $diskwrite, int|null $cpus, float|null $disk, int|null $maxdisk, int|null $maxmem, float|null $mem, float|null $netin, float|null $netout)
+    public function __construct(?string $status, ?string $name, ?int $uptime, ?float $cpu, ?float $diskread, ?float $diskwrite, ?int $cpus, ?float $disk, ?int $maxdisk, ?int $maxmem, ?float $mem, ?float $netin, ?float $netout)
     {
         $this->status = $status;
         $this->name = $name;
@@ -177,7 +177,7 @@ class VpsStatus
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

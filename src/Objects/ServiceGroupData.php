@@ -11,143 +11,143 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class ServiceGroupData
 {
 
-    private int|null $price;
+    private $price;
 
-    private string|null $endDate;
+    private $endDate;
 
-    private int|null $position;
+    private $position;
 
-    private int|null $id;
+    private $id;
 
-    private int|null $serviceGroupId;
+    private $serviceGroupId;
 
-    private string|null $startDate;
+    private $startDate;
 
-    private TemplateGroup|null $templateGroup;
+    private $templateGroup;
 
-    private int|null $templateGroupId;
+    private $templateGroupId;
 
-    private int|null $runtimeInterval;
+    private $runtimeInterval;
 
-    private array|null $services;
+    private $services;
 
-    private string|null $name;
+    private $name;
 
-    private bool|null $active;
+    private $active;
 
-    private int|null $priceObject;
+    private $priceObject;
 
-    private int|null $realPrice;
+    private $realPrice;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPrice(): int|null
+    public function getPrice(): ?int
     {
          return $this->price;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getEndDate(): string|null
+    public function getEndDate(): ?string
     {
          return $this->endDate;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPosition(): int|null
+    public function getPosition(): ?int
     {
          return $this->position;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getServiceGroupId(): int|null
+    public function getServiceGroupId(): ?int
     {
          return $this->serviceGroupId;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return TemplateGroup|null
+     * @return ?TemplateGroup
      */
-    public function getTemplateGroup(): TemplateGroup|null
+    public function getTemplateGroup(): ?TemplateGroup
     {
          return $this->templateGroup;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getTemplateGroupId(): int|null
+    public function getTemplateGroupId(): ?int
     {
          return $this->templateGroupId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getRuntimeInterval(): int|null
+    public function getRuntimeInterval(): ?int
     {
          return $this->runtimeInterval;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getServices(): array|null
+    public function getServices(): ?array
     {
          return $this->services;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
          return $this->name;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getActive(): bool|null
+    public function getActive(): ?bool
     {
          return $this->active;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPriceObject(): int|null
+    public function getPriceObject(): ?int
     {
          return $this->priceObject;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getRealPrice(): int|null
+    public function getRealPrice(): ?int
     {
          return $this->realPrice;
      }
@@ -168,7 +168,7 @@ class ServiceGroupData
      * @param int|null $priceObject
      * @param int|null $realPrice
      */
-    public function __construct(int|null $price, string|null $endDate, int|null $position, int|null $id, int|null $serviceGroupId, string|null $startDate, TemplateGroup|null $templateGroup, int|null $templateGroupId, int|null $runtimeInterval, array|null $services, string|null $name, bool|null $active, int|null $priceObject, int|null $realPrice)
+    public function __construct(?int $price, ?string $endDate, ?int $position, ?int $id, ?int $serviceGroupId, ?string $startDate, ?TemplateGroup $templateGroup, ?int $templateGroupId, ?int $runtimeInterval, ?array $services, ?string $name, ?bool $active, ?int $priceObject, ?int $realPrice)
     {
         $this->price = $price;
         $this->endDate = $endDate;
@@ -208,7 +208,7 @@ class ServiceGroupData
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [
@@ -299,7 +299,7 @@ class ServiceGroupData
     /**
      * @param int $serviceGroupId
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function acceptSecondaryOwner(int $serviceGroupId):string 
     {
@@ -311,7 +311,7 @@ class ServiceGroupData
     /**
      * @param int $serviceGroupId
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function extendServiceGroup(int $serviceGroupId):string 
     {
@@ -323,7 +323,7 @@ class ServiceGroupData
     /**
      * @param int $serviceGroupId
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getSecondaryOwners(int $serviceGroupId):array 
     {
@@ -342,7 +342,7 @@ class ServiceGroupData
      * @param int $serviceGroupId
      * @param array $array
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function addSecondaryOwners(int $serviceGroupId,array $array):array 
     {
@@ -355,7 +355,7 @@ class ServiceGroupData
      * @param int $serviceGroupId
      * @param int $serviceId
      * @return object
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getServiceByServiceGroupByID(int $serviceGroupId, int $serviceId):object 
     {
@@ -371,7 +371,7 @@ class ServiceGroupData
     /**
      * @param int $serviceGroupId
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getDDoSIncidentsOfServiceGroup(int $serviceGroupId):array 
     {
@@ -391,7 +391,7 @@ class ServiceGroupData
     /**
      * @param int $serviceGroupId
      * @return  SingleServiceGroupData
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getServiceGroupByID(int $serviceGroupId): SingleServiceGroupData 
     {
@@ -402,7 +402,7 @@ class ServiceGroupData
 
     /**
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getInvites():array 
     {
@@ -422,7 +422,7 @@ class ServiceGroupData
     /**
      * @param bool $primaryOnly
      * @return array
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function getAllServiceGroupsFromUser(bool $primaryOnly = null):array 
     {
@@ -443,7 +443,7 @@ class ServiceGroupData
      * @param int $serviceGroupId
      * @param int $userId
      * @return string
-     * @throws Exceptions\RequestException
+     * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function deleteSecondaryOwners(int $serviceGroupId, int $userId):string 
     {

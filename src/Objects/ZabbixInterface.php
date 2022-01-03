@@ -11,33 +11,33 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class ZabbixInterface
 {
 
-    private int|null $hostId;
+    private $hostId;
 
-    private int|null $netInItemId;
+    private $netInItemId;
 
-    private int|null $netOutItemId;
+    private $netOutItemId;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getHostId(): int|null
+    public function getHostId(): ?int
     {
          return $this->hostId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getNetInItemId(): int|null
+    public function getNetInItemId(): ?int
     {
          return $this->netInItemId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getNetOutItemId(): int|null
+    public function getNetOutItemId(): ?int
     {
          return $this->netOutItemId;
      }
@@ -47,7 +47,7 @@ class ZabbixInterface
      * @param int|null $netInItemId
      * @param int|null $netOutItemId
      */
-    public function __construct(int|null $hostId, int|null $netInItemId, int|null $netOutItemId)
+    public function __construct(?int $hostId, ?int $netInItemId, ?int $netOutItemId)
     {
         $this->hostId = $hostId;
         $this->netInItemId = $netInItemId;
@@ -57,7 +57,7 @@ class ZabbixInterface
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

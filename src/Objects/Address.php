@@ -11,73 +11,73 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class Address
 {
 
-    private string|null $company;
+    private $company;
 
-    private string|null $city;
+    private $city;
 
-    private string|null $street;
+    private $street;
 
-    private string|null $streetNumber;
+    private $streetNumber;
 
-    private string|null $numberAdditive;
+    private $numberAdditive;
 
-    private string|null $country;
+    private $country;
 
-    private string|null $postalCode;
+    private $postalCode;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getCompany(): string|null
+    public function getCompany(): ?string
     {
          return $this->company;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getCity(): string|null
+    public function getCity(): ?string
     {
          return $this->city;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStreet(): string|null
+    public function getStreet(): ?string
     {
          return $this->street;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStreetNumber(): string|null
+    public function getStreetNumber(): ?string
     {
          return $this->streetNumber;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getNumberAdditive(): string|null
+    public function getNumberAdditive(): ?string
     {
          return $this->numberAdditive;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getCountry(): string|null
+    public function getCountry(): ?string
     {
          return $this->country;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getPostalCode(): string|null
+    public function getPostalCode(): ?string
     {
          return $this->postalCode;
      }
@@ -91,7 +91,7 @@ class Address
      * @param string|null $country
      * @param string|null $postalCode
      */
-    public function __construct(string|null $company, string|null $city, string|null $street, string|null $streetNumber, string|null $numberAdditive, string|null $country, string|null $postalCode)
+    public function __construct(?string $company, ?string $city, ?string $street, ?string $streetNumber, ?string $numberAdditive, ?string $country, ?string $postalCode)
     {
         $this->company = $company;
         $this->city = $city;
@@ -105,7 +105,7 @@ class Address
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

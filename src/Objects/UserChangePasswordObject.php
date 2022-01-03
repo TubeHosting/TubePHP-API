@@ -11,23 +11,23 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class UserChangePasswordObject
 {
 
-    private string|null $password;
+    private $password;
 
-    private string|null $oldPassword;
+    private $oldPassword;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getPassword(): string|null
+    public function getPassword(): ?string
     {
          return $this->password;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getOldPassword(): string|null
+    public function getOldPassword(): ?string
     {
          return $this->oldPassword;
      }
@@ -36,7 +36,7 @@ class UserChangePasswordObject
      * @param string|null $password
      * @param string|null $oldPassword
      */
-    public function __construct(string|null $password, string|null $oldPassword)
+    public function __construct(?string $password, ?string $oldPassword)
     {
         $this->password = $password;
         $this->oldPassword = $oldPassword;
@@ -45,7 +45,7 @@ class UserChangePasswordObject
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

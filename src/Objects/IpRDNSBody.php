@@ -11,13 +11,13 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class IpRDNSBody
 {
 
-    private string|null $rdns;
+    private $rdns;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getRdns(): string|null
+    public function getRdns(): ?string
     {
          return $this->rdns;
      }
@@ -25,7 +25,7 @@ class IpRDNSBody
     /**
      * @param string|null $rdns
      */
-    public function __construct(string|null $rdns)
+    public function __construct(?string $rdns)
     {
         $this->rdns = $rdns;
     }
@@ -33,7 +33,7 @@ class IpRDNSBody
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

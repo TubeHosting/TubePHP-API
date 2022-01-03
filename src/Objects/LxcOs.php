@@ -11,23 +11,23 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class LxcOs
 {
 
-    private int|null $osId;
+    private $osId;
 
-    private string|null $displayName;
+    private $displayName;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getOsId(): int|null
+    public function getOsId(): ?int
     {
          return $this->osId;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDisplayName(): string|null
+    public function getDisplayName(): ?string
     {
          return $this->displayName;
      }
@@ -36,7 +36,7 @@ class LxcOs
      * @param int|null $osId
      * @param string|null $displayName
      */
-    public function __construct(int|null $osId, string|null $displayName)
+    public function __construct(?int $osId, ?string $displayName)
     {
         $this->osId = $osId;
         $this->displayName = $displayName;
@@ -45,7 +45,7 @@ class LxcOs
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

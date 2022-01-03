@@ -11,143 +11,143 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DedicatedInstance
 {
 
-    private User|null $creator;
+    private $creator;
 
-    private int|null $id;
+    private $id;
 
-    private int|null $configurationId;
+    private $configurationId;
 
-    private DedicatedConfiguration|null $configuration;
+    private $configuration;
 
-    private string|null $caseType;
+    private $caseType;
 
-    private string|null $startDate;
+    private $startDate;
 
-    private string|null $endDate;
+    private $endDate;
 
-    private int|null $labelId;
+    private $labelId;
 
-    private bool|null $available;
+    private $available;
 
-    private array|null $interfaces;
+    private $interfaces;
 
-    private array|null $aggregatedInterfaces;
+    private $aggregatedInterfaces;
 
-    private array|null $disks;
+    private $disks;
 
-    private ServerPosition|null $position;
+    private $position;
 
-    private array|null $allInterfaces;
+    private $allInterfaces;
 
 
     /**
-     * @return User|null
+     * @return ?User
      */
-    public function getCreator(): User|null
+    public function getCreator(): ?User
     {
          return $this->creator;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getConfigurationId(): int|null
+    public function getConfigurationId(): ?int
     {
          return $this->configurationId;
      }
 
     /**
-     * @return DedicatedConfiguration|null
+     * @return ?DedicatedConfiguration
      */
-    public function getConfiguration(): DedicatedConfiguration|null
+    public function getConfiguration(): ?DedicatedConfiguration
     {
          return $this->configuration;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getCaseType(): string|null
+    public function getCaseType(): ?string
     {
          return $this->caseType;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getEndDate(): string|null
+    public function getEndDate(): ?string
     {
          return $this->endDate;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getLabelId(): int|null
+    public function getLabelId(): ?int
     {
          return $this->labelId;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getAvailable(): bool|null
+    public function getAvailable(): ?bool
     {
          return $this->available;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getInterfaces(): array|null
+    public function getInterfaces(): ?array
     {
          return $this->interfaces;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getAggregatedInterfaces(): array|null
+    public function getAggregatedInterfaces(): ?array
     {
          return $this->aggregatedInterfaces;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getDisks(): array|null
+    public function getDisks(): ?array
     {
          return $this->disks;
      }
 
     /**
-     * @return ServerPosition|null
+     * @return ?ServerPosition
      */
-    public function getPosition(): ServerPosition|null
+    public function getPosition(): ?ServerPosition
     {
          return $this->position;
      }
 
     /**
-     * @return array|null
+     * @return ?array
      */
-    public function getAllInterfaces(): array|null
+    public function getAllInterfaces(): ?array
     {
          return $this->allInterfaces;
      }
@@ -168,7 +168,7 @@ class DedicatedInstance
      * @param ServerPosition|null $position
      * @param array|null $allInterfaces
      */
-    public function __construct(User|null $creator, int|null $id, int|null $configurationId, DedicatedConfiguration|null $configuration, string|null $caseType, string|null $startDate, string|null $endDate, int|null $labelId, bool|null $available, array|null $interfaces, array|null $aggregatedInterfaces, array|null $disks, ServerPosition|null $position, array|null $allInterfaces)
+    public function __construct(?User $creator, ?int $id, ?int $configurationId, ?DedicatedConfiguration $configuration, ?string $caseType, ?string $startDate, ?string $endDate, ?int $labelId, ?bool $available, ?array $interfaces, ?array $aggregatedInterfaces, ?array $disks, ?ServerPosition $position, ?array $allInterfaces)
     {
         $this->creator = $creator;
         $this->id = $id;
@@ -225,7 +225,7 @@ class DedicatedInstance
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

@@ -11,23 +11,23 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class JWTTokenResponse
 {
 
-    private string|null $token;
+    private $token;
 
-    private User|null $userData;
+    private $userData;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getToken(): string|null
+    public function getToken(): ?string
     {
          return $this->token;
      }
 
     /**
-     * @return User|null
+     * @return ?User
      */
-    public function getUserData(): User|null
+    public function getUserData(): ?User
     {
          return $this->userData;
      }
@@ -36,7 +36,7 @@ class JWTTokenResponse
      * @param string|null $token
      * @param User|null $userData
      */
-    public function __construct(string|null $token, User|null $userData)
+    public function __construct(?string $token, ?User $userData)
     {
         $this->token = $token;
         $this->userData = $userData;
@@ -45,7 +45,7 @@ class JWTTokenResponse
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

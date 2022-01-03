@@ -11,9 +11,9 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class IPDDoSStatus
 {
 
-    private string $layer4;
+    private $layer4;
 
-    private string $layer7;
+    private $layer7;
 
 
     /**
@@ -45,7 +45,7 @@ class IPDDoSStatus
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

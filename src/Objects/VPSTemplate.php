@@ -13,93 +13,93 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class VPSTemplate
 {
 
-    private string|null $startDate;
+    private $startDate;
 
-    private int|null $id;
+    private $id;
 
-    private int|null $price;
+    private $price;
 
-    private string|null $serviceType;
+    private $serviceType;
 
-    private int|null $dataId;
+    private $dataId;
 
-    private int|null $coreCount;
+    private $coreCount;
 
-    private int|null $memory;
+    private $memory;
 
-    private int|null $diskSpace;
+    private $diskSpace;
 
-    private string|null $vpsType;
+    private $vpsType;
 
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getStartDate(): string|null
+    public function getStartDate(): ?string
     {
          return $this->startDate;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPrice(): int|null
+    public function getPrice(): ?int
     {
          return $this->price;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getServiceType(): string|null
+    public function getServiceType(): ?string
     {
          return $this->serviceType;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDataId(): int|null
+    public function getDataId(): ?int
     {
          return $this->dataId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getCoreCount(): int|null
+    public function getCoreCount(): ?int
     {
          return $this->coreCount;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getMemory(): int|null
+    public function getMemory(): ?int
     {
          return $this->memory;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getDiskSpace(): int|null
+    public function getDiskSpace(): ?int
     {
          return $this->diskSpace;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getVpsType(): string|null
+    public function getVpsType(): ?string
     {
          return $this->vpsType;
      }
@@ -115,7 +115,7 @@ class VPSTemplate
      * @param int|null $diskSpace
      * @param string|null $vpsType
      */
-    public function __construct(string|null $startDate, int|null $id, int|null $price, string|null $serviceType, int|null $dataId, int|null $coreCount, int|null $memory, int|null $diskSpace, string|null $vpsType)
+    public function __construct(?string $startDate, ?int $id, ?int $price, ?string $serviceType, ?int $dataId, ?int $coreCount, ?int $memory, ?int $diskSpace, ?string $vpsType)
     {
         $this->startDate = $startDate;
         $this->id = $id;
@@ -131,7 +131,7 @@ class VPSTemplate
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [

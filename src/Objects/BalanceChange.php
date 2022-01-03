@@ -11,103 +11,103 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class BalanceChange
 {
 
-    private int|null $id;
+    private $id;
 
-    private int|null $amount;
+    private $amount;
 
-    private int|null $startBalance;
+    private $startBalance;
 
-    private string|null $time;
+    private $time;
 
-    private string|null $type;
+    private $type;
 
-    private string|null $description;
+    private $description;
 
-    private int|null $userId;
+    private $userId;
 
-    private int|null $paymentBundleId;
+    private $paymentBundleId;
 
-    private bool|null $successful;
+    private $successful;
 
-    private SimpleUser|null $other;
+    private $other;
 
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getId(): int|null
+    public function getId(): ?int
     {
          return $this->id;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getAmount(): int|null
+    public function getAmount(): ?int
     {
          return $this->amount;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getStartBalance(): int|null
+    public function getStartBalance(): ?int
     {
          return $this->startBalance;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getTime(): string|null
+    public function getTime(): ?string
     {
          return $this->time;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getType(): string|null
+    public function getType(): ?string
     {
          return $this->type;
      }
 
     /**
-     * @return string|null
+     * @return ?string
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
          return $this->description;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getUserId(): int|null
+    public function getUserId(): ?int
     {
          return $this->userId;
      }
 
     /**
-     * @return int|null
+     * @return ?int
      */
-    public function getPaymentBundleId(): int|null
+    public function getPaymentBundleId(): ?int
     {
          return $this->paymentBundleId;
      }
 
     /**
-     * @return bool|null
+     * @return ?bool
      */
-    public function getSuccessful(): bool|null
+    public function getSuccessful(): ?bool
     {
          return $this->successful;
      }
 
     /**
-     * @return SimpleUser|null
+     * @return ?SimpleUser
      */
-    public function getOther(): SimpleUser|null
+    public function getOther(): ?SimpleUser
     {
          return $this->other;
      }
@@ -124,7 +124,7 @@ class BalanceChange
      * @param bool|null $successful
      * @param SimpleUser|null $other
      */
-    public function __construct(int|null $id, int|null $amount, int|null $startBalance, string|null $time, string|null $type, string|null $description, int|null $userId, int|null $paymentBundleId, bool|null $successful, SimpleUser|null $other)
+    public function __construct(?int $id, ?int $amount, ?int $startBalance, ?string $time, ?string $type, ?string $description, ?int $userId, ?int $paymentBundleId, ?bool $successful, ?SimpleUser $other)
     {
         $this->id = $id;
         $this->amount = $amount;
@@ -141,7 +141,7 @@ class BalanceChange
     /**
      * @return array
      */
-    public function getAsArr()
+    public function getAsArr():array
     {
         return
         [
