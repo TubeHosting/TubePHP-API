@@ -22,15 +22,15 @@ Also take a look in the [Documentation.md](Documentation.md)
 The Tube-Hosting PHP API is available over [Packagist](https://packagist.org/packages/tubehosting/tubephp-api), and an installation in your project is recommended via [Composer](https://getcomposer.org). <br>
 After installing [Composer in your project](https://getcomposer.org/download/), just add this line to your `composer.json` file.
 ```json
-"tubehosting/tubephp-api": "^0.3-beta"
+"tubehosting/tubephp-api": "^0.4-beta"
 ```
 or run 
 ```shell
-$ composer require tubehosting/tubephp-api:0.3-beta
+$ composer require tubehosting/tubephp-api:0.4-beta
 ```
 in your shell. 
 
-This library also requires PHP version 8.0 or higher and the PHP curl extension.
+This library also requires PHP version 7.1 or higher and the PHP curl extension.
 
 ## Usage
 
