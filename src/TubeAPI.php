@@ -9,7 +9,7 @@ require_once __DIR__ . '/Exceptions/RequestException.php';
 
 class TubeAPI
 {
-    public static string $token;
+    public static $token;
 
     /**
      * @param string $method
