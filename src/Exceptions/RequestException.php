@@ -7,13 +7,13 @@ use Throwable;
 class RequestException extends \Exception
 {
 
-    public int|null $httpStatusCode;
+    public $httpStatusCode;
 
-    public string|null $dataResponse;
+    public $dataResponse;
 
-    public string|null $url;
+    public $url;
 
-    public array|null $curl_getInfo;
+    public $curl_getInfo;
 
     /**
      * @return int|null
