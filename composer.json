@@ -5,7 +5,8 @@
   "type": "library",
   "require": {
     "php": ">=7.1",
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "ext-json": "*"
   },
   "license": "MIT",
   "authors": [
