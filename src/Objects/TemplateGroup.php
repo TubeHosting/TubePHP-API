@@ -125,20 +125,22 @@ class TemplateGroup
         //handle objects in array with multiple possible objects
         $tmpTemplates = $templates;
         $templates = [];
-        foreach ($tmpTemplates as $key => $item) {
-            switch ((string)((array)$item)['serviceType']){
-               case "DEDICATED":
-                   $item = DedicatedTemplate::fromStdClass($item);
-                    break;
-               case "IPV4BUNDLE":
-                   $item = Ipv4BundleTemplate::fromStdClass($item);
-                    break;
-               case "VPS":
-                   $item = VPSTemplate::fromStdClass($item);
-                    break;
+        if($tmpTemplates!==null){
+            foreach ($tmpTemplates as $key => $item) {
+                switch ((string)((array)$item)['serviceType']){
+                   case "DEDICATED":
+                       $item = DedicatedTemplate::fromStdClass($item);
+                        break;
+                   case "IPV4BUNDLE":
+                       $item = Ipv4BundleTemplate::fromStdClass($item);
+                        break;
+                   case "VPS":
+                       $item = VPSTemplate::fromStdClass($item);
+                        break;
+                }
+                $singleItem = array($key => $item);
+                $templates = array_merge($templates, $singleItem);
             }
-            $singleItem = array($key => $item);
-            $templates = array_merge($templates, $singleItem);
         }
         $this->templates = $templates;
         $this->price = $price;
@@ -173,39 +175,39 @@ class TemplateGroup
 
         if (isset($object->comment)) {
             $comment = (string) $object->comment;
-        }else $comment = $object->comment=null;
+        }else $comment = null;
 
         if (isset($object->available)) {
             $available = (bool) $object->available;
-        }else $available = $object->available=null;
+        }else $available = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->name)) {
             $name = (string) $object->name;
-        }else $name = $object->name=null;
+        }else $name = null;
 
         if (isset($object->runtime)) {
             $runtime = (int) $object->runtime;
-        }else $runtime = $object->runtime=null;
+        }else $runtime = null;
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->templates)) {
             $templates = (array) $object->templates;
-        }else $templates = $object->templates=null;
+        }else $templates = null;
 
         if (isset($object->price)) {
             $price = (int) $object->price;
-        }else $price = $object->price=null;
+        }else $price = null;
 
         if (isset($object->dataId)) {
             $dataId = (int) $object->dataId;
-        }else $dataId = $object->dataId=null;
+        }else $dataId = null;
 
         return new TemplateGroup($comment, $available, $id, $name, $runtime, $startDate, $templates, $price, $dataId);
      }

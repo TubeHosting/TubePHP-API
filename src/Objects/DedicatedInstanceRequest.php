@@ -220,30 +220,36 @@ class DedicatedInstanceRequest
         //handle objects in array
         $tmpDisks = $disks;
         $disks = [];
-        foreach ($tmpDisks as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $disks = array_merge($disks, $singleItem);
+        if($tmpDisks!==null){
+            foreach ($tmpDisks as $key => $item) {
+                $item = DiskLinkRequest::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $disks = array_merge($disks, $singleItem);
+            }
         }
         $this->disks = $disks;
 
         //handle objects in array
         $tmpInterfaces = $interfaces;
         $interfaces = [];
-        foreach ($tmpInterfaces as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $interfaces = array_merge($interfaces, $singleItem);
+        if($tmpInterfaces!==null){
+            foreach ($tmpInterfaces as $key => $item) {
+                $item = InterfaceRequest::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $interfaces = array_merge($interfaces, $singleItem);
+            }
         }
         $this->interfaces = $interfaces;
 
         //handle objects in array
         $tmpAggregatedInterfaces = $aggregatedInterfaces;
         $aggregatedInterfaces = [];
-        foreach ($tmpAggregatedInterfaces as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $aggregatedInterfaces = array_merge($aggregatedInterfaces, $singleItem);
+        if($tmpAggregatedInterfaces!==null){
+            foreach ($tmpAggregatedInterfaces as $key => $item) {
+                $item = AggregatedInterfaceRequest::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $aggregatedInterfaces = array_merge($aggregatedInterfaces, $singleItem);
+            }
         }
         $this->aggregatedInterfaces = $aggregatedInterfaces;
         $this->caseType = $caseType;
@@ -285,77 +291,78 @@ class DedicatedInstanceRequest
 
         if (isset($object->userId)) {
             $userId = (int) $object->userId;
-        }else $userId = $object->userId=null;
+        }else $userId = null;
 
         if (isset($object->price)) {
             $price = (int) $object->price;
-        }else $price = $object->price=null;
+        }else $price = null;
 
         if (isset($object->runtimeInterval)) {
             $runtimeInterval = (int) $object->runtimeInterval;
-        }else $runtimeInterval = $object->runtimeInterval=null;
+        }else $runtimeInterval = null;
 
         if (isset($object->memory)) {
             $memory = (int) $object->memory;
-        }else $memory = $object->memory=null;
+        }else $memory = null;
 
         if (isset($object->position)) {
            $position = ServerPosition::fromStdClass((object)$object->position);
-        }else $position = $object->position=null;
+        }else $position = null;
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->labelId)) {
             $labelId = (int) $object->labelId;
-        }else $labelId = $object->labelId=null;
+        }else $labelId = null;
 
         if (isset($object->available)) {
             $available = (bool) $object->available;
-        }else $available = $object->available=null;
+        }else $available = null;
 
         if (isset($object->memoryType)) {
             $memoryType = (string) $object->memoryType;
-        }else $memoryType = $object->memoryType=null;
+        }else $memoryType = null;
 
         if (isset($object->cpuId)) {
             $cpuId = (int) $object->cpuId;
-        }else $cpuId = $object->cpuId=null;
+        }else $cpuId = null;
 
         if (isset($object->cpuCount)) {
             $cpuCount = (int) $object->cpuCount;
-        }else $cpuCount = $object->cpuCount=null;
+        }else $cpuCount = null;
 
         if (isset($object->gpuId)) {
             $gpuId = (int) $object->gpuId;
-        }else $gpuId = $object->gpuId=null;
+        }else $gpuId = null;
 
         if (isset($object->gpuCount)) {
             $gpuCount = (int) $object->gpuCount;
-        }else $gpuCount = $object->gpuCount=null;
+        }else $gpuCount = null;
 
         if (isset($object->disks)) {
             $disks = (array) $object->disks;
-        }else $disks = $object->disks=null;
+        }else $disks = null;
 
         if (isset($object->interfaces)) {
             $interfaces = (array) $object->interfaces;
-        }else $interfaces = $object->interfaces=null;
+        }else $interfaces = null;
 
         if (isset($object->aggregatedInterfaces)) {
             $aggregatedInterfaces = (array) $object->aggregatedInterfaces;
-        }else $aggregatedInterfaces = $object->aggregatedInterfaces=null;
+        }else $aggregatedInterfaces = null;
 
         if (isset($object->caseType)) {
             $caseType = (string) $object->caseType;
-        }else $caseType = $object->caseType=null;
+        }else $caseType = null;
 
         return new DedicatedInstanceRequest($userId, $price, $runtimeInterval, $memory, $position, $startDate, $labelId, $available, $memoryType, $cpuId, $cpuCount, $gpuId, $gpuCount, $disks, $interfaces, $aggregatedInterfaces, $caseType);
      }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/admin-dedicated-repository/createInstance
      * @param DedicatedInstanceRequest $dedicatedInstanceRequest
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException

@@ -128,31 +128,31 @@ class GPU
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->baseClock)) {
             $baseClock = (int) $object->baseClock;
-        }else $baseClock = $object->baseClock=null;
+        }else $baseClock = null;
 
         if (isset($object->turboClock)) {
             $turboClock = (int) $object->turboClock;
-        }else $turboClock = $object->turboClock=null;
+        }else $turboClock = null;
 
         if (isset($object->brand)) {
             $brand = (string) $object->brand;
-        }else $brand = $object->brand=null;
+        }else $brand = null;
 
         if (isset($object->model)) {
             $model = (string) $object->model;
-        }else $model = $object->model=null;
+        }else $model = null;
 
         if (isset($object->memory)) {
             $memory = (int) $object->memory;
-        }else $memory = $object->memory=null;
+        }else $memory = null;
 
         if (isset($object->memoryObject)) {
            $memoryObject = Memory::fromStdClass((object)$object->memoryObject);
-        }else $memoryObject = $object->memoryObject=null;
+        }else $memoryObject = null;
 
         return new GPU($id, $baseClock, $turboClock, $brand, $model, $memory, $memoryObject);
      }

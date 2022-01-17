@@ -89,19 +89,19 @@ class SecondaryOwner
 
         if (isset($object->userId)) {
             $userId = (int) $object->userId;
-        }else $userId = $object->userId=null;
+        }else $userId = null;
 
         if (isset($object->serviceGroupId)) {
             $serviceGroupId = (int) $object->serviceGroupId;
-        }else $serviceGroupId = $object->serviceGroupId=null;
+        }else $serviceGroupId = null;
 
         if (isset($object->accepted)) {
             $accepted = (bool) $object->accepted;
-        }else $accepted = $object->accepted=null;
+        }else $accepted = null;
 
         if (isset($object->user)) {
            $user = SimpleUser::fromStdClass((object)$object->user);
-        }else $user = $object->user=null;
+        }else $user = null;
 
         return new SecondaryOwner($userId, $serviceGroupId, $accepted, $user);
      }

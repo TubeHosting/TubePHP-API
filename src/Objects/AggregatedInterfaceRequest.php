@@ -51,6 +51,16 @@ class AggregatedInterfaceRequest
     {
         $this->interfaceId = $interfaceId;
         $this->zabbixInterface = $zabbixInterface;
+
+        //handle stuff in array
+        $tmpInterfaces = $interfaces;
+        $interfaces = [];
+        if($tmpInterfaces!==null){
+             foreach ($tmpInterfaces as $key => $item) {
+                 $singleItem = array($key => $item);
+                 $interfaces = array_merge($interfaces, $singleItem);
+            }
+        }
         $this->interfaces = $interfaces;
     }
 
@@ -76,15 +86,15 @@ class AggregatedInterfaceRequest
 
         if (isset($object->interfaceId)) {
             $interfaceId = (int) $object->interfaceId;
-        }else $interfaceId = $object->interfaceId=null;
+        }else $interfaceId = null;
 
         if (isset($object->zabbixInterface)) {
            $zabbixInterface = ZabbixInterface::fromStdClass((object)$object->zabbixInterface);
-        }else $zabbixInterface = $object->zabbixInterface=null;
+        }else $zabbixInterface = null;
 
         if (isset($object->interfaces)) {
             $interfaces = (array) $object->interfaces;
-        }else $interfaces = $object->interfaces=null;
+        }else $interfaces = null;
 
         return new AggregatedInterfaceRequest($interfaceId, $zabbixInterface, $interfaces);
      }

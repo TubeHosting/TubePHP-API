@@ -219,65 +219,66 @@ class Service
 
         if (isset($object->dataId)) {
             $dataId = (int) $object->dataId;
-        }else $dataId = $object->dataId=null;
+        }else $dataId = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->endDate)) {
             $endDate = (string) $object->endDate;
-        }else $endDate = $object->endDate=null;
+        }else $endDate = null;
 
         if (isset($object->price)) {
             $price = (int) $object->price;
-        }else $price = $object->price=null;
+        }else $price = null;
 
         if (isset($object->priceType)) {
             $priceType = (string) $object->priceType;
-        }else $priceType = $object->priceType=null;
+        }else $priceType = null;
 
         if (isset($object->deactivatedOn)) {
             $deactivatedOn = (string) $object->deactivatedOn;
-        }else $deactivatedOn = $object->deactivatedOn=null;
+        }else $deactivatedOn = null;
 
         if (isset($object->description)) {
             $description = (string) $object->description;
-        }else $description = $object->description=null;
+        }else $description = null;
 
         if (isset($object->runtime)) {
             $runtime = (string) $object->runtime;
-        }else $runtime = $object->runtime=null;
+        }else $runtime = null;
 
         if (isset($object->name)) {
             $name = (string) $object->name;
-        }else $name = $object->name=null;
+        }else $name = null;
 
         if (isset($object->type)) {
             $type = (string) $object->type;
-        }else $type = $object->type=null;
+        }else $type = null;
 
         if (isset($object->priceObject)) {
             $priceObject = (int) $object->priceObject;
-        }else $priceObject = $object->priceObject=null;
+        }else $priceObject = null;
 
         if (isset($object->serviceGroupId)) {
             $serviceGroupId = (int) $object->serviceGroupId;
-        }else $serviceGroupId = $object->serviceGroupId=null;
+        }else $serviceGroupId = null;
 
         if (isset($object->templateId)) {
             $templateId = (int) $object->templateId;
-        }else $templateId = $object->templateId=null;
+        }else $templateId = null;
 
         return new Service($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $serviceGroupId, $templateId);
      }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-controller/changeDescription
      * @param int $serviceId
      * @param DescriptionBody $descriptionBody
      * @return string
@@ -291,6 +292,7 @@ class Service
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-controller/getServiceByID
      * @param int $serviceId
      * @return object
      * @throws \TubeAPI\Exceptions\RequestException
@@ -298,6 +300,7 @@ class Service
     public static function getServiceByID(int $serviceId):object 
     {
         $result = TubeAPI::request('GET', '/services/'.$serviceId.'/current', null, TubeAPI::$token);
+        $result = json_decode($result);
         if(((array)$result)['type'] === "Service") return  Service::fromStdClass($result);
         if(((array)$result)['type'] === "Dedicated") return  Dedicated::fromStdClass($result);
         if(((array)$result)['type'] === "IPv4Bundle") return  IPv4Bundle::fromStdClass($result);

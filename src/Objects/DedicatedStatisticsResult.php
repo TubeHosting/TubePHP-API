@@ -62,12 +62,12 @@ class DedicatedStatisticsResult
     {
 
         if (isset($object->bundled)) {
-           $bundled = object::fromStdClass((object)$object->bundled);
-        }else $bundled = $object->bundled=null;
+            $bundled = (object) $object->bundled;
+        }else $bundled = null;
 
         if (isset($object->interfaces)) {
-           $interfaces = object::fromStdClass((object)$object->interfaces);
-        }else $interfaces = $object->interfaces=null;
+            $interfaces = (object) $object->interfaces;
+        }else $interfaces = null;
 
         return new DedicatedStatisticsResult($bundled, $interfaces);
      }

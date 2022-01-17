@@ -183,20 +183,22 @@ class ServiceGroupData
         //handle objects in array with multiple possible objects
         $tmpServices = $services;
         $services = [];
-        foreach ($tmpServices as $key => $item) {
-            switch ((string)((array)$item)['type']){
-               case "DEDICATED":
-                   $item = Dedicated::fromStdClass($item);
-                    break;
-               case "IPV4BUNDLE":
-                   $item = IPv4Bundle::fromStdClass($item);
-                    break;
-               case "VPS":
-                   $item = VPS::fromStdClass($item);
-                    break;
+        if($tmpServices!==null){
+            foreach ($tmpServices as $key => $item) {
+                switch ((string)((array)$item)['type']){
+                   case "DEDICATED":
+                       $item = Dedicated::fromStdClass($item);
+                        break;
+                   case "IPV4BUNDLE":
+                       $item = IPv4Bundle::fromStdClass($item);
+                        break;
+                   case "VPS":
+                       $item = VPS::fromStdClass($item);
+                        break;
+                }
+                $singleItem = array($key => $item);
+                $services = array_merge($services, $singleItem);
             }
-            $singleItem = array($key => $item);
-            $services = array_merge($services, $singleItem);
         }
         $this->services = $services;
         $this->name = $name;
@@ -238,65 +240,66 @@ class ServiceGroupData
 
         if (isset($object->price)) {
             $price = (int) $object->price;
-        }else $price = $object->price=null;
+        }else $price = null;
 
         if (isset($object->endDate)) {
             $endDate = (string) $object->endDate;
-        }else $endDate = $object->endDate=null;
+        }else $endDate = null;
 
         if (isset($object->position)) {
             $position = (int) $object->position;
-        }else $position = $object->position=null;
+        }else $position = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->serviceGroupId)) {
             $serviceGroupId = (int) $object->serviceGroupId;
-        }else $serviceGroupId = $object->serviceGroupId=null;
+        }else $serviceGroupId = null;
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->templateGroup)) {
            $templateGroup = TemplateGroup::fromStdClass((object)$object->templateGroup);
-        }else $templateGroup = $object->templateGroup=null;
+        }else $templateGroup = null;
 
         if (isset($object->templateGroupId)) {
             $templateGroupId = (int) $object->templateGroupId;
-        }else $templateGroupId = $object->templateGroupId=null;
+        }else $templateGroupId = null;
 
         if (isset($object->runtimeInterval)) {
             $runtimeInterval = (int) $object->runtimeInterval;
-        }else $runtimeInterval = $object->runtimeInterval=null;
+        }else $runtimeInterval = null;
 
         if (isset($object->services)) {
             $services = (array) $object->services;
-        }else $services = $object->services=null;
+        }else $services = null;
 
         if (isset($object->name)) {
             $name = (string) $object->name;
-        }else $name = $object->name=null;
+        }else $name = null;
 
         if (isset($object->active)) {
             $active = (bool) $object->active;
-        }else $active = $object->active=null;
+        }else $active = null;
 
         if (isset($object->priceObject)) {
             $priceObject = (int) $object->priceObject;
-        }else $priceObject = $object->priceObject=null;
+        }else $priceObject = null;
 
         if (isset($object->realPrice)) {
             $realPrice = (int) $object->realPrice;
-        }else $realPrice = $object->realPrice=null;
+        }else $realPrice = null;
 
         return new ServiceGroupData($price, $endDate, $position, $id, $serviceGroupId, $startDate, $templateGroup, $templateGroupId, $runtimeInterval, $services, $name, $active, $priceObject, $realPrice);
      }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-group-controller/acceptSecondaryOwner
      * @param int $serviceGroupId
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -309,6 +312,7 @@ class ServiceGroupData
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-group-controller/extendServiceGroup
      * @param int $serviceGroupId
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -321,6 +325,7 @@ class ServiceGroupData
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-group-controller/getSecondaryOwners
      * @param int $serviceGroupId
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException
@@ -339,6 +344,7 @@ class ServiceGroupData
         return $results;
     }
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-group-controller/addSecondaryOwners
      * @param int $serviceGroupId
      * @param array $array
      * @return array
@@ -352,6 +358,7 @@ class ServiceGroupData
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-group-controller/getServiceByServiceGroupByID
      * @param int $serviceGroupId
      * @param int $serviceId
      * @return object
@@ -360,6 +367,7 @@ class ServiceGroupData
     public static function getServiceByServiceGroupByID(int $serviceGroupId, int $serviceId):object 
     {
         $result = TubeAPI::request('GET', '/servicegroups/'.$serviceGroupId.'/service/'.$serviceId.'', null, TubeAPI::$token);
+        $result = json_decode($result);
         if(((array)$result)['type'] === "Service") return  Service::fromStdClass($result);
         if(((array)$result)['type'] === "Dedicated") return  Dedicated::fromStdClass($result);
         if(((array)$result)['type'] === "IPv4Bundle") return  IPv4Bundle::fromStdClass($result);
@@ -369,6 +377,7 @@ class ServiceGroupData
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-group-controller/getDDoSIncidentsOfServiceGroup
      * @param int $serviceGroupId
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException
@@ -389,6 +398,7 @@ class ServiceGroupData
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-group-controller/getServiceGroupByID
      * @param int $serviceGroupId
      * @return  SingleServiceGroupData
      * @throws \TubeAPI\Exceptions\RequestException
@@ -401,6 +411,7 @@ class ServiceGroupData
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-group-controller/getInvites
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException
      */
@@ -420,6 +431,7 @@ class ServiceGroupData
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-group-controller/getAllServiceGroupsFromUser
      * @param bool $primaryOnly
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException
@@ -440,6 +452,7 @@ class ServiceGroupData
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/service-group-controller/deleteSecondaryOwners
      * @param int $serviceGroupId
      * @param int $userId
      * @return string

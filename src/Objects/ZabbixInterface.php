@@ -76,15 +76,15 @@ class ZabbixInterface
 
         if (isset($object->hostId)) {
             $hostId = (int) $object->hostId;
-        }else $hostId = $object->hostId=null;
+        }else $hostId = null;
 
         if (isset($object->netInItemId)) {
             $netInItemId = (int) $object->netInItemId;
-        }else $netInItemId = $object->netInItemId=null;
+        }else $netInItemId = null;
 
         if (isset($object->netOutItemId)) {
             $netOutItemId = (int) $object->netOutItemId;
-        }else $netOutItemId = $object->netOutItemId=null;
+        }else $netOutItemId = null;
 
         return new ZabbixInterface($hostId, $netInItemId, $netOutItemId);
      }

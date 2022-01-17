@@ -50,7 +50,7 @@ class IpRDNSBody
 
         if (isset($object->rdns)) {
             $rdns = (string) $object->rdns;
-        }else $rdns = $object->rdns=null;
+        }else $rdns = null;
 
         return new IpRDNSBody($rdns);
      }

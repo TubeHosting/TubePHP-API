@@ -130,31 +130,31 @@ class Ipv4BundleTemplate
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->price)) {
             $price = (int) $object->price;
-        }else $price = $object->price=null;
+        }else $price = null;
 
         if (isset($object->serviceType)) {
             $serviceType = (string) $object->serviceType;
-        }else $serviceType = $object->serviceType=null;
+        }else $serviceType = null;
 
         if (isset($object->dataId)) {
             $dataId = (int) $object->dataId;
-        }else $dataId = $object->dataId=null;
+        }else $dataId = null;
 
         if (isset($object->count)) {
             $count = (int) $object->count;
-        }else $count = $object->count=null;
+        }else $count = null;
 
         if (isset($object->primary)) {
             $primary = (bool) $object->primary;
-        }else $primary = $object->primary=null;
+        }else $primary = null;
 
         return new Ipv4BundleTemplate($startDate, $id, $price, $serviceType, $dataId, $count, $primary);
      }

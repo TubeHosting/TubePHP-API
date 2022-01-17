@@ -89,19 +89,19 @@ class LinkIPv4BundleIPv4
 
         if (isset($object->serviceId)) {
             $serviceId = (int) $object->serviceId;
-        }else $serviceId = $object->serviceId=null;
+        }else $serviceId = null;
 
         if (isset($object->type)) {
             $type = (string) $object->type;
-        }else $type = $object->type=null;
+        }else $type = null;
 
         if (isset($object->description)) {
             $description = (string) $object->description;
-        }else $description = $object->description=null;
+        }else $description = null;
 
         if (isset($object->ipv4)) {
            $ipv4 = IPv4::fromStdClass((object)$object->ipv4);
-        }else $ipv4 = $object->ipv4=null;
+        }else $ipv4 = null;
 
         return new LinkIPv4BundleIPv4($serviceId, $type, $description, $ipv4);
      }

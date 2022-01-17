@@ -63,11 +63,11 @@ class PaymentResponse
 
         if (isset($object->link)) {
             $link = (string) $object->link;
-        }else $link = $object->link=null;
+        }else $link = null;
 
         if (isset($object->paymentMethodId)) {
             $paymentMethodId = (string) $object->paymentMethodId;
-        }else $paymentMethodId = $object->paymentMethodId=null;
+        }else $paymentMethodId = null;
 
         return new PaymentResponse($link, $paymentMethodId);
      }

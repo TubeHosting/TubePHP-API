@@ -89,19 +89,19 @@ class BalanceSendingRequest
 
         if (isset($object->toMail)) {
             $toMail = (string) $object->toMail;
-        }else $toMail = $object->toMail=null;
+        }else $toMail = null;
 
         if (isset($object->amount)) {
             $amount = (int) $object->amount;
-        }else $amount = $object->amount=null;
+        }else $amount = null;
 
         if (isset($object->description)) {
             $description = (string) $object->description;
-        }else $description = $object->description=null;
+        }else $description = null;
 
         if (isset($object->amountObject)) {
             $amountObject = (int) $object->amountObject;
-        }else $amountObject = $object->amountObject=null;
+        }else $amountObject = null;
 
         return new BalanceSendingRequest($toMail, $amount, $description, $amountObject);
      }

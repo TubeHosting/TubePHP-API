@@ -50,7 +50,7 @@ class RequestBodyLocale
 
         if (isset($object->locale)) {
             $locale = (string) $object->locale;
-        }else $locale = $object->locale=null;
+        }else $locale = null;
 
         return new RequestBodyLocale($locale);
      }

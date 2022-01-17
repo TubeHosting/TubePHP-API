@@ -234,20 +234,24 @@ class Dedicated
         //handle objects in array
         $tmpAddedUpgrades = $addedUpgrades;
         $addedUpgrades = [];
-        foreach ($tmpAddedUpgrades as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $addedUpgrades = array_merge($addedUpgrades, $singleItem);
+        if($tmpAddedUpgrades!==null){
+            foreach ($tmpAddedUpgrades as $key => $item) {
+                $item = DedicatedUpgrade::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $addedUpgrades = array_merge($addedUpgrades, $singleItem);
+            }
         }
         $this->addedUpgrades = $addedUpgrades;
 
         //handle objects in array
         $tmpRemovedUpgrades = $removedUpgrades;
         $removedUpgrades = [];
-        foreach ($tmpRemovedUpgrades as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $removedUpgrades = array_merge($removedUpgrades, $singleItem);
+        if($tmpRemovedUpgrades!==null){
+            foreach ($tmpRemovedUpgrades as $key => $item) {
+                $item = DedicatedUpgrade::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $removedUpgrades = array_merge($removedUpgrades, $singleItem);
+            }
         }
         $this->removedUpgrades = $removedUpgrades;
         $this->instanceId = $instanceId;
@@ -291,81 +295,82 @@ class Dedicated
 
         if (isset($object->dataId)) {
             $dataId = (int) $object->dataId;
-        }else $dataId = $object->dataId=null;
+        }else $dataId = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->endDate)) {
             $endDate = (string) $object->endDate;
-        }else $endDate = $object->endDate=null;
+        }else $endDate = null;
 
         if (isset($object->price)) {
             $price = (int) $object->price;
-        }else $price = $object->price=null;
+        }else $price = null;
 
         if (isset($object->priceType)) {
             $priceType = (string) $object->priceType;
-        }else $priceType = $object->priceType=null;
+        }else $priceType = null;
 
         if (isset($object->deactivatedOn)) {
             $deactivatedOn = (string) $object->deactivatedOn;
-        }else $deactivatedOn = $object->deactivatedOn=null;
+        }else $deactivatedOn = null;
 
         if (isset($object->description)) {
             $description = (string) $object->description;
-        }else $description = $object->description=null;
+        }else $description = null;
 
         if (isset($object->runtime)) {
             $runtime = (string) $object->runtime;
-        }else $runtime = $object->runtime=null;
+        }else $runtime = null;
 
         if (isset($object->name)) {
             $name = (string) $object->name;
-        }else $name = $object->name=null;
+        }else $name = null;
 
         if (isset($object->type)) {
             $type = (string) $object->type;
-        }else $type = $object->type=null;
+        }else $type = null;
 
         if (isset($object->priceObject)) {
             $priceObject = (int) $object->priceObject;
-        }else $priceObject = $object->priceObject=null;
+        }else $priceObject = null;
 
         if (isset($object->serviceGroupId)) {
             $serviceGroupId = (int) $object->serviceGroupId;
-        }else $serviceGroupId = $object->serviceGroupId=null;
+        }else $serviceGroupId = null;
 
         if (isset($object->templateId)) {
             $templateId = (int) $object->templateId;
-        }else $templateId = $object->templateId=null;
+        }else $templateId = null;
 
         if (isset($object->addedUpgrades)) {
             $addedUpgrades = (array) $object->addedUpgrades;
-        }else $addedUpgrades = $object->addedUpgrades=null;
+        }else $addedUpgrades = null;
 
         if (isset($object->removedUpgrades)) {
             $removedUpgrades = (array) $object->removedUpgrades;
-        }else $removedUpgrades = $object->removedUpgrades=null;
+        }else $removedUpgrades = null;
 
         if (isset($object->instanceId)) {
             $instanceId = (int) $object->instanceId;
-        }else $instanceId = $object->instanceId=null;
+        }else $instanceId = null;
 
         if (isset($object->instance)) {
            $instance = DedicatedInstance::fromStdClass((object)$object->instance);
-        }else $instance = $object->instance=null;
+        }else $instance = null;
 
         return new Dedicated($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $serviceGroupId, $templateId, $addedUpgrades, $removedUpgrades, $instanceId, $instance);
      }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/dedicated-controller/getServiceByID_1
      * @param int $id
      * @param string $start
      * @param string $end

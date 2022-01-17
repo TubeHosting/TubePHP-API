@@ -128,31 +128,31 @@ class Address
 
         if (isset($object->company)) {
             $company = (string) $object->company;
-        }else $company = $object->company=null;
+        }else $company = null;
 
         if (isset($object->city)) {
             $city = (string) $object->city;
-        }else $city = $object->city=null;
+        }else $city = null;
 
         if (isset($object->street)) {
             $street = (string) $object->street;
-        }else $street = $object->street=null;
+        }else $street = null;
 
         if (isset($object->streetNumber)) {
             $streetNumber = (string) $object->streetNumber;
-        }else $streetNumber = $object->streetNumber=null;
+        }else $streetNumber = null;
 
         if (isset($object->numberAdditive)) {
             $numberAdditive = (string) $object->numberAdditive;
-        }else $numberAdditive = $object->numberAdditive=null;
+        }else $numberAdditive = null;
 
         if (isset($object->country)) {
             $country = (string) $object->country;
-        }else $country = $object->country=null;
+        }else $country = null;
 
         if (isset($object->postalCode)) {
             $postalCode = (string) $object->postalCode;
-        }else $postalCode = $object->postalCode=null;
+        }else $postalCode = null;
 
         return new Address($company, $city, $street, $streetNumber, $numberAdditive, $country, $postalCode);
      }

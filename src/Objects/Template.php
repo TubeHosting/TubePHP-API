@@ -102,29 +102,30 @@ class Template
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->price)) {
             $price = (int) $object->price;
-        }else $price = $object->price=null;
+        }else $price = null;
 
         if (isset($object->serviceType)) {
             $serviceType = (string) $object->serviceType;
-        }else $serviceType = $object->serviceType=null;
+        }else $serviceType = null;
 
         if (isset($object->dataId)) {
             $dataId = (int) $object->dataId;
-        }else $dataId = $object->dataId=null;
+        }else $dataId = null;
 
         return new Template($startDate, $id, $price, $serviceType, $dataId);
      }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/template-controller/getTemplateGroups
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException
      */

@@ -201,10 +201,12 @@ class IPv4Bundle
         //handle objects in array
         $tmpIps = $ips;
         $ips = [];
-        foreach ($tmpIps as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $ips = array_merge($ips, $singleItem);
+        if($tmpIps!==null){
+            foreach ($tmpIps as $key => $item) {
+                $item = LinkIPv4BundleIPv4::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $ips = array_merge($ips, $singleItem);
+            }
         }
         $this->ips = $ips;
     }
@@ -243,69 +245,70 @@ class IPv4Bundle
 
         if (isset($object->dataId)) {
             $dataId = (int) $object->dataId;
-        }else $dataId = $object->dataId=null;
+        }else $dataId = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->endDate)) {
             $endDate = (string) $object->endDate;
-        }else $endDate = $object->endDate=null;
+        }else $endDate = null;
 
         if (isset($object->price)) {
             $price = (int) $object->price;
-        }else $price = $object->price=null;
+        }else $price = null;
 
         if (isset($object->priceType)) {
             $priceType = (string) $object->priceType;
-        }else $priceType = $object->priceType=null;
+        }else $priceType = null;
 
         if (isset($object->deactivatedOn)) {
             $deactivatedOn = (string) $object->deactivatedOn;
-        }else $deactivatedOn = $object->deactivatedOn=null;
+        }else $deactivatedOn = null;
 
         if (isset($object->description)) {
             $description = (string) $object->description;
-        }else $description = $object->description=null;
+        }else $description = null;
 
         if (isset($object->runtime)) {
             $runtime = (string) $object->runtime;
-        }else $runtime = $object->runtime=null;
+        }else $runtime = null;
 
         if (isset($object->name)) {
             $name = (string) $object->name;
-        }else $name = $object->name=null;
+        }else $name = null;
 
         if (isset($object->type)) {
             $type = (string) $object->type;
-        }else $type = $object->type=null;
+        }else $type = null;
 
         if (isset($object->priceObject)) {
             $priceObject = (int) $object->priceObject;
-        }else $priceObject = $object->priceObject=null;
+        }else $priceObject = null;
 
         if (isset($object->serviceGroupId)) {
             $serviceGroupId = (int) $object->serviceGroupId;
-        }else $serviceGroupId = $object->serviceGroupId=null;
+        }else $serviceGroupId = null;
 
         if (isset($object->templateId)) {
             $templateId = (int) $object->templateId;
-        }else $templateId = $object->templateId=null;
+        }else $templateId = null;
 
         if (isset($object->ips)) {
             $ips = (array) $object->ips;
-        }else $ips = $object->ips=null;
+        }else $ips = null;
 
         return new IPv4Bundle($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $serviceGroupId, $templateId, $ips);
      }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/ip-bundle-controller/getDDoSIncidentsOnBundle
      * @param int $serviceId
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException

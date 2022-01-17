@@ -128,37 +128,38 @@ class IPv4
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->macBind)) {
             $macBind = (string) $object->macBind;
-        }else $macBind = $object->macBind=null;
+        }else $macBind = null;
 
         if (isset($object->gateway)) {
             $gateway = (string) $object->gateway;
-        }else $gateway = $object->gateway=null;
+        }else $gateway = null;
 
         if (isset($object->cidr)) {
             $cidr = (int) $object->cidr;
-        }else $cidr = $object->cidr=null;
+        }else $cidr = null;
 
         if (isset($object->available)) {
             $available = (bool) $object->available;
-        }else $available = $object->available=null;
+        }else $available = null;
 
         if (isset($object->ipv4)) {
             $ipv4 = (string) $object->ipv4;
-        }else $ipv4 = $object->ipv4=null;
+        }else $ipv4 = null;
 
         if (isset($object->rdns)) {
             $rdns = (string) $object->rdns;
-        }else $rdns = $object->rdns=null;
+        }else $rdns = null;
 
         return new IPv4($id, $macBind, $gateway, $cidr, $available, $ipv4, $rdns);
      }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/ip-controller/changeRDNS
      * @param string $ipV4
      * @param IpRDNSBody $ipRDNSBody
      * @return string
@@ -172,6 +173,7 @@ class IPv4
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/ip-controller/changeIPv4Description
      * @param string $ipV4
      * @param DescriptionBody $descriptionBody
      * @return string
@@ -185,6 +187,7 @@ class IPv4
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/ip-controller/getDDoSModeStatus
      * @param string $ipV4
      * @return  CombahtonDDoSIPStatus
      * @throws \TubeAPI\Exceptions\RequestException
@@ -195,6 +198,7 @@ class IPv4
         return  CombahtonDDoSIPStatus::fromStdClass(json_decode($result));
     }
     /**
+     * @link https://doc.api.tube-hosting.com/#/ip-controller/changeDDoSModeStatus
      * @param string $ipV4
      * @param IPDDoSStatus $iPDDoSStatus
      * @return string
@@ -208,6 +212,7 @@ class IPv4
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/ip-controller/getIPLinkBundle
      * @param string $ipV4
      * @return  LinkIPv4BundleIPv4
      * @throws \TubeAPI\Exceptions\RequestException
@@ -220,6 +225,7 @@ class IPv4
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/ip-controller/getDDoSIncidentsOnIPv4
      * @param string $ipV4
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException

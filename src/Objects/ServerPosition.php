@@ -115,27 +115,27 @@ class ServerPosition
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->hall)) {
             $hall = (string) $object->hall;
-        }else $hall = $object->hall=null;
+        }else $hall = null;
 
         if (isset($object->room)) {
             $room = (string) $object->room;
-        }else $room = $object->room=null;
+        }else $room = null;
 
         if (isset($object->rack)) {
             $rack = (int) $object->rack;
-        }else $rack = $object->rack=null;
+        }else $rack = null;
 
         if (isset($object->position)) {
             $position = (int) $object->position;
-        }else $position = $object->position=null;
+        }else $position = null;
 
         if (isset($object->height)) {
             $height = (int) $object->height;
-        }else $height = $object->height=null;
+        }else $height = null;
 
         return new ServerPosition($id, $hall, $room, $rack, $position, $height);
      }

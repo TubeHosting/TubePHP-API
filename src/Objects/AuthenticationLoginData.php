@@ -63,11 +63,11 @@ class AuthenticationLoginData
 
         if (isset($object->mail)) {
             $mail = (string) $object->mail;
-        }else $mail = $object->mail=null;
+        }else $mail = null;
 
         if (isset($object->password)) {
             $password = (string) $object->password;
-        }else $password = $object->password=null;
+        }else $password = null;
 
         return new AuthenticationLoginData($mail, $password);
      }

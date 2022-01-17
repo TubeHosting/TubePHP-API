@@ -137,20 +137,24 @@ class DedicatedUpgrade
         //handle objects in array
         $tmpAddedDisks = $addedDisks;
         $addedDisks = [];
-        foreach ($tmpAddedDisks as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $addedDisks = array_merge($addedDisks, $singleItem);
+        if($tmpAddedDisks!==null){
+            foreach ($tmpAddedDisks as $key => $item) {
+                $item = DedicatedInstanceDiskLink::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $addedDisks = array_merge($addedDisks, $singleItem);
+            }
         }
         $this->addedDisks = $addedDisks;
 
         //handle objects in array
         $tmpRemovedDisks = $removedDisks;
         $removedDisks = [];
-        foreach ($tmpRemovedDisks as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $removedDisks = array_merge($removedDisks, $singleItem);
+        if($tmpRemovedDisks!==null){
+            foreach ($tmpRemovedDisks as $key => $item) {
+                $item = DedicatedInstanceDiskLink::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $removedDisks = array_merge($removedDisks, $singleItem);
+            }
         }
         $this->removedDisks = $removedDisks;
         $this->price = $price;
@@ -185,43 +189,43 @@ class DedicatedUpgrade
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->gpuCount)) {
             $gpuCount = (int) $object->gpuCount;
-        }else $gpuCount = $object->gpuCount=null;
+        }else $gpuCount = null;
 
         if (isset($object->memory)) {
             $memory = (int) $object->memory;
-        }else $memory = $object->memory=null;
+        }else $memory = null;
 
         if (isset($object->memoryType)) {
             $memoryType = (string) $object->memoryType;
-        }else $memoryType = $object->memoryType=null;
+        }else $memoryType = null;
 
         if (isset($object->cpuCount)) {
             $cpuCount = (int) $object->cpuCount;
-        }else $cpuCount = $object->cpuCount=null;
+        }else $cpuCount = null;
 
         if (isset($object->cpu)) {
            $cpu = CPU::fromStdClass((object)$object->cpu);
-        }else $cpu = $object->cpu=null;
+        }else $cpu = null;
 
         if (isset($object->gpu)) {
            $gpu = GPU::fromStdClass((object)$object->gpu);
-        }else $gpu = $object->gpu=null;
+        }else $gpu = null;
 
         if (isset($object->addedDisks)) {
             $addedDisks = (array) $object->addedDisks;
-        }else $addedDisks = $object->addedDisks=null;
+        }else $addedDisks = null;
 
         if (isset($object->removedDisks)) {
             $removedDisks = (array) $object->removedDisks;
-        }else $removedDisks = $object->removedDisks=null;
+        }else $removedDisks = null;
 
         if (isset($object->price)) {
             $price = (int) $object->price;
-        }else $price = $object->price=null;
+        }else $price = null;
 
         return new DedicatedUpgrade($id, $gpuCount, $memory, $memoryType, $cpuCount, $cpu, $gpu, $addedDisks, $removedDisks, $price);
      }

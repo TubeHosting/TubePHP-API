@@ -167,43 +167,43 @@ class InvoiceItem
 
         if (isset($object->order)) {
             $order = (bool) $object->order;
-        }else $order = $object->order=null;
+        }else $order = null;
 
         if (isset($object->newServiceGroupRuntime)) {
             $newServiceGroupRuntime = (string) $object->newServiceGroupRuntime;
-        }else $newServiceGroupRuntime = $object->newServiceGroupRuntime=null;
+        }else $newServiceGroupRuntime = null;
 
         if (isset($object->title)) {
             $title = (string) $object->title;
-        }else $title = $object->title=null;
+        }else $title = null;
 
         if (isset($object->position)) {
             $position = (int) $object->position;
-        }else $position = $object->position=null;
+        }else $position = null;
 
         if (isset($object->unitPrice)) {
             $unitPrice = (int) $object->unitPrice;
-        }else $unitPrice = $object->unitPrice=null;
+        }else $unitPrice = null;
 
         if (isset($object->quantity)) {
             $quantity = (int) $object->quantity;
-        }else $quantity = $object->quantity=null;
+        }else $quantity = null;
 
         if (isset($object->description)) {
             $description = (string) $object->description;
-        }else $description = $object->description=null;
+        }else $description = null;
 
         if (isset($object->priceType)) {
             $priceType = (string) $object->priceType;
-        }else $priceType = $object->priceType=null;
+        }else $priceType = null;
 
         if (isset($object->invoiceId)) {
             $invoiceId = (int) $object->invoiceId;
-        }else $invoiceId = $object->invoiceId=null;
+        }else $invoiceId = null;
 
         if (isset($object->serviceGroupId)) {
             $serviceGroupId = (int) $object->serviceGroupId;
-        }else $serviceGroupId = $object->serviceGroupId=null;
+        }else $serviceGroupId = null;
 
         return new InvoiceItem($order, $newServiceGroupRuntime, $title, $position, $unitPrice, $quantity, $description, $priceType, $invoiceId, $serviceGroupId);
      }

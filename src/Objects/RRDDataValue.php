@@ -180,47 +180,47 @@ class RRDDataValue
 
         if (isset($object->cpu)) {
             $cpu = (float) $object->cpu;
-        }else $cpu = $object->cpu=null;
+        }else $cpu = null;
 
         if (isset($object->disk)) {
             $disk = (float) $object->disk;
-        }else $disk = $object->disk=null;
+        }else $disk = null;
 
         if (isset($object->diskread)) {
             $diskread = (float) $object->diskread;
-        }else $diskread = $object->diskread=null;
+        }else $diskread = null;
 
         if (isset($object->diskwrite)) {
             $diskwrite = (float) $object->diskwrite;
-        }else $diskwrite = $object->diskwrite=null;
+        }else $diskwrite = null;
 
         if (isset($object->maxcpu)) {
             $maxcpu = (int) $object->maxcpu;
-        }else $maxcpu = $object->maxcpu=null;
+        }else $maxcpu = null;
 
         if (isset($object->maxdisk)) {
             $maxdisk = (int) $object->maxdisk;
-        }else $maxdisk = $object->maxdisk=null;
+        }else $maxdisk = null;
 
         if (isset($object->maxmem)) {
             $maxmem = (int) $object->maxmem;
-        }else $maxmem = $object->maxmem=null;
+        }else $maxmem = null;
 
         if (isset($object->mem)) {
             $mem = (float) $object->mem;
-        }else $mem = $object->mem=null;
+        }else $mem = null;
 
         if (isset($object->netin)) {
             $netin = (float) $object->netin;
-        }else $netin = $object->netin=null;
+        }else $netin = null;
 
         if (isset($object->netout)) {
             $netout = (float) $object->netout;
-        }else $netout = $object->netout=null;
+        }else $netout = null;
 
         if (isset($object->time)) {
             $time = (int) $object->time;
-        }else $time = $object->time=null;
+        }else $time = null;
 
         return new RRDDataValue($cpu, $disk, $diskread, $diskwrite, $maxcpu, $maxdisk, $maxmem, $mem, $netin, $netout, $time);
      }
