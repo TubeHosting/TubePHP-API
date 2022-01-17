@@ -11,45 +11,45 @@ class TubeAPI
 {
     public static $token;
 
+    public static $apiServer = "https://api.tube-hosting.com";
+
     /**
      * @param string $method
      * @param string $endpoint
-     * @param array|null $data
+     * @param $data
      * @param string|null $bearer
      * @param array|null $customHeaders
      * @return string
      * @throws RequestException
      */
-    public static function request(string $method, string $endpoint, ?array $data = array('null'), ?string $bearer = 'null', ?array $customHeaders = null): string
+    public static function request(string $method, string $endpoint, $data, ?string $bearer, ?array $customHeaders = null): string
     {
 
         $curl = curl_init();
 
         //set necessary http headers
-        $headers = array(
-            'Connection: keep-alive',
-            'Accept: */*',
-            'Access-Control-Request-Headers: authorization,content-type',
-            'User-Agent: PHP-Client v0.2',
-            'Content-Type: application/json; charset=utf-8',
-            'Authorization: Bearer ' . $bearer
-        );
+        $headers = array();
+        $headers[] = 'Accept: application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9';
+        $headers[] = 'User-Agent: PHP-Client v0.5';
+        $headers[] = 'Authorization: Bearer ' . $bearer;
+
+        //send specific content type when needed https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
+        if ($method === "POST" || $method === "PUT") if($data != null) $headers[] = 'Content-Type: application/json';
         if ($customHeaders !== null) $headers = array_merge($headers, $customHeaders);
 
         //set options
-        curl_setopt_array($curl, [
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://api.tube-hosting.com' . $endpoint,
-            CURLOPT_CUSTOMREQUEST => $method, //set http method
-            CURLOPT_POSTFIELDS => json_encode($data), //add json data
-            CURLOPT_ENCODING => 'gzip, deflate'
-        ]);
-
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        $options = array();
+        $options[CURLOPT_RETURNTRANSFER] = 1;
+        $options[CURLOPT_URL] = TubeAPI::$apiServer . $endpoint;
+        $options[CURLOPT_CUSTOMREQUEST] = $method;
+        $options[CURLOPT_ENCODING] =  'gzip, deflate';
+        $options[CURLOPT_HTTP_VERSION] =  CURL_HTTP_VERSION_2_0;
+        $options[CURLOPT_HTTPHEADER] = $headers;
+        if ($method === "POST" || $method === "PUT" ) if($data != null) $options[CURLOPT_POSTFIELDS] = json_encode($data);
+        curl_setopt_array($curl, $options);
 
         $data = curl_exec($curl);
         $http_code = ((int)curl_getinfo($curl)['http_code']);
-
 
         if (!$data || !is_array(curl_getinfo($curl)) || $http_code !== 200){ //handle unexpected behavior
 
@@ -75,7 +75,7 @@ class TubeAPI
                 $data = null;
             }
 
-            throw new RequestException($curl_getInfo, "https://api.tube-hosting.com" . $endpoint, $data, $http_code, $errormsg, 0);
+            throw new RequestException($curl_getInfo, self::$apiServer . $endpoint, $data, $http_code, $errormsg, 0);
         }
 
         curl_close($curl);
