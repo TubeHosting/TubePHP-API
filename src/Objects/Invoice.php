@@ -135,10 +135,12 @@ class Invoice
         //handle objects in array
         $tmpItems = $items;
         $items = [];
-        foreach ($tmpItems as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $items = array_merge($items, $singleItem);
+        if($tmpItems!==null){
+            foreach ($tmpItems as $key => $item) {
+                $item = InvoiceItem::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $items = array_merge($items, $singleItem);
+            }
         }
         $this->items = $items;
         $this->time = $time;
@@ -176,43 +178,43 @@ class Invoice
 
         if (isset($object->address)) {
            $address = Address::fromStdClass((object)$object->address);
-        }else $address = $object->address=null;
+        }else $address = null;
 
         if (isset($object->name)) {
            $name = Name::fromStdClass((object)$object->name);
-        }else $name = $object->name=null;
+        }else $name = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->userId)) {
             $userId = (int) $object->userId;
-        }else $userId = $object->userId=null;
+        }else $userId = null;
 
         if (isset($object->oldInvoiceId)) {
             $oldInvoiceId = (string) $object->oldInvoiceId;
-        }else $oldInvoiceId = $object->oldInvoiceId=null;
+        }else $oldInvoiceId = null;
 
         if (isset($object->items)) {
             $items = (array) $object->items;
-        }else $items = $object->items=null;
+        }else $items = null;
 
         if (isset($object->time)) {
             $time = (string) $object->time;
-        }else $time = $object->time=null;
+        }else $time = null;
 
         if (isset($object->finished)) {
             $finished = (bool) $object->finished;
-        }else $finished = $object->finished=null;
+        }else $finished = null;
 
         if (isset($object->paymentBundleId)) {
             $paymentBundleId = (int) $object->paymentBundleId;
-        }else $paymentBundleId = $object->paymentBundleId=null;
+        }else $paymentBundleId = null;
 
         if (isset($object->taxPercentFormatted)) {
             $taxPercentFormatted = (string) $object->taxPercentFormatted;
-        }else $taxPercentFormatted = $object->taxPercentFormatted=null;
+        }else $taxPercentFormatted = null;
 
         return new Invoice($address, $name, $id, $userId, $oldInvoiceId, $items, $time, $finished, $paymentBundleId, $taxPercentFormatted);
      }

@@ -63,11 +63,11 @@ class KvmOs
 
         if (isset($object->osId)) {
             $osId = (int) $object->osId;
-        }else $osId = $object->osId=null;
+        }else $osId = null;
 
         if (isset($object->displayName)) {
             $displayName = (string) $object->displayName;
-        }else $displayName = $object->displayName=null;
+        }else $displayName = null;
 
         return new KvmOs($osId, $displayName);
      }

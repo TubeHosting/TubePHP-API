@@ -206,55 +206,55 @@ class VpsStatus
 
         if (isset($object->status)) {
             $status = (string) $object->status;
-        }else $status = $object->status=null;
+        }else $status = null;
 
         if (isset($object->name)) {
             $name = (string) $object->name;
-        }else $name = $object->name=null;
+        }else $name = null;
 
         if (isset($object->uptime)) {
             $uptime = (int) $object->uptime;
-        }else $uptime = $object->uptime=null;
+        }else $uptime = null;
 
         if (isset($object->cpu)) {
             $cpu = (float) $object->cpu;
-        }else $cpu = $object->cpu=null;
+        }else $cpu = null;
 
         if (isset($object->diskread)) {
             $diskread = (float) $object->diskread;
-        }else $diskread = $object->diskread=null;
+        }else $diskread = null;
 
         if (isset($object->diskwrite)) {
             $diskwrite = (float) $object->diskwrite;
-        }else $diskwrite = $object->diskwrite=null;
+        }else $diskwrite = null;
 
         if (isset($object->cpus)) {
             $cpus = (int) $object->cpus;
-        }else $cpus = $object->cpus=null;
+        }else $cpus = null;
 
         if (isset($object->disk)) {
             $disk = (float) $object->disk;
-        }else $disk = $object->disk=null;
+        }else $disk = null;
 
         if (isset($object->maxdisk)) {
             $maxdisk = (int) $object->maxdisk;
-        }else $maxdisk = $object->maxdisk=null;
+        }else $maxdisk = null;
 
         if (isset($object->maxmem)) {
             $maxmem = (int) $object->maxmem;
-        }else $maxmem = $object->maxmem=null;
+        }else $maxmem = null;
 
         if (isset($object->mem)) {
             $mem = (float) $object->mem;
-        }else $mem = $object->mem=null;
+        }else $mem = null;
 
         if (isset($object->netin)) {
             $netin = (float) $object->netin;
-        }else $netin = $object->netin=null;
+        }else $netin = null;
 
         if (isset($object->netout)) {
             $netout = (float) $object->netout;
-        }else $netout = $object->netout=null;
+        }else $netout = null;
 
         return new VpsStatus($status, $name, $uptime, $cpu, $diskread, $diskwrite, $cpus, $disk, $maxdisk, $maxmem, $mem, $netin, $netout);
      }

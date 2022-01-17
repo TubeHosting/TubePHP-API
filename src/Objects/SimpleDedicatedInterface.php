@@ -115,27 +115,27 @@ class SimpleDedicatedInterface
 
         if (isset($object->mac)) {
             $mac = (string) $object->mac;
-        }else $mac = $object->mac=null;
+        }else $mac = null;
 
         if (isset($object->speed)) {
             $speed = (int) $object->speed;
-        }else $speed = $object->speed=null;
+        }else $speed = null;
 
         if (isset($object->active)) {
             $active = (bool) $object->active;
-        }else $active = $object->active=null;
+        }else $active = null;
 
         if (isset($object->interfaceId)) {
             $interfaceId = (int) $object->interfaceId;
-        }else $interfaceId = $object->interfaceId=null;
+        }else $interfaceId = null;
 
         if (isset($object->aggregatedId)) {
             $aggregatedId = (int) $object->aggregatedId;
-        }else $aggregatedId = $object->aggregatedId=null;
+        }else $aggregatedId = null;
 
         if (isset($object->instanceId)) {
             $instanceId = (int) $object->instanceId;
-        }else $instanceId = $object->instanceId=null;
+        }else $instanceId = null;
 
         return new SimpleDedicatedInterface($mac, $speed, $active, $interfaceId, $aggregatedId, $instanceId);
      }

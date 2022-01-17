@@ -63,11 +63,11 @@ class JWTTokenResponse
 
         if (isset($object->token)) {
             $token = (string) $object->token;
-        }else $token = $object->token=null;
+        }else $token = null;
 
         if (isset($object->userData)) {
            $userData = User::fromStdClass((object)$object->userData);
-        }else $userData = $object->userData=null;
+        }else $userData = null;
 
         return new JWTTokenResponse($token, $userData);
      }

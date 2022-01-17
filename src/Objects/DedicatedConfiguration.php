@@ -167,43 +167,43 @@ class DedicatedConfiguration
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->memory)) {
             $memory = (int) $object->memory;
-        }else $memory = $object->memory=null;
+        }else $memory = null;
 
         if (isset($object->hddDiskSpace)) {
             $hddDiskSpace = (int) $object->hddDiskSpace;
-        }else $hddDiskSpace = $object->hddDiskSpace=null;
+        }else $hddDiskSpace = null;
 
         if (isset($object->ssdDiskSpace)) {
             $ssdDiskSpace = (int) $object->ssdDiskSpace;
-        }else $ssdDiskSpace = $object->ssdDiskSpace=null;
+        }else $ssdDiskSpace = null;
 
         if (isset($object->cpu)) {
            $cpu = CPU::fromStdClass((object)$object->cpu);
-        }else $cpu = $object->cpu=null;
+        }else $cpu = null;
 
         if (isset($object->gpu)) {
            $gpu = GPU::fromStdClass((object)$object->gpu);
-        }else $gpu = $object->gpu=null;
+        }else $gpu = null;
 
         if (isset($object->cpuCount)) {
             $cpuCount = (int) $object->cpuCount;
-        }else $cpuCount = $object->cpuCount=null;
+        }else $cpuCount = null;
 
         if (isset($object->gpuCount)) {
             $gpuCount = (int) $object->gpuCount;
-        }else $gpuCount = $object->gpuCount=null;
+        }else $gpuCount = null;
 
         if (isset($object->available)) {
             $available = (bool) $object->available;
-        }else $available = $object->available=null;
+        }else $available = null;
 
         if (isset($object->memoryType)) {
             $memoryType = (string) $object->memoryType;
-        }else $memoryType = $object->memoryType=null;
+        }else $memoryType = null;
 
         return new DedicatedConfiguration($id, $memory, $hddDiskSpace, $ssdDiskSpace, $cpu, $gpu, $cpuCount, $gpuCount, $available, $memoryType);
      }

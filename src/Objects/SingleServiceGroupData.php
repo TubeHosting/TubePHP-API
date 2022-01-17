@@ -102,23 +102,23 @@ class SingleServiceGroupData
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->metaData)) {
            $metaData = ServiceGroupMetaData::fromStdClass((object)$object->metaData);
-        }else $metaData = $object->metaData=null;
+        }else $metaData = null;
 
         if (isset($object->groupData)) {
            $groupData = ServiceGroupData::fromStdClass((object)$object->groupData);
-        }else $groupData = $object->groupData=null;
+        }else $groupData = null;
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->endDate)) {
             $endDate = (string) $object->endDate;
-        }else $endDate = $object->endDate=null;
+        }else $endDate = null;
 
         return new SingleServiceGroupData($id, $metaData, $groupData, $startDate, $endDate);
      }

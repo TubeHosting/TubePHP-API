@@ -63,11 +63,11 @@ class Name
 
         if (isset($object->firstname)) {
             $firstname = (string) $object->firstname;
-        }else $firstname = $object->firstname=null;
+        }else $firstname = null;
 
         if (isset($object->lastname)) {
             $lastname = (string) $object->lastname;
-        }else $lastname = $object->lastname=null;
+        }else $lastname = null;
 
         return new Name($firstname, $lastname);
      }

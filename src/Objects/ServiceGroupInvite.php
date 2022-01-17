@@ -76,15 +76,15 @@ class ServiceGroupInvite
 
         if (isset($object->serviceGroupId)) {
             $serviceGroupId = (int) $object->serviceGroupId;
-        }else $serviceGroupId = $object->serviceGroupId=null;
+        }else $serviceGroupId = null;
 
         if (isset($object->serviceGroupName)) {
             $serviceGroupName = (string) $object->serviceGroupName;
-        }else $serviceGroupName = $object->serviceGroupName=null;
+        }else $serviceGroupName = null;
 
         if (isset($object->owner)) {
            $owner = SimpleUser::fromStdClass((object)$object->owner);
-        }else $owner = $object->owner=null;
+        }else $owner = null;
 
         return new ServiceGroupInvite($serviceGroupId, $serviceGroupName, $owner);
      }

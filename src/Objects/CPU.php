@@ -128,31 +128,31 @@ class CPU
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->coreCount)) {
             $coreCount = (int) $object->coreCount;
-        }else $coreCount = $object->coreCount=null;
+        }else $coreCount = null;
 
         if (isset($object->threadsPerCore)) {
             $threadsPerCore = (int) $object->threadsPerCore;
-        }else $threadsPerCore = $object->threadsPerCore=null;
+        }else $threadsPerCore = null;
 
         if (isset($object->baseClock)) {
             $baseClock = (int) $object->baseClock;
-        }else $baseClock = $object->baseClock=null;
+        }else $baseClock = null;
 
         if (isset($object->turboClock)) {
             $turboClock = (int) $object->turboClock;
-        }else $turboClock = $object->turboClock=null;
+        }else $turboClock = null;
 
         if (isset($object->model)) {
             $model = (string) $object->model;
-        }else $model = $object->model=null;
+        }else $model = null;
 
         if (isset($object->brand)) {
             $brand = (string) $object->brand;
-        }else $brand = $object->brand=null;
+        }else $brand = null;
 
         return new CPU($id, $coreCount, $threadsPerCore, $baseClock, $turboClock, $model, $brand);
      }

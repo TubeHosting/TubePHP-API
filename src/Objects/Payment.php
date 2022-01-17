@@ -180,53 +180,54 @@ class Payment
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->method)) {
             $method = (string) $object->method;
-        }else $method = $object->method=null;
+        }else $method = null;
 
         if (isset($object->amount)) {
             $amount = (int) $object->amount;
-        }else $amount = $object->amount=null;
+        }else $amount = null;
 
         if (isset($object->status)) {
             $status = (string) $object->status;
-        }else $status = $object->status=null;
+        }else $status = null;
 
         if (isset($object->description)) {
             $description = (string) $object->description;
-        }else $description = $object->description=null;
+        }else $description = null;
 
         if (isset($object->timeStarted)) {
             $timeStarted = (string) $object->timeStarted;
-        }else $timeStarted = $object->timeStarted=null;
+        }else $timeStarted = null;
 
         if (isset($object->timeFinished)) {
             $timeFinished = (string) $object->timeFinished;
-        }else $timeFinished = $object->timeFinished=null;
+        }else $timeFinished = null;
 
         if (isset($object->providerId)) {
             $providerId = (string) $object->providerId;
-        }else $providerId = $object->providerId=null;
+        }else $providerId = null;
 
         if (isset($object->type)) {
             $type = (string) $object->type;
-        }else $type = $object->type=null;
+        }else $type = null;
 
         if (isset($object->userId)) {
             $userId = (int) $object->userId;
-        }else $userId = $object->userId=null;
+        }else $userId = null;
 
         if (isset($object->paymentBundleId)) {
             $paymentBundleId = (int) $object->paymentBundleId;
-        }else $paymentBundleId = $object->paymentBundleId=null;
+        }else $paymentBundleId = null;
 
         return new Payment($id, $method, $amount, $status, $description, $timeStarted, $timeFinished, $providerId, $type, $userId, $paymentBundleId);
      }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/payment-controller/sendBalance
      * @param BalanceSendingRequest $balanceSendingRequest
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -239,6 +240,7 @@ class Payment
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/payment-controller/chargeBalance
      * @param BalanceChargeRequestBody $balanceChargeRequestBody
      * @return  PaymentResponse
      * @throws \TubeAPI\Exceptions\RequestException
@@ -251,6 +253,7 @@ class Payment
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/order-controller/orderByTemplateGroup
      * @param int $templateGroupId
      * @return  SingleServiceGroupData
      * @throws \TubeAPI\Exceptions\RequestException
@@ -263,6 +266,7 @@ class Payment
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/payment-controller/getPaymentBundles
      * @param int $page
      * @param int $size
      * @return  SearchResultPaymentBundle
@@ -276,6 +280,7 @@ class Payment
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/payment-controller/getInvoices
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException
      */
@@ -295,6 +300,7 @@ class Payment
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/payment-controller/getInvoicePDF
      * @param int $invoiceId
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException
@@ -307,6 +313,7 @@ class Payment
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/payment-controller/getInvoiceMail
      * @param int $invoiceId
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -319,6 +326,7 @@ class Payment
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/payment-controller/getBalanceChanges
      * @return  SearchResultBalanceChange
      * @throws \TubeAPI\Exceptions\RequestException
      */

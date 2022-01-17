@@ -60,6 +60,16 @@ class DedicatedInterfacesAggregated
      */
     public function __construct(?array $interfaces, ?int $interfaceId, ?int $aggregatedId, ?int $instanceId)
     {
+
+        //handle stuff in array
+        $tmpInterfaces = $interfaces;
+        $interfaces = [];
+        if($tmpInterfaces!==null){
+             foreach ($tmpInterfaces as $key => $item) {
+                 $singleItem = array($key => $item);
+                 $interfaces = array_merge($interfaces, $singleItem);
+            }
+        }
         $this->interfaces = $interfaces;
         $this->interfaceId = $interfaceId;
         $this->aggregatedId = $aggregatedId;
@@ -89,19 +99,19 @@ class DedicatedInterfacesAggregated
 
         if (isset($object->interfaces)) {
             $interfaces = (array) $object->interfaces;
-        }else $interfaces = $object->interfaces=null;
+        }else $interfaces = null;
 
         if (isset($object->interfaceId)) {
             $interfaceId = (int) $object->interfaceId;
-        }else $interfaceId = $object->interfaceId=null;
+        }else $interfaceId = null;
 
         if (isset($object->aggregatedId)) {
             $aggregatedId = (int) $object->aggregatedId;
-        }else $aggregatedId = $object->aggregatedId=null;
+        }else $aggregatedId = null;
 
         if (isset($object->instanceId)) {
             $instanceId = (int) $object->instanceId;
-        }else $instanceId = $object->instanceId=null;
+        }else $instanceId = null;
 
         return new DedicatedInterfacesAggregated($interfaces, $interfaceId, $aggregatedId, $instanceId);
      }

@@ -76,15 +76,15 @@ class VpsReinstall
 
         if (isset($object->osId)) {
             $osId = (int) $object->osId;
-        }else $osId = $object->osId=null;
+        }else $osId = null;
 
         if (isset($object->password)) {
             $password = (string) $object->password;
-        }else $password = $object->password=null;
+        }else $password = null;
 
         if (isset($object->hostname)) {
             $hostname = (string) $object->hostname;
-        }else $hostname = $object->hostname=null;
+        }else $hostname = null;
 
         return new VpsReinstall($osId, $password, $hostname);
      }

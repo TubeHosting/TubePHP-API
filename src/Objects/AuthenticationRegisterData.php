@@ -115,27 +115,27 @@ class AuthenticationRegisterData
 
         if (isset($object->firstname)) {
             $firstname = (string) $object->firstname;
-        }else $firstname = $object->firstname=null;
+        }else $firstname = null;
 
         if (isset($object->lastname)) {
             $lastname = (string) $object->lastname;
-        }else $lastname = $object->lastname=null;
+        }else $lastname = null;
 
         if (isset($object->mail)) {
             $mail = (string) $object->mail;
-        }else $mail = $object->mail=null;
+        }else $mail = null;
 
         if (isset($object->password)) {
             $password = (string) $object->password;
-        }else $password = $object->password=null;
+        }else $password = null;
 
         if (isset($object->locale)) {
             $locale = (string) $object->locale;
-        }else $locale = $object->locale=null;
+        }else $locale = null;
 
         if (isset($object->localeAsObject)) {
-           $localeAsObject = object::fromStdClass((object)$object->localeAsObject);
-        }else $localeAsObject = $object->localeAsObject=null;
+            $localeAsObject = (object) $object->localeAsObject;
+        }else $localeAsObject = null;
 
         return new AuthenticationRegisterData($firstname, $lastname, $mail, $password, $locale, $localeAsObject);
      }

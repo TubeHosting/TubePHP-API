@@ -128,31 +128,31 @@ class PaymentBundle
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->balanceChange)) {
            $balanceChange = BalanceChange::fromStdClass((object)$object->balanceChange);
-        }else $balanceChange = $object->balanceChange=null;
+        }else $balanceChange = null;
 
         if (isset($object->payment)) {
            $payment = Payment::fromStdClass((object)$object->payment);
-        }else $payment = $object->payment=null;
+        }else $payment = null;
 
         if (isset($object->invoice)) {
            $invoice = Invoice::fromStdClass((object)$object->invoice);
-        }else $invoice = $object->invoice=null;
+        }else $invoice = null;
 
         if (isset($object->time)) {
             $time = (string) $object->time;
-        }else $time = $object->time=null;
+        }else $time = null;
 
         if (isset($object->amount)) {
             $amount = (int) $object->amount;
-        }else $amount = $object->amount=null;
+        }else $amount = null;
 
         if (isset($object->userId)) {
             $userId = (int) $object->userId;
-        }else $userId = $object->userId=null;
+        }else $userId = null;
 
         return new PaymentBundle($id, $balanceChange, $payment, $invoice, $time, $amount, $userId);
      }

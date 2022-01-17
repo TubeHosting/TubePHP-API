@@ -351,105 +351,106 @@ class VPS
 
         if (isset($object->dataId)) {
             $dataId = (int) $object->dataId;
-        }else $dataId = $object->dataId=null;
+        }else $dataId = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->endDate)) {
             $endDate = (string) $object->endDate;
-        }else $endDate = $object->endDate=null;
+        }else $endDate = null;
 
         if (isset($object->price)) {
             $price = (int) $object->price;
-        }else $price = $object->price=null;
+        }else $price = null;
 
         if (isset($object->priceType)) {
             $priceType = (string) $object->priceType;
-        }else $priceType = $object->priceType=null;
+        }else $priceType = null;
 
         if (isset($object->deactivatedOn)) {
             $deactivatedOn = (string) $object->deactivatedOn;
-        }else $deactivatedOn = $object->deactivatedOn=null;
+        }else $deactivatedOn = null;
 
         if (isset($object->description)) {
             $description = (string) $object->description;
-        }else $description = $object->description=null;
+        }else $description = null;
 
         if (isset($object->runtime)) {
             $runtime = (string) $object->runtime;
-        }else $runtime = $object->runtime=null;
+        }else $runtime = null;
 
         if (isset($object->name)) {
             $name = (string) $object->name;
-        }else $name = $object->name=null;
+        }else $name = null;
 
         if (isset($object->type)) {
             $type = (string) $object->type;
-        }else $type = $object->type=null;
+        }else $type = null;
 
         if (isset($object->priceObject)) {
             $priceObject = (int) $object->priceObject;
-        }else $priceObject = $object->priceObject=null;
+        }else $priceObject = null;
 
         if (isset($object->serviceGroupId)) {
             $serviceGroupId = (int) $object->serviceGroupId;
-        }else $serviceGroupId = $object->serviceGroupId=null;
+        }else $serviceGroupId = null;
 
         if (isset($object->templateId)) {
             $templateId = (int) $object->templateId;
-        }else $templateId = $object->templateId=null;
+        }else $templateId = null;
 
         if (isset($object->vpsId)) {
             $vpsId = (int) $object->vpsId;
-        }else $vpsId = $object->vpsId=null;
+        }else $vpsId = null;
 
         if (isset($object->vpsType)) {
             $vpsType = (string) $object->vpsType;
-        }else $vpsType = $object->vpsType=null;
+        }else $vpsType = null;
 
         if (isset($object->coreCount)) {
             $coreCount = (int) $object->coreCount;
-        }else $coreCount = $object->coreCount=null;
+        }else $coreCount = null;
 
         if (isset($object->memory)) {
             $memory = (int) $object->memory;
-        }else $memory = $object->memory=null;
+        }else $memory = null;
 
         if (isset($object->diskSpace)) {
             $diskSpace = (int) $object->diskSpace;
-        }else $diskSpace = $object->diskSpace=null;
+        }else $diskSpace = null;
 
         if (isset($object->diskType)) {
             $diskType = (string) $object->diskType;
-        }else $diskType = $object->diskType=null;
+        }else $diskType = null;
 
         if (isset($object->nodeId)) {
             $nodeId = (int) $object->nodeId;
-        }else $nodeId = $object->nodeId=null;
+        }else $nodeId = null;
 
         if (isset($object->lastInstalledSystem)) {
             $lastInstalledSystem = (string) $object->lastInstalledSystem;
-        }else $lastInstalledSystem = $object->lastInstalledSystem=null;
+        }else $lastInstalledSystem = null;
 
         if (isset($object->primaryIPv4)) {
            $primaryIPv4 = LinkIPv4BundleIPv4::fromStdClass((object)$object->primaryIPv4);
-        }else $primaryIPv4 = $object->primaryIPv4=null;
+        }else $primaryIPv4 = null;
 
         if (isset($object->osDisplayName)) {
             $osDisplayName = (string) $object->osDisplayName;
-        }else $osDisplayName = $object->osDisplayName=null;
+        }else $osDisplayName = null;
 
         return new VPS($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $serviceGroupId, $templateId, $vpsId, $vpsType, $coreCount, $memory, $diskSpace, $diskType, $nodeId, $lastInstalledSystem, $primaryIPv4, $osDisplayName);
      }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/vps-controller/stopServerById
      * @param int $serviceId
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -462,17 +463,20 @@ class VPS
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/vps-controller/startServerById
      * @param int $serviceId
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
      */
     public static function startServerById(int $serviceId):string 
     {
-        return TubeAPI::request('POST', '/vps/'.$serviceId.'/start', null, TubeAPI::$token);
+        $result = TubeAPI::request('POST', '/vps/'.$serviceId.'/start', null, TubeAPI::$token);
+        return $result;
     }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/vps-controller/shutdownServerById
      * @param int $serviceId
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -485,6 +489,7 @@ class VPS
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/vps-controller/restartServerById
      * @param int $serviceId
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -497,6 +502,7 @@ class VPS
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/vps-controller/reinstallServerById
      * @param int $serviceId
      * @param VpsReinstall $vpsReinstall
      * @return string
@@ -510,6 +516,7 @@ class VPS
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/vps-controller/getServerById
      * @param int $serviceId
      * @return  VPS
      * @throws \TubeAPI\Exceptions\RequestException
@@ -522,6 +529,7 @@ class VPS
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/vps-controller/getServerStatusById
      * @param int $serviceId
      * @return  VpsStatus
      * @throws \TubeAPI\Exceptions\RequestException
@@ -534,6 +542,7 @@ class VPS
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/vps-controller/getServerStatisticsById
      * @param int $serviceId
      * @param string $timeFrame
      * @return array
@@ -555,6 +564,7 @@ class VPS
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/vps-controller/getAvailableLxcOs
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException
      */
@@ -574,9 +584,9 @@ class VPS
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/vps-controller/getAvailableKvmOs
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException
-     * @link https://tube-hosting.com/123
      */
     public static function getAvailableKvmOs():array 
     {

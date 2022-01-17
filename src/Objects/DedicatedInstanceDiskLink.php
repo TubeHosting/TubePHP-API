@@ -76,15 +76,15 @@ class DedicatedInstanceDiskLink
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->disk)) {
            $disk = Disk::fromStdClass((object)$object->disk);
-        }else $disk = $object->disk=null;
+        }else $disk = null;
 
         if (isset($object->diskBay)) {
             $diskBay = (int) $object->diskBay;
-        }else $diskBay = $object->diskBay=null;
+        }else $diskBay = null;
 
         return new DedicatedInstanceDiskLink($id, $disk, $diskBay);
      }

@@ -50,7 +50,7 @@ class Memory
 
         if (isset($object->B)) {
             $B = (int) $object->B;
-        }else $B = $object->B=null;
+        }else $B = null;
 
         return new Memory($B);
      }

@@ -76,15 +76,15 @@ class BandwidthResponse
 
         if (isset($object->time)) {
             $time = (string) $object->time;
-        }else $time = $object->time=null;
+        }else $time = null;
 
         if (isset($object->out)) {
             $out = (int) $object->out;
-        }else $out = $object->out=null;
+        }else $out = null;
 
         if (isset($object->in)) {
             $in = (int) $object->in;
-        }else $in = $object->in=null;
+        }else $in = null;
 
         return new BandwidthResponse($time, $out, $in);
      }

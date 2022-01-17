@@ -206,61 +206,62 @@ class User
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->balance)) {
             $balance = (int) $object->balance;
-        }else $balance = $object->balance=null;
+        }else $balance = null;
 
         if (isset($object->mail)) {
             $mail = (string) $object->mail;
-        }else $mail = $object->mail=null;
+        }else $mail = null;
 
         if (isset($object->locale)) {
             $locale = (string) $object->locale;
-        }else $locale = $object->locale=null;
+        }else $locale = null;
 
         if (isset($object->role)) {
             $role = (string) $object->role;
-        }else $role = $object->role=null;
+        }else $role = null;
 
         if (isset($object->enabled)) {
             $enabled = (bool) $object->enabled;
-        }else $enabled = $object->enabled=null;
+        }else $enabled = null;
 
         if (isset($object->lastip)) {
             $lastip = (string) $object->lastip;
-        }else $lastip = $object->lastip=null;
+        }else $lastip = null;
 
         if (isset($object->regDate)) {
             $regDate = (string) $object->regDate;
-        }else $regDate = $object->regDate=null;
+        }else $regDate = null;
 
         if (isset($object->verified)) {
             $verified = (bool) $object->verified;
-        }else $verified = $object->verified=null;
+        }else $verified = null;
 
         if (isset($object->address)) {
            $address = Address::fromStdClass((object)$object->address);
-        }else $address = $object->address=null;
+        }else $address = null;
 
         if (isset($object->supportData)) {
            $supportData = SupportData::fromStdClass((object)$object->supportData);
-        }else $supportData = $object->supportData=null;
+        }else $supportData = null;
 
         if (isset($object->firstname)) {
             $firstname = (string) $object->firstname;
-        }else $firstname = $object->firstname=null;
+        }else $firstname = null;
 
         if (isset($object->lastname)) {
             $lastname = (string) $object->lastname;
-        }else $lastname = $object->lastname=null;
+        }else $lastname = null;
 
         return new User($id, $balance, $mail, $locale, $role, $enabled, $lastip, $regDate, $verified, $address, $supportData, $firstname, $lastname);
      }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/authentication-controller/resetPassword
      * @param string $token
      * @param string $string
      * @return string
@@ -268,12 +269,13 @@ class User
      */
     public static function resetPassword(string $token,string $string):string 
     {
-        $result = TubeAPI::request('POST', '/resetPassword?token='.$token.'', $string->getAsArr(), TubeAPI::$token);
+        $result = TubeAPI::request('POST', '/resetPassword?token='.$token.'', $string, TubeAPI::$token);
         return $result;
     }
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/authentication-controller/register
      * @param AuthenticationRegisterData $authenticationRegisterData
      * @return  JWTTokenResponse
      * @throws \TubeAPI\Exceptions\RequestException
@@ -286,6 +288,7 @@ class User
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/me-controller/changeSupportData
      * @param SupportData $supportData
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -298,6 +301,7 @@ class User
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/me-controller/changePassword
      * @param UserChangePasswordObject $userChangePasswordObject
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -310,6 +314,7 @@ class User
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/me-controller/changeNames
      * @param User $user
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -322,6 +327,7 @@ class User
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/me-controller/changeMail
      * @param User $user
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -334,6 +340,7 @@ class User
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/me-controller/changeLocale
      * @param RequestBodyLocale $requestBodyLocale
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -346,6 +353,7 @@ class User
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/me-controller/changeAddress
      * @param Address $address
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -358,6 +366,7 @@ class User
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/authentication-controller/login
      * @param AuthenticationLoginData $authenticationLoginData
      * @return  JWTTokenResponse
      * @throws \TubeAPI\Exceptions\RequestException
@@ -371,6 +380,7 @@ class User
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/authentication-controller/requestVerification
      * @param string $email
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -383,6 +393,7 @@ class User
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/authentication-controller/requestPasswordReset
      * @param string $email
      * @return string
      * @throws \TubeAPI\Exceptions\RequestException
@@ -395,6 +406,7 @@ class User
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/me-controller/meInfo
      * @return  User
      * @throws \TubeAPI\Exceptions\RequestException
      */

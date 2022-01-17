@@ -89,19 +89,19 @@ class SimpleUser
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->mail)) {
             $mail = (string) $object->mail;
-        }else $mail = $object->mail=null;
+        }else $mail = null;
 
         if (isset($object->firstname)) {
             $firstname = (string) $object->firstname;
-        }else $firstname = $object->firstname=null;
+        }else $firstname = null;
 
         if (isset($object->lastname)) {
             $lastname = (string) $object->lastname;
-        }else $lastname = $object->lastname=null;
+        }else $lastname = null;
 
         return new SimpleUser($id, $mail, $firstname, $lastname);
      }

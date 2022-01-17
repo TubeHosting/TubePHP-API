@@ -154,39 +154,39 @@ class ServiceGroupMetaData
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->status)) {
             $status = (string) $object->status;
-        }else $status = $object->status=null;
+        }else $status = null;
 
         if (isset($object->deletionDate)) {
             $deletionDate = (string) $object->deletionDate;
-        }else $deletionDate = $object->deletionDate=null;
+        }else $deletionDate = null;
 
         if (isset($object->deactivationDate)) {
             $deactivationDate = (string) $object->deactivationDate;
-        }else $deactivationDate = $object->deactivationDate=null;
+        }else $deactivationDate = null;
 
         if (isset($object->runtime)) {
             $runtime = (string) $object->runtime;
-        }else $runtime = $object->runtime=null;
+        }else $runtime = null;
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->owner)) {
            $owner = SimpleUser::fromStdClass((object)$object->owner);
-        }else $owner = $object->owner=null;
+        }else $owner = null;
 
         if (isset($object->endDate)) {
             $endDate = (string) $object->endDate;
-        }else $endDate = $object->endDate=null;
+        }else $endDate = null;
 
         if (isset($object->position)) {
             $position = (int) $object->position;
-        }else $position = $object->position=null;
+        }else $position = null;
 
         return new ServiceGroupMetaData($id, $status, $deletionDate, $deactivationDate, $runtime, $startDate, $owner, $endDate, $position);
      }

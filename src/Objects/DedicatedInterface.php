@@ -76,15 +76,15 @@ class DedicatedInterface
 
         if (isset($object->instance)) {
            $instance = DedicatedInstance::fromStdClass((object)$object->instance);
-        }else $instance = $object->instance=null;
+        }else $instance = null;
 
         if (isset($object->zabbixInterface)) {
            $zabbixInterface = ZabbixInterface::fromStdClass((object)$object->zabbixInterface);
-        }else $zabbixInterface = $object->zabbixInterface=null;
+        }else $zabbixInterface = null;
 
         if (isset($object->interfaceId)) {
             $interfaceId = (int) $object->interfaceId;
-        }else $interfaceId = $object->interfaceId=null;
+        }else $interfaceId = null;
 
         return new DedicatedInterface($instance, $zabbixInterface, $interfaceId);
      }

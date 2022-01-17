@@ -76,15 +76,15 @@ class SupportData
 
         if (isset($object->discordName)) {
             $discordName = (string) $object->discordName;
-        }else $discordName = $object->discordName=null;
+        }else $discordName = null;
 
         if (isset($object->skypeName)) {
             $skypeName = (string) $object->skypeName;
-        }else $skypeName = $object->skypeName=null;
+        }else $skypeName = null;
 
         if (isset($object->phoneNumber)) {
             $phoneNumber = (string) $object->phoneNumber;
-        }else $phoneNumber = $object->phoneNumber=null;
+        }else $phoneNumber = null;
 
         return new SupportData($discordName, $skypeName, $phoneNumber);
      }

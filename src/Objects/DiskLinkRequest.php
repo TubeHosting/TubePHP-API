@@ -63,11 +63,11 @@ class DiskLinkRequest
 
         if (isset($object->diskBay)) {
             $diskBay = (int) $object->diskBay;
-        }else $diskBay = $object->diskBay=null;
+        }else $diskBay = null;
 
         if (isset($object->diskId)) {
             $diskId = (int) $object->diskId;
-        }else $diskId = $object->diskId=null;
+        }else $diskId = null;
 
         return new DiskLinkRequest($diskBay, $diskId);
      }

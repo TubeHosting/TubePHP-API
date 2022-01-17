@@ -76,15 +76,15 @@ class CombahtonDDoSIPStatus
 
         if (isset($object->layer4)) {
             $layer4 = (string) $object->layer4;
-        }else $layer4 = $object->layer4=null;
+        }else $layer4 = null;
 
         if (isset($object->layer7)) {
             $layer7 = (string) $object->layer7;
-        }else $layer7 = $object->layer7=null;
+        }else $layer7 = null;
 
         if (isset($object->last_change)) {
             $last_change = (string) $object->last_change;
-        }else $last_change = $object->last_change=null;
+        }else $last_change = null;
 
         return new CombahtonDDoSIPStatus($layer4, $layer7, $last_change);
      }

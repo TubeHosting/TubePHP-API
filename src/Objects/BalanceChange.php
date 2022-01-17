@@ -167,43 +167,43 @@ class BalanceChange
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->amount)) {
             $amount = (int) $object->amount;
-        }else $amount = $object->amount=null;
+        }else $amount = null;
 
         if (isset($object->startBalance)) {
             $startBalance = (int) $object->startBalance;
-        }else $startBalance = $object->startBalance=null;
+        }else $startBalance = null;
 
         if (isset($object->time)) {
             $time = (string) $object->time;
-        }else $time = $object->time=null;
+        }else $time = null;
 
         if (isset($object->type)) {
             $type = (string) $object->type;
-        }else $type = $object->type=null;
+        }else $type = null;
 
         if (isset($object->description)) {
             $description = (string) $object->description;
-        }else $description = $object->description=null;
+        }else $description = null;
 
         if (isset($object->userId)) {
             $userId = (int) $object->userId;
-        }else $userId = $object->userId=null;
+        }else $userId = null;
 
         if (isset($object->paymentBundleId)) {
             $paymentBundleId = (int) $object->paymentBundleId;
-        }else $paymentBundleId = $object->paymentBundleId=null;
+        }else $paymentBundleId = null;
 
         if (isset($object->successful)) {
             $successful = (bool) $object->successful;
-        }else $successful = $object->successful=null;
+        }else $successful = null;
 
         if (isset($object->other)) {
            $other = SimpleUser::fromStdClass((object)$object->other);
-        }else $other = $object->other=null;
+        }else $other = null;
 
         return new BalanceChange($id, $amount, $startBalance, $time, $type, $description, $userId, $paymentBundleId, $successful, $other);
      }

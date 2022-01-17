@@ -63,11 +63,11 @@ class UserChangePasswordObject
 
         if (isset($object->password)) {
             $password = (string) $object->password;
-        }else $password = $object->password=null;
+        }else $password = null;
 
         if (isset($object->oldPassword)) {
             $oldPassword = (string) $object->oldPassword;
-        }else $oldPassword = $object->oldPassword=null;
+        }else $oldPassword = null;
 
         return new UserChangePasswordObject($password, $oldPassword);
      }

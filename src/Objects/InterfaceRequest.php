@@ -76,15 +76,15 @@ class InterfaceRequest
 
         if (isset($object->interfaceId)) {
             $interfaceId = (int) $object->interfaceId;
-        }else $interfaceId = $object->interfaceId=null;
+        }else $interfaceId = null;
 
         if (isset($object->mac)) {
             $mac = (string) $object->mac;
-        }else $mac = $object->mac=null;
+        }else $mac = null;
 
         if (isset($object->zabbixInterface)) {
            $zabbixInterface = ZabbixInterface::fromStdClass((object)$object->zabbixInterface);
-        }else $zabbixInterface = $object->zabbixInterface=null;
+        }else $zabbixInterface = null;
 
         return new InterfaceRequest($interfaceId, $mac, $zabbixInterface);
      }

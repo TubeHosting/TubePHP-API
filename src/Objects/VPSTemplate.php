@@ -156,39 +156,39 @@ class VPSTemplate
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->price)) {
             $price = (int) $object->price;
-        }else $price = $object->price=null;
+        }else $price = null;
 
         if (isset($object->serviceType)) {
             $serviceType = (string) $object->serviceType;
-        }else $serviceType = $object->serviceType=null;
+        }else $serviceType = null;
 
         if (isset($object->dataId)) {
             $dataId = (int) $object->dataId;
-        }else $dataId = $object->dataId=null;
+        }else $dataId = null;
 
         if (isset($object->coreCount)) {
             $coreCount = (int) $object->coreCount;
-        }else $coreCount = $object->coreCount=null;
+        }else $coreCount = null;
 
         if (isset($object->memory)) {
             $memory = (int) $object->memory;
-        }else $memory = $object->memory=null;
+        }else $memory = null;
 
         if (isset($object->diskSpace)) {
             $diskSpace = (int) $object->diskSpace;
-        }else $diskSpace = $object->diskSpace=null;
+        }else $diskSpace = null;
 
         if (isset($object->vpsType)) {
             $vpsType = (string) $object->vpsType;
-        }else $vpsType = $object->vpsType=null;
+        }else $vpsType = null;
 
         return new VPSTemplate($startDate, $id, $price, $serviceType, $dataId, $coreCount, $memory, $diskSpace, $vpsType);
      }

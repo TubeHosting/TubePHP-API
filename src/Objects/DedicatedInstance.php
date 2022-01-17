@@ -183,30 +183,36 @@ class DedicatedInstance
         //handle objects in array
         $tmpInterfaces = $interfaces;
         $interfaces = [];
-        foreach ($tmpInterfaces as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $interfaces = array_merge($interfaces, $singleItem);
+        if($tmpInterfaces!==null){
+            foreach ($tmpInterfaces as $key => $item) {
+                $item = SimpleDedicatedInterface::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $interfaces = array_merge($interfaces, $singleItem);
+            }
         }
         $this->interfaces = $interfaces;
 
         //handle objects in array
         $tmpAggregatedInterfaces = $aggregatedInterfaces;
         $aggregatedInterfaces = [];
-        foreach ($tmpAggregatedInterfaces as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $aggregatedInterfaces = array_merge($aggregatedInterfaces, $singleItem);
+        if($tmpAggregatedInterfaces!==null){
+            foreach ($tmpAggregatedInterfaces as $key => $item) {
+                $item = DedicatedInterfacesAggregated::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $aggregatedInterfaces = array_merge($aggregatedInterfaces, $singleItem);
+            }
         }
         $this->aggregatedInterfaces = $aggregatedInterfaces;
 
         //handle objects in array
         $tmpDisks = $disks;
         $disks = [];
-        foreach ($tmpDisks as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $disks = array_merge($disks, $singleItem);
+        if($tmpDisks!==null){
+            foreach ($tmpDisks as $key => $item) {
+                $item = DedicatedInstanceDiskLink::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $disks = array_merge($disks, $singleItem);
+            }
         }
         $this->disks = $disks;
         $this->position = $position;
@@ -214,10 +220,12 @@ class DedicatedInstance
         //handle objects in array
         $tmpAllInterfaces = $allInterfaces;
         $allInterfaces = [];
-        foreach ($tmpAllInterfaces as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $allInterfaces = array_merge($allInterfaces, $singleItem);
+        if($tmpAllInterfaces!==null){
+            foreach ($tmpAllInterfaces as $key => $item) {
+                $item = DedicatedInterface::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $allInterfaces = array_merge($allInterfaces, $singleItem);
+            }
         }
         $this->allInterfaces = $allInterfaces;
     }
@@ -255,59 +263,59 @@ class DedicatedInstance
 
         if (isset($object->creator)) {
            $creator = User::fromStdClass((object)$object->creator);
-        }else $creator = $object->creator=null;
+        }else $creator = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->configurationId)) {
             $configurationId = (int) $object->configurationId;
-        }else $configurationId = $object->configurationId=null;
+        }else $configurationId = null;
 
         if (isset($object->configuration)) {
            $configuration = DedicatedConfiguration::fromStdClass((object)$object->configuration);
-        }else $configuration = $object->configuration=null;
+        }else $configuration = null;
 
         if (isset($object->caseType)) {
             $caseType = (string) $object->caseType;
-        }else $caseType = $object->caseType=null;
+        }else $caseType = null;
 
         if (isset($object->startDate)) {
             $startDate = (string) $object->startDate;
-        }else $startDate = $object->startDate=null;
+        }else $startDate = null;
 
         if (isset($object->endDate)) {
             $endDate = (string) $object->endDate;
-        }else $endDate = $object->endDate=null;
+        }else $endDate = null;
 
         if (isset($object->labelId)) {
             $labelId = (int) $object->labelId;
-        }else $labelId = $object->labelId=null;
+        }else $labelId = null;
 
         if (isset($object->available)) {
             $available = (bool) $object->available;
-        }else $available = $object->available=null;
+        }else $available = null;
 
         if (isset($object->interfaces)) {
             $interfaces = (array) $object->interfaces;
-        }else $interfaces = $object->interfaces=null;
+        }else $interfaces = null;
 
         if (isset($object->aggregatedInterfaces)) {
             $aggregatedInterfaces = (array) $object->aggregatedInterfaces;
-        }else $aggregatedInterfaces = $object->aggregatedInterfaces=null;
+        }else $aggregatedInterfaces = null;
 
         if (isset($object->disks)) {
             $disks = (array) $object->disks;
-        }else $disks = $object->disks=null;
+        }else $disks = null;
 
         if (isset($object->position)) {
            $position = ServerPosition::fromStdClass((object)$object->position);
-        }else $position = $object->position=null;
+        }else $position = null;
 
         if (isset($object->allInterfaces)) {
             $allInterfaces = (array) $object->allInterfaces;
-        }else $allInterfaces = $object->allInterfaces=null;
+        }else $allInterfaces = null;
 
         return new DedicatedInstance($creator, $id, $configurationId, $configuration, $caseType, $startDate, $endDate, $labelId, $available, $interfaces, $aggregatedInterfaces, $disks, $position, $allInterfaces);
      }

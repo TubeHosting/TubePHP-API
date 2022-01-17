@@ -67,10 +67,12 @@ class SearchResultPaymentBundle
         //handle objects in array
         $tmpItems = $items;
         $items = [];
-        foreach ($tmpItems as $key => $item) {
-            $item = PaymentBundle::fromStdClass($item);
-            $singleItem = array($key => $item);
-            $items = array_merge($items, $singleItem);
+        if($tmpItems!==null){
+            foreach ($tmpItems as $key => $item) {
+                $item = PaymentBundle::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $items = array_merge($items, $singleItem);
+            }
         }
         $this->items = $items;
     }
@@ -98,19 +100,19 @@ class SearchResultPaymentBundle
 
         if (isset($object->count)) {
             $count = (int) $object->count;
-        }else $count = $object->count=null;
+        }else $count = null;
 
         if (isset($object->page)) {
             $page = (int) $object->page;
-        }else $page = $object->page=null;
+        }else $page = null;
 
         if (isset($object->size)) {
             $size = (int) $object->size;
-        }else $size = $object->size=null;
+        }else $size = null;
 
         if (isset($object->items)) {
             $items = (array) $object->items;
-        }else $items = $object->items=null;
+        }else $items = null;
 
         return new SearchResultPaymentBundle($count, $page, $size, $items);
      }

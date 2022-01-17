@@ -102,23 +102,23 @@ class Disk
 
         if (isset($object->id)) {
             $id = (int) $object->id;
-        }else $id = $object->id=null;
+        }else $id = null;
 
         if (isset($object->space)) {
             $space = (int) $object->space;
-        }else $space = $object->space=null;
+        }else $space = null;
 
         if (isset($object->type)) {
             $type = (string) $object->type;
-        }else $type = $object->type=null;
+        }else $type = null;
 
         if (isset($object->brand)) {
             $brand = (string) $object->brand;
-        }else $brand = $object->brand=null;
+        }else $brand = null;
 
         if (isset($object->name)) {
             $name = (string) $object->name;
-        }else $name = $object->name=null;
+        }else $name = null;
 
         return new Disk($id, $space, $type, $brand, $name);
      }
