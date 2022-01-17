@@ -19,6 +19,8 @@ class SimpleUser
 
     private $lastname;
 
+    private $role;
+
 
     /**
      * @return ?int
@@ -53,17 +55,27 @@ class SimpleUser
      }
 
     /**
+     * @return ?string
+     */
+    public function getRole(): ?string
+    {
+         return $this->role;
+     }
+
+    /**
      * @param int|null $id
      * @param string|null $mail
      * @param string|null $firstname
      * @param string|null $lastname
+     * @param string|null $role
      */
-    public function __construct(?int $id, ?string $mail, ?string $firstname, ?string $lastname)
+    public function __construct(?int $id, ?string $mail, ?string $firstname, ?string $lastname, ?string $role)
     {
         $this->id = $id;
         $this->mail = $mail;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
+        $this->role = $role;
     }
 
     /**
@@ -77,6 +89,7 @@ class SimpleUser
         'mail' => $this->getMail(),
         'firstname' => $this->getFirstname(),
         'lastname' => $this->getLastname(),
+        'role' => $this->getRole(),
         ];
     }
 
@@ -103,6 +116,10 @@ class SimpleUser
             $lastname = (string) $object->lastname;
         }else $lastname = null;
 
-        return new SimpleUser($id, $mail, $firstname, $lastname);
+        if (isset($object->role)) {
+            $role = (string) $object->role;
+        }else $role = null;
+
+        return new SimpleUser($id, $mail, $firstname, $lastname, $role);
      }
 }

@@ -21,6 +21,7 @@ final class EndpointTest extends TestCase
     /**
      * @test
      * @return int
+     * @covers \TubeAPI\Objects\VPS::changeRootPassword
      * @covers \TubeAPI\Objects\Service::changeDescription
      * @covers \TubeAPI\Objects\ServiceGroupData::acceptSecondaryOwner
      * @covers \TubeAPI\Objects\ServiceGroupData::extendServiceGroup
@@ -80,6 +81,17 @@ final class EndpointTest extends TestCase
         TubeAPI\TubeAPI::$apiServer = "http://127.0.0.1:4011";
         $c = 0;
         try {
+            $c++;
+            /**
+            * Do an HTTP request (PUT) to /vps/{serviceId}/password with random data 
+            */
+            
+            $serviceId = rand(0,1000); /* int */
+            $passwordChange = new TubeAPI\Objects\PasswordChange(uniqid()); /* PasswordChange */
+            $tmp = TubeAPI\Objects\VPS::changeRootPassword($serviceId, $passwordChange);
+            print "ran (PUT) request against /vps/{serviceId}/password ($c)\n";
+            $this->assertTrue(true);
+
             $c++;
             /**
             * Do an HTTP request (PUT) to /services/{serviceId}/description with random data 
@@ -292,7 +304,7 @@ final class EndpointTest extends TestCase
             * Do an HTTP request (POST) to /me/names with random data 
             */
             
-            $user = new TubeAPI\Objects\User(rand(0,1000),rand(0,1000),uniqid(),array('DE','EN')[rand(0,1)],array('USER','ADMIN')[rand(0,1)],false,uniqid(),"2019-08-24T14:15:22Z",false,new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),array('DE','AT','CH','US','IN')[rand(0,4)],uniqid()),new TubeAPI\Objects\SupportData(uniqid(),uniqid(),uniqid()),uniqid(),uniqid()); /* User */
+            $user = new TubeAPI\Objects\User(rand(0,1000),rand(0,1000),uniqid(),array('DE','EN')[rand(0,1)],array('USER','ADMIN')[rand(0,1)],false,uniqid(),"2019-08-24T14:15:22Z",false,new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),array('DE','AT','CH','US','IN')[rand(0,4)],uniqid()),uniqid(),uniqid(),new TubeAPI\Objects\SupportData(uniqid(),uniqid(),uniqid())); /* User */
             $tmp = TubeAPI\Objects\User::changeNames($user);
             print "ran (POST) request against /me/names ($c)\n";
             $this->assertTrue(true);
@@ -302,7 +314,7 @@ final class EndpointTest extends TestCase
             * Do an HTTP request (POST) to /me/mail with random data 
             */
             
-            $user = new TubeAPI\Objects\User(rand(0,1000),rand(0,1000),uniqid(),array('DE','EN')[rand(0,1)],array('USER','ADMIN')[rand(0,1)],false,uniqid(),"2019-08-24T14:15:22Z",false,new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),array('DE','AT','CH','US','IN')[rand(0,4)],uniqid()),new TubeAPI\Objects\SupportData(uniqid(),uniqid(),uniqid()),uniqid(),uniqid()); /* User */
+            $user = new TubeAPI\Objects\User(rand(0,1000),rand(0,1000),uniqid(),array('DE','EN')[rand(0,1)],array('USER','ADMIN')[rand(0,1)],false,uniqid(),"2019-08-24T14:15:22Z",false,new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),array('DE','AT','CH','US','IN')[rand(0,4)],uniqid()),uniqid(),uniqid(),new TubeAPI\Objects\SupportData(uniqid(),uniqid(),uniqid())); /* User */
             $tmp = TubeAPI\Objects\User::changeMail($user);
             print "ran (POST) request against /me/mail ($c)\n";
             $this->assertTrue(true);
@@ -353,7 +365,8 @@ final class EndpointTest extends TestCase
             */
             
             $serviceId = rand(0,1000); /* int */
-            $tmp = TubeAPI\Objects\VPS::getServerStatusById($serviceId);
+            $cache = false; /* bool */
+            $tmp = TubeAPI\Objects\VPS::getServerStatusById($serviceId, $cache);
             print "ran (GET) request against /vps/{serviceId}/status ($c)\n";
             $this->assertTrue(true);
 
@@ -627,13 +640,74 @@ final class EndpointTest extends TestCase
      /**
      * @return void
      * @depends testRequests
+     * @covers \TubeAPI\Objects\VPS::changeRootPassword
+     * @covers \TubeAPI\Objects\Service::changeDescription
+     * @covers \TubeAPI\Objects\ServiceGroupData::acceptSecondaryOwner
+     * @covers \TubeAPI\Objects\ServiceGroupData::extendServiceGroup
+     * @covers \TubeAPI\Objects\IPv4::changeRDNS
+     * @covers \TubeAPI\Objects\IPv4::changeIPv4Description
+     * @covers \TubeAPI\Objects\IPv4::changeDDoSModeStatus
+     * @covers \TubeAPI\Objects\DedicatedInstanceRequest::createInstance
+     * @covers \TubeAPI\Objects\VPS::stopServerById
+     * @covers \TubeAPI\Objects\VPS::startServerById
+     * @covers \TubeAPI\Objects\VPS::shutdownServerById
+     * @covers \TubeAPI\Objects\VPS::restartServerById
+     * @covers \TubeAPI\Objects\VPS::reinstallServerById
+     * @covers \TubeAPI\Objects\ServiceGroupData::addSecondaryOwners
+     * @covers \TubeAPI\Objects\User::resetPassword
+     * @covers \TubeAPI\Objects\User::register
+     * @covers \TubeAPI\Objects\Payment::sendBalance
+     * @covers \TubeAPI\Objects\Payment::chargeBalance
+     * @covers \TubeAPI\Objects\Payment::orderByTemplateGroup
+     * @covers \TubeAPI\Objects\User::changeSupportData
+     * @covers \TubeAPI\Objects\User::changePassword
+     * @covers \TubeAPI\Objects\User::changeNames
+     * @covers \TubeAPI\Objects\User::changeMail
+     * @covers \TubeAPI\Objects\User::changeLocale
+     * @covers \TubeAPI\Objects\User::changeAddress
+     * @covers \TubeAPI\Objects\User::login
+     * @covers \TubeAPI\Objects\VPS::getServerById
+     * @covers \TubeAPI\Objects\VPS::getServerStatusById
+     * @covers \TubeAPI\Objects\VPS::getServerStatisticsById
+     * @covers \TubeAPI\Objects\VPS::getAvailableLxcOs
+     * @covers \TubeAPI\Objects\VPS::getAvailableKvmOs
+     * @covers \TubeAPI\Objects\Template::getTemplateGroups
+     * @covers \TubeAPI\Objects\Service::getServiceByID
+     * @covers \TubeAPI\Objects\ServiceGroupData::getServiceByServiceGroupByID
+     * @covers \TubeAPI\Objects\ServiceGroupData::getDDoSIncidentsOfServiceGroup
+     * @covers \TubeAPI\Objects\ServiceGroupData::getServiceGroupByID
+     * @covers \TubeAPI\Objects\ServiceGroupData::getInvites
+     * @covers \TubeAPI\Objects\ServiceGroupData::getAllServiceGroupsFromUser
+     * @covers \TubeAPI\Objects\User::requestVerification
+     * @covers \TubeAPI\Objects\User::requestPasswordReset
+     * @covers \TubeAPI\Objects\Payment::getPaymentBundles
+     * @covers \TubeAPI\Objects\Payment::getInvoices
+     * @covers \TubeAPI\Objects\Payment::getInvoicePDF
+     * @covers \TubeAPI\Objects\Payment::getInvoiceMail
+     * @covers \TubeAPI\Objects\Payment::getBalanceChanges
+     * @covers \TubeAPI\Objects\User::meInfo
+     * @covers \TubeAPI\Objects\IPv4::getIPLinkBundle
+     * @covers \TubeAPI\Objects\IPv4::getDDoSIncidentsOnIPv4
+     * @covers \TubeAPI\Objects\IPv4Bundle::getDDoSIncidentsOnBundle
+     * @covers \TubeAPI\Objects\Dedicated::getServiceByID_1
+     * @covers \TubeAPI\Objects\None::getAllGPUs
+     * @covers \TubeAPI\Objects\None::getAllDisks
+     * @covers \TubeAPI\Objects\None::getAllCPUs
+     * @covers \TubeAPI\Objects\ServiceGroupData::deleteSecondaryOwners
      */
     public function testForEndpoints(): void
     {
 
-        TubeAPI\TubeAPI::$apiServer = "https://api.tube-hosting.com"; //set the api server (back) to the official one
+        //test requests again to get the amount of already implemented requests but suppress output
+        ob_start();
+        $implReq = $this->testRequests();
+        ob_end_clean();
+
+        $docPathsAmount = null;
 
         for ($i = 0; $i <= 10; $i++) { //give 10 trys to get the api documentation from the api server
+
+            TubeAPI\TubeAPI::$apiServer = "https://api.tube-hosting.com"; //set the api server (back) to the official one
 
             try {
 
@@ -645,16 +719,9 @@ final class EndpointTest extends TestCase
 
                 $docPathsAmount = sizeof(array_keys((array)$paths));
 
-                //test requests again to get the amount of already implemented requests but suppress output
-
-                ob_start();
-
-                $implReq = $this->testRequests();
-
-                ob_end_clean();
-
                 $this->assertSame($docPathsAmount, $implReq);
 
+                break;
 
             } catch (Exceptions\RequestException $requestException) {
 
@@ -669,6 +736,7 @@ final class EndpointTest extends TestCase
 
         }
         
-        $this->assertTrue(false);
+        $this->assertSame($docPathsAmount, $implReq);
+
     }
 }

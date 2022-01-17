@@ -35,9 +35,9 @@ class VPS
 
     private $type;
 
-    private $priceObject;
-
     private $serviceGroupId;
+
+    private $priceObject;
 
     private $templateId;
 
@@ -57,9 +57,9 @@ class VPS
 
     private $lastInstalledSystem;
 
-    private $primaryIPv4;
-
     private $osDisplayName;
+
+    private $primaryIPv4;
 
 
     /**
@@ -153,17 +153,17 @@ class VPS
     /**
      * @return ?int
      */
-    public function getPriceObject(): ?int
+    public function getServiceGroupId(): ?int
     {
-         return $this->priceObject;
+         return $this->serviceGroupId;
      }
 
     /**
      * @return ?int
      */
-    public function getServiceGroupId(): ?int
+    public function getPriceObject(): ?int
     {
-         return $this->serviceGroupId;
+         return $this->priceObject;
      }
 
     /**
@@ -239,19 +239,19 @@ class VPS
      }
 
     /**
-     * @return ?LinkIPv4BundleIPv4
-     */
-    public function getPrimaryIPv4(): ?LinkIPv4BundleIPv4
-    {
-         return $this->primaryIPv4;
-     }
-
-    /**
      * @return ?string
      */
     public function getOsDisplayName(): ?string
     {
          return $this->osDisplayName;
+     }
+
+    /**
+     * @return ?LinkIPv4BundleIPv4
+     */
+    public function getPrimaryIPv4(): ?LinkIPv4BundleIPv4
+    {
+         return $this->primaryIPv4;
      }
 
     /**
@@ -266,8 +266,8 @@ class VPS
      * @param string|null $runtime
      * @param string|null $name
      * @param string|null $type
-     * @param int|null $priceObject
      * @param int|null $serviceGroupId
+     * @param int|null $priceObject
      * @param int|null $templateId
      * @param int|null $vpsId
      * @param string|null $vpsType
@@ -277,10 +277,10 @@ class VPS
      * @param string|null $diskType
      * @param int|null $nodeId
      * @param string|null $lastInstalledSystem
-     * @param LinkIPv4BundleIPv4|null $primaryIPv4
      * @param string|null $osDisplayName
+     * @param LinkIPv4BundleIPv4|null $primaryIPv4
      */
-    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $priceObject, ?int $serviceGroupId, ?int $templateId, ?int $vpsId, ?string $vpsType, ?int $coreCount, ?int $memory, ?int $diskSpace, ?string $diskType, ?int $nodeId, ?string $lastInstalledSystem, ?LinkIPv4BundleIPv4 $primaryIPv4, ?string $osDisplayName)
+    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $serviceGroupId, ?int $priceObject, ?int $templateId, ?int $vpsId, ?string $vpsType, ?int $coreCount, ?int $memory, ?int $diskSpace, ?string $diskType, ?int $nodeId, ?string $lastInstalledSystem, ?string $osDisplayName, ?LinkIPv4BundleIPv4 $primaryIPv4)
     {
         $this->dataId = $dataId;
         $this->id = $id;
@@ -293,8 +293,8 @@ class VPS
         $this->runtime = $runtime;
         $this->name = $name;
         $this->type = $type;
-        $this->priceObject = $priceObject;
         $this->serviceGroupId = $serviceGroupId;
+        $this->priceObject = $priceObject;
         $this->templateId = $templateId;
         $this->vpsId = $vpsId;
         $this->vpsType = $vpsType;
@@ -304,8 +304,8 @@ class VPS
         $this->diskType = $diskType;
         $this->nodeId = $nodeId;
         $this->lastInstalledSystem = $lastInstalledSystem;
-        $this->primaryIPv4 = $primaryIPv4;
         $this->osDisplayName = $osDisplayName;
+        $this->primaryIPv4 = $primaryIPv4;
     }
 
     /**
@@ -326,8 +326,8 @@ class VPS
         'runtime' => $this->getRuntime(),
         'name' => $this->getName(),
         'type' => $this->getType(),
-        'priceObject' => $this->getPriceObject(),
         'serviceGroupId' => $this->getServiceGroupId(),
+        'priceObject' => $this->getPriceObject(),
         'templateId' => $this->getTemplateId(),
         'vpsId' => $this->getVpsId(),
         'vpsType' => $this->getVpsType(),
@@ -337,8 +337,8 @@ class VPS
         'diskType' => $this->getDiskType(),
         'nodeId' => $this->getNodeId(),
         'lastInstalledSystem' => $this->getLastInstalledSystem(),
-        'primaryIPv4' => $this->getPrimaryIPv4(),
         'osDisplayName' => $this->getOsDisplayName(),
+        'primaryIPv4' => $this->getPrimaryIPv4(),
         ];
     }
 
@@ -393,13 +393,13 @@ class VPS
             $type = (string) $object->type;
         }else $type = null;
 
-        if (isset($object->priceObject)) {
-            $priceObject = (int) $object->priceObject;
-        }else $priceObject = null;
-
         if (isset($object->serviceGroupId)) {
             $serviceGroupId = (int) $object->serviceGroupId;
         }else $serviceGroupId = null;
+
+        if (isset($object->priceObject)) {
+            $priceObject = (int) $object->priceObject;
+        }else $priceObject = null;
 
         if (isset($object->templateId)) {
             $templateId = (int) $object->templateId;
@@ -437,16 +437,30 @@ class VPS
             $lastInstalledSystem = (string) $object->lastInstalledSystem;
         }else $lastInstalledSystem = null;
 
-        if (isset($object->primaryIPv4)) {
-           $primaryIPv4 = LinkIPv4BundleIPv4::fromStdClass((object)$object->primaryIPv4);
-        }else $primaryIPv4 = null;
-
         if (isset($object->osDisplayName)) {
             $osDisplayName = (string) $object->osDisplayName;
         }else $osDisplayName = null;
 
-        return new VPS($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $serviceGroupId, $templateId, $vpsId, $vpsType, $coreCount, $memory, $diskSpace, $diskType, $nodeId, $lastInstalledSystem, $primaryIPv4, $osDisplayName);
+        if (isset($object->primaryIPv4)) {
+           $primaryIPv4 = LinkIPv4BundleIPv4::fromStdClass((object)$object->primaryIPv4);
+        }else $primaryIPv4 = null;
+
+        return new VPS($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $serviceGroupId, $priceObject, $templateId, $vpsId, $vpsType, $coreCount, $memory, $diskSpace, $diskType, $nodeId, $lastInstalledSystem, $osDisplayName, $primaryIPv4);
      }
+
+
+    /**
+     * @link https://doc.api.tube-hosting.com/#/vps-controller/changeRootPassword
+     * @param int $serviceId
+     * @param PasswordChange $passwordChange
+     * @return string
+     * @throws \TubeAPI\Exceptions\RequestException
+     */
+    public static function changeRootPassword(int $serviceId,PasswordChange $passwordChange):string 
+    {
+        $result = TubeAPI::request('PUT', '/vps/'.$serviceId.'/password', $passwordChange->getAsArr(), TubeAPI::$token);
+        return $result;
+    }
 
 
     /**
@@ -531,12 +545,13 @@ class VPS
     /**
      * @link https://doc.api.tube-hosting.com/#/vps-controller/getServerStatusById
      * @param int $serviceId
+     * @param bool $cache
      * @return  VpsStatus
      * @throws \TubeAPI\Exceptions\RequestException
      */
-    public static function getServerStatusById(int $serviceId): VpsStatus 
+    public static function getServerStatusById(int $serviceId, bool $cache = null): VpsStatus 
     {
-        $result = TubeAPI::request('GET', '/vps/'.$serviceId.'/status', null, TubeAPI::$token);
+        $result = TubeAPI::request('GET', '/vps/'.$serviceId.'/status?cache='.$cache.'', null, TubeAPI::$token);
         return  VpsStatus::fromStdClass(json_decode($result));
     }
 

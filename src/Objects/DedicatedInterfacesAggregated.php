@@ -13,11 +13,11 @@ class DedicatedInterfacesAggregated
 
     private $interfaces;
 
+    private $instanceId;
+
     private $interfaceId;
 
     private $aggregatedId;
-
-    private $instanceId;
 
 
     /**
@@ -26,6 +26,14 @@ class DedicatedInterfacesAggregated
     public function getInterfaces(): ?array
     {
          return $this->interfaces;
+     }
+
+    /**
+     * @return ?int
+     */
+    public function getInstanceId(): ?int
+    {
+         return $this->instanceId;
      }
 
     /**
@@ -45,20 +53,12 @@ class DedicatedInterfacesAggregated
      }
 
     /**
-     * @return ?int
-     */
-    public function getInstanceId(): ?int
-    {
-         return $this->instanceId;
-     }
-
-    /**
      * @param array|null $interfaces
+     * @param int|null $instanceId
      * @param int|null $interfaceId
      * @param int|null $aggregatedId
-     * @param int|null $instanceId
      */
-    public function __construct(?array $interfaces, ?int $interfaceId, ?int $aggregatedId, ?int $instanceId)
+    public function __construct(?array $interfaces, ?int $instanceId, ?int $interfaceId, ?int $aggregatedId)
     {
 
         //handle stuff in array
@@ -71,9 +71,9 @@ class DedicatedInterfacesAggregated
             }
         }
         $this->interfaces = $interfaces;
+        $this->instanceId = $instanceId;
         $this->interfaceId = $interfaceId;
         $this->aggregatedId = $aggregatedId;
-        $this->instanceId = $instanceId;
     }
 
     /**
@@ -84,9 +84,9 @@ class DedicatedInterfacesAggregated
         return
         [
         'interfaces' => $this->getInterfaces(),
+        'instanceId' => $this->getInstanceId(),
         'interfaceId' => $this->getInterfaceId(),
         'aggregatedId' => $this->getAggregatedId(),
-        'instanceId' => $this->getInstanceId(),
         ];
     }
 
@@ -101,6 +101,10 @@ class DedicatedInterfacesAggregated
             $interfaces = (array) $object->interfaces;
         }else $interfaces = null;
 
+        if (isset($object->instanceId)) {
+            $instanceId = (int) $object->instanceId;
+        }else $instanceId = null;
+
         if (isset($object->interfaceId)) {
             $interfaceId = (int) $object->interfaceId;
         }else $interfaceId = null;
@@ -109,10 +113,6 @@ class DedicatedInterfacesAggregated
             $aggregatedId = (int) $object->aggregatedId;
         }else $aggregatedId = null;
 
-        if (isset($object->instanceId)) {
-            $instanceId = (int) $object->instanceId;
-        }else $instanceId = null;
-
-        return new DedicatedInterfacesAggregated($interfaces, $interfaceId, $aggregatedId, $instanceId);
+        return new DedicatedInterfacesAggregated($interfaces, $instanceId, $interfaceId, $aggregatedId);
      }
 }

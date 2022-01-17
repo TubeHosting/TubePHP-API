@@ -35,9 +35,9 @@ class Dedicated
 
     private $type;
 
-    private $priceObject;
-
     private $serviceGroupId;
+
+    private $priceObject;
 
     private $templateId;
 
@@ -141,17 +141,17 @@ class Dedicated
     /**
      * @return ?int
      */
-    public function getPriceObject(): ?int
+    public function getServiceGroupId(): ?int
     {
-         return $this->priceObject;
+         return $this->serviceGroupId;
      }
 
     /**
      * @return ?int
      */
-    public function getServiceGroupId(): ?int
+    public function getPriceObject(): ?int
     {
-         return $this->serviceGroupId;
+         return $this->priceObject;
      }
 
     /**
@@ -206,15 +206,15 @@ class Dedicated
      * @param string|null $runtime
      * @param string|null $name
      * @param string|null $type
-     * @param int|null $priceObject
      * @param int|null $serviceGroupId
+     * @param int|null $priceObject
      * @param int|null $templateId
      * @param array|null $addedUpgrades
      * @param array|null $removedUpgrades
      * @param int|null $instanceId
      * @param DedicatedInstance|null $instance
      */
-    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $priceObject, ?int $serviceGroupId, ?int $templateId, ?array $addedUpgrades, ?array $removedUpgrades, ?int $instanceId, ?DedicatedInstance $instance)
+    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $serviceGroupId, ?int $priceObject, ?int $templateId, ?array $addedUpgrades, ?array $removedUpgrades, ?int $instanceId, ?DedicatedInstance $instance)
     {
         $this->dataId = $dataId;
         $this->id = $id;
@@ -227,8 +227,8 @@ class Dedicated
         $this->runtime = $runtime;
         $this->name = $name;
         $this->type = $type;
-        $this->priceObject = $priceObject;
         $this->serviceGroupId = $serviceGroupId;
+        $this->priceObject = $priceObject;
         $this->templateId = $templateId;
 
         //handle objects in array
@@ -276,8 +276,8 @@ class Dedicated
         'runtime' => $this->getRuntime(),
         'name' => $this->getName(),
         'type' => $this->getType(),
-        'priceObject' => $this->getPriceObject(),
         'serviceGroupId' => $this->getServiceGroupId(),
+        'priceObject' => $this->getPriceObject(),
         'templateId' => $this->getTemplateId(),
         'addedUpgrades' => $this->getAddedUpgrades(),
         'removedUpgrades' => $this->getRemovedUpgrades(),
@@ -337,13 +337,13 @@ class Dedicated
             $type = (string) $object->type;
         }else $type = null;
 
-        if (isset($object->priceObject)) {
-            $priceObject = (int) $object->priceObject;
-        }else $priceObject = null;
-
         if (isset($object->serviceGroupId)) {
             $serviceGroupId = (int) $object->serviceGroupId;
         }else $serviceGroupId = null;
+
+        if (isset($object->priceObject)) {
+            $priceObject = (int) $object->priceObject;
+        }else $priceObject = null;
 
         if (isset($object->templateId)) {
             $templateId = (int) $object->templateId;
@@ -365,7 +365,7 @@ class Dedicated
            $instance = DedicatedInstance::fromStdClass((object)$object->instance);
         }else $instance = null;
 
-        return new Dedicated($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $serviceGroupId, $templateId, $addedUpgrades, $removedUpgrades, $instanceId, $instance);
+        return new Dedicated($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $serviceGroupId, $priceObject, $templateId, $addedUpgrades, $removedUpgrades, $instanceId, $instance);
      }
 
 

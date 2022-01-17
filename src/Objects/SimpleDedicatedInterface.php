@@ -17,11 +17,11 @@ class SimpleDedicatedInterface
 
     private $active;
 
+    private $instanceId;
+
     private $interfaceId;
 
     private $aggregatedId;
-
-    private $instanceId;
 
 
     /**
@@ -51,6 +51,14 @@ class SimpleDedicatedInterface
     /**
      * @return ?int
      */
+    public function getInstanceId(): ?int
+    {
+         return $this->instanceId;
+     }
+
+    /**
+     * @return ?int
+     */
     public function getInterfaceId(): ?int
     {
          return $this->interfaceId;
@@ -65,29 +73,21 @@ class SimpleDedicatedInterface
      }
 
     /**
-     * @return ?int
-     */
-    public function getInstanceId(): ?int
-    {
-         return $this->instanceId;
-     }
-
-    /**
      * @param string|null $mac
      * @param int|null $speed
      * @param bool|null $active
+     * @param int|null $instanceId
      * @param int|null $interfaceId
      * @param int|null $aggregatedId
-     * @param int|null $instanceId
      */
-    public function __construct(?string $mac, ?int $speed, ?bool $active, ?int $interfaceId, ?int $aggregatedId, ?int $instanceId)
+    public function __construct(?string $mac, ?int $speed, ?bool $active, ?int $instanceId, ?int $interfaceId, ?int $aggregatedId)
     {
         $this->mac = $mac;
         $this->speed = $speed;
         $this->active = $active;
+        $this->instanceId = $instanceId;
         $this->interfaceId = $interfaceId;
         $this->aggregatedId = $aggregatedId;
-        $this->instanceId = $instanceId;
     }
 
     /**
@@ -100,9 +100,9 @@ class SimpleDedicatedInterface
         'mac' => $this->getMac(),
         'speed' => $this->getSpeed(),
         'active' => $this->getActive(),
+        'instanceId' => $this->getInstanceId(),
         'interfaceId' => $this->getInterfaceId(),
         'aggregatedId' => $this->getAggregatedId(),
-        'instanceId' => $this->getInstanceId(),
         ];
     }
 
@@ -125,6 +125,10 @@ class SimpleDedicatedInterface
             $active = (bool) $object->active;
         }else $active = null;
 
+        if (isset($object->instanceId)) {
+            $instanceId = (int) $object->instanceId;
+        }else $instanceId = null;
+
         if (isset($object->interfaceId)) {
             $interfaceId = (int) $object->interfaceId;
         }else $interfaceId = null;
@@ -133,10 +137,6 @@ class SimpleDedicatedInterface
             $aggregatedId = (int) $object->aggregatedId;
         }else $aggregatedId = null;
 
-        if (isset($object->instanceId)) {
-            $instanceId = (int) $object->instanceId;
-        }else $instanceId = null;
-
-        return new SimpleDedicatedInterface($mac, $speed, $active, $interfaceId, $aggregatedId, $instanceId);
+        return new SimpleDedicatedInterface($mac, $speed, $active, $instanceId, $interfaceId, $aggregatedId);
      }
 }

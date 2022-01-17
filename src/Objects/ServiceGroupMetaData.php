@@ -13,6 +13,8 @@ class ServiceGroupMetaData
 
     private $id;
 
+    private $serviceGroupId;
+
     private $status;
 
     private $deletionDate;
@@ -25,9 +27,13 @@ class ServiceGroupMetaData
 
     private $owner;
 
+    private $ownerId;
+
     private $endDate;
 
     private $position;
+
+    private $name;
 
 
     /**
@@ -36,6 +42,14 @@ class ServiceGroupMetaData
     public function getId(): ?int
     {
          return $this->id;
+     }
+
+    /**
+     * @return ?int
+     */
+    public function getServiceGroupId(): ?int
+    {
+         return $this->serviceGroupId;
      }
 
     /**
@@ -87,6 +101,14 @@ class ServiceGroupMetaData
      }
 
     /**
+     * @return ?int
+     */
+    public function getOwnerId(): ?int
+    {
+         return $this->ownerId;
+     }
+
+    /**
      * @return ?string
      */
     public function getEndDate(): ?string
@@ -103,27 +125,41 @@ class ServiceGroupMetaData
      }
 
     /**
+     * @return ?string
+     */
+    public function getName(): ?string
+    {
+         return $this->name;
+     }
+
+    /**
      * @param int|null $id
+     * @param int|null $serviceGroupId
      * @param string|null $status
      * @param string|null $deletionDate
      * @param string|null $deactivationDate
      * @param string|null $runtime
      * @param string|null $startDate
      * @param SimpleUser|null $owner
+     * @param int|null $ownerId
      * @param string|null $endDate
      * @param int|null $position
+     * @param string|null $name
      */
-    public function __construct(?int $id, ?string $status, ?string $deletionDate, ?string $deactivationDate, ?string $runtime, ?string $startDate, ?SimpleUser $owner, ?string $endDate, ?int $position)
+    public function __construct(?int $id, ?int $serviceGroupId, ?string $status, ?string $deletionDate, ?string $deactivationDate, ?string $runtime, ?string $startDate, ?SimpleUser $owner, ?int $ownerId, ?string $endDate, ?int $position, ?string $name)
     {
         $this->id = $id;
+        $this->serviceGroupId = $serviceGroupId;
         $this->status = $status;
         $this->deletionDate = $deletionDate;
         $this->deactivationDate = $deactivationDate;
         $this->runtime = $runtime;
         $this->startDate = $startDate;
         $this->owner = $owner;
+        $this->ownerId = $ownerId;
         $this->endDate = $endDate;
         $this->position = $position;
+        $this->name = $name;
     }
 
     /**
@@ -134,14 +170,17 @@ class ServiceGroupMetaData
         return
         [
         'id' => $this->getId(),
+        'serviceGroupId' => $this->getServiceGroupId(),
         'status' => $this->getStatus(),
         'deletionDate' => $this->getDeletionDate(),
         'deactivationDate' => $this->getDeactivationDate(),
         'runtime' => $this->getRuntime(),
         'startDate' => $this->getStartDate(),
         'owner' => $this->getOwner(),
+        'ownerId' => $this->getOwnerId(),
         'endDate' => $this->getEndDate(),
         'position' => $this->getPosition(),
+        'name' => $this->getName(),
         ];
     }
 
@@ -155,6 +194,10 @@ class ServiceGroupMetaData
         if (isset($object->id)) {
             $id = (int) $object->id;
         }else $id = null;
+
+        if (isset($object->serviceGroupId)) {
+            $serviceGroupId = (int) $object->serviceGroupId;
+        }else $serviceGroupId = null;
 
         if (isset($object->status)) {
             $status = (string) $object->status;
@@ -180,6 +223,10 @@ class ServiceGroupMetaData
            $owner = SimpleUser::fromStdClass((object)$object->owner);
         }else $owner = null;
 
+        if (isset($object->ownerId)) {
+            $ownerId = (int) $object->ownerId;
+        }else $ownerId = null;
+
         if (isset($object->endDate)) {
             $endDate = (string) $object->endDate;
         }else $endDate = null;
@@ -188,6 +235,10 @@ class ServiceGroupMetaData
             $position = (int) $object->position;
         }else $position = null;
 
-        return new ServiceGroupMetaData($id, $status, $deletionDate, $deactivationDate, $runtime, $startDate, $owner, $endDate, $position);
+        if (isset($object->name)) {
+            $name = (string) $object->name;
+        }else $name = null;
+
+        return new ServiceGroupMetaData($id, $serviceGroupId, $status, $deletionDate, $deactivationDate, $runtime, $startDate, $owner, $ownerId, $endDate, $position, $name);
      }
 }

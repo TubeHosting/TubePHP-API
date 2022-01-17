@@ -37,8 +37,6 @@ class DedicatedInstance
 
     private $position;
 
-    private $allInterfaces;
-
 
     /**
      * @return ?User
@@ -145,14 +143,6 @@ class DedicatedInstance
      }
 
     /**
-     * @return ?array
-     */
-    public function getAllInterfaces(): ?array
-    {
-         return $this->allInterfaces;
-     }
-
-    /**
      * @param User|null $creator
      * @param int|null $id
      * @param int|null $configurationId
@@ -166,9 +156,8 @@ class DedicatedInstance
      * @param array|null $aggregatedInterfaces
      * @param array|null $disks
      * @param ServerPosition|null $position
-     * @param array|null $allInterfaces
      */
-    public function __construct(?User $creator, ?int $id, ?int $configurationId, ?DedicatedConfiguration $configuration, ?string $caseType, ?string $startDate, ?string $endDate, ?int $labelId, ?bool $available, ?array $interfaces, ?array $aggregatedInterfaces, ?array $disks, ?ServerPosition $position, ?array $allInterfaces)
+    public function __construct(?User $creator, ?int $id, ?int $configurationId, ?DedicatedConfiguration $configuration, ?string $caseType, ?string $startDate, ?string $endDate, ?int $labelId, ?bool $available, ?array $interfaces, ?array $aggregatedInterfaces, ?array $disks, ?ServerPosition $position)
     {
         $this->creator = $creator;
         $this->id = $id;
@@ -216,18 +205,6 @@ class DedicatedInstance
         }
         $this->disks = $disks;
         $this->position = $position;
-
-        //handle objects in array
-        $tmpAllInterfaces = $allInterfaces;
-        $allInterfaces = [];
-        if($tmpAllInterfaces!==null){
-            foreach ($tmpAllInterfaces as $key => $item) {
-                $item = DedicatedInterface::fromStdClass($item);
-                $singleItem = array($key => $item);
-                $allInterfaces = array_merge($allInterfaces, $singleItem);
-            }
-        }
-        $this->allInterfaces = $allInterfaces;
     }
 
     /**
@@ -250,7 +227,6 @@ class DedicatedInstance
         'aggregatedInterfaces' => $this->getAggregatedInterfaces(),
         'disks' => $this->getDisks(),
         'position' => $this->getPosition(),
-        'allInterfaces' => $this->getAllInterfaces(),
         ];
     }
 
@@ -313,10 +289,6 @@ class DedicatedInstance
            $position = ServerPosition::fromStdClass((object)$object->position);
         }else $position = null;
 
-        if (isset($object->allInterfaces)) {
-            $allInterfaces = (array) $object->allInterfaces;
-        }else $allInterfaces = null;
-
-        return new DedicatedInstance($creator, $id, $configurationId, $configuration, $caseType, $startDate, $endDate, $labelId, $available, $interfaces, $aggregatedInterfaces, $disks, $position, $allInterfaces);
+        return new DedicatedInstance($creator, $id, $configurationId, $configuration, $caseType, $startDate, $endDate, $labelId, $available, $interfaces, $aggregatedInterfaces, $disks, $position);
      }
 }

@@ -33,9 +33,9 @@ class Service
 
     private $type;
 
-    private $priceObject;
-
     private $serviceGroupId;
+
+    private $priceObject;
 
     private $templateId;
 
@@ -131,17 +131,17 @@ class Service
     /**
      * @return ?int
      */
-    public function getPriceObject(): ?int
+    public function getServiceGroupId(): ?int
     {
-         return $this->priceObject;
+         return $this->serviceGroupId;
      }
 
     /**
      * @return ?int
      */
-    public function getServiceGroupId(): ?int
+    public function getPriceObject(): ?int
     {
-         return $this->serviceGroupId;
+         return $this->priceObject;
      }
 
     /**
@@ -164,11 +164,11 @@ class Service
      * @param string|null $runtime
      * @param string|null $name
      * @param string|null $type
-     * @param int|null $priceObject
      * @param int|null $serviceGroupId
+     * @param int|null $priceObject
      * @param int|null $templateId
      */
-    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $priceObject, ?int $serviceGroupId, ?int $templateId)
+    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $serviceGroupId, ?int $priceObject, ?int $templateId)
     {
         $this->dataId = $dataId;
         $this->id = $id;
@@ -181,8 +181,8 @@ class Service
         $this->runtime = $runtime;
         $this->name = $name;
         $this->type = $type;
-        $this->priceObject = $priceObject;
         $this->serviceGroupId = $serviceGroupId;
+        $this->priceObject = $priceObject;
         $this->templateId = $templateId;
     }
 
@@ -204,8 +204,8 @@ class Service
         'runtime' => $this->getRuntime(),
         'name' => $this->getName(),
         'type' => $this->getType(),
-        'priceObject' => $this->getPriceObject(),
         'serviceGroupId' => $this->getServiceGroupId(),
+        'priceObject' => $this->getPriceObject(),
         'templateId' => $this->getTemplateId(),
         ];
     }
@@ -261,19 +261,19 @@ class Service
             $type = (string) $object->type;
         }else $type = null;
 
-        if (isset($object->priceObject)) {
-            $priceObject = (int) $object->priceObject;
-        }else $priceObject = null;
-
         if (isset($object->serviceGroupId)) {
             $serviceGroupId = (int) $object->serviceGroupId;
         }else $serviceGroupId = null;
+
+        if (isset($object->priceObject)) {
+            $priceObject = (int) $object->priceObject;
+        }else $priceObject = null;
 
         if (isset($object->templateId)) {
             $templateId = (int) $object->templateId;
         }else $templateId = null;
 
-        return new Service($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $serviceGroupId, $templateId);
+        return new Service($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $serviceGroupId, $priceObject, $templateId);
      }
 
 

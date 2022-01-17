@@ -31,11 +31,11 @@ class User
 
     private $address;
 
-    private $supportData;
-
     private $firstname;
 
     private $lastname;
+
+    private $supportData;
 
 
     /**
@@ -119,14 +119,6 @@ class User
      }
 
     /**
-     * @return ?SupportData
-     */
-    public function getSupportData(): ?SupportData
-    {
-         return $this->supportData;
-     }
-
-    /**
      * @return ?string
      */
     public function getFirstname(): ?string
@@ -143,6 +135,14 @@ class User
      }
 
     /**
+     * @return ?SupportData
+     */
+    public function getSupportData(): ?SupportData
+    {
+         return $this->supportData;
+     }
+
+    /**
      * @param int|null $id
      * @param int|null $balance
      * @param string|null $mail
@@ -153,11 +153,11 @@ class User
      * @param string|null $regDate
      * @param bool|null $verified
      * @param Address|null $address
-     * @param SupportData|null $supportData
      * @param string|null $firstname
      * @param string|null $lastname
+     * @param SupportData|null $supportData
      */
-    public function __construct(?int $id, ?int $balance, ?string $mail, ?string $locale, ?string $role, ?bool $enabled, ?string $lastip, ?string $regDate, ?bool $verified, ?Address $address, ?SupportData $supportData, ?string $firstname, ?string $lastname)
+    public function __construct(?int $id, ?int $balance, ?string $mail, ?string $locale, ?string $role, ?bool $enabled, ?string $lastip, ?string $regDate, ?bool $verified, ?Address $address, ?string $firstname, ?string $lastname, ?SupportData $supportData)
     {
         $this->id = $id;
         $this->balance = $balance;
@@ -169,9 +169,9 @@ class User
         $this->regDate = $regDate;
         $this->verified = $verified;
         $this->address = $address;
-        $this->supportData = $supportData;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
+        $this->supportData = $supportData;
     }
 
     /**
@@ -191,9 +191,9 @@ class User
         'regDate' => $this->getRegDate(),
         'verified' => $this->getVerified(),
         'address' => $this->getAddress(),
-        'supportData' => $this->getSupportData(),
         'firstname' => $this->getFirstname(),
         'lastname' => $this->getLastname(),
+        'supportData' => $this->getSupportData(),
         ];
     }
 
@@ -244,10 +244,6 @@ class User
            $address = Address::fromStdClass((object)$object->address);
         }else $address = null;
 
-        if (isset($object->supportData)) {
-           $supportData = SupportData::fromStdClass((object)$object->supportData);
-        }else $supportData = null;
-
         if (isset($object->firstname)) {
             $firstname = (string) $object->firstname;
         }else $firstname = null;
@@ -256,7 +252,11 @@ class User
             $lastname = (string) $object->lastname;
         }else $lastname = null;
 
-        return new User($id, $balance, $mail, $locale, $role, $enabled, $lastip, $regDate, $verified, $address, $supportData, $firstname, $lastname);
+        if (isset($object->supportData)) {
+           $supportData = SupportData::fromStdClass((object)$object->supportData);
+        }else $supportData = null;
+
+        return new User($id, $balance, $mail, $locale, $role, $enabled, $lastip, $regDate, $verified, $address, $firstname, $lastname, $supportData);
      }
 
 

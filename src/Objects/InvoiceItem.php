@@ -11,11 +11,15 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class InvoiceItem
 {
 
-    private $order;
-
     private $newServiceGroupRuntime;
 
+    private $oldServiceGroupRuntime;
+
     private $title;
+
+    private $type;
+
+    private $runtimeDuration;
 
     private $position;
 
@@ -23,22 +27,16 @@ class InvoiceItem
 
     private $quantity;
 
+    private $serviceGroupId;
+
     private $description;
 
     private $priceType;
 
+    private $runtimeDurationObject;
+
     private $invoiceId;
 
-    private $serviceGroupId;
-
-
-    /**
-     * @return ?bool
-     */
-    public function getOrder(): ?bool
-    {
-         return $this->order;
-     }
 
     /**
      * @return ?string
@@ -51,9 +49,33 @@ class InvoiceItem
     /**
      * @return ?string
      */
+    public function getOldServiceGroupRuntime(): ?string
+    {
+         return $this->oldServiceGroupRuntime;
+     }
+
+    /**
+     * @return ?string
+     */
     public function getTitle(): ?string
     {
          return $this->title;
+     }
+
+    /**
+     * @return ?string
+     */
+    public function getType(): ?string
+    {
+         return $this->type;
+     }
+
+    /**
+     * @return ?int
+     */
+    public function getRuntimeDuration(): ?int
+    {
+         return $this->runtimeDuration;
      }
 
     /**
@@ -81,6 +103,14 @@ class InvoiceItem
      }
 
     /**
+     * @return ?int
+     */
+    public function getServiceGroupId(): ?int
+    {
+         return $this->serviceGroupId;
+     }
+
+    /**
      * @return ?string
      */
     public function getDescription(): ?string
@@ -97,6 +127,14 @@ class InvoiceItem
      }
 
     /**
+     * @return ?object
+     */
+    public function getRuntimeDurationObject(): ?object
+    {
+         return $this->runtimeDurationObject;
+     }
+
+    /**
      * @return ?int
      */
     public function getInvoiceId(): ?int
@@ -105,37 +143,35 @@ class InvoiceItem
      }
 
     /**
-     * @return ?int
-     */
-    public function getServiceGroupId(): ?int
-    {
-         return $this->serviceGroupId;
-     }
-
-    /**
-     * @param bool|null $order
      * @param string|null $newServiceGroupRuntime
+     * @param string|null $oldServiceGroupRuntime
      * @param string|null $title
+     * @param string|null $type
+     * @param int|null $runtimeDuration
      * @param int|null $position
      * @param int|null $unitPrice
      * @param int|null $quantity
+     * @param int|null $serviceGroupId
      * @param string|null $description
      * @param string|null $priceType
+     * @param object|null $runtimeDurationObject
      * @param int|null $invoiceId
-     * @param int|null $serviceGroupId
      */
-    public function __construct(?bool $order, ?string $newServiceGroupRuntime, ?string $title, ?int $position, ?int $unitPrice, ?int $quantity, ?string $description, ?string $priceType, ?int $invoiceId, ?int $serviceGroupId)
+    public function __construct(?string $newServiceGroupRuntime, ?string $oldServiceGroupRuntime, ?string $title, ?string $type, ?int $runtimeDuration, ?int $position, ?int $unitPrice, ?int $quantity, ?int $serviceGroupId, ?string $description, ?string $priceType, ?object $runtimeDurationObject, ?int $invoiceId)
     {
-        $this->order = $order;
         $this->newServiceGroupRuntime = $newServiceGroupRuntime;
+        $this->oldServiceGroupRuntime = $oldServiceGroupRuntime;
         $this->title = $title;
+        $this->type = $type;
+        $this->runtimeDuration = $runtimeDuration;
         $this->position = $position;
         $this->unitPrice = $unitPrice;
         $this->quantity = $quantity;
+        $this->serviceGroupId = $serviceGroupId;
         $this->description = $description;
         $this->priceType = $priceType;
+        $this->runtimeDurationObject = $runtimeDurationObject;
         $this->invoiceId = $invoiceId;
-        $this->serviceGroupId = $serviceGroupId;
     }
 
     /**
@@ -145,16 +181,19 @@ class InvoiceItem
     {
         return
         [
-        'order' => $this->getOrder(),
         'newServiceGroupRuntime' => $this->getNewServiceGroupRuntime(),
+        'oldServiceGroupRuntime' => $this->getOldServiceGroupRuntime(),
         'title' => $this->getTitle(),
+        'type' => $this->getType(),
+        'runtimeDuration' => $this->getRuntimeDuration(),
         'position' => $this->getPosition(),
         'unitPrice' => $this->getUnitPrice(),
         'quantity' => $this->getQuantity(),
+        'serviceGroupId' => $this->getServiceGroupId(),
         'description' => $this->getDescription(),
         'priceType' => $this->getPriceType(),
+        'runtimeDurationObject' => $this->getRuntimeDurationObject(),
         'invoiceId' => $this->getInvoiceId(),
-        'serviceGroupId' => $this->getServiceGroupId(),
         ];
     }
 
@@ -165,17 +204,25 @@ class InvoiceItem
     public static function fromStdClass(object $object):InvoiceItem
     {
 
-        if (isset($object->order)) {
-            $order = (bool) $object->order;
-        }else $order = null;
-
         if (isset($object->newServiceGroupRuntime)) {
             $newServiceGroupRuntime = (string) $object->newServiceGroupRuntime;
         }else $newServiceGroupRuntime = null;
 
+        if (isset($object->oldServiceGroupRuntime)) {
+            $oldServiceGroupRuntime = (string) $object->oldServiceGroupRuntime;
+        }else $oldServiceGroupRuntime = null;
+
         if (isset($object->title)) {
             $title = (string) $object->title;
         }else $title = null;
+
+        if (isset($object->type)) {
+            $type = (string) $object->type;
+        }else $type = null;
+
+        if (isset($object->runtimeDuration)) {
+            $runtimeDuration = (int) $object->runtimeDuration;
+        }else $runtimeDuration = null;
 
         if (isset($object->position)) {
             $position = (int) $object->position;
@@ -189,6 +236,10 @@ class InvoiceItem
             $quantity = (int) $object->quantity;
         }else $quantity = null;
 
+        if (isset($object->serviceGroupId)) {
+            $serviceGroupId = (int) $object->serviceGroupId;
+        }else $serviceGroupId = null;
+
         if (isset($object->description)) {
             $description = (string) $object->description;
         }else $description = null;
@@ -197,14 +248,14 @@ class InvoiceItem
             $priceType = (string) $object->priceType;
         }else $priceType = null;
 
+        if (isset($object->runtimeDurationObject)) {
+            $runtimeDurationObject = (object) $object->runtimeDurationObject;
+        }else $runtimeDurationObject = null;
+
         if (isset($object->invoiceId)) {
             $invoiceId = (int) $object->invoiceId;
         }else $invoiceId = null;
 
-        if (isset($object->serviceGroupId)) {
-            $serviceGroupId = (int) $object->serviceGroupId;
-        }else $serviceGroupId = null;
-
-        return new InvoiceItem($order, $newServiceGroupRuntime, $title, $position, $unitPrice, $quantity, $description, $priceType, $invoiceId, $serviceGroupId);
+        return new InvoiceItem($newServiceGroupRuntime, $oldServiceGroupRuntime, $title, $type, $runtimeDuration, $position, $unitPrice, $quantity, $serviceGroupId, $description, $priceType, $runtimeDurationObject, $invoiceId);
      }
 }
