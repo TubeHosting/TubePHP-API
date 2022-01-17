@@ -30,7 +30,7 @@ class TubeAPI
         //set necessary http headers
         $headers = array();
         $headers[] = 'Accept: application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9';
-        $headers[] = 'User-Agent: PHP-Client v0.5';
+        $headers[] = 'User-Agent: PHP-Client v1.0';
         $headers[] = 'Authorization: Bearer ' . $bearer;
 
         //send specific content type when needed https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type

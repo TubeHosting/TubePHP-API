@@ -22,11 +22,11 @@ Also take a look in the [Documentation.md](Documentation.md)
 The Tube-Hosting PHP API is available over [Packagist](https://packagist.org/packages/tubehosting/tubephp-api), and an installation in your project is recommended via [Composer](https://getcomposer.org). <br>
 After installing [Composer in your project](https://getcomposer.org/download/), just add this line to your `composer.json` file.
 ```json
-"tubehosting/tubephp-api": "^0.4-beta"
+"tubehosting/tubephp-api": "^1.0"
 ```
 or run 
 ```shell
-$ composer require tubehosting/tubephp-api:0.4-beta
+$ composer require tubehosting/tubephp-api
 ```
 in your shell. 
 
@@ -86,7 +86,7 @@ OS: Debian 11 (Bullseye) 64-bit, German
  - SSD -> 24 GB
 Price: €5 (GROSS)
 Bought on: 2021-11-30T10:09:22Z
-Paid until: 2021-12-28T00:00:00Z
+Paid until: 2024-02-26T00:00:00Z
 ```
 
 Take a look on more examples [in the examples directory](Examples/)
