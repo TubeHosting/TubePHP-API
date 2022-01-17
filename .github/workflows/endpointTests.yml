@@ -1,0 +1,32 @@
+name: Request tests against OpenAPI mock server (prism)
+
+on: push
+
+jobs:
+  test_against_mock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install -g @stoplight/prism-cli
+       
+      - name: start prism
+        shell: bash
+        run: | 
+            sudo apt -y install curl 
+            file=$( mktemp )
+            curl https://api.tube-hosting.com/docs | jq  | sed -e 's/\"\*\/\*\"/\"application\/json\"/g' > $file
+            prism mock -h 0.0.0.0 -d false -p 4011 -m true $file &
+
+      - name: Git Clone Action
+        uses: actions/checkout@v2
+        with:
+           repository: ${{ github.repository }}
+           token: ${{ secrets.ACCESS_TOKEN }} 
+
+      - name: install and run phpunit tests
+        run: |
+          cd Tests
+          curl -LO https://phar.phpunit.de/phpunit-9.5.phar
+          php phpunit-9.5.phar --configuration phpunit.xml
