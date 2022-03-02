@@ -31,6 +31,8 @@ class User
 
     private $address;
 
+    private $debuggingEnabled;
+
     private $firstname;
 
     private $lastname;
@@ -119,6 +121,14 @@ class User
      }
 
     /**
+     * @return ?bool
+     */
+    public function getDebuggingEnabled(): ?bool
+    {
+         return $this->debuggingEnabled;
+     }
+
+    /**
      * @return ?string
      */
     public function getFirstname(): ?string
@@ -153,11 +163,12 @@ class User
      * @param string|null $regDate
      * @param bool|null $verified
      * @param Address|null $address
+     * @param bool|null $debuggingEnabled
      * @param string|null $firstname
      * @param string|null $lastname
      * @param SupportData|null $supportData
      */
-    public function __construct(?int $id, ?int $balance, ?string $mail, ?string $locale, ?string $role, ?bool $enabled, ?string $lastip, ?string $regDate, ?bool $verified, ?Address $address, ?string $firstname, ?string $lastname, ?SupportData $supportData)
+    public function __construct(?int $id, ?int $balance, ?string $mail, ?string $locale, ?string $role, ?bool $enabled, ?string $lastip, ?string $regDate, ?bool $verified, ?Address $address, ?bool $debuggingEnabled, ?string $firstname, ?string $lastname, ?SupportData $supportData)
     {
         $this->id = $id;
         $this->balance = $balance;
@@ -169,6 +180,7 @@ class User
         $this->regDate = $regDate;
         $this->verified = $verified;
         $this->address = $address;
+        $this->debuggingEnabled = $debuggingEnabled;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->supportData = $supportData;
@@ -191,6 +203,7 @@ class User
         'regDate' => $this->getRegDate(),
         'verified' => $this->getVerified(),
         'address' => $this->getAddress(),
+        'debuggingEnabled' => $this->getDebuggingEnabled(),
         'firstname' => $this->getFirstname(),
         'lastname' => $this->getLastname(),
         'supportData' => $this->getSupportData(),
@@ -244,6 +257,10 @@ class User
            $address = Address::fromStdClass((object)$object->address);
         }else $address = null;
 
+        if (isset($object->debuggingEnabled)) {
+            $debuggingEnabled = (bool) $object->debuggingEnabled;
+        }else $debuggingEnabled = null;
+
         if (isset($object->firstname)) {
             $firstname = (string) $object->firstname;
         }else $firstname = null;
@@ -256,7 +273,7 @@ class User
            $supportData = SupportData::fromStdClass((object)$object->supportData);
         }else $supportData = null;
 
-        return new User($id, $balance, $mail, $locale, $role, $enabled, $lastip, $regDate, $verified, $address, $firstname, $lastname, $supportData);
+        return new User($id, $balance, $mail, $locale, $role, $enabled, $lastip, $regDate, $verified, $address, $debuggingEnabled, $firstname, $lastname, $supportData);
      }
 
 
@@ -327,19 +344,6 @@ class User
 
 
     /**
-     * @link https://doc.api.tube-hosting.com/#/me-controller/changeMail
-     * @param User $user
-     * @return string
-     * @throws \TubeAPI\Exceptions\RequestException
-     */
-    public static function changeMail(User $user):string 
-    {
-        $result = TubeAPI::request('POST', '/me/mail', $user->getAsArr(), TubeAPI::$token);
-        return $result;
-    }
-
-
-    /**
      * @link https://doc.api.tube-hosting.com/#/me-controller/changeLocale
      * @param RequestBodyLocale $requestBodyLocale
      * @return string
@@ -361,6 +365,19 @@ class User
     public static function changeAddress(Address $address):string 
     {
         $result = TubeAPI::request('POST', '/me/address', $address->getAsArr(), TubeAPI::$token);
+        return $result;
+    }
+
+
+    /**
+     * @link https://doc.api.tube-hosting.com/#/authentication-controller/logout
+     * @param string $Authorization
+     * @return string
+     * @throws \TubeAPI\Exceptions\RequestException
+     */
+    public static function logout(string $Authorization):string 
+    {
+        $result = TubeAPI::request('POST', '/logout?Authorization='.$Authorization.'', null, TubeAPI::$token);
         return $result;
     }
 

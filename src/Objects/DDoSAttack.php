@@ -8,7 +8,7 @@ use TubeAPI\Exceptions\RequestException;
 require_once __DIR__ . '/../TubeAPI.php';
 require_once __DIR__ . '/../Exceptions/RequestException.php';
 
-class CombahtonDDoSAttack
+class DDoSAttack
 {
 
     private $time;
@@ -21,11 +21,13 @@ class CombahtonDDoSAttack
 
     private $type;
 
+    private $pps;
+
     private $traffic;
 
-    private $avg_pktsize;
+    private $avgPacketSize;
 
-    private $timestamp;
+    private $samples;
 
 
     /**
@@ -71,25 +73,33 @@ class CombahtonDDoSAttack
     /**
      * @return ?int
      */
+    public function getPps(): ?int
+    {
+         return $this->pps;
+     }
+
+    /**
+     * @return ?int
+     */
     public function getTraffic(): ?int
     {
          return $this->traffic;
      }
 
     /**
-     * @return ?string
+     * @return ?int
      */
-    public function getAvg_pktsize(): ?string
+    public function getAvgPacketSize(): ?int
     {
-         return $this->avg_pktsize;
+         return $this->avgPacketSize;
      }
 
     /**
-     * @return ?string
+     * @return ?array
      */
-    public function getTimestamp(): ?string
+    public function getSamples(): ?array
     {
-         return $this->timestamp;
+         return $this->samples;
      }
 
     /**
@@ -98,20 +108,33 @@ class CombahtonDDoSAttack
      * @param string|null $id
      * @param int|null $packets
      * @param string|null $type
+     * @param int|null $pps
      * @param int|null $traffic
-     * @param string|null $avg_pktsize
-     * @param string|null $timestamp
+     * @param int|null $avgPacketSize
+     * @param array|null $samples
      */
-    public function __construct(?string $time, ?string $ip, ?string $id, ?int $packets, ?string $type, ?int $traffic, ?string $avg_pktsize, ?string $timestamp)
+    public function __construct(?string $time, ?string $ip, ?string $id, ?int $packets, ?string $type, ?int $pps, ?int $traffic, ?int $avgPacketSize, ?array $samples)
     {
         $this->time = $time;
         $this->ip = $ip;
         $this->id = $id;
         $this->packets = $packets;
         $this->type = $type;
+        $this->pps = $pps;
         $this->traffic = $traffic;
-        $this->avg_pktsize = $avg_pktsize;
-        $this->timestamp = $timestamp;
+        $this->avgPacketSize = $avgPacketSize;
+
+        //handle objects in array
+        $tmpSamples = $samples;
+        $samples = [];
+        if($tmpSamples!==null){
+            foreach ($tmpSamples as $key => $item) {
+                $item = DDoSSample::fromStdClass($item);
+                $singleItem = array($key => $item);
+                $samples = array_merge($samples, $singleItem);
+            }
+        }
+        $this->samples = $samples;
     }
 
     /**
@@ -126,17 +149,18 @@ class CombahtonDDoSAttack
         'id' => $this->getId(),
         'packets' => $this->getPackets(),
         'type' => $this->getType(),
+        'pps' => $this->getPps(),
         'traffic' => $this->getTraffic(),
-        'avg_pktsize' => $this->getAvg_pktsize(),
-        'timestamp' => $this->getTimestamp(),
+        'avgPacketSize' => $this->getAvgPacketSize(),
+        'samples' => $this->getSamples(),
         ];
     }
 
     /**
      * @param object $object
-     * @return CombahtonDDoSAttack
+     * @return DDoSAttack
      */
-    public static function fromStdClass(object $object):CombahtonDDoSAttack
+    public static function fromStdClass(object $object):DDoSAttack
     {
 
         if (isset($object->time)) {
@@ -159,18 +183,22 @@ class CombahtonDDoSAttack
             $type = (string) $object->type;
         }else $type = null;
 
+        if (isset($object->pps)) {
+            $pps = (int) $object->pps;
+        }else $pps = null;
+
         if (isset($object->traffic)) {
             $traffic = (int) $object->traffic;
         }else $traffic = null;
 
-        if (isset($object->avg_pktsize)) {
-            $avg_pktsize = (string) $object->avg_pktsize;
-        }else $avg_pktsize = null;
+        if (isset($object->avgPacketSize)) {
+            $avgPacketSize = (int) $object->avgPacketSize;
+        }else $avgPacketSize = null;
 
-        if (isset($object->timestamp)) {
-            $timestamp = (string) $object->timestamp;
-        }else $timestamp = null;
+        if (isset($object->samples)) {
+            $samples = (array) $object->samples;
+        }else $samples = null;
 
-        return new CombahtonDDoSAttack($time, $ip, $id, $packets, $type, $traffic, $avg_pktsize, $timestamp);
+        return new DDoSAttack($time, $ip, $id, $packets, $type, $pps, $traffic, $avgPacketSize, $samples);
      }
 }

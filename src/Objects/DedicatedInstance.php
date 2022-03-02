@@ -11,8 +11,6 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class DedicatedInstance
 {
 
-    private $creator;
-
     private $id;
 
     private $configurationId;
@@ -37,14 +35,6 @@ class DedicatedInstance
 
     private $position;
 
-
-    /**
-     * @return ?User
-     */
-    public function getCreator(): ?User
-    {
-         return $this->creator;
-     }
 
     /**
      * @return ?int
@@ -143,7 +133,6 @@ class DedicatedInstance
      }
 
     /**
-     * @param User|null $creator
      * @param int|null $id
      * @param int|null $configurationId
      * @param DedicatedConfiguration|null $configuration
@@ -157,9 +146,8 @@ class DedicatedInstance
      * @param array|null $disks
      * @param ServerPosition|null $position
      */
-    public function __construct(?User $creator, ?int $id, ?int $configurationId, ?DedicatedConfiguration $configuration, ?string $caseType, ?string $startDate, ?string $endDate, ?int $labelId, ?bool $available, ?array $interfaces, ?array $aggregatedInterfaces, ?array $disks, ?ServerPosition $position)
+    public function __construct(?int $id, ?int $configurationId, ?DedicatedConfiguration $configuration, ?string $caseType, ?string $startDate, ?string $endDate, ?int $labelId, ?bool $available, ?array $interfaces, ?array $aggregatedInterfaces, ?array $disks, ?ServerPosition $position)
     {
-        $this->creator = $creator;
         $this->id = $id;
         $this->configurationId = $configurationId;
         $this->configuration = $configuration;
@@ -214,7 +202,6 @@ class DedicatedInstance
     {
         return
         [
-        'creator' => $this->getCreator(),
         'id' => $this->getId(),
         'configurationId' => $this->getConfigurationId(),
         'configuration' => $this->getConfiguration(),
@@ -236,10 +223,6 @@ class DedicatedInstance
      */
     public static function fromStdClass(object $object):DedicatedInstance
     {
-
-        if (isset($object->creator)) {
-           $creator = User::fromStdClass((object)$object->creator);
-        }else $creator = null;
 
         if (isset($object->id)) {
             $id = (int) $object->id;
@@ -289,6 +272,6 @@ class DedicatedInstance
            $position = ServerPosition::fromStdClass((object)$object->position);
         }else $position = null;
 
-        return new DedicatedInstance($creator, $id, $configurationId, $configuration, $caseType, $startDate, $endDate, $labelId, $available, $interfaces, $aggregatedInterfaces, $disks, $position);
+        return new DedicatedInstance($id, $configurationId, $configuration, $caseType, $startDate, $endDate, $labelId, $available, $interfaces, $aggregatedInterfaces, $disks, $position);
      }
 }

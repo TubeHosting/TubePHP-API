@@ -267,14 +267,15 @@ class Payment
 
     /**
      * @link https://doc.api.tube-hosting.com/#/payment-controller/getPaymentBundles
+     * @param bool $completed
      * @param int $page
      * @param int $size
      * @return  SearchResultPaymentBundle
      * @throws \TubeAPI\Exceptions\RequestException
      */
-    public static function getPaymentBundles(int $page = 0, int $size = 0): SearchResultPaymentBundle 
+    public static function getPaymentBundles(bool $completed = null, int $page = 0, int $size = 0): SearchResultPaymentBundle 
     {
-        $result = TubeAPI::request('GET', '/payments?page='.$page.'&size='.$size.'', null, TubeAPI::$token);
+        $result = TubeAPI::request('GET', '/payments?completed='.$completed.'&page='.$page.'&size='.$size.'', null, TubeAPI::$token);
         return  SearchResultPaymentBundle::fromStdClass(json_decode($result));
     }
 

@@ -225,6 +225,29 @@ class IPv4
 
 
     /**
+     * @link https://doc.api.tube-hosting.com/#/ip-controller/getDDoSMetricsOfIPv4
+     * @param string $ipV4
+     * @param string $minTime
+     * @param string $maxTime
+     * @return array
+     * @throws \TubeAPI\Exceptions\RequestException
+     */
+    public static function getDDoSMetricsOfIPv4(string $ipV4, string $minTime, string $maxTime):array 
+    {
+        $result = TubeAPI::request('GET', '/ips/'.$ipV4.'/ddos/metrics?minTime='.$minTime.'&maxTime='.$maxTime.'', null, TubeAPI::$token);
+        $tmpResults = json_decode($result);
+        //handle objects in array
+        $results = [];
+        foreach ($tmpResults as $key => $result) {
+            $result = DDoSMetric::fromStdClass($result);
+            $result = array($key => $result);
+            $results = array_merge($results, $result);
+        }
+        return $results;
+    }
+
+
+    /**
      * @link https://doc.api.tube-hosting.com/#/ip-controller/getDDoSIncidentsOnIPv4
      * @param string $ipV4
      * @return array
@@ -237,7 +260,7 @@ class IPv4
         //handle objects in array
         $results = [];
         foreach ($tmpResults as $key => $result) {
-            $result = CombahtonDDoSAttack::fromStdClass($result);
+            $result = DDoSAttack::fromStdClass($result);
             $result = array($key => $result);
             $results = array_merge($results, $result);
         }

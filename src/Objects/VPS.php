@@ -35,11 +35,13 @@ class VPS
 
     private $type;
 
-    private $serviceGroupId;
-
     private $priceObject;
 
     private $templateId;
+
+    private $realPrice;
+
+    private $serviceGroupId;
 
     private $vpsId;
 
@@ -153,14 +155,6 @@ class VPS
     /**
      * @return ?int
      */
-    public function getServiceGroupId(): ?int
-    {
-         return $this->serviceGroupId;
-     }
-
-    /**
-     * @return ?int
-     */
     public function getPriceObject(): ?int
     {
          return $this->priceObject;
@@ -172,6 +166,22 @@ class VPS
     public function getTemplateId(): ?int
     {
          return $this->templateId;
+     }
+
+    /**
+     * @return ?int
+     */
+    public function getRealPrice(): ?int
+    {
+         return $this->realPrice;
+     }
+
+    /**
+     * @return ?int
+     */
+    public function getServiceGroupId(): ?int
+    {
+         return $this->serviceGroupId;
      }
 
     /**
@@ -266,9 +276,10 @@ class VPS
      * @param string|null $runtime
      * @param string|null $name
      * @param string|null $type
-     * @param int|null $serviceGroupId
      * @param int|null $priceObject
      * @param int|null $templateId
+     * @param int|null $realPrice
+     * @param int|null $serviceGroupId
      * @param int|null $vpsId
      * @param string|null $vpsType
      * @param int|null $coreCount
@@ -280,7 +291,7 @@ class VPS
      * @param string|null $osDisplayName
      * @param LinkIPv4BundleIPv4|null $primaryIPv4
      */
-    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $serviceGroupId, ?int $priceObject, ?int $templateId, ?int $vpsId, ?string $vpsType, ?int $coreCount, ?int $memory, ?int $diskSpace, ?string $diskType, ?int $nodeId, ?string $lastInstalledSystem, ?string $osDisplayName, ?LinkIPv4BundleIPv4 $primaryIPv4)
+    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $priceObject, ?int $templateId, ?int $realPrice, ?int $serviceGroupId, ?int $vpsId, ?string $vpsType, ?int $coreCount, ?int $memory, ?int $diskSpace, ?string $diskType, ?int $nodeId, ?string $lastInstalledSystem, ?string $osDisplayName, ?LinkIPv4BundleIPv4 $primaryIPv4)
     {
         $this->dataId = $dataId;
         $this->id = $id;
@@ -293,9 +304,10 @@ class VPS
         $this->runtime = $runtime;
         $this->name = $name;
         $this->type = $type;
-        $this->serviceGroupId = $serviceGroupId;
         $this->priceObject = $priceObject;
         $this->templateId = $templateId;
+        $this->realPrice = $realPrice;
+        $this->serviceGroupId = $serviceGroupId;
         $this->vpsId = $vpsId;
         $this->vpsType = $vpsType;
         $this->coreCount = $coreCount;
@@ -326,9 +338,10 @@ class VPS
         'runtime' => $this->getRuntime(),
         'name' => $this->getName(),
         'type' => $this->getType(),
-        'serviceGroupId' => $this->getServiceGroupId(),
         'priceObject' => $this->getPriceObject(),
         'templateId' => $this->getTemplateId(),
+        'realPrice' => $this->getRealPrice(),
+        'serviceGroupId' => $this->getServiceGroupId(),
         'vpsId' => $this->getVpsId(),
         'vpsType' => $this->getVpsType(),
         'coreCount' => $this->getCoreCount(),
@@ -393,10 +406,6 @@ class VPS
             $type = (string) $object->type;
         }else $type = null;
 
-        if (isset($object->serviceGroupId)) {
-            $serviceGroupId = (int) $object->serviceGroupId;
-        }else $serviceGroupId = null;
-
         if (isset($object->priceObject)) {
             $priceObject = (int) $object->priceObject;
         }else $priceObject = null;
@@ -404,6 +413,14 @@ class VPS
         if (isset($object->templateId)) {
             $templateId = (int) $object->templateId;
         }else $templateId = null;
+
+        if (isset($object->realPrice)) {
+            $realPrice = (int) $object->realPrice;
+        }else $realPrice = null;
+
+        if (isset($object->serviceGroupId)) {
+            $serviceGroupId = (int) $object->serviceGroupId;
+        }else $serviceGroupId = null;
 
         if (isset($object->vpsId)) {
             $vpsId = (int) $object->vpsId;
@@ -445,7 +462,7 @@ class VPS
            $primaryIPv4 = LinkIPv4BundleIPv4::fromStdClass((object)$object->primaryIPv4);
         }else $primaryIPv4 = null;
 
-        return new VPS($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $serviceGroupId, $priceObject, $templateId, $vpsId, $vpsType, $coreCount, $memory, $diskSpace, $diskType, $nodeId, $lastInstalledSystem, $osDisplayName, $primaryIPv4);
+        return new VPS($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $templateId, $realPrice, $serviceGroupId, $vpsId, $vpsType, $coreCount, $memory, $diskSpace, $diskType, $nodeId, $lastInstalledSystem, $osDisplayName, $primaryIPv4);
      }
 
 

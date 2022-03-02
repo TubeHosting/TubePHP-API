@@ -15,6 +15,8 @@ class AuthenticationLoginData
 
     private $password;
 
+    private $token;
+
 
     /**
      * @return ?string
@@ -33,13 +35,23 @@ class AuthenticationLoginData
      }
 
     /**
+     * @return ?string
+     */
+    public function getToken(): ?string
+    {
+         return $this->token;
+     }
+
+    /**
      * @param string|null $mail
      * @param string|null $password
+     * @param string|null $token
      */
-    public function __construct(?string $mail, ?string $password)
+    public function __construct(?string $mail, ?string $password, ?string $token)
     {
         $this->mail = $mail;
         $this->password = $password;
+        $this->token = $token;
     }
 
     /**
@@ -51,6 +63,7 @@ class AuthenticationLoginData
         [
         'mail' => $this->getMail(),
         'password' => $this->getPassword(),
+        'token' => $this->getToken(),
         ];
     }
 
@@ -69,6 +82,10 @@ class AuthenticationLoginData
             $password = (string) $object->password;
         }else $password = null;
 
-        return new AuthenticationLoginData($mail, $password);
+        if (isset($object->token)) {
+            $token = (string) $object->token;
+        }else $token = null;
+
+        return new AuthenticationLoginData($mail, $password, $token);
      }
 }

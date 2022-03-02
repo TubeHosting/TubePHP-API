@@ -35,11 +35,13 @@ class IPv4Bundle
 
     private $type;
 
-    private $serviceGroupId;
-
     private $priceObject;
 
     private $templateId;
+
+    private $realPrice;
+
+    private $serviceGroupId;
 
     private $ips;
 
@@ -135,14 +137,6 @@ class IPv4Bundle
     /**
      * @return ?int
      */
-    public function getServiceGroupId(): ?int
-    {
-         return $this->serviceGroupId;
-     }
-
-    /**
-     * @return ?int
-     */
     public function getPriceObject(): ?int
     {
          return $this->priceObject;
@@ -154,6 +148,22 @@ class IPv4Bundle
     public function getTemplateId(): ?int
     {
          return $this->templateId;
+     }
+
+    /**
+     * @return ?int
+     */
+    public function getRealPrice(): ?int
+    {
+         return $this->realPrice;
+     }
+
+    /**
+     * @return ?int
+     */
+    public function getServiceGroupId(): ?int
+    {
+         return $this->serviceGroupId;
      }
 
     /**
@@ -176,12 +186,13 @@ class IPv4Bundle
      * @param string|null $runtime
      * @param string|null $name
      * @param string|null $type
-     * @param int|null $serviceGroupId
      * @param int|null $priceObject
      * @param int|null $templateId
+     * @param int|null $realPrice
+     * @param int|null $serviceGroupId
      * @param array|null $ips
      */
-    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $serviceGroupId, ?int $priceObject, ?int $templateId, ?array $ips)
+    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $priceObject, ?int $templateId, ?int $realPrice, ?int $serviceGroupId, ?array $ips)
     {
         $this->dataId = $dataId;
         $this->id = $id;
@@ -194,9 +205,10 @@ class IPv4Bundle
         $this->runtime = $runtime;
         $this->name = $name;
         $this->type = $type;
-        $this->serviceGroupId = $serviceGroupId;
         $this->priceObject = $priceObject;
         $this->templateId = $templateId;
+        $this->realPrice = $realPrice;
+        $this->serviceGroupId = $serviceGroupId;
 
         //handle objects in array
         $tmpIps = $ips;
@@ -229,9 +241,10 @@ class IPv4Bundle
         'runtime' => $this->getRuntime(),
         'name' => $this->getName(),
         'type' => $this->getType(),
-        'serviceGroupId' => $this->getServiceGroupId(),
         'priceObject' => $this->getPriceObject(),
         'templateId' => $this->getTemplateId(),
+        'realPrice' => $this->getRealPrice(),
+        'serviceGroupId' => $this->getServiceGroupId(),
         'ips' => $this->getIps(),
         ];
     }
@@ -287,10 +300,6 @@ class IPv4Bundle
             $type = (string) $object->type;
         }else $type = null;
 
-        if (isset($object->serviceGroupId)) {
-            $serviceGroupId = (int) $object->serviceGroupId;
-        }else $serviceGroupId = null;
-
         if (isset($object->priceObject)) {
             $priceObject = (int) $object->priceObject;
         }else $priceObject = null;
@@ -299,11 +308,19 @@ class IPv4Bundle
             $templateId = (int) $object->templateId;
         }else $templateId = null;
 
+        if (isset($object->realPrice)) {
+            $realPrice = (int) $object->realPrice;
+        }else $realPrice = null;
+
+        if (isset($object->serviceGroupId)) {
+            $serviceGroupId = (int) $object->serviceGroupId;
+        }else $serviceGroupId = null;
+
         if (isset($object->ips)) {
             $ips = (array) $object->ips;
         }else $ips = null;
 
-        return new IPv4Bundle($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $serviceGroupId, $priceObject, $templateId, $ips);
+        return new IPv4Bundle($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $templateId, $realPrice, $serviceGroupId, $ips);
      }
 
 
@@ -320,7 +337,7 @@ class IPv4Bundle
         //handle objects in array
         $results = [];
         foreach ($tmpResults as $key => $result) {
-            $result = CombahtonDDoSAttack::fromStdClass($result);
+            $result = DDoSAttack::fromStdClass($result);
             $result = array($key => $result);
             $results = array_merge($results, $result);
         }

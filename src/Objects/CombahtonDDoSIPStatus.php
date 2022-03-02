@@ -15,7 +15,7 @@ class CombahtonDDoSIPStatus
 
     private $layer7;
 
-    private $last_change;
+    private $lastChange;
 
 
     /**
@@ -37,21 +37,21 @@ class CombahtonDDoSIPStatus
     /**
      * @return ?string
      */
-    public function getLast_change(): ?string
+    public function getLastChange(): ?string
     {
-         return $this->last_change;
+         return $this->lastChange;
      }
 
     /**
      * @param string|null $layer4
      * @param string|null $layer7
-     * @param string|null $last_change
+     * @param string|null $lastChange
      */
-    public function __construct(?string $layer4, ?string $layer7, ?string $last_change)
+    public function __construct(?string $layer4, ?string $layer7, ?string $lastChange)
     {
         $this->layer4 = $layer4;
         $this->layer7 = $layer7;
-        $this->last_change = $last_change;
+        $this->lastChange = $lastChange;
     }
 
     /**
@@ -63,7 +63,7 @@ class CombahtonDDoSIPStatus
         [
         'layer4' => $this->getLayer4(),
         'layer7' => $this->getLayer7(),
-        'last_change' => $this->getLast_change(),
+        'lastChange' => $this->getLastChange(),
         ];
     }
 
@@ -82,10 +82,10 @@ class CombahtonDDoSIPStatus
             $layer7 = (string) $object->layer7;
         }else $layer7 = null;
 
-        if (isset($object->last_change)) {
-            $last_change = (string) $object->last_change;
-        }else $last_change = null;
+        if (isset($object->lastChange)) {
+            $lastChange = (string) $object->lastChange;
+        }else $lastChange = null;
 
-        return new CombahtonDDoSIPStatus($layer4, $layer7, $last_change);
+        return new CombahtonDDoSIPStatus($layer4, $layer7, $lastChange);
      }
 }

@@ -359,17 +359,4 @@ class DedicatedInstanceRequest
 
         return new DedicatedInstanceRequest($userId, $price, $runtimeInterval, $memory, $position, $startDate, $labelId, $available, $memoryType, $cpuId, $cpuCount, $gpuId, $gpuCount, $disks, $interfaces, $aggregatedInterfaces, $caseType);
      }
-
-
-    /**
-     * @link https://doc.api.tube-hosting.com/#/admin-dedicated-repository/createInstance
-     * @param DedicatedInstanceRequest $dedicatedInstanceRequest
-     * @return string
-     * @throws \TubeAPI\Exceptions\RequestException
-     */
-    public static function createInstance(DedicatedInstanceRequest $dedicatedInstanceRequest):string 
-    {
-        $result = TubeAPI::request('PUT', '/admin/dedicateds/instances', $dedicatedInstanceRequest->getAsArr(), TubeAPI::$token);
-        return $result;
-    }
 }

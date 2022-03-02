@@ -11,6 +11,8 @@ require_once __DIR__ . '/../Exceptions/RequestException.php';
 class LinkIPv4BundleIPv4
 {
 
+    private $startTime;
+
     private $serviceId;
 
     private $type;
@@ -19,6 +21,16 @@ class LinkIPv4BundleIPv4
 
     private $ipv4;
 
+    private $bundleId;
+
+
+    /**
+     * @return ?string
+     */
+    public function getStartTime(): ?string
+    {
+         return $this->startTime;
+     }
 
     /**
      * @return ?int
@@ -53,17 +65,29 @@ class LinkIPv4BundleIPv4
      }
 
     /**
+     * @return ?int
+     */
+    public function getBundleId(): ?int
+    {
+         return $this->bundleId;
+     }
+
+    /**
+     * @param string|null $startTime
      * @param int|null $serviceId
      * @param string|null $type
      * @param string|null $description
      * @param IPv4|null $ipv4
+     * @param int|null $bundleId
      */
-    public function __construct(?int $serviceId, ?string $type, ?string $description, ?IPv4 $ipv4)
+    public function __construct(?string $startTime, ?int $serviceId, ?string $type, ?string $description, ?IPv4 $ipv4, ?int $bundleId)
     {
+        $this->startTime = $startTime;
         $this->serviceId = $serviceId;
         $this->type = $type;
         $this->description = $description;
         $this->ipv4 = $ipv4;
+        $this->bundleId = $bundleId;
     }
 
     /**
@@ -73,10 +97,12 @@ class LinkIPv4BundleIPv4
     {
         return
         [
+        'startTime' => $this->getStartTime(),
         'serviceId' => $this->getServiceId(),
         'type' => $this->getType(),
         'description' => $this->getDescription(),
         'ipv4' => $this->getIpv4(),
+        'bundleId' => $this->getBundleId(),
         ];
     }
 
@@ -86,6 +112,10 @@ class LinkIPv4BundleIPv4
      */
     public static function fromStdClass(object $object):LinkIPv4BundleIPv4
     {
+
+        if (isset($object->startTime)) {
+            $startTime = (string) $object->startTime;
+        }else $startTime = null;
 
         if (isset($object->serviceId)) {
             $serviceId = (int) $object->serviceId;
@@ -103,6 +133,10 @@ class LinkIPv4BundleIPv4
            $ipv4 = IPv4::fromStdClass((object)$object->ipv4);
         }else $ipv4 = null;
 
-        return new LinkIPv4BundleIPv4($serviceId, $type, $description, $ipv4);
+        if (isset($object->bundleId)) {
+            $bundleId = (int) $object->bundleId;
+        }else $bundleId = null;
+
+        return new LinkIPv4BundleIPv4($startTime, $serviceId, $type, $description, $ipv4, $bundleId);
      }
 }
