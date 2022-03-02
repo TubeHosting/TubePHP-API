@@ -28,7 +28,6 @@ final class EndpointTest extends TestCase
      * @covers \TubeAPI\Objects\IPv4::changeRDNS
      * @covers \TubeAPI\Objects\IPv4::changeIPv4Description
      * @covers \TubeAPI\Objects\IPv4::changeDDoSModeStatus
-     * @covers \TubeAPI\Objects\DedicatedInstanceRequest::createInstance
      * @covers \TubeAPI\Objects\VPS::stopServerById
      * @covers \TubeAPI\Objects\VPS::startServerById
      * @covers \TubeAPI\Objects\VPS::shutdownServerById
@@ -43,9 +42,9 @@ final class EndpointTest extends TestCase
      * @covers \TubeAPI\Objects\User::changeSupportData
      * @covers \TubeAPI\Objects\User::changePassword
      * @covers \TubeAPI\Objects\User::changeNames
-     * @covers \TubeAPI\Objects\User::changeMail
      * @covers \TubeAPI\Objects\User::changeLocale
      * @covers \TubeAPI\Objects\User::changeAddress
+     * @covers \TubeAPI\Objects\User::logout
      * @covers \TubeAPI\Objects\User::login
      * @covers \TubeAPI\Objects\VPS::getServerById
      * @covers \TubeAPI\Objects\VPS::getServerStatusById
@@ -68,12 +67,10 @@ final class EndpointTest extends TestCase
      * @covers \TubeAPI\Objects\Payment::getBalanceChanges
      * @covers \TubeAPI\Objects\User::meInfo
      * @covers \TubeAPI\Objects\IPv4::getIPLinkBundle
+     * @covers \TubeAPI\Objects\IPv4::getDDoSMetricsOfIPv4
      * @covers \TubeAPI\Objects\IPv4::getDDoSIncidentsOnIPv4
      * @covers \TubeAPI\Objects\IPv4Bundle::getDDoSIncidentsOnBundle
      * @covers \TubeAPI\Objects\Dedicated::getServiceByID_1
-     * @covers \TubeAPI\Objects\None::getAllGPUs
-     * @covers \TubeAPI\Objects\None::getAllDisks
-     * @covers \TubeAPI\Objects\None::getAllCPUs
      * @covers \TubeAPI\Objects\ServiceGroupData::deleteSecondaryOwners
      */
     public function testRequests(): int
@@ -154,16 +151,6 @@ final class EndpointTest extends TestCase
             $iPDDoSStatus = new TubeAPI\Objects\IPDDoSStatus(array('dynamic','permanent')[rand(0,1)],array('off','permanent','only')[rand(0,2)]); /* IPDDoSStatus */
             $tmp = TubeAPI\Objects\IPv4::changeDDoSModeStatus($ipV4, $iPDDoSStatus);
             print "ran (PUT) request against /ips/{ipV4}/ddos/status ($c)\n";
-            $this->assertTrue(true);
-
-            $c++;
-            /**
-            * Do an HTTP request (PUT) to /admin/dedicateds/instances with random data 
-            */
-            
-            $dedicatedInstanceRequest = new TubeAPI\Objects\DedicatedInstanceRequest(rand(0,1000),rand(0,1000),rand(0,1000),rand(0,1000),new TubeAPI\Objects\ServerPosition(rand(0,1000),uniqid(),uniqid(),rand(0,1000),rand(0,1000),rand(0,1000)),"2019-08-24T14:15:22Z",rand(0,1000),false,array('DDR3','DDR4')[rand(0,1)],rand(0,1000),rand(0,1000),rand(0,1000),rand(0,1000),array(new TubeAPI\Objects\DedicatedInstanceDiskLink(rand(0,1000),new TubeAPI\Objects\Disk(rand(0,1000),rand(0,1000),array('NVME_SSD','SATA_SSD','SATA_HDD','SAS_HDD')[rand(0,3)],array('SAMSUNG','CRUCIAL','SANDISK','WD')[rand(0,3)],uniqid()),rand(0,1000))),array(new TubeAPI\Objects\SimpleDedicatedInterface(uniqid(),rand(0,1000),false,rand(0,1000),rand(0,1000),rand(0,1000))),array(new TubeAPI\Objects\DedicatedInterfacesAggregated(array(new TubeAPI\Objects\SimpleDedicatedInterface(uniqid(),rand(0,1000),false,rand(0,1000),rand(0,1000),rand(0,1000))),rand(0,1000),rand(0,1000),rand(0,1000))),array('RACK','TOWER')[rand(0,1)]); /* DedicatedInstanceRequest */
-            $tmp = TubeAPI\Objects\DedicatedInstanceRequest::createInstance($dedicatedInstanceRequest);
-            print "ran (PUT) request against /admin/dedicateds/instances ($c)\n";
             $this->assertTrue(true);
 
             $c++;
@@ -304,19 +291,9 @@ final class EndpointTest extends TestCase
             * Do an HTTP request (POST) to /me/names with random data 
             */
             
-            $user = new TubeAPI\Objects\User(rand(0,1000),rand(0,1000),uniqid(),array('DE','EN')[rand(0,1)],array('USER','ADMIN')[rand(0,1)],false,uniqid(),"2019-08-24T14:15:22Z",false,new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),array('DE','AT','CH','US','IN')[rand(0,4)],uniqid()),uniqid(),uniqid(),new TubeAPI\Objects\SupportData(uniqid(),uniqid(),uniqid())); /* User */
+            $user = new TubeAPI\Objects\User(rand(0,1000),rand(0,1000),uniqid(),array('DE','EN')[rand(0,1)],array('USER','ADMIN')[rand(0,1)],false,uniqid(),"2019-08-24T14:15:22Z",false,new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid()),false,uniqid(),uniqid(),new TubeAPI\Objects\SupportData(uniqid(),uniqid(),uniqid())); /* User */
             $tmp = TubeAPI\Objects\User::changeNames($user);
             print "ran (POST) request against /me/names ($c)\n";
-            $this->assertTrue(true);
-
-            $c++;
-            /**
-            * Do an HTTP request (POST) to /me/mail with random data 
-            */
-            
-            $user = new TubeAPI\Objects\User(rand(0,1000),rand(0,1000),uniqid(),array('DE','EN')[rand(0,1)],array('USER','ADMIN')[rand(0,1)],false,uniqid(),"2019-08-24T14:15:22Z",false,new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),array('DE','AT','CH','US','IN')[rand(0,4)],uniqid()),uniqid(),uniqid(),new TubeAPI\Objects\SupportData(uniqid(),uniqid(),uniqid())); /* User */
-            $tmp = TubeAPI\Objects\User::changeMail($user);
-            print "ran (POST) request against /me/mail ($c)\n";
             $this->assertTrue(true);
 
             $c++;
@@ -334,9 +311,19 @@ final class EndpointTest extends TestCase
             * Do an HTTP request (POST) to /me/address with random data 
             */
             
-            $address = new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),array('DE','AT','CH','US','IN')[rand(0,4)],uniqid()); /* Address */
+            $address = new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid()); /* Address */
             $tmp = TubeAPI\Objects\User::changeAddress($address);
             print "ran (POST) request against /me/address ($c)\n";
+            $this->assertTrue(true);
+
+            $c++;
+            /**
+            * Do an HTTP request (POST) to /logout with random data 
+            */
+            
+            $Authorization = uniqid(); /* string */
+            $tmp = TubeAPI\Objects\User::logout($Authorization);
+            print "ran (POST) request against /logout ($c)\n";
             $this->assertTrue(true);
 
             $c++;
@@ -344,7 +331,7 @@ final class EndpointTest extends TestCase
             * Do an HTTP request (POST) to /login with random data 
             */
             
-            $authenticationLoginData = new TubeAPI\Objects\AuthenticationLoginData(uniqid(),uniqid()); /* AuthenticationLoginData */
+            $authenticationLoginData = new TubeAPI\Objects\AuthenticationLoginData(uniqid(),uniqid(),uniqid()); /* AuthenticationLoginData */
             $tmp = TubeAPI\Objects\User::login($authenticationLoginData);
             print "ran (POST) request against /login ($c)\n";
             $this->assertTrue(true);
@@ -493,9 +480,10 @@ final class EndpointTest extends TestCase
             * Do an HTTP request (GET) to /payments with random data 
             */
             
+            $completed = false; /* bool */
             $page = rand(0,1000); /* int */
             $size = rand(0,1000); /* int */
-            $tmp = TubeAPI\Objects\Payment::getPaymentBundles($page, $size);
+            $tmp = TubeAPI\Objects\Payment::getPaymentBundles($completed, $page, $size);
             print "ran (GET) request against /payments ($c)\n";
             $this->assertTrue(true);
 
@@ -558,6 +546,18 @@ final class EndpointTest extends TestCase
 
             $c++;
             /**
+            * Do an HTTP request (GET) to /ips/{ipV4}/ddos/metrics with random data 
+            */
+            
+            $ipV4 = uniqid(); /* string */
+            $minTime = "2019-08-24T14:15:22Z"; /* string */
+            $maxTime = "2019-08-24T14:15:22Z"; /* string */
+            $tmp = TubeAPI\Objects\IPv4::getDDoSMetricsOfIPv4($ipV4, $minTime, $maxTime);
+            print "ran (GET) request against /ips/{ipV4}/ddos/metrics ($c)\n";
+            $this->assertTrue(true);
+
+            $c++;
+            /**
             * Do an HTTP request (GET) to /ips/{ipV4}/ddos/incidents with random data 
             */
             
@@ -589,27 +589,6 @@ final class EndpointTest extends TestCase
             $tmp = TubeAPI\Objects\Dedicated::getServiceByID_1($id, $start, $end, $interval, $count);
             print "ran (GET) request against /dedicated/{id}/interfaces/statistics ($c)\n";
             $this->assertTrue(true);
-
-
-
-            /**
-             /* Also count for purposely not covered endpoints 
-             */
-            $c++;
-
-
-
-            /**
-             /* Also count for purposely not covered endpoints 
-             */
-            $c++;
-
-
-
-            /**
-             /* Also count for purposely not covered endpoints 
-             */
-            $c++;
 
             $c++;
             /**
@@ -647,7 +626,6 @@ final class EndpointTest extends TestCase
      * @covers \TubeAPI\Objects\IPv4::changeRDNS
      * @covers \TubeAPI\Objects\IPv4::changeIPv4Description
      * @covers \TubeAPI\Objects\IPv4::changeDDoSModeStatus
-     * @covers \TubeAPI\Objects\DedicatedInstanceRequest::createInstance
      * @covers \TubeAPI\Objects\VPS::stopServerById
      * @covers \TubeAPI\Objects\VPS::startServerById
      * @covers \TubeAPI\Objects\VPS::shutdownServerById
@@ -662,9 +640,9 @@ final class EndpointTest extends TestCase
      * @covers \TubeAPI\Objects\User::changeSupportData
      * @covers \TubeAPI\Objects\User::changePassword
      * @covers \TubeAPI\Objects\User::changeNames
-     * @covers \TubeAPI\Objects\User::changeMail
      * @covers \TubeAPI\Objects\User::changeLocale
      * @covers \TubeAPI\Objects\User::changeAddress
+     * @covers \TubeAPI\Objects\User::logout
      * @covers \TubeAPI\Objects\User::login
      * @covers \TubeAPI\Objects\VPS::getServerById
      * @covers \TubeAPI\Objects\VPS::getServerStatusById
@@ -687,12 +665,10 @@ final class EndpointTest extends TestCase
      * @covers \TubeAPI\Objects\Payment::getBalanceChanges
      * @covers \TubeAPI\Objects\User::meInfo
      * @covers \TubeAPI\Objects\IPv4::getIPLinkBundle
+     * @covers \TubeAPI\Objects\IPv4::getDDoSMetricsOfIPv4
      * @covers \TubeAPI\Objects\IPv4::getDDoSIncidentsOnIPv4
      * @covers \TubeAPI\Objects\IPv4Bundle::getDDoSIncidentsOnBundle
      * @covers \TubeAPI\Objects\Dedicated::getServiceByID_1
-     * @covers \TubeAPI\Objects\None::getAllGPUs
-     * @covers \TubeAPI\Objects\None::getAllDisks
-     * @covers \TubeAPI\Objects\None::getAllCPUs
      * @covers \TubeAPI\Objects\ServiceGroupData::deleteSecondaryOwners
      */
     public function testForEndpoints(): void
