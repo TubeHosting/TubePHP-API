@@ -15,6 +15,8 @@ class LxcOs
 
     private $displayName;
 
+    private $osType;
+
 
     /**
      * @return ?int
@@ -33,13 +35,23 @@ class LxcOs
      }
 
     /**
+     * @return ?string
+     */
+    public function getOsType(): ?string
+    {
+         return $this->osType;
+     }
+
+    /**
      * @param int|null $osId
      * @param string|null $displayName
+     * @param string|null $osType
      */
-    public function __construct(?int $osId, ?string $displayName)
+    public function __construct(?int $osId, ?string $displayName, ?string $osType)
     {
         $this->osId = $osId;
         $this->displayName = $displayName;
+        $this->osType = $osType;
     }
 
     /**
@@ -51,6 +63,7 @@ class LxcOs
         [
         'osId' => $this->getOsId(),
         'displayName' => $this->getDisplayName(),
+        'osType' => $this->getOsType(),
         ];
     }
 
@@ -69,6 +82,10 @@ class LxcOs
             $displayName = (string) $object->displayName;
         }else $displayName = null;
 
-        return new LxcOs($osId, $displayName);
+        if (isset($object->osType)) {
+            $osType = (string) $object->osType;
+        }else $osType = null;
+
+        return new LxcOs($osId, $displayName, $osType);
      }
 }

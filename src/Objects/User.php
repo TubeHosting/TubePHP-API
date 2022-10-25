@@ -33,6 +33,12 @@ class User
 
     private $debuggingEnabled;
 
+    private $paymentInfo;
+
+    private $ipWhitelist;
+
+    private $priceType;
+
     private $firstname;
 
     private $lastname;
@@ -129,6 +135,30 @@ class User
      }
 
     /**
+     * @return ?UserPaymentInfo
+     */
+    public function getPaymentInfo(): ?UserPaymentInfo
+    {
+         return $this->paymentInfo;
+     }
+
+    /**
+     * @return ?array
+     */
+    public function getIpWhitelist(): ?array
+    {
+         return $this->ipWhitelist;
+     }
+
+    /**
+     * @return ?string
+     */
+    public function getPriceType(): ?string
+    {
+         return $this->priceType;
+     }
+
+    /**
      * @return ?string
      */
     public function getFirstname(): ?string
@@ -164,11 +194,14 @@ class User
      * @param bool|null $verified
      * @param Address|null $address
      * @param bool|null $debuggingEnabled
+     * @param UserPaymentInfo|null $paymentInfo
+     * @param array|null $ipWhitelist
+     * @param string|null $priceType
      * @param string|null $firstname
      * @param string|null $lastname
      * @param SupportData|null $supportData
      */
-    public function __construct(?int $id, ?int $balance, ?string $mail, ?string $locale, ?string $role, ?bool $enabled, ?string $lastip, ?string $regDate, ?bool $verified, ?Address $address, ?bool $debuggingEnabled, ?string $firstname, ?string $lastname, ?SupportData $supportData)
+    public function __construct(?int $id, ?int $balance, ?string $mail, ?string $locale, ?string $role, ?bool $enabled, ?string $lastip, ?string $regDate, ?bool $verified, ?Address $address, ?bool $debuggingEnabled, ?UserPaymentInfo $paymentInfo, ?array $ipWhitelist, ?string $priceType, ?string $firstname, ?string $lastname, ?SupportData $supportData)
     {
         $this->id = $id;
         $this->balance = $balance;
@@ -181,6 +214,19 @@ class User
         $this->verified = $verified;
         $this->address = $address;
         $this->debuggingEnabled = $debuggingEnabled;
+        $this->paymentInfo = $paymentInfo;
+
+        //handle stuff in array
+        $tmpIpWhitelist = $ipWhitelist;
+        $ipWhitelist = [];
+        if($tmpIpWhitelist!==null){
+             foreach ($tmpIpWhitelist as $key => $item) {
+                 $singleItem = array($key => $item);
+                 $ipWhitelist = array_merge($ipWhitelist, $singleItem);
+            }
+        }
+        $this->ipWhitelist = $ipWhitelist;
+        $this->priceType = $priceType;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->supportData = $supportData;
@@ -204,6 +250,9 @@ class User
         'verified' => $this->getVerified(),
         'address' => $this->getAddress(),
         'debuggingEnabled' => $this->getDebuggingEnabled(),
+        'paymentInfo' => $this->getPaymentInfo(),
+        'ipWhitelist' => $this->getIpWhitelist(),
+        'priceType' => $this->getPriceType(),
         'firstname' => $this->getFirstname(),
         'lastname' => $this->getLastname(),
         'supportData' => $this->getSupportData(),
@@ -261,6 +310,18 @@ class User
             $debuggingEnabled = (bool) $object->debuggingEnabled;
         }else $debuggingEnabled = null;
 
+        if (isset($object->paymentInfo)) {
+           $paymentInfo = UserPaymentInfo::fromStdClass((object)$object->paymentInfo);
+        }else $paymentInfo = null;
+
+        if (isset($object->ipWhitelist)) {
+            $ipWhitelist = (array) $object->ipWhitelist;
+        }else $ipWhitelist = null;
+
+        if (isset($object->priceType)) {
+            $priceType = (string) $object->priceType;
+        }else $priceType = null;
+
         if (isset($object->firstname)) {
             $firstname = (string) $object->firstname;
         }else $firstname = null;
@@ -273,7 +334,7 @@ class User
            $supportData = SupportData::fromStdClass((object)$object->supportData);
         }else $supportData = null;
 
-        return new User($id, $balance, $mail, $locale, $role, $enabled, $lastip, $regDate, $verified, $address, $debuggingEnabled, $firstname, $lastname, $supportData);
+        return new User($id, $balance, $mail, $locale, $role, $enabled, $lastip, $regDate, $verified, $address, $debuggingEnabled, $paymentInfo, $ipWhitelist, $priceType, $firstname, $lastname, $supportData);
      }
 
 

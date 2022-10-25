@@ -33,6 +33,7 @@ final class EndpointTest extends TestCase
      * @covers \TubeAPI\Objects\VPS::shutdownServerById
      * @covers \TubeAPI\Objects\VPS::restartServerById
      * @covers \TubeAPI\Objects\VPS::reinstallServerById
+     * @covers \TubeAPI\Objects\StatusMessageUserData::readMessage
      * @covers \TubeAPI\Objects\ServiceGroupData::addSecondaryOwners
      * @covers \TubeAPI\Objects\User::resetPassword
      * @covers \TubeAPI\Objects\User::register
@@ -52,6 +53,7 @@ final class EndpointTest extends TestCase
      * @covers \TubeAPI\Objects\VPS::getAvailableLxcOs
      * @covers \TubeAPI\Objects\VPS::getAvailableKvmOs
      * @covers \TubeAPI\Objects\Template::getTemplateGroups
+     * @covers \TubeAPI\Objects\StatusMessageUserData::getMessages
      * @covers \TubeAPI\Objects\Service::getServiceByID
      * @covers \TubeAPI\Objects\ServiceGroupData::getServiceByServiceGroupByID
      * @covers \TubeAPI\Objects\ServiceGroupData::getDDoSIncidentsOfServiceGroup
@@ -206,6 +208,16 @@ final class EndpointTest extends TestCase
 
             $c++;
             /**
+            * Do an HTTP request (POST) to /status/messages/{messageId}/read with random data 
+            */
+            
+            $messageId = rand(0,1000); /* int */
+            $tmp = TubeAPI\Objects\StatusMessageUserData::readMessage($messageId);
+            print "ran (POST) request against /status/messages/{messageId}/read ($c)\n";
+            $this->assertTrue(true);
+
+            $c++;
+            /**
             * Do an HTTP request (POST) to /servicegroups/{serviceGroupId}/secondaryowners with random data 
             */
             
@@ -291,7 +303,7 @@ final class EndpointTest extends TestCase
             * Do an HTTP request (POST) to /me/names with random data 
             */
             
-            $user = new TubeAPI\Objects\User(rand(0,1000),rand(0,1000),uniqid(),array('DE','EN')[rand(0,1)],array('USER','ADMIN')[rand(0,1)],false,uniqid(),"2019-08-24T14:15:22Z",false,new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid()),false,uniqid(),uniqid(),new TubeAPI\Objects\SupportData(uniqid(),uniqid(),uniqid())); /* User */
+            $user = new TubeAPI\Objects\User(rand(0,1000),rand(0,1000),uniqid(),array('DE','EN')[rand(0,1)],array('USER','ADMIN')[rand(0,1)],false,uniqid(),"2019-08-24T14:15:22Z",false,new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid()),false,new TubeAPI\Objects\UserPaymentInfo(rand(0,1000),uniqid(),false,"2019-08-24T14:15:22Z",array('GROSS','NET','TAX_FREE')[rand(0,2)]),array("null"),array('GROSS','NET','TAX_FREE')[rand(0,2)],uniqid(),uniqid(),new TubeAPI\Objects\SupportData(uniqid(),uniqid(),uniqid())); /* User */
             $tmp = TubeAPI\Objects\User::changeNames($user);
             print "ran (POST) request against /me/names ($c)\n";
             $this->assertTrue(true);
@@ -393,6 +405,18 @@ final class EndpointTest extends TestCase
             
             $tmp = TubeAPI\Objects\Template::getTemplateGroups();
             print "ran (GET) request against /templategroups ($c)\n";
+            $this->assertTrue(true);
+
+            $c++;
+            /**
+            * Do an HTTP request (GET) to /status/messages with random data 
+            */
+            
+            $page = rand(0,1000); /* int */
+            $size = rand(0,1000); /* int */
+            $lan = uniqid(); /* string */
+            $tmp = TubeAPI\Objects\StatusMessageUserData::getMessages($page, $size, $lan);
+            print "ran (GET) request against /status/messages ($c)\n";
             $this->assertTrue(true);
 
             $c++;
@@ -631,6 +655,7 @@ final class EndpointTest extends TestCase
      * @covers \TubeAPI\Objects\VPS::shutdownServerById
      * @covers \TubeAPI\Objects\VPS::restartServerById
      * @covers \TubeAPI\Objects\VPS::reinstallServerById
+     * @covers \TubeAPI\Objects\StatusMessageUserData::readMessage
      * @covers \TubeAPI\Objects\ServiceGroupData::addSecondaryOwners
      * @covers \TubeAPI\Objects\User::resetPassword
      * @covers \TubeAPI\Objects\User::register
@@ -650,6 +675,7 @@ final class EndpointTest extends TestCase
      * @covers \TubeAPI\Objects\VPS::getAvailableLxcOs
      * @covers \TubeAPI\Objects\VPS::getAvailableKvmOs
      * @covers \TubeAPI\Objects\Template::getTemplateGroups
+     * @covers \TubeAPI\Objects\StatusMessageUserData::getMessages
      * @covers \TubeAPI\Objects\Service::getServiceByID
      * @covers \TubeAPI\Objects\ServiceGroupData::getServiceByServiceGroupByID
      * @covers \TubeAPI\Objects\ServiceGroupData::getDDoSIncidentsOfServiceGroup

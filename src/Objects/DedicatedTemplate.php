@@ -19,9 +19,9 @@ class DedicatedTemplate
 
     private $price;
 
-    private $dataId;
-
     private $serviceType;
+
+    private $dataId;
 
     private $configuration;
 
@@ -51,19 +51,19 @@ class DedicatedTemplate
      }
 
     /**
-     * @return ?int
-     */
-    public function getDataId(): ?int
-    {
-         return $this->dataId;
-     }
-
-    /**
      * @return ?string
      */
     public function getServiceType(): ?string
     {
          return $this->serviceType;
+     }
+
+    /**
+     * @return ?int
+     */
+    public function getDataId(): ?int
+    {
+         return $this->dataId;
      }
 
     /**
@@ -78,17 +78,17 @@ class DedicatedTemplate
      * @param string|null $startDate
      * @param int|null $id
      * @param int|null $price
-     * @param int|null $dataId
      * @param string|null $serviceType
+     * @param int|null $dataId
      * @param DedicatedConfiguration|null $configuration
      */
-    public function __construct(?string $startDate, ?int $id, ?int $price, ?int $dataId, ?string $serviceType, ?DedicatedConfiguration $configuration)
+    public function __construct(?string $startDate, ?int $id, ?int $price, ?string $serviceType, ?int $dataId, ?DedicatedConfiguration $configuration)
     {
         $this->startDate = $startDate;
         $this->id = $id;
         $this->price = $price;
-        $this->dataId = $dataId;
         $this->serviceType = $serviceType;
+        $this->dataId = $dataId;
         $this->configuration = $configuration;
     }
 
@@ -102,8 +102,8 @@ class DedicatedTemplate
         'startDate' => $this->getStartDate(),
         'id' => $this->getId(),
         'price' => $this->getPrice(),
-        'dataId' => $this->getDataId(),
         'serviceType' => $this->getServiceType(),
+        'dataId' => $this->getDataId(),
         'configuration' => $this->getConfiguration(),
         ];
     }
@@ -127,18 +127,18 @@ class DedicatedTemplate
             $price = (int) $object->price;
         }else $price = null;
 
-        if (isset($object->dataId)) {
-            $dataId = (int) $object->dataId;
-        }else $dataId = null;
-
         if (isset($object->serviceType)) {
             $serviceType = (string) $object->serviceType;
         }else $serviceType = null;
+
+        if (isset($object->dataId)) {
+            $dataId = (int) $object->dataId;
+        }else $dataId = null;
 
         if (isset($object->configuration)) {
            $configuration = DedicatedConfiguration::fromStdClass((object)$object->configuration);
         }else $configuration = null;
 
-        return new DedicatedTemplate($startDate, $id, $price, $dataId, $serviceType, $configuration);
+        return new DedicatedTemplate($startDate, $id, $price, $serviceType, $dataId, $configuration);
      }
 }

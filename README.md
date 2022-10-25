@@ -22,7 +22,7 @@ Also take a look in the [Documentation.md](Documentation.md)
 The Tube-Hosting PHP API is available over [Packagist](https://packagist.org/packages/tubehosting/tubephp-api), and an installation in your project is recommended via [Composer](https://getcomposer.org). <br>
 After installing [Composer in your project](https://getcomposer.org/download/), just add this line to your `composer.json` file.
 ```json
-"tubehosting/tubephp-api": "^1.1"
+"tubehosting/tubephp-api": "^1.2"
 ```
 or run 
 ```shell

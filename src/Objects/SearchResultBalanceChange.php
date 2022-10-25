@@ -19,6 +19,10 @@ class SearchResultBalanceChange
 
     private $items;
 
+    private $empty;
+
+    private $notEmpty;
+
 
     /**
      * @return ?int
@@ -53,12 +57,30 @@ class SearchResultBalanceChange
      }
 
     /**
+     * @return ?bool
+     */
+    public function getEmpty(): ?bool
+    {
+         return $this->empty;
+     }
+
+    /**
+     * @return ?bool
+     */
+    public function getNotEmpty(): ?bool
+    {
+         return $this->notEmpty;
+     }
+
+    /**
      * @param int|null $count
      * @param int|null $page
      * @param int|null $size
      * @param array|null $items
+     * @param bool|null $empty
+     * @param bool|null $notEmpty
      */
-    public function __construct(?int $count, ?int $page, ?int $size, ?array $items)
+    public function __construct(?int $count, ?int $page, ?int $size, ?array $items, ?bool $empty, ?bool $notEmpty)
     {
         $this->count = $count;
         $this->page = $page;
@@ -75,6 +97,8 @@ class SearchResultBalanceChange
             }
         }
         $this->items = $items;
+        $this->empty = $empty;
+        $this->notEmpty = $notEmpty;
     }
 
     /**
@@ -88,6 +112,8 @@ class SearchResultBalanceChange
         'page' => $this->getPage(),
         'size' => $this->getSize(),
         'items' => $this->getItems(),
+        'empty' => $this->getEmpty(),
+        'notEmpty' => $this->getNotEmpty(),
         ];
     }
 
@@ -114,6 +140,14 @@ class SearchResultBalanceChange
             $items = (array) $object->items;
         }else $items = null;
 
-        return new SearchResultBalanceChange($count, $page, $size, $items);
+        if (isset($object->empty)) {
+            $empty = (bool) $object->empty;
+        }else $empty = null;
+
+        if (isset($object->notEmpty)) {
+            $notEmpty = (bool) $object->notEmpty;
+        }else $notEmpty = null;
+
+        return new SearchResultBalanceChange($count, $page, $size, $items, $empty, $notEmpty);
      }
 }

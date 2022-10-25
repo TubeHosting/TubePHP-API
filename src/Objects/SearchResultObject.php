@@ -8,7 +8,7 @@ use TubeAPI\Exceptions\RequestException;
 require_once __DIR__ . '/../TubeAPI.php';
 require_once __DIR__ . '/../Exceptions/RequestException.php';
 
-class SearchResultPaymentBundle
+class SearchResultObject
 {
 
     private $count;
@@ -86,14 +86,13 @@ class SearchResultPaymentBundle
         $this->page = $page;
         $this->size = $size;
 
-        //handle objects in array
+        //handle stuff in array
         $tmpItems = $items;
         $items = [];
         if($tmpItems!==null){
-            foreach ($tmpItems as $key => $item) {
-                $item = PaymentBundle::fromStdClass($item);
-                $singleItem = array($key => $item);
-                $items = array_merge($items, $singleItem);
+             foreach ($tmpItems as $key => $item) {
+                 $singleItem = array($key => $item);
+                 $items = array_merge($items, $singleItem);
             }
         }
         $this->items = $items;
@@ -119,9 +118,9 @@ class SearchResultPaymentBundle
 
     /**
      * @param object $object
-     * @return SearchResultPaymentBundle
+     * @return SearchResultObject
      */
-    public static function fromStdClass(object $object):SearchResultPaymentBundle
+    public static function fromStdClass(object $object):SearchResultObject
     {
 
         if (isset($object->count)) {
@@ -148,6 +147,6 @@ class SearchResultPaymentBundle
             $notEmpty = (bool) $object->notEmpty;
         }else $notEmpty = null;
 
-        return new SearchResultPaymentBundle($count, $page, $size, $items, $empty, $notEmpty);
+        return new SearchResultObject($count, $page, $size, $items, $empty, $notEmpty);
      }
 }

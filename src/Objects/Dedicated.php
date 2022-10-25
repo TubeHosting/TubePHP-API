@@ -35,8 +35,6 @@ class Dedicated
 
     private $type;
 
-    private $priceObject;
-
     private $templateId;
 
     private $realPrice;
@@ -155,14 +153,6 @@ class Dedicated
     /**
      * @return ?int
      */
-    public function getPriceObject(): ?int
-    {
-         return $this->priceObject;
-     }
-
-    /**
-     * @return ?int
-     */
     public function getTemplateId(): ?int
     {
          return $this->templateId;
@@ -276,7 +266,6 @@ class Dedicated
      * @param string|null $runtime
      * @param string|null $name
      * @param string|null $type
-     * @param int|null $priceObject
      * @param int|null $templateId
      * @param int|null $realPrice
      * @param int|null $serviceGroupId
@@ -291,7 +280,7 @@ class Dedicated
      * @param DedicatedMemoryUpgrade|null $memoryUpgrade
      * @param array|null $stackableUpgrades
      */
-    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $priceObject, ?int $templateId, ?int $realPrice, ?int $serviceGroupId, ?array $addedUpgrades, ?array $removedUpgrades, ?int $upgradePrice, ?DedicatedConfiguration $baseConfiguration, ?int $instanceId, ?DedicatedInstance $instance, ?DedicatedCPUUpgrade $cpuUpgrade, ?DedicatedGPUUpgrade $gpuUpgrade, ?DedicatedMemoryUpgrade $memoryUpgrade, ?array $stackableUpgrades)
+    public function __construct(?int $dataId, ?int $id, ?string $startDate, ?string $endDate, ?int $price, ?string $priceType, ?string $deactivatedOn, ?string $description, ?string $runtime, ?string $name, ?string $type, ?int $templateId, ?int $realPrice, ?int $serviceGroupId, ?array $addedUpgrades, ?array $removedUpgrades, ?int $upgradePrice, ?DedicatedConfiguration $baseConfiguration, ?int $instanceId, ?DedicatedInstance $instance, ?DedicatedCPUUpgrade $cpuUpgrade, ?DedicatedGPUUpgrade $gpuUpgrade, ?DedicatedMemoryUpgrade $memoryUpgrade, ?array $stackableUpgrades)
     {
         $this->dataId = $dataId;
         $this->id = $id;
@@ -304,7 +293,6 @@ class Dedicated
         $this->runtime = $runtime;
         $this->name = $name;
         $this->type = $type;
-        $this->priceObject = $priceObject;
         $this->templateId = $templateId;
         $this->realPrice = $realPrice;
         $this->serviceGroupId = $serviceGroupId;
@@ -371,7 +359,6 @@ class Dedicated
         'runtime' => $this->getRuntime(),
         'name' => $this->getName(),
         'type' => $this->getType(),
-        'priceObject' => $this->getPriceObject(),
         'templateId' => $this->getTemplateId(),
         'realPrice' => $this->getRealPrice(),
         'serviceGroupId' => $this->getServiceGroupId(),
@@ -439,10 +426,6 @@ class Dedicated
             $type = (string) $object->type;
         }else $type = null;
 
-        if (isset($object->priceObject)) {
-            $priceObject = (int) $object->priceObject;
-        }else $priceObject = null;
-
         if (isset($object->templateId)) {
             $templateId = (int) $object->templateId;
         }else $templateId = null;
@@ -495,7 +478,7 @@ class Dedicated
             $stackableUpgrades = (array) $object->stackableUpgrades;
         }else $stackableUpgrades = null;
 
-        return new Dedicated($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $priceObject, $templateId, $realPrice, $serviceGroupId, $addedUpgrades, $removedUpgrades, $upgradePrice, $baseConfiguration, $instanceId, $instance, $cpuUpgrade, $gpuUpgrade, $memoryUpgrade, $stackableUpgrades);
+        return new Dedicated($dataId, $id, $startDate, $endDate, $price, $priceType, $deactivatedOn, $description, $runtime, $name, $type, $templateId, $realPrice, $serviceGroupId, $addedUpgrades, $removedUpgrades, $upgradePrice, $baseConfiguration, $instanceId, $instance, $cpuUpgrade, $gpuUpgrade, $memoryUpgrade, $stackableUpgrades);
      }
 
 

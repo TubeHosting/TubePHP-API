@@ -37,9 +37,11 @@ class ServiceGroupData
 
     private $active;
 
-    private $realPrice;
+    private $realPrices;
 
     private $priceObject;
+
+    private $realPrice;
 
 
     /**
@@ -147,11 +149,11 @@ class ServiceGroupData
      }
 
     /**
-     * @return ?int
+     * @return ?Price
      */
-    public function getRealPrice(): ?int
+    public function getRealPrices(): ?Price
     {
-         return $this->realPrice;
+         return $this->realPrices;
      }
 
     /**
@@ -160,6 +162,14 @@ class ServiceGroupData
     public function getPriceObject(): ?int
     {
          return $this->priceObject;
+     }
+
+    /**
+     * @return ?int
+     */
+    public function getRealPrice(): ?int
+    {
+         return $this->realPrice;
      }
 
     /**
@@ -176,10 +186,11 @@ class ServiceGroupData
      * @param array|null $services
      * @param string|null $name
      * @param bool|null $active
-     * @param int|null $realPrice
+     * @param Price|null $realPrices
      * @param int|null $priceObject
+     * @param int|null $realPrice
      */
-    public function __construct(?int $price, ?string $endDate, ?int $position, ?int $restMoney, ?int $id, ?int $serviceGroupId, ?string $startDate, ?TemplateGroup $templateGroup, ?int $templateGroupId, ?int $runtimeInterval, ?array $services, ?string $name, ?bool $active, ?int $realPrice, ?int $priceObject)
+    public function __construct(?int $price, ?string $endDate, ?int $position, ?int $restMoney, ?int $id, ?int $serviceGroupId, ?string $startDate, ?TemplateGroup $templateGroup, ?int $templateGroupId, ?int $runtimeInterval, ?array $services, ?string $name, ?bool $active, ?Price $realPrices, ?int $priceObject, ?int $realPrice)
     {
         $this->price = $price;
         $this->endDate = $endDate;
@@ -215,8 +226,9 @@ class ServiceGroupData
         $this->services = $services;
         $this->name = $name;
         $this->active = $active;
-        $this->realPrice = $realPrice;
+        $this->realPrices = $realPrices;
         $this->priceObject = $priceObject;
+        $this->realPrice = $realPrice;
     }
 
     /**
@@ -239,8 +251,9 @@ class ServiceGroupData
         'services' => $this->getServices(),
         'name' => $this->getName(),
         'active' => $this->getActive(),
-        'realPrice' => $this->getRealPrice(),
+        'realPrices' => $this->getRealPrices(),
         'priceObject' => $this->getPriceObject(),
+        'realPrice' => $this->getRealPrice(),
         ];
     }
 
@@ -303,15 +316,19 @@ class ServiceGroupData
             $active = (bool) $object->active;
         }else $active = null;
 
-        if (isset($object->realPrice)) {
-            $realPrice = (int) $object->realPrice;
-        }else $realPrice = null;
+        if (isset($object->realPrices)) {
+           $realPrices = Price::fromStdClass((object)$object->realPrices);
+        }else $realPrices = null;
 
         if (isset($object->priceObject)) {
             $priceObject = (int) $object->priceObject;
         }else $priceObject = null;
 
-        return new ServiceGroupData($price, $endDate, $position, $restMoney, $id, $serviceGroupId, $startDate, $templateGroup, $templateGroupId, $runtimeInterval, $services, $name, $active, $realPrice, $priceObject);
+        if (isset($object->realPrice)) {
+            $realPrice = (int) $object->realPrice;
+        }else $realPrice = null;
+
+        return new ServiceGroupData($price, $endDate, $position, $restMoney, $id, $serviceGroupId, $startDate, $templateGroup, $templateGroupId, $runtimeInterval, $services, $name, $active, $realPrices, $priceObject, $realPrice);
      }
 
 
@@ -453,9 +470,9 @@ class ServiceGroupData
      * @return array
      * @throws \TubeAPI\Exceptions\RequestException
      */
-    public static function getAllServiceGroupsFromUser(bool $primaryOnly = null):array 
+    public static function getAllServiceGroupsFromUser(bool $primaryOnly = false):array 
     {
-        $result = TubeAPI::request('GET', '/servicegroups/currents?primaryOnly='.$primaryOnly.'', null, TubeAPI::$token);
+        $result = TubeAPI::request('GET', '/servicegroups/currents?primaryOnly='.var_export($primaryOnly,1).'', null, TubeAPI::$token);
         $tmpResults = json_decode($result);
         //handle objects in array
         $results = [];

@@ -19,9 +19,9 @@ class Ipv4BundleTemplate
 
     private $price;
 
-    private $dataId;
-
     private $serviceType;
+
+    private $dataId;
 
     private $count;
 
@@ -53,19 +53,19 @@ class Ipv4BundleTemplate
      }
 
     /**
-     * @return ?int
-     */
-    public function getDataId(): ?int
-    {
-         return $this->dataId;
-     }
-
-    /**
      * @return ?string
      */
     public function getServiceType(): ?string
     {
          return $this->serviceType;
+     }
+
+    /**
+     * @return ?int
+     */
+    public function getDataId(): ?int
+    {
+         return $this->dataId;
      }
 
     /**
@@ -88,18 +88,18 @@ class Ipv4BundleTemplate
      * @param string|null $startDate
      * @param int|null $id
      * @param int|null $price
-     * @param int|null $dataId
      * @param string|null $serviceType
+     * @param int|null $dataId
      * @param int|null $count
      * @param bool|null $primary
      */
-    public function __construct(?string $startDate, ?int $id, ?int $price, ?int $dataId, ?string $serviceType, ?int $count, ?bool $primary)
+    public function __construct(?string $startDate, ?int $id, ?int $price, ?string $serviceType, ?int $dataId, ?int $count, ?bool $primary)
     {
         $this->startDate = $startDate;
         $this->id = $id;
         $this->price = $price;
-        $this->dataId = $dataId;
         $this->serviceType = $serviceType;
+        $this->dataId = $dataId;
         $this->count = $count;
         $this->primary = $primary;
     }
@@ -114,8 +114,8 @@ class Ipv4BundleTemplate
         'startDate' => $this->getStartDate(),
         'id' => $this->getId(),
         'price' => $this->getPrice(),
-        'dataId' => $this->getDataId(),
         'serviceType' => $this->getServiceType(),
+        'dataId' => $this->getDataId(),
         'count' => $this->getCount(),
         'primary' => $this->getPrimary(),
         ];
@@ -140,13 +140,13 @@ class Ipv4BundleTemplate
             $price = (int) $object->price;
         }else $price = null;
 
-        if (isset($object->dataId)) {
-            $dataId = (int) $object->dataId;
-        }else $dataId = null;
-
         if (isset($object->serviceType)) {
             $serviceType = (string) $object->serviceType;
         }else $serviceType = null;
+
+        if (isset($object->dataId)) {
+            $dataId = (int) $object->dataId;
+        }else $dataId = null;
 
         if (isset($object->count)) {
             $count = (int) $object->count;
@@ -156,6 +156,6 @@ class Ipv4BundleTemplate
             $primary = (bool) $object->primary;
         }else $primary = null;
 
-        return new Ipv4BundleTemplate($startDate, $id, $price, $dataId, $serviceType, $count, $primary);
+        return new Ipv4BundleTemplate($startDate, $id, $price, $serviceType, $dataId, $count, $primary);
      }
 }

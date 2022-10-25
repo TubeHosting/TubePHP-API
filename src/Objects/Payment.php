@@ -273,9 +273,9 @@ class Payment
      * @return  SearchResultPaymentBundle
      * @throws \TubeAPI\Exceptions\RequestException
      */
-    public static function getPaymentBundles(bool $completed = null, int $page = 0, int $size = 0): SearchResultPaymentBundle 
+    public static function getPaymentBundles(bool $completed = false, int $page = 0, int $size = 0): SearchResultPaymentBundle 
     {
-        $result = TubeAPI::request('GET', '/payments?completed='.$completed.'&page='.$page.'&size='.$size.'', null, TubeAPI::$token);
+        $result = TubeAPI::request('GET', '/payments?completed='.var_export($completed,1).'&page='.$page.'&size='.$size.'', null, TubeAPI::$token);
         return  SearchResultPaymentBundle::fromStdClass(json_decode($result));
     }
 

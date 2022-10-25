@@ -25,11 +25,11 @@ class BalanceChange
 
     private $userId;
 
-    private $paymentBundleId;
-
     private $successful;
 
     private $other;
+
+    private $paymentBundleId;
 
 
     /**
@@ -89,14 +89,6 @@ class BalanceChange
      }
 
     /**
-     * @return ?int
-     */
-    public function getPaymentBundleId(): ?int
-    {
-         return $this->paymentBundleId;
-     }
-
-    /**
      * @return ?bool
      */
     public function getSuccessful(): ?bool
@@ -113,6 +105,14 @@ class BalanceChange
      }
 
     /**
+     * @return ?int
+     */
+    public function getPaymentBundleId(): ?int
+    {
+         return $this->paymentBundleId;
+     }
+
+    /**
      * @param int|null $id
      * @param int|null $amount
      * @param int|null $startBalance
@@ -120,11 +120,11 @@ class BalanceChange
      * @param string|null $type
      * @param string|null $description
      * @param int|null $userId
-     * @param int|null $paymentBundleId
      * @param bool|null $successful
      * @param SimpleUser|null $other
+     * @param int|null $paymentBundleId
      */
-    public function __construct(?int $id, ?int $amount, ?int $startBalance, ?string $time, ?string $type, ?string $description, ?int $userId, ?int $paymentBundleId, ?bool $successful, ?SimpleUser $other)
+    public function __construct(?int $id, ?int $amount, ?int $startBalance, ?string $time, ?string $type, ?string $description, ?int $userId, ?bool $successful, ?SimpleUser $other, ?int $paymentBundleId)
     {
         $this->id = $id;
         $this->amount = $amount;
@@ -133,9 +133,9 @@ class BalanceChange
         $this->type = $type;
         $this->description = $description;
         $this->userId = $userId;
-        $this->paymentBundleId = $paymentBundleId;
         $this->successful = $successful;
         $this->other = $other;
+        $this->paymentBundleId = $paymentBundleId;
     }
 
     /**
@@ -152,9 +152,9 @@ class BalanceChange
         'type' => $this->getType(),
         'description' => $this->getDescription(),
         'userId' => $this->getUserId(),
-        'paymentBundleId' => $this->getPaymentBundleId(),
         'successful' => $this->getSuccessful(),
         'other' => $this->getOther(),
+        'paymentBundleId' => $this->getPaymentBundleId(),
         ];
     }
 
@@ -193,10 +193,6 @@ class BalanceChange
             $userId = (int) $object->userId;
         }else $userId = null;
 
-        if (isset($object->paymentBundleId)) {
-            $paymentBundleId = (int) $object->paymentBundleId;
-        }else $paymentBundleId = null;
-
         if (isset($object->successful)) {
             $successful = (bool) $object->successful;
         }else $successful = null;
@@ -205,6 +201,10 @@ class BalanceChange
            $other = SimpleUser::fromStdClass((object)$object->other);
         }else $other = null;
 
-        return new BalanceChange($id, $amount, $startBalance, $time, $type, $description, $userId, $paymentBundleId, $successful, $other);
+        if (isset($object->paymentBundleId)) {
+            $paymentBundleId = (int) $object->paymentBundleId;
+        }else $paymentBundleId = null;
+
+        return new BalanceChange($id, $amount, $startBalance, $time, $type, $description, $userId, $successful, $other, $paymentBundleId);
      }
 }
