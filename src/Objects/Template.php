@@ -17,9 +17,9 @@ class Template
 
     private $price;
 
-    private $serviceType;
-
     private $dataId;
+
+    private $serviceType;
 
 
     /**
@@ -47,14 +47,6 @@ class Template
      }
 
     /**
-     * @return ?string
-     */
-    public function getServiceType(): ?string
-    {
-         return $this->serviceType;
-     }
-
-    /**
      * @return ?int
      */
     public function getDataId(): ?int
@@ -63,19 +55,27 @@ class Template
      }
 
     /**
+     * @return ?string
+     */
+    public function getServiceType(): ?string
+    {
+         return $this->serviceType;
+     }
+
+    /**
      * @param string|null $startDate
      * @param int|null $id
      * @param int|null $price
-     * @param string|null $serviceType
      * @param int|null $dataId
+     * @param string|null $serviceType
      */
-    public function __construct(?string $startDate, ?int $id, ?int $price, ?string $serviceType, ?int $dataId)
+    public function __construct(?string $startDate, ?int $id, ?int $price, ?int $dataId, ?string $serviceType)
     {
         $this->startDate = $startDate;
         $this->id = $id;
         $this->price = $price;
-        $this->serviceType = $serviceType;
         $this->dataId = $dataId;
+        $this->serviceType = $serviceType;
     }
 
     /**
@@ -88,8 +88,8 @@ class Template
         'startDate' => $this->getStartDate(),
         'id' => $this->getId(),
         'price' => $this->getPrice(),
-        'serviceType' => $this->getServiceType(),
         'dataId' => $this->getDataId(),
+        'serviceType' => $this->getServiceType(),
         ];
     }
 
@@ -112,15 +112,15 @@ class Template
             $price = (int) $object->price;
         }else $price = null;
 
-        if (isset($object->serviceType)) {
-            $serviceType = (string) $object->serviceType;
-        }else $serviceType = null;
-
         if (isset($object->dataId)) {
             $dataId = (int) $object->dataId;
         }else $dataId = null;
 
-        return new Template($startDate, $id, $price, $serviceType, $dataId);
+        if (isset($object->serviceType)) {
+            $serviceType = (string) $object->serviceType;
+        }else $serviceType = null;
+
+        return new Template($startDate, $id, $price, $dataId, $serviceType);
      }
 
 

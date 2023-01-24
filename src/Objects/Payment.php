@@ -29,9 +29,9 @@ class Payment
 
     private $type;
 
-    private $userId;
-
     private $paymentBundleId;
+
+    private $userId;
 
 
     /**
@@ -109,17 +109,17 @@ class Payment
     /**
      * @return ?int
      */
-    public function getUserId(): ?int
+    public function getPaymentBundleId(): ?int
     {
-         return $this->userId;
+         return $this->paymentBundleId;
      }
 
     /**
      * @return ?int
      */
-    public function getPaymentBundleId(): ?int
+    public function getUserId(): ?int
     {
-         return $this->paymentBundleId;
+         return $this->userId;
      }
 
     /**
@@ -132,10 +132,10 @@ class Payment
      * @param string|null $timeFinished
      * @param string|null $providerId
      * @param string|null $type
-     * @param int|null $userId
      * @param int|null $paymentBundleId
+     * @param int|null $userId
      */
-    public function __construct(?int $id, ?string $method, ?int $amount, ?string $status, ?string $description, ?string $timeStarted, ?string $timeFinished, ?string $providerId, ?string $type, ?int $userId, ?int $paymentBundleId)
+    public function __construct(?int $id, ?string $method, ?int $amount, ?string $status, ?string $description, ?string $timeStarted, ?string $timeFinished, ?string $providerId, ?string $type, ?int $paymentBundleId, ?int $userId)
     {
         $this->id = $id;
         $this->method = $method;
@@ -146,8 +146,8 @@ class Payment
         $this->timeFinished = $timeFinished;
         $this->providerId = $providerId;
         $this->type = $type;
-        $this->userId = $userId;
         $this->paymentBundleId = $paymentBundleId;
+        $this->userId = $userId;
     }
 
     /**
@@ -166,8 +166,8 @@ class Payment
         'timeFinished' => $this->getTimeFinished(),
         'providerId' => $this->getProviderId(),
         'type' => $this->getType(),
-        'userId' => $this->getUserId(),
         'paymentBundleId' => $this->getPaymentBundleId(),
+        'userId' => $this->getUserId(),
         ];
     }
 
@@ -214,15 +214,15 @@ class Payment
             $type = (string) $object->type;
         }else $type = null;
 
-        if (isset($object->userId)) {
-            $userId = (int) $object->userId;
-        }else $userId = null;
-
         if (isset($object->paymentBundleId)) {
             $paymentBundleId = (int) $object->paymentBundleId;
         }else $paymentBundleId = null;
 
-        return new Payment($id, $method, $amount, $status, $description, $timeStarted, $timeFinished, $providerId, $type, $userId, $paymentBundleId);
+        if (isset($object->userId)) {
+            $userId = (int) $object->userId;
+        }else $userId = null;
+
+        return new Payment($id, $method, $amount, $status, $description, $timeStarted, $timeFinished, $providerId, $type, $paymentBundleId, $userId);
      }
 
 

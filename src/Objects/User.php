@@ -37,13 +37,13 @@ class User
 
     private $ipWhitelist;
 
+    private $supportData;
+
     private $priceType;
 
     private $firstname;
 
     private $lastname;
-
-    private $supportData;
 
 
     /**
@@ -151,6 +151,14 @@ class User
      }
 
     /**
+     * @return ?SupportData
+     */
+    public function getSupportData(): ?SupportData
+    {
+         return $this->supportData;
+     }
+
+    /**
      * @return ?string
      */
     public function getPriceType(): ?string
@@ -175,14 +183,6 @@ class User
      }
 
     /**
-     * @return ?SupportData
-     */
-    public function getSupportData(): ?SupportData
-    {
-         return $this->supportData;
-     }
-
-    /**
      * @param int|null $id
      * @param int|null $balance
      * @param string|null $mail
@@ -196,12 +196,12 @@ class User
      * @param bool|null $debuggingEnabled
      * @param UserPaymentInfo|null $paymentInfo
      * @param array|null $ipWhitelist
+     * @param SupportData|null $supportData
      * @param string|null $priceType
      * @param string|null $firstname
      * @param string|null $lastname
-     * @param SupportData|null $supportData
      */
-    public function __construct(?int $id, ?int $balance, ?string $mail, ?string $locale, ?string $role, ?bool $enabled, ?string $lastip, ?string $regDate, ?bool $verified, ?Address $address, ?bool $debuggingEnabled, ?UserPaymentInfo $paymentInfo, ?array $ipWhitelist, ?string $priceType, ?string $firstname, ?string $lastname, ?SupportData $supportData)
+    public function __construct(?int $id, ?int $balance, ?string $mail, ?string $locale, ?string $role, ?bool $enabled, ?string $lastip, ?string $regDate, ?bool $verified, ?Address $address, ?bool $debuggingEnabled, ?UserPaymentInfo $paymentInfo, ?array $ipWhitelist, ?SupportData $supportData, ?string $priceType, ?string $firstname, ?string $lastname)
     {
         $this->id = $id;
         $this->balance = $balance;
@@ -226,10 +226,10 @@ class User
             }
         }
         $this->ipWhitelist = $ipWhitelist;
+        $this->supportData = $supportData;
         $this->priceType = $priceType;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
-        $this->supportData = $supportData;
     }
 
     /**
@@ -252,10 +252,10 @@ class User
         'debuggingEnabled' => $this->getDebuggingEnabled(),
         'paymentInfo' => $this->getPaymentInfo(),
         'ipWhitelist' => $this->getIpWhitelist(),
+        'supportData' => $this->getSupportData(),
         'priceType' => $this->getPriceType(),
         'firstname' => $this->getFirstname(),
         'lastname' => $this->getLastname(),
-        'supportData' => $this->getSupportData(),
         ];
     }
 
@@ -318,6 +318,10 @@ class User
             $ipWhitelist = (array) $object->ipWhitelist;
         }else $ipWhitelist = null;
 
+        if (isset($object->supportData)) {
+           $supportData = SupportData::fromStdClass((object)$object->supportData);
+        }else $supportData = null;
+
         if (isset($object->priceType)) {
             $priceType = (string) $object->priceType;
         }else $priceType = null;
@@ -330,11 +334,7 @@ class User
             $lastname = (string) $object->lastname;
         }else $lastname = null;
 
-        if (isset($object->supportData)) {
-           $supportData = SupportData::fromStdClass((object)$object->supportData);
-        }else $supportData = null;
-
-        return new User($id, $balance, $mail, $locale, $role, $enabled, $lastip, $regDate, $verified, $address, $debuggingEnabled, $paymentInfo, $ipWhitelist, $priceType, $firstname, $lastname, $supportData);
+        return new User($id, $balance, $mail, $locale, $role, $enabled, $lastip, $regDate, $verified, $address, $debuggingEnabled, $paymentInfo, $ipWhitelist, $supportData, $priceType, $firstname, $lastname);
      }
 
 

@@ -19,9 +19,9 @@ class VPSTemplate
 
     private $price;
 
-    private $serviceType;
-
     private $dataId;
+
+    private $serviceType;
 
     private $coreCount;
 
@@ -57,19 +57,19 @@ class VPSTemplate
      }
 
     /**
-     * @return ?string
-     */
-    public function getServiceType(): ?string
-    {
-         return $this->serviceType;
-     }
-
-    /**
      * @return ?int
      */
     public function getDataId(): ?int
     {
          return $this->dataId;
+     }
+
+    /**
+     * @return ?string
+     */
+    public function getServiceType(): ?string
+    {
+         return $this->serviceType;
      }
 
     /**
@@ -108,20 +108,20 @@ class VPSTemplate
      * @param string|null $startDate
      * @param int|null $id
      * @param int|null $price
-     * @param string|null $serviceType
      * @param int|null $dataId
+     * @param string|null $serviceType
      * @param int|null $coreCount
      * @param int|null $memory
      * @param int|null $diskSpace
      * @param string|null $vpsType
      */
-    public function __construct(?string $startDate, ?int $id, ?int $price, ?string $serviceType, ?int $dataId, ?int $coreCount, ?int $memory, ?int $diskSpace, ?string $vpsType)
+    public function __construct(?string $startDate, ?int $id, ?int $price, ?int $dataId, ?string $serviceType, ?int $coreCount, ?int $memory, ?int $diskSpace, ?string $vpsType)
     {
         $this->startDate = $startDate;
         $this->id = $id;
         $this->price = $price;
-        $this->serviceType = $serviceType;
         $this->dataId = $dataId;
+        $this->serviceType = $serviceType;
         $this->coreCount = $coreCount;
         $this->memory = $memory;
         $this->diskSpace = $diskSpace;
@@ -138,8 +138,8 @@ class VPSTemplate
         'startDate' => $this->getStartDate(),
         'id' => $this->getId(),
         'price' => $this->getPrice(),
-        'serviceType' => $this->getServiceType(),
         'dataId' => $this->getDataId(),
+        'serviceType' => $this->getServiceType(),
         'coreCount' => $this->getCoreCount(),
         'memory' => $this->getMemory(),
         'diskSpace' => $this->getDiskSpace(),
@@ -166,13 +166,13 @@ class VPSTemplate
             $price = (int) $object->price;
         }else $price = null;
 
-        if (isset($object->serviceType)) {
-            $serviceType = (string) $object->serviceType;
-        }else $serviceType = null;
-
         if (isset($object->dataId)) {
             $dataId = (int) $object->dataId;
         }else $dataId = null;
+
+        if (isset($object->serviceType)) {
+            $serviceType = (string) $object->serviceType;
+        }else $serviceType = null;
 
         if (isset($object->coreCount)) {
             $coreCount = (int) $object->coreCount;
@@ -190,6 +190,6 @@ class VPSTemplate
             $vpsType = (string) $object->vpsType;
         }else $vpsType = null;
 
-        return new VPSTemplate($startDate, $id, $price, $serviceType, $dataId, $coreCount, $memory, $diskSpace, $vpsType);
+        return new VPSTemplate($startDate, $id, $price, $dataId, $serviceType, $coreCount, $memory, $diskSpace, $vpsType);
      }
 }

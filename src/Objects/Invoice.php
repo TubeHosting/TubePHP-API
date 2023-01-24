@@ -27,13 +27,13 @@ class Invoice
 
     private $time;
 
+    private $paymentBundleId;
+
     private $priceType;
 
     private $finished;
 
     private $taxPercentFormatted;
-
-    private $paymentBundleId;
 
 
     /**
@@ -101,6 +101,14 @@ class Invoice
      }
 
     /**
+     * @return ?int
+     */
+    public function getPaymentBundleId(): ?int
+    {
+         return $this->paymentBundleId;
+     }
+
+    /**
      * @return ?string
      */
     public function getPriceType(): ?string
@@ -125,14 +133,6 @@ class Invoice
      }
 
     /**
-     * @return ?int
-     */
-    public function getPaymentBundleId(): ?int
-    {
-         return $this->paymentBundleId;
-     }
-
-    /**
      * @param Address|null $address
      * @param UserPaymentInfo|null $paymentInfo
      * @param Name|null $name
@@ -141,12 +141,12 @@ class Invoice
      * @param string|null $oldInvoiceId
      * @param array|null $items
      * @param string|null $time
+     * @param int|null $paymentBundleId
      * @param string|null $priceType
      * @param bool|null $finished
      * @param string|null $taxPercentFormatted
-     * @param int|null $paymentBundleId
      */
-    public function __construct(?Address $address, ?UserPaymentInfo $paymentInfo, ?Name $name, ?int $id, ?int $userId, ?string $oldInvoiceId, ?array $items, ?string $time, ?string $priceType, ?bool $finished, ?string $taxPercentFormatted, ?int $paymentBundleId)
+    public function __construct(?Address $address, ?UserPaymentInfo $paymentInfo, ?Name $name, ?int $id, ?int $userId, ?string $oldInvoiceId, ?array $items, ?string $time, ?int $paymentBundleId, ?string $priceType, ?bool $finished, ?string $taxPercentFormatted)
     {
         $this->address = $address;
         $this->paymentInfo = $paymentInfo;
@@ -167,10 +167,10 @@ class Invoice
         }
         $this->items = $items;
         $this->time = $time;
+        $this->paymentBundleId = $paymentBundleId;
         $this->priceType = $priceType;
         $this->finished = $finished;
         $this->taxPercentFormatted = $taxPercentFormatted;
-        $this->paymentBundleId = $paymentBundleId;
     }
 
     /**
@@ -188,10 +188,10 @@ class Invoice
         'oldInvoiceId' => $this->getOldInvoiceId(),
         'items' => $this->getItems(),
         'time' => $this->getTime(),
+        'paymentBundleId' => $this->getPaymentBundleId(),
         'priceType' => $this->getPriceType(),
         'finished' => $this->getFinished(),
         'taxPercentFormatted' => $this->getTaxPercentFormatted(),
-        'paymentBundleId' => $this->getPaymentBundleId(),
         ];
     }
 
@@ -234,6 +234,10 @@ class Invoice
             $time = (string) $object->time;
         }else $time = null;
 
+        if (isset($object->paymentBundleId)) {
+            $paymentBundleId = (int) $object->paymentBundleId;
+        }else $paymentBundleId = null;
+
         if (isset($object->priceType)) {
             $priceType = (string) $object->priceType;
         }else $priceType = null;
@@ -246,10 +250,6 @@ class Invoice
             $taxPercentFormatted = (string) $object->taxPercentFormatted;
         }else $taxPercentFormatted = null;
 
-        if (isset($object->paymentBundleId)) {
-            $paymentBundleId = (int) $object->paymentBundleId;
-        }else $paymentBundleId = null;
-
-        return new Invoice($address, $paymentInfo, $name, $id, $userId, $oldInvoiceId, $items, $time, $priceType, $finished, $taxPercentFormatted, $paymentBundleId);
+        return new Invoice($address, $paymentInfo, $name, $id, $userId, $oldInvoiceId, $items, $time, $paymentBundleId, $priceType, $finished, $taxPercentFormatted);
      }
 }

@@ -33,9 +33,9 @@ class InvoiceItem
 
     private $priceType;
 
-    private $runtimeDurationObject;
-
     private $invoiceId;
+
+    private $runtimeDurationObject;
 
 
     /**
@@ -127,19 +127,19 @@ class InvoiceItem
      }
 
     /**
-     * @return ?object
-     */
-    public function getRuntimeDurationObject(): ?object
-    {
-         return $this->runtimeDurationObject;
-     }
-
-    /**
      * @return ?int
      */
     public function getInvoiceId(): ?int
     {
          return $this->invoiceId;
+     }
+
+    /**
+     * @return ?object
+     */
+    public function getRuntimeDurationObject(): ?object
+    {
+         return $this->runtimeDurationObject;
      }
 
     /**
@@ -154,10 +154,10 @@ class InvoiceItem
      * @param int|null $serviceGroupId
      * @param string|null $description
      * @param string|null $priceType
-     * @param object|null $runtimeDurationObject
      * @param int|null $invoiceId
+     * @param object|null $runtimeDurationObject
      */
-    public function __construct(?string $newServiceGroupRuntime, ?string $oldServiceGroupRuntime, ?string $title, ?string $type, ?int $runtimeDuration, ?int $position, ?int $unitPrice, ?int $quantity, ?int $serviceGroupId, ?string $description, ?string $priceType, ?object $runtimeDurationObject, ?int $invoiceId)
+    public function __construct(?string $newServiceGroupRuntime, ?string $oldServiceGroupRuntime, ?string $title, ?string $type, ?int $runtimeDuration, ?int $position, ?int $unitPrice, ?int $quantity, ?int $serviceGroupId, ?string $description, ?string $priceType, ?int $invoiceId, ?object $runtimeDurationObject)
     {
         $this->newServiceGroupRuntime = $newServiceGroupRuntime;
         $this->oldServiceGroupRuntime = $oldServiceGroupRuntime;
@@ -170,8 +170,8 @@ class InvoiceItem
         $this->serviceGroupId = $serviceGroupId;
         $this->description = $description;
         $this->priceType = $priceType;
-        $this->runtimeDurationObject = $runtimeDurationObject;
         $this->invoiceId = $invoiceId;
+        $this->runtimeDurationObject = $runtimeDurationObject;
     }
 
     /**
@@ -192,8 +192,8 @@ class InvoiceItem
         'serviceGroupId' => $this->getServiceGroupId(),
         'description' => $this->getDescription(),
         'priceType' => $this->getPriceType(),
-        'runtimeDurationObject' => $this->getRuntimeDurationObject(),
         'invoiceId' => $this->getInvoiceId(),
+        'runtimeDurationObject' => $this->getRuntimeDurationObject(),
         ];
     }
 
@@ -248,14 +248,14 @@ class InvoiceItem
             $priceType = (string) $object->priceType;
         }else $priceType = null;
 
-        if (isset($object->runtimeDurationObject)) {
-            $runtimeDurationObject = (object) $object->runtimeDurationObject;
-        }else $runtimeDurationObject = null;
-
         if (isset($object->invoiceId)) {
             $invoiceId = (int) $object->invoiceId;
         }else $invoiceId = null;
 
-        return new InvoiceItem($newServiceGroupRuntime, $oldServiceGroupRuntime, $title, $type, $runtimeDuration, $position, $unitPrice, $quantity, $serviceGroupId, $description, $priceType, $runtimeDurationObject, $invoiceId);
+        if (isset($object->runtimeDurationObject)) {
+            $runtimeDurationObject = (object) $object->runtimeDurationObject;
+        }else $runtimeDurationObject = null;
+
+        return new InvoiceItem($newServiceGroupRuntime, $oldServiceGroupRuntime, $title, $type, $runtimeDuration, $position, $unitPrice, $quantity, $serviceGroupId, $description, $priceType, $invoiceId, $runtimeDurationObject);
      }
 }

@@ -27,11 +27,11 @@ class TemplateGroup
 
     private $price;
 
-    private $realPrices;
+    private $dataId;
 
     private $realPrice;
 
-    private $dataId;
+    private $realPrices;
 
 
     /**
@@ -99,11 +99,11 @@ class TemplateGroup
      }
 
     /**
-     * @return ?Price
+     * @return ?int
      */
-    public function getRealPrices(): ?Price
+    public function getDataId(): ?int
     {
-         return $this->realPrices;
+         return $this->dataId;
      }
 
     /**
@@ -115,11 +115,11 @@ class TemplateGroup
      }
 
     /**
-     * @return ?int
+     * @return ?Price
      */
-    public function getDataId(): ?int
+    public function getRealPrices(): ?Price
     {
-         return $this->dataId;
+         return $this->realPrices;
      }
 
     /**
@@ -131,11 +131,11 @@ class TemplateGroup
      * @param string|null $startDate
      * @param array|null $templates
      * @param int|null $price
-     * @param Price|null $realPrices
-     * @param int|null $realPrice
      * @param int|null $dataId
+     * @param int|null $realPrice
+     * @param Price|null $realPrices
      */
-    public function __construct(?string $comment, ?bool $available, ?int $id, ?string $name, ?int $runtime, ?string $startDate, ?array $templates, ?int $price, ?Price $realPrices, ?int $realPrice, ?int $dataId)
+    public function __construct(?string $comment, ?bool $available, ?int $id, ?string $name, ?int $runtime, ?string $startDate, ?array $templates, ?int $price, ?int $dataId, ?int $realPrice, ?Price $realPrices)
     {
         $this->comment = $comment;
         $this->available = $available;
@@ -166,9 +166,9 @@ class TemplateGroup
         }
         $this->templates = $templates;
         $this->price = $price;
-        $this->realPrices = $realPrices;
-        $this->realPrice = $realPrice;
         $this->dataId = $dataId;
+        $this->realPrice = $realPrice;
+        $this->realPrices = $realPrices;
     }
 
     /**
@@ -186,9 +186,9 @@ class TemplateGroup
         'startDate' => $this->getStartDate(),
         'templates' => $this->getTemplates(),
         'price' => $this->getPrice(),
-        'realPrices' => $this->getRealPrices(),
-        'realPrice' => $this->getRealPrice(),
         'dataId' => $this->getDataId(),
+        'realPrice' => $this->getRealPrice(),
+        'realPrices' => $this->getRealPrices(),
         ];
     }
 
@@ -231,18 +231,18 @@ class TemplateGroup
             $price = (int) $object->price;
         }else $price = null;
 
-        if (isset($object->realPrices)) {
-           $realPrices = Price::fromStdClass((object)$object->realPrices);
-        }else $realPrices = null;
+        if (isset($object->dataId)) {
+            $dataId = (int) $object->dataId;
+        }else $dataId = null;
 
         if (isset($object->realPrice)) {
             $realPrice = (int) $object->realPrice;
         }else $realPrice = null;
 
-        if (isset($object->dataId)) {
-            $dataId = (int) $object->dataId;
-        }else $dataId = null;
+        if (isset($object->realPrices)) {
+           $realPrices = Price::fromStdClass((object)$object->realPrices);
+        }else $realPrices = null;
 
-        return new TemplateGroup($comment, $available, $id, $name, $runtime, $startDate, $templates, $price, $realPrices, $realPrice, $dataId);
+        return new TemplateGroup($comment, $available, $id, $name, $runtime, $startDate, $templates, $price, $dataId, $realPrice, $realPrices);
      }
 }

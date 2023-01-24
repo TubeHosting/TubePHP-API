@@ -303,7 +303,7 @@ final class EndpointTest extends TestCase
             * Do an HTTP request (POST) to /me/names with random data 
             */
             
-            $user = new TubeAPI\Objects\User(rand(0,1000),rand(0,1000),uniqid(),array('DE','EN')[rand(0,1)],array('USER','ADMIN')[rand(0,1)],false,uniqid(),"2019-08-24T14:15:22Z",false,new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid()),false,new TubeAPI\Objects\UserPaymentInfo(rand(0,1000),uniqid(),false,"2019-08-24T14:15:22Z",array('GROSS','NET','TAX_FREE')[rand(0,2)]),array("null"),array('GROSS','NET','TAX_FREE')[rand(0,2)],uniqid(),uniqid(),new TubeAPI\Objects\SupportData(uniqid(),uniqid(),uniqid())); /* User */
+            $user = new TubeAPI\Objects\User(rand(0,1000),rand(0,1000),uniqid(),array('DE','EN')[rand(0,1)],array('USER','ADMIN')[rand(0,1)],false,uniqid(),"2019-08-24T14:15:22Z",false,new TubeAPI\Objects\Address(uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid(),uniqid()),false,new TubeAPI\Objects\UserPaymentInfo(rand(0,1000),uniqid(),false,"2019-08-24T14:15:22Z",array('GROSS','NET','TAX_FREE')[rand(0,2)]),array("null"),new TubeAPI\Objects\SupportData(uniqid(),uniqid(),uniqid()),array('GROSS','NET','TAX_FREE')[rand(0,2)],uniqid(),uniqid()); /* User */
             $tmp = TubeAPI\Objects\User::changeNames($user);
             print "ran (POST) request against /me/names ($c)\n";
             $this->assertTrue(true);

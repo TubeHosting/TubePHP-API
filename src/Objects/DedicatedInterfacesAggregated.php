@@ -13,11 +13,11 @@ class DedicatedInterfacesAggregated
 
     private $interfaces;
 
-    private $interfaceId;
+    private $aggregatedId;
 
     private $instanceId;
 
-    private $aggregatedId;
+    private $interfaceId;
 
 
     /**
@@ -31,9 +31,9 @@ class DedicatedInterfacesAggregated
     /**
      * @return ?int
      */
-    public function getInterfaceId(): ?int
+    public function getAggregatedId(): ?int
     {
-         return $this->interfaceId;
+         return $this->aggregatedId;
      }
 
     /**
@@ -47,18 +47,18 @@ class DedicatedInterfacesAggregated
     /**
      * @return ?int
      */
-    public function getAggregatedId(): ?int
+    public function getInterfaceId(): ?int
     {
-         return $this->aggregatedId;
+         return $this->interfaceId;
      }
 
     /**
      * @param array|null $interfaces
-     * @param int|null $interfaceId
-     * @param int|null $instanceId
      * @param int|null $aggregatedId
+     * @param int|null $instanceId
+     * @param int|null $interfaceId
      */
-    public function __construct(?array $interfaces, ?int $interfaceId, ?int $instanceId, ?int $aggregatedId)
+    public function __construct(?array $interfaces, ?int $aggregatedId, ?int $instanceId, ?int $interfaceId)
     {
 
         //handle stuff in array
@@ -71,9 +71,9 @@ class DedicatedInterfacesAggregated
             }
         }
         $this->interfaces = $interfaces;
-        $this->interfaceId = $interfaceId;
-        $this->instanceId = $instanceId;
         $this->aggregatedId = $aggregatedId;
+        $this->instanceId = $instanceId;
+        $this->interfaceId = $interfaceId;
     }
 
     /**
@@ -84,9 +84,9 @@ class DedicatedInterfacesAggregated
         return
         [
         'interfaces' => $this->getInterfaces(),
-        'interfaceId' => $this->getInterfaceId(),
-        'instanceId' => $this->getInstanceId(),
         'aggregatedId' => $this->getAggregatedId(),
+        'instanceId' => $this->getInstanceId(),
+        'interfaceId' => $this->getInterfaceId(),
         ];
     }
 
@@ -101,18 +101,18 @@ class DedicatedInterfacesAggregated
             $interfaces = (array) $object->interfaces;
         }else $interfaces = null;
 
-        if (isset($object->interfaceId)) {
-            $interfaceId = (int) $object->interfaceId;
-        }else $interfaceId = null;
+        if (isset($object->aggregatedId)) {
+            $aggregatedId = (int) $object->aggregatedId;
+        }else $aggregatedId = null;
 
         if (isset($object->instanceId)) {
             $instanceId = (int) $object->instanceId;
         }else $instanceId = null;
 
-        if (isset($object->aggregatedId)) {
-            $aggregatedId = (int) $object->aggregatedId;
-        }else $aggregatedId = null;
+        if (isset($object->interfaceId)) {
+            $interfaceId = (int) $object->interfaceId;
+        }else $interfaceId = null;
 
-        return new DedicatedInterfacesAggregated($interfaces, $interfaceId, $instanceId, $aggregatedId);
+        return new DedicatedInterfacesAggregated($interfaces, $aggregatedId, $instanceId, $interfaceId);
      }
 }

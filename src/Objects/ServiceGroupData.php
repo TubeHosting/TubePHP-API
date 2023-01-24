@@ -37,11 +37,11 @@ class ServiceGroupData
 
     private $active;
 
-    private $realPrices;
-
     private $priceObject;
 
     private $realPrice;
+
+    private $realPrices;
 
 
     /**
@@ -149,14 +149,6 @@ class ServiceGroupData
      }
 
     /**
-     * @return ?Price
-     */
-    public function getRealPrices(): ?Price
-    {
-         return $this->realPrices;
-     }
-
-    /**
      * @return ?int
      */
     public function getPriceObject(): ?int
@@ -173,6 +165,14 @@ class ServiceGroupData
      }
 
     /**
+     * @return ?Price
+     */
+    public function getRealPrices(): ?Price
+    {
+         return $this->realPrices;
+     }
+
+    /**
      * @param int|null $price
      * @param string|null $endDate
      * @param int|null $position
@@ -186,11 +186,11 @@ class ServiceGroupData
      * @param array|null $services
      * @param string|null $name
      * @param bool|null $active
-     * @param Price|null $realPrices
      * @param int|null $priceObject
      * @param int|null $realPrice
+     * @param Price|null $realPrices
      */
-    public function __construct(?int $price, ?string $endDate, ?int $position, ?int $restMoney, ?int $id, ?int $serviceGroupId, ?string $startDate, ?TemplateGroup $templateGroup, ?int $templateGroupId, ?int $runtimeInterval, ?array $services, ?string $name, ?bool $active, ?Price $realPrices, ?int $priceObject, ?int $realPrice)
+    public function __construct(?int $price, ?string $endDate, ?int $position, ?int $restMoney, ?int $id, ?int $serviceGroupId, ?string $startDate, ?TemplateGroup $templateGroup, ?int $templateGroupId, ?int $runtimeInterval, ?array $services, ?string $name, ?bool $active, ?int $priceObject, ?int $realPrice, ?Price $realPrices)
     {
         $this->price = $price;
         $this->endDate = $endDate;
@@ -226,9 +226,9 @@ class ServiceGroupData
         $this->services = $services;
         $this->name = $name;
         $this->active = $active;
-        $this->realPrices = $realPrices;
         $this->priceObject = $priceObject;
         $this->realPrice = $realPrice;
+        $this->realPrices = $realPrices;
     }
 
     /**
@@ -251,9 +251,9 @@ class ServiceGroupData
         'services' => $this->getServices(),
         'name' => $this->getName(),
         'active' => $this->getActive(),
-        'realPrices' => $this->getRealPrices(),
         'priceObject' => $this->getPriceObject(),
         'realPrice' => $this->getRealPrice(),
+        'realPrices' => $this->getRealPrices(),
         ];
     }
 
@@ -316,10 +316,6 @@ class ServiceGroupData
             $active = (bool) $object->active;
         }else $active = null;
 
-        if (isset($object->realPrices)) {
-           $realPrices = Price::fromStdClass((object)$object->realPrices);
-        }else $realPrices = null;
-
         if (isset($object->priceObject)) {
             $priceObject = (int) $object->priceObject;
         }else $priceObject = null;
@@ -328,7 +324,11 @@ class ServiceGroupData
             $realPrice = (int) $object->realPrice;
         }else $realPrice = null;
 
-        return new ServiceGroupData($price, $endDate, $position, $restMoney, $id, $serviceGroupId, $startDate, $templateGroup, $templateGroupId, $runtimeInterval, $services, $name, $active, $realPrices, $priceObject, $realPrice);
+        if (isset($object->realPrices)) {
+           $realPrices = Price::fromStdClass((object)$object->realPrices);
+        }else $realPrices = null;
+
+        return new ServiceGroupData($price, $endDate, $position, $restMoney, $id, $serviceGroupId, $startDate, $templateGroup, $templateGroupId, $runtimeInterval, $services, $name, $active, $priceObject, $realPrice, $realPrices);
      }
 
 
