@@ -8,22 +8,26 @@ These examples are not meant to get copied etc. but to convey an understanding o
 
 Following example shows how to get and display the information about a user
 
-- [userOverview](userOverview/)
+- [user overview (with credentials) ](userOverview/userOverview.php)
 
 ## Vps
 
 Similar to the last example, we get information about something, in this case VPS information and statistics by the id
 
-- [vpsOverview](vpsOverview/)
+- [vps overview](vpsOverview/vpsOverview.php)
+
+Exactly the same, but without the password authentication (using the api key)
+
+- [vps overview (with api key)](vpsOverviewToken/vpsOverviewToken.php)
 
 ## Address
 
 The following example shows how to change the address for the user account 
 
-- [setNewAddress](setNewAddress/)
+- [set new address](setNewAddress/setNewAddress.php)
 
 ## Service
 
 This example shows how to fetch the services and display them in an ordered way
 
-- [serviceOverview](serviceOverview/)
+- [service overview](serviceOverview/serviceOverview.php)

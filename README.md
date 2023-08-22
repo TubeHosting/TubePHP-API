@@ -44,7 +44,7 @@ use TubeAPI\Exceptions;
 
 require 'vendor/autoload.php'; //Load the Composer autoloader
 
-$password = "Password123"; 
+$password = "Password123";   //you can use password authentication, but this is not recommended, please use the api key instead (scroll down for more information about this) 
 $mail = "E-Mail@Address.tld"; 
 
 try {
@@ -90,6 +90,22 @@ Paid until: 2024-02-26T00:00:00Z
 ```
 
 Take a look on more examples [in the examples directory](Examples/)
+
+#### login with api token:
+
+Instead of your email and password 
+```php
+$password = "Password123"; 
+$mail = "E-Mail@Address.tld"; 
+```
+you can also use your api token.
+```php
+TubeAPI\TubeAPI::$token = "yourtoken"; //set the api token
+```
+
+Make sure to also remove the login line (`$user = Objects\User::login(new Objects\AuthenticationLoginData($mail, $password));` as this overrides the api key with a new one from the login call. 
+
+An example implementation can be found [in the examples directory](Examples/vpsOverviewToken/vpsOverviewToken.php)
 
 ## LICENSE: 
 This software is distributed under the [MIT license](https://github.com/TubeHosting/TubePHP-API/blob/main/LICENSE).
